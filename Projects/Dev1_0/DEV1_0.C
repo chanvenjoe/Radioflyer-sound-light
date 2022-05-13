@@ -4,7 +4,8 @@
 //****************************************************************************
 
 #include <io.h>
-
+#include <stdio.h>
+#include <io_fdsp.h>
 
 // C variables
 
@@ -94,10 +95,10 @@ void Initial(void)
 {
 	// initial ADPCM decoder
 
+/*	set_ADPPCM(0);
 	set_ADPPCM(0);
 	set_ADPPCM(0);
-	set_ADPPCM(0);
-	set_ADPPCM(0);
+	set_ADPPCM(0);*/
 	get_FLTO();			// reset status
 
 	// initial filter

@@ -3,5 +3,15 @@ FDSP-IDE C PROJECT DEFINE:
 IM=DEV1_0.C
 SOURCES=
 DEV1_0.C
+..\..\Lib&Inc\lib\libadpcm\adp12.c
+..\..\Lib&Inc\lib\libadpcm\adp8.c
 HEADERS=
+..\..\Lib&Inc\include\iom\io_mspeechdsp.h
+..\..\Lib&Inc\include\stdio.h
+..\..\Lib&Inc\include\adpcm.h
+..\..\Lib&Inc\include\io_pwm.h
+..\..\Lib&Inc\include\io.h
+..\..\Lib&Inc\include\iom\io_fdsp.h
+OBJECT=xDSP_ADPCM_4Bit_DecV04.obj
+OBJECT=xdsp_adp48decoder.obj
 

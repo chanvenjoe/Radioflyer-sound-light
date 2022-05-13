@@ -1,0 +1,9 @@
+
+
+
+// adp12_cshell.asm
+#pragma explicit(GUID_FFFEF599_6A79_474D_A562_5AF933D9C0B0)
+// xDSP_ADPCM_4Bit_DecV04.obj
+#pragma explicit(GUID_86C4BE3C_6C1E_4B7D_BEF9_1C9596E93D12)
+
+

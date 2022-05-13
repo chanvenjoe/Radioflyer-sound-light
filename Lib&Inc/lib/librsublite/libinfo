@@ -1,0 +1,4 @@
+"KeyWord","LinkFile","NeedCompile","Status","Root"
+"Subband_Status","recsbb-supp.asm","0","0","0"
+"F_Subband_Dec","recsbb-supp.asm","0","0","1"
+"F_Subband_Init","SPF_SUB_CODEC_V13B.obj","0","0","0"
