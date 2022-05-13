@@ -15,19 +15,6 @@ VarRM[0:4095]={
 ; //
 ; //
 ; //
-.code
-; //
-; //
-; //naked void ginit_code_adp12_F2C761C1_s(void)	
-ginit_code_adp12_F2C761C1_s:
-; //{
-; //	return;					
-	rets
-; //}
-; //
-; //
-; //
-; //
 ; //
 ; //
 ; //
@@ -52,6 +39,5 @@ ginit_code_adp12_F2C761C1_s:
 ; //
 .code
 ; //	nop
-; //
 ; //
 ; //

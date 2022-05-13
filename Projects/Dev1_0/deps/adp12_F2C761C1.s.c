@@ -1,4 +1,4 @@
-// SUBC 0.8.9 (build Jun 29 2020 12:00:34)
+// SUBC 0.8.12 (build Apr 11 2022 16:13:40)
 #include "crt0.h"
 
 // .fast segment _fast
@@ -28,17 +28,6 @@
 .code
 // .code ends _text
 
-// .code segment _ginit
-.code
-
-// -=-=-=-=-=-=-=-=-=-=-
-naked void ginit_code_adp12_F2C761C1_s(void)
-{
-	return;
-}
-
-// .code ends _ginit
-
 
 // -=-=-=-=-=-=-=-=-=-=-
 // strlit segment
@@ -66,4 +55,3 @@ naked void ginit_code_adp12_F2C761C1_s(void)
 	nop
 // .code ends _text
 
-// public ginit_code_adp12_F2C761C1_s

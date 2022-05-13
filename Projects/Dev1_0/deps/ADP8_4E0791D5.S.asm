@@ -31,17 +31,6 @@
 
 
 
-.code
-
-
-naked void ginit_code_adp8_4E0791D5_s(void)	=>>ginit_code_adp8_4E0791D5_s:
-{
-	return;					=>>rets
-}
-
-
-
-
 
 
 
@@ -66,6 +55,5 @@ naked void ginit_code_adp8_4E0791D5_s(void)	=>>ginit_code_adp8_4E0791D5_s:
 
 .code
 	nop
-
 
 
