@@ -1,0 +1,23 @@
+[_FDSP-IDE]
+FDSP-IDE C PROJECT DEFINE:
+IM=9.C
+SOURCES=
+9.C
+global.c
+keypad.c
+led.c
+midiplay.c
+sub3play.c
+asmfunc\interrupt.asm
+asmfunc\support.asm
+asmfunc\subbsupp.asm
+data.c
+HEADERS=
+config.h
+global.h
+keypad.h
+led.h
+support.h
+midiplay.h
+sub3play.h
+

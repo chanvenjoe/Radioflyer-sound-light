@@ -1,0 +1,5 @@
+"KeyWord","LinkFile","NeedCompile","Status","Root"
+"GUID_ACCCD3FB_ACCB_417E_B79C_E1C4E09740DC","SDSP_Sbb3_Ch0decV05.obj","0","0","0"
+"GUID_0FA0BFE3_6500_49D1_B501_19E4F7A220B1","Sbb3_Ch0decV05.obj","0","0","0"
+"GUID_9DA8BDD2_C828_491C_84B1_06D014924C93","sub3supp.asm","0","0","0"
+"libsub3","sub3_cshell.c","1","0","0"

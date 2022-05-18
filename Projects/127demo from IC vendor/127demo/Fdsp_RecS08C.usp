@@ -1,0 +1,8 @@
+[_FDSP-IDE]
+FDSP-IDE Project Define:
+IM=Fdsp_RecS08C.asm
+INCLUDE=COMMON.inc
+SUBASM=General.inc
+SUBASM=Option.inc
+
+SUBASM=TR16_FormatSetUp.inc

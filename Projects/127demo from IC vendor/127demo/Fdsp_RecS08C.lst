@@ -1,0 +1,3214 @@
+            ;----------------------------------------------------------------------------
+            ;	TR16 play sbb3 Demo Code , TRITAN Technology Inc.
+            ;-----------------------------------------------------------------------------
+            ;	Remark:		PA0: play sbb3
+            ;	Remark:		PA1: play pcm
+            ;-----------------------------------------------------------------------------
+            ;	Change History :
+            ;	<Date>		<Version>	<Author>	<Description>
+            ;-----------------------------------------------------------------------------
+            ;-----------------------------------------------------------------------------
+            ;=========================Include <COMMON.INC> Start=========================
+            
+            ; =====================
+            ;      COMMON I/O
+            ; =====================
+            
+            #ifdef _MFDSP_
+            
+            ; {
+            
+            	STATUS	     EQU    00H	      ; R/W, BIT0: Zero.
+            				      ; R/W, BIT1: Carry.
+            				      ; R/W, BIT2: Overflow.
+            				      ; R/W, BIT3: Negative.
+            				      ; R/W, BIT7: Global Interrupt Enable.
+            				      ; R/W, BIT[12:8]: SD_EN,NH_EN,TFT_EN,TMSEN,SPI_EN.
+            				      ; R/W, BIT13: Interrupt Vector Table Access Enable.
+            				      ; R/W, BIT14: Filter Buffer Available.
+            				      ; R/W, BIT15: Parser Buffer Available.
+            	INTENA	     EQU    01H	      ; R/W, Int Enable.
+            	INTREQ	     EQU    02H	      ; R/W, Int Request.
+            	IntVect	     EQU    03H	      ; R/W, Interrupt Table
+            	IOC_PA	     EQU    04H	      ; R/W, PortA IO control. ('0' = input,'1' = output)
+            	IOC_PB	     EQU    05H	      ; R/W, PortB IO control. ('0' = input,'1' = output)
+            	IOC_PC	     EQU    06H	      ; R/W, PortC IO control. ('0' = input,'1' = output)
+            	IOC_PCI	     EQU    06H
+            
+            	IOC_PD	     EQU    0CH	      ; R/W, PortD IO control. ('0' = input,'1' = output)
+            	PortA	     EQU    07H	      ; R/W, General input/output port.
+            	PortB	     EQU    08H	      ; R/W, General input/output port.
+            	PortC	     EQU    09H	      ; R/W, General input/output port.
+            	PortC2	     EQU    09H
+            	PortCI	     EQU    09H
+            	PortD	     EQU    0AH	      ; R/W, General output port.
+            	SPH_CTL	     EQU    0BH	      ; W,   Specical Peripheral control register.
+            	SPI_CTL	     EQU    0DH	      ; R/W, Serial interface control register.
+            	SPI_DAT	     EQU    0EH	      ; R/W, Serial interface data.
+            	SD_CTL	     EQU    0FH	      ; R/W, SD card interface control register.
+            	SD_DAT	     EQU    10H	      ; R/W, SD card interface data.
+            	SD_RSP	     EQU    11H	      ; R/W, SD card interface response register.
+            	UART_CTL     EQU    12H
+            	UART_DAT     EQU    13H
+            	DPPWM	     EQU    14H
+            
+            	; ------------------------------------
+            
+            	PUPD_PA	     EQU    15H
+            	DACL	     EQU    16H	      ;W, DAC output L Channel.
+            	DACR	     EQU    17H	      ;W, DAC output R Channel.
+            	USB_CTL	     EQU    18H
+            	USB_DAT	     EQU    19H
+            	PUPD_PB	     EQU    1AH
+            	PUPD_PC	     EQU    1BH
+            	MISC	     EQU    1CH
+            	ClrWDT	     EQU    1DH	      ;W, Clear Watch-dog reset.
+            	Real_T	     EQU    1DH	      ;R, System Real-Time Counter, base on 31.25us
+            	IOP_IX	     EQU    1EH	      ;W, Programming IO Port index .
+            	IOP_DAT	     EQU    1FH	      ;W, Programming IO Port Data .
+            
+            	DPPWM2_CTL   EQU    16h
+            	DPPWM2_DAT   EQU    17h
+            	DPPWM3_CTL   EQU    34h
+            	DPPWM3_DAT   EQU    36h
+            	ADPWM_CTL    EQU    61h
+            	ADPWM_DAT    EQU    62h
+            
+            	; ------------------------------------
+            	; Virtual Program IO Port
+            
+            	IOP_Timer1    EQU    00H
+            	IOP_Timer2    EQU    01H
+            	IOP_RTC32K    EQU    02H
+            	IOP_PreScale  EQU    03H
+            	IOP_FGREEN32K EQU    04H
+            	IOP_ODEN_PA   EQU    05H
+            	IOP_ODEN_PB   EQU    06H
+            	IOP_ODEN_PC   EQU    07H
+            
+            	IOP_TOUCH_CFG EQU    08H
+            	IOP_TOUCH_DAT EQU    09H
+            
+            	IOP_CLK_CFG   EQU    0AH
+            	IOP_CLK_DAT1  EQU    0BH
+            	IOP_CLK_DAT2  EQU    0CH
+            	IOP_CUR_PA    EQU    0DH
+            	IOP_CUR_PB    EQU    0EH
+            	IOP_CUR_PC    EQU    0FH
+            	IOP_WAKEN_PA  EQU    10H
+            	IOP_WAKEN_PB  EQU    11H
+            	IOP_WAKEN_PC  EQU    12H
+            	IOP_WAKELV_PA EQU    13H
+            	IOP_WAKELV_PB EQU    14H
+            	IOP_WAKELV_PC EQU    15H
+            
+            	; ------------------------------------
+            	; IO[0x40-0x7F]
+            
+            	ADH_CFG0     EQU    40H
+            	ADH_CFG1     EQU    41H
+            	ADH_CFG2     EQU    42H
+            	ADH_CFG3     EQU    43H
+            	ADH_DO	     EQU    44H
+            
+            	ADL_CFG	     EQU    45H
+            
+            	TRA_CFG	     EQU    46H
+            	TRA_DAT	     EQU    47H
+            
+            	I2C_CTL	     EQU    48H
+            	I2C_DAT	     EQU    49H
+            	I2C_CMD	     EQU    4AH
+            	I2C_SR	     EQU    4AH	    ; same as I2C_CMD
+            
+            	I80_CTL	     EQU    4BH
+            	I80_INX	     EQU    4CH
+            	I80_DAT	     EQU    4DH
+            	I80_RADR     EQU    4EH
+            	I80_DMANUM   EQU    4FH
+            
+            	SD_DMA_CTL    EQU   50H
+            	SD_DMA_RADR   EQU   51H
+            	SD_DMA_DMANUM EQU   52H
+            
+            	SPI_DMA_CTL    EQU  53H
+            	SPI_DMA_RADR   EQU  54H
+            	SPI_DMA_DMANUM EQU  55H
+            
+            	USB_DMA_CTL    EQU  56H
+            	USB_DMA_RADR   EQU  57H
+            	USB_DMA_DMANUM EQU  58H
+            
+            	SPLL	       EQU  63H
+            	MIC	       EQU  64H
+            	GREEN	       EQU  65H
+            	SLEEP	       EQU  66H
+            	PR	       EQU  68H
+            ; }
+            
+            #endif
+            
+            
+            
+            
+            #ifdef _MSPEECHDSP_
+            
+            	STATUS		EQU    00H	 ; R/W, BIT0:  Zero.
+            					 ; R/W, BIT1:  Carry.
+            					 ; R/W, BIT2:  Overflow.
+            					 ; R/W, BIT3:  Negative.
+            					 ; R/W, BIT7:  Global Interrupt Enable.
+            					 ; R/W, BIT8:  SPIM_EN.
+            					 ; R/W, BIT13: Interrupt Vector Table Access Enable.
+            					 ; R/W, BIT14: Filter Buffer Available.
+            					 ; R/W, BIT15: Parser Buffer Available.
+            
+            	INTENA		EQU    01H	 ; R/W, Int Enable.
+            	INTREQ		EQU    02H	 ; R/W, Int Request.
+            	IntVect		EQU    03H	 ; R/W, Interrupt Table
+            	IOC_PA		EQU    04H	 ; R/W, PortA IO control. ('0' = input,'1' = output)
+            	IOC_PB		EQU    05H	 ; R/W, PortB IO control. ('0' = input,'1' = output)
+            	IOC_PC		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	IOC_PCI		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	PortA		EQU    07H	 ; R/W, General input/output port.
+            	PortB		EQU    08H	 ; R/W, General input/output port.
+            	PortC		EQU    09H	 ; R/W, General input/output port.
+            	PortCI		EQU    09H	 ; R/W, General input/output port.
+            	INTMASK		EQU    0AH	 ; R/W, Int Mask.
+            	DACL		EQU    16H
+            	MISC5		EQU    18H	 ; R/W, Miscellanea register #5
+            	MISC4		EQU    19H	 ; R/W, Miscellanea register #4
+            	MISC3		EQU    1AH	 ; R/W, Miscellanea register #3
+            	MISC2		EQU    1BH	 ; R/W, Miscellanea register #2
+            	MISC		EQU    1CH	 ; R/W, Miscellanea register #1
+            	ClrWDT		EQU    1DH	 ; W, Clear Watch-dog reset.
+            	Real_T		EQU    1DH	 ; R, System Real-Time Counter, base on 31.25us
+            	IOP_IX		EQU    1EH	 ; W, Programming IO Port index .
+            	IOP_DAT		EQU    1FH	 ; W, Programming IO Port Data .
+            
+            	; Virtual Program IO Port
+            	IOP_Timer1	EQU    00H
+            	IOP_Timer2	EQU    01H
+            	IOP_RTC32K	EQU    02H
+            	IOP_FetchCNT	EQU    03H
+            
+            	IOP_PA_PD50K	EQU    05H
+            	IOP_PB_PD50K	EQU    06H
+            	IOP_PCI_PD50K	EQU    07H
+            	IOP_PA_PD220K	EQU    08H
+            	IOP_PB_PD220K	EQU    09H
+            	IOP_PCI_PD220K	EQU    0AH
+            	IOP_PA_PD1M	EQU    0BH
+            	IOP_PB_PD1M	EQU    0CH
+            	IOP_PCI_PD1M	EQU    0DH
+            	IOP_PA_4MA	EQU    0EH
+            	IOP_PB_4MA	EQU    0FH
+            	IOP_PCI_4MA	EQU    10H
+            	IOP_PA_WLOW	EQU    11H
+            	IOP_PB_WLOW	EQU    12H
+            	IOP_PCI_WLOW	EQU    13H
+            	IOP_WAKEN_PA	EQU    14H
+            	IOP_WAKEN_PB	EQU    15H
+            	IOP_WAKEN_PC	EQU    16H
+            	IOP_WAKELV_PA	EQU    17H
+            	IOP_WAKELV_PB	EQU    18H
+            	IOP_WAKELV_PC	EQU    19H
+            	IOP_WAKEDLV_PB	EQU    1AH
+            
+            	; IO[0x40-0x7F]
+            	ENC_DAT		EQU    54H
+            	SPI_CTL		EQU    55H
+            	SPI_DAT		EQU    56H
+            	EP		EQU    5EH
+            	SSC		EQU    63H
+            	SPEED		EQU    67H
+            #endif
+            
+            
+            
+            #ifdef _MSPEECHDSP2_
+            
+            	STATUS		EQU    00H	 ; R/W, BIT0:  Zero.
+            					 ; R/W, BIT1:  Carry.
+            					 ; R/W, BIT2:  Overflow.
+            					 ; R/W, BIT3:  Negative.
+            					 ; R/W, BIT7:  Global Interrupt Enable.
+            					 ; R/W, BIT8:  SPIM_EN.
+            					 ; R/W, BIT13: Interrupt Vector Table Access Enable.
+            					 ; R/W, BIT14: Filter Buffer Available.
+            					 ; R/W, BIT15: Parser Buffer Available.
+            
+            	INTENA		EQU    01H	 ; R/W, Int Enable.
+            	INTREQ		EQU    02H	 ; R/W, Int Request.
+            	IntVect		EQU    03H	 ; R/W, Interrupt Table
+            	IOC_PA		EQU    04H	 ; R/W, PortA IO control. ('0' = input,'1' = output)
+            	IOC_PB		EQU    05H	 ; R/W, PortB IO control. ('0' = input,'1' = output)
+            	IOC_PC		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	IOC_PCI		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	PortA		EQU    07H	 ; R/W, General input/output port.
+            	PortB		EQU    08H	 ; R/W, General input/output port.
+            	PortC		EQU    09H	 ; R/W, General input/output port.
+            	PortCI		EQU    09H	 ; R/W, General input/output port.
+            	INTMASK		EQU    0AH	 ; R/W, Int Mask.
+            	DACL		EQU    16H
+            	MISC5		EQU    18H	 ; R/W, Miscellanea register #5
+            	MISC4		EQU    19H	 ; R/W, Miscellanea register #4
+            	MISC3		EQU    1AH	 ; R/W, Miscellanea register #3
+            	MISC2		EQU    1BH	 ; R/W, Miscellanea register #2
+            	MISC		EQU    1CH	 ; R/W, Miscellanea register #1
+            	ClrWDT		EQU    1DH	 ; W, Clear Watch-dog reset.
+            	Real_T		EQU    1DH	 ; R, System Real-Time Counter, base on 31.25us
+            	IOP_IX		EQU    1EH	 ; W, Programming IO Port index .
+            	IOP_DAT		EQU    1FH	 ; W, Programming IO Port Data .
+            
+            	; Virtual Program IO Port
+            	IOP_Timer1	EQU    00H
+            	IOP_Timer2	EQU    01H
+            	IOP_RTC32K	EQU    02H
+            	IOP_FetchCNT	EQU    03H
+            
+            	IOP_PA_PD50K	EQU    05H
+            	IOP_PB_PD50K	EQU    06H
+            	IOP_PCI_PD50K	EQU    07H
+            	IOP_PA_PD220K	EQU    08H
+            	IOP_PB_PD220K	EQU    09H
+            	IOP_PCI_PD220K	EQU    0AH
+            	IOP_PA_PD1M	EQU    0BH
+            	IOP_PB_PD1M	EQU    0CH
+            	IOP_PCI_PD1M	EQU    0DH
+            	IOP_PA_4MA	EQU    0EH
+            	IOP_PB_4MA	EQU    0FH
+            	IOP_PCI_4MA	EQU    10H
+            	IOP_PA_WLOW	EQU    11H
+            	IOP_PB_WLOW	EQU    12H
+            	IOP_PCI_WLOW	EQU    13H
+            	IOP_WAKEN_PA	EQU    14H
+            	IOP_WAKEN_PB	EQU    15H
+            	IOP_WAKEN_PC	EQU    16H
+            	IOP_WAKELV_PA	EQU    17H
+            	IOP_WAKELV_PB	EQU    18H
+            	IOP_WAKELV_PC	EQU    19H
+            	IOP_WAKEDLV_PB	EQU    1AH
+            
+            	; IO[0x40-0x7F]
+            	ENC_DAT		EQU    54H
+            	SPI_CTL		EQU    55H
+            	SPI_DAT		EQU    56H
+            	EP		EQU    5EH
+            	SSC		EQU    63H
+            	SPEED		EQU    67H
+            #endif
+            
+            
+            
+            //------------------------------------                                                                     
+            ;#define         Optimal_RM                      ; Optimal RAM function Enable
+                                                                            
+            VarRM[0:127]    ={                               
+            RAM0,RAM1
+            Filter_GainNum
+            FlashAddrH
+            FlashAddrL
+            RomNumMax
+            SPINumMax
+            SentenceNumMax
+            SPIorRomFlag
+            
+            
+            
+            
+            SleepStatus
+            
+            
+            
+            
+            Sbb3Volum
+            Sbb3_Flag
+            Sbb3_Step
+            Sbb3_Num
+            
+            
+            PCMVolum
+            PCM_Flag
+            PCM_Step
+            PCM_Num
+            
+            
+            
+            
+            KeyTime
+            KeyNew
+            KeyOld
+            KeyNum
+            KeyFlag
+            HaltTime
+            
+            
+            SentenceNum
+            SentenceLoop
+            
+            PauseFlag
+            MuteFlag
+            
+            
+            Sentence_Flag
+            Sentence_PT
+            Sentence_Time
+            Sentence_Loop
+            SentenceLoop_PT
+            RecIROK
+            RecCode
+            RecIRFlag
+            RecIRTime
+            
+            }                                                               
+                                                                            
+            VarRM[128:511]  ={                               
+            
+            }                                                               
+                                                                            
+            VarRM[512:4095]={ 
+            ReAllocate#3008
+            StackBuffer[64]					;;∂—’ªª∫¥Ê«¯   
+            }                                                               
+                                                                            
+            ShareVar        ={                               
+                                                                            
+            }                                                               
+                                
+            
+            
+            
+            ;=========================Include <COMMON.INC> End=========================
+            
+            ;=========================Include <GENERAL.INC> Start=========================
+            ;===============================================================;
+            ;   Ver 1.0
+            ;===============================================================;
+            ;=========================Include <OPTION.INC> Start=========================
+            //--------------------------------------------------------------------------------------------------
+            // TRITAN FDSP-IDE Option define file.
+            // WARNING! All changes made in this file will be lost when recompiling.
+            //--------------------------------------------------------------------------------------------------
+            // Part number    : TRSF16127A
+            // Option version : 2.3
+            // Base Information--------------------------------------------------------------------------------
+            #define       _OPT_TRSF16127A_                
+            #define       _OPT_PROMSize_                0x20000   //PROM Size
+            #define       _OPT_SRAMSize_                3072      //SRAM Size
+            // I/O Configuration--------------------------------------------------------------------------------
+            #define       _OPT_EXTReset_EN_             0         //EXT Reset Enable,0:Disable,1:Enable
+            #define       _OPT_EXTINT1_EN_              0         //EXTINT1_EN,0:Disable,1:Enable
+            #define       _OPT_EXTINT0_EN_              0         //EXTINT0_EN,0:Disable,1:Enable
+            #define       _OPT_SpreadSpectrum_          0         //Spread Spectrum Enable,0:Disable,1:Enable
+            #define       _OPT_EXTResetPin_             0         //EXT Reset Pin Select,0:PB3,1:PC3
+            #define       _OPT_EXTINT1_INV_             0         //EXTINT1_INV,0:Disable,1:Enable
+            #define       _OPT_EXTINT0_INV_             0         //EXTINT0_INV,0:Disable,1:Enable
+            // Memory Configuration-----------------------------------------------------------------------------
+            #define       _OPT_PRAMBank_                0         //PRAM Bank
+            #define       _OPT_PRAMSize_                0         //PRAM Size(Words)
+            #define       _OPT_WriteSegmentProtection_  0x0FFFF   //Write Segment Protection(0000H~ )
+            // System Control Setup-----------------------------------------------------------------------------
+            #define       _OPT_Bank0Speed_              11        //Bank0 Speed(MHz)
+            #define       _OPT_RTCINT_                  1         //RTC interrupt,0:Disable,1:Enable
+            #define       _OPT_RTCinHalt_               0         //RTC LP32K in Halt Mode,0:Disable,1:Enable
+            #define       _OPT_LVR_                     1800      //LVR(mv)
+            #define       _OPT_WatchDog_                256       //Watch dog(ms)
+            #define       _OPT_ICEEnable_               1         //ICE Disable/Enable,0:Disable,1:Enable
+            // Audio Configuration------------------------------------------------------------------------------
+            #define       _OPT_AudioSamplingRate_       64        //Audio Sampling Rate(KHz)
+            #define       _OPT_PWMBit_                  16        //PWM Bit
+            #define       _OPT_DACFIFO_                 1         //DAC FIFO,0:Disable,1:Enable
+            //--------------------------------------------------------------------------------------------------
+            ;=========================Include <OPTION.INC> End=========================
+            
+            ;******************************************************************************
+            ;******************************************************************************
+            
+            #Define		PrgBank		0			; Á®ãÂ∫è bank
+            #Define		RamBank		_Opt_Prambank_		; 1Kw PramÂú®Âì™‰∏™bank
+            
+            #Define		PH_H		_Opt_Prambank_		; P1.HH,P0.HH,
+            
+            
+            
+            
+            #If		_Opt_Prambank_              != 0	;;Ëá™Âä®Ë∞ÉÊï¥pramÁöÑ‰ΩøÁî®‰∏éÂê¶
+
+            		#Define		Sbb3_Usepram		;;Sub3Ëß£Á†ÅÊòØÂê¶ËøêË°å1Kw Sram Code
+            #Endif
+            
+            
+            
+            ;;Ê†πÊçÆPWNÈÄâÈ°π,Ë∞ÉÊï¥Filter_GainÂ§ö‰πÖË∞ÉÊï¥‰∏ÄÊ¨°
+
+            
+            	#If	_OPT_DACFIFO_==0
+            		#If	_Opt_Audiosamplingrate_ == 32
+            			#Define		_Filter_GainNum		0x0007
+            		#Endif
+            		#If	_Opt_Audiosamplingrate_ == 64
+            			#Define		_Filter_GainNum		0x000f
+            		#Endif
+            		#If	_Opt_Audiosamplingrate_ == 128
+            			#Define		_Filter_GainNum		0x001f
+            		#Endif
+            	#Else		;;;1
+            
+            		#If	_Opt_Audiosamplingrate_ == 32
+            			#Define		_Filter_GainNum		0x0001
+            		#Endif
+            		#If	_Opt_Audiosamplingrate_ == 64
+            			#Define		_Filter_GainNum		0x0003
+            		#Endif
+            		#If	_Opt_Audiosamplingrate_ == 128
+            			#Define		_Filter_GainNum		0x0007
+            		#Endif
+            
+            	#Endif
+            
+            
+            
+            ;******************************************************************************
+            ;******************************************************************************
+            Macro	Audio_Config_Adjust_Fltp                            	; Ê†πÊçÆPWNÈÄâÈ°π,Ë∞ÉÊï¥fltp
+            	#If	_Opt_Audiosamplingrate_	!= 32
+            		Clr	C
+            		#If	_Opt_Audiosamplingrate_	== 64
+            		Src	Ar, 1
+            		#Endif
+            		#If	_Opt_Audiosamplingrate_     == 128
+            		Src	Ar, 2
+            		#Endif
+            	#Endif
+            Endm
+            ;******************************************************************************
+            ;===============================================================;
+            ;   Multiplication                                              ; Ë∞ÉÊï¥16128ÁöÑ‰πòÊ≥ïÊåá‰ª§, ‰ΩøÁî®macroËΩ¨Êç¢
+            ;===============================================================;
+            Macro   Muluu
+                    #Ifdef	_MSPEECHDSP_		;;//SF16128
+                        Muluu
+                    #Else
+                        Push	Macop
+                        Macop	= 0X0003
+                        Mr	= Mx * Ar
+                        Pop	Macop
+                    #Endif                                                  ; _Mspeechdsp_
+            Endm
+            ;-----------------------------------------------------------;
+            Macro   Mulus
+                    #Ifdef	_MSPEECHDSP_		;;//SF16128
+                        Mulus
+                    #Else
+                        Push	Macop
+                        Macop       = 0X0002
+                        Mr	= Mx * Ar
+                        Pop	Macop
+                    #Endif                                                  ; _Mspeechdsp_
+            Endm
+            ;-----------------------------------------------------------;
+            Macro   Mulsu
+                    #Ifdef	_MSPEECHDSP_		;;//SF16128
+                        Mulsu
+                    #Else
+                        Push	Macop
+                        Macop	= 0X0001
+                        Mr	= Mx * Ar
+                        Pop	Macop
+                    #Endif                                                  ; _Mspeechdsp_
+            Endm
+            ;-----------------------------------------------------------;
+            Macro   Mulss
+                    #Ifdef          _MSPEECHDSP_		;;//SF16128
+                        Mulss
+                    #Else
+                        Push        Macop
+                        Macop	= 0X0000
+                        Mr	= Mx * Ar
+                        Pop         Macop
+                    #Endif                                                  ; _Mspeechdsp_
+            Endm
+            
+            ;===============================================================;
+            ;=========================Include <GENERAL.INC> End=========================
+            
+            ;=========================Include <TR16_FORMATSETUP.INC> Start=========================
+            #Define		_TR16_PlaySbb3_			1	; ¥Úø™sbb3≤•∑≈∏Ò Ω
+            #Define		_TR16_PlayPCM_			0	; ¥Úø™PCM≤•∑≈∏Ò Ω
+            
+            
+            
+            
+            
+            
+            #If		_TR16_PlaySbb3_			!= 0	;;
+            ;;******************************************************************************
+            ;{
+            ;;’‚∏ˆŒƒº˛ «πÿ”⁄≤•∑≈sbb3µƒ»´≤øƒ⁄»›
+            VarRM[0:127]={
+            ReAllocate#74
+            Sbb3_UseBuf[8]
+            }
+            VarRM[128:511]={
+            }
+            VarRM[512:4095]={
+            ReAllocate#512
+            BaseOn512#Sbb3Buf[512]
+            ReAllocate#1024
+            BaseOn256#Sbb3FlashBuf[256]
+            }
+            ShareVar={
+            }
+            ;-----------------------------------------------------------
+            ;;œÍœ∏∂®“Â SDSP_PB_Adpcm ƒ⁄µƒ¬º“Ùºƒ¥Ê∆˜£ª
+            #Define	Sbb3YOU_PTR			Sbb3_UseBuf+0	;;
+            #Define	PCMYOU_PTR			Sbb3_UseBuf+0	;;
+            #Define	PCMYIN_PTR			Sbb3_UseBuf+1	;;
+            #Define	Sbb3YIN_PTR			Sbb3_UseBuf+1	;;
+            #Define	Sbb3_AddrL			Sbb3_UseBuf+2	;;
+            #Define	Sbb3_AddrH			Sbb3_UseBuf+3	;;
+            #Define	SampleCh0Rate			Sbb3_UseBuf+4	;;
+            #Define	Sbb3Filter_Gain			Sbb3_UseBuf+5	;;
+            #Define	Sbb3FlashOU_PTR			Sbb3_UseBuf+6	;;
+            #Define	Sbb3FlashIN_PTR			Sbb3_UseBuf+7	;;
+            ;-----------------------------------------------------------
+            #ifdef _MSPEECHDSP_
+            
+            ;//∂®“Âobj‘⁄VarRM[0:127]µƒø™ ºµÿ÷∑
+            #OBJReAllocate	SDSP_Sbb3_Ch0decV06, 82		;;ºƒ¥Ê46∏ˆ	±æ«¯◊Ó∫ÛŒª÷√
+            ;//obj‘⁄VarRM[128:511]µƒø™ ºµÿ÷∑
+            #OBJReAllocate	SDSP_Sbb3_Ch0decV06, 128		;;ºƒ¥Ê75∏ˆ	±æ«¯◊Ó∫ÛŒª÷√
+            ;//obj‘⁄VarRM[512:4095]µƒø™ ºµÿ÷∑
+            #OBJReAllocate	SDSP_Sbb3_Ch0decV06, 1312		;;ºƒ¥Ê1696∏ˆ	±æ«¯◊Ó∫ÛŒª÷√
+            
+            #else
+            
+            ;//∂®“Âobj‘⁄VarRM[0:127]µƒø™ ºµÿ÷∑
+            #OBJReAllocate	Sbb3_Ch0decV06, 	82		;;ºƒ¥Ê46∏ˆ	±æ«¯◊Ó∫ÛŒª÷√
+            ;//obj‘⁄VarRM[128:511]µƒø™ ºµÿ÷∑
+            #OBJReAllocate	Sbb3_Ch0decV06, 	128		;;ºƒ¥Ê75∏ˆ	±æ«¯◊Ó∫ÛŒª÷√
+            ;//obj‘⁄VarRM[512:4095]µƒø™ ºµÿ÷∑
+            #OBJReAllocate	Sbb3_Ch0decV06, 	1312		;;ºƒ¥Ê1696∏ˆ	±æ«¯◊Ó∫ÛŒª÷√
+            
+            #endif
+            
+            
+            	Macro		M_Sbb3Play_Task
+            		pch=		Sbb3Play_Task
+            		lcall		Sbb3Play_Task
+            	Endm
+            
+            	Macro		M_Sbb3Play_Start
+            		pch=		Sbb3Play_Start
+            		lcall		Sbb3Play_Start
+            	Endm
+            
+            	Macro		M_Sbb3Play_Startlp
+            		pch=		Sbb3Play_Startlp
+            		lcall		Sbb3Play_Startlp
+            	Endm
+            	Macro		M_Sbb3Play_Stop
+            		pch=		Sbb3Play_Stop
+            		lcall		Sbb3Play_Stop
+            	Endm
+            	Macro		M_Sbb3Play_PWM
+            		pch=		Sbb3Play_PWM
+            		lcall		Sbb3Play_PWM
+            	Endm
+            
+            
+            ;}
+            #else
+            ;{
+            	Macro		M_Sbb3Play_Task
+            	Endm
+            
+            	Macro		M_Sbb3Play_Start
+            	Endm
+            
+            	Macro		M_Sbb3Play_Startlp
+            	Endm
+            	Macro		M_Sbb3Play_Stop
+            	Endm
+            	Macro		M_Sbb3Play_PWM
+            	Endm
+            
+            ;}
+            #Endif
+            
+            
+            
+            
+            #If		_TR16_PlayPCM_			!= 0	;;
+            ;{
+            ;;******************************************************************************
+            ;;’‚∏ˆŒƒº˛ «πÿ”⁄≤•∑≈PCMµƒ»´≤øƒ⁄»›
+            VarRM[0:127]={
+            ReAllocate#68
+            PCM_UseBuf[6]
+            }
+            VarRM[128:511]={
+            ReAllocate#256
+            BaseOn256#PCMBuf[256]
+            }
+            VarRM[512:4095]={
+            
+            }
+            ShareVar={
+            }
+            
+            ;;
+            ;;œÍœ∏∂®“Â SDSP_PB_Adpcm ƒ⁄µƒ¬º“Ùºƒ¥Ê∆˜£ª
+            #Define	PCMOU_PTR			PCM_UseBuf+0	;;
+            #Define	PCMIN_PTR			PCM_UseBuf+1	;;
+            #Define	PCM_AddrL			PCM_UseBuf+2	;;
+            #Define	PCM_AddrH			PCM_UseBuf+3	;;
+            #Define	PCMSampleRate			PCM_UseBuf+4	;;
+            #Define	PCMFilter_Gain			PCM_UseBuf+5	;;
+            ;----------------------------------------------------------
+            
+            	Macro		M_PCMPlay_Task
+            		pch=		PCMPlay_Task
+            		lcall		PCMPlay_Task
+            	Endm
+            
+            	Macro		M_PCMPlay_Start
+            		pch=		PCMPlay_Start
+            		lcall		PCMPlay_Start
+            	Endm
+            
+            	Macro		M_PCMPlay_Startlp
+            		pch=		PCMPlay_Startlp
+            		lcall		PCMPlay_Startlp
+            	Endm
+            	Macro		M_PCMPlay_Stop
+            		pch=		PCMPlay_Stop
+            		lcall		PCMPlay_Stop
+            	Endm
+            
+            	Macro		M_PCMPlay_PWM
+            		pch=		PCMPlay_PWM
+            		lcall		PCMPlay_PWM
+            	Endm
+            
+            ;}
+            #else
+            ;{
+            	Macro		M_PCMPlay_Task
+            	Endm
+            
+            	Macro		M_PCMPlay_Start
+            	Endm
+            
+            	Macro		M_PCMPlay_Startlp
+            	Endm
+            	Macro		M_PCMPlay_Stop
+            	Endm
+            
+            	Macro		M_PCMPlay_PWM
+            	Endm
+            ;}
+            #Endif
+            ;=========================Include <TR16_FORMATSETUP.INC> End=========================
+            
+            
+            
+            #Define		_SPI_Rom_			1	;0£∫SPI  1£∫Rom
+            
+            
+            .CODE
+            ; =================================================================
+            		ORG             0000H
+            RSTB_ENTRY:                                     ; System program entry
+00000:                      PCH             =SYS_PROG_ENTRY
+00001:                      LJMP            SYS_PROG_ENTRY
+            ; =================================================================
+                            ORG             0004H
+            WAKEUP_ENTRY:                                   ; Wake up entry
+00004:                      PCH             =WAKEUP_PROC
+00005:                      LJMP            WAKEUP_PROC
+            ; =================================================================
+            		ORG             0100H
+00100:      		nop
+00101:      		nop
+            SYS_PROG_ENTRY:
+00102:      		pcb		=PrgBank
+00103:      		pch=		Power_on_init
+00104:      		lcall		Power_on_init
+00105:      		ar		=0x003f
+00106:      		rm[Sbb3Volum]	=ar
+00107:      		rm[PCMVolum]	=ar
+            WAKEUP_PROC:
+            WAKEUP_PROC_Ok:
+00108:      		nop
+00109:      		Dsi
+0010A:      		nop
+0010B:      		ar		=PrgBank	;;÷–∂œœÚ¡ø±Ì∂®“ÂµΩBANK7
+0010C:      		pch=		SetUp_Int
+0010D:      		lcall		SetUp_Int
+0010E:      		pch=		On_PWMOrDAC
+0010F:      		lcall		On_PWMOrDAC	;;¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+00110:      		ENA		INT3
+00111:      		ENA		INT2
+00112:      		ENA		INT1
+00113:      		ENA		INT0
+00114:      		ENI
+            
+00115:      		pch=		SPIorROM_Init
+00116:      		lcall		SPIorROM_Init		;;;
+00117:      		ar		=0x0000
+00118:      		rm[HaltTime]	=ar
+            
+            ; =================================================================
+            ; ------------- Main Program Start --------------------------------
+            ; =================================================================
+            main_loop:
+            
+00119:      		io[ClrWDT]	=ar
+0011A:      		call		SysReliabilityChk
+0011B:      		pch=		Key_Task
+0011C:      		lcall		Key_Task
+            
+            ;;<<System message ======  Macro. M_PCMPlay_Task,695,696,,,,,,,,,,,,,,,,  strat ======
+            ;; System message>>====== Macro. M_PCMPlay_Task end ======
+            ;;<<System message ======  Macro. M_Sbb3Play_Task,594,597,,,,,,,,,,,,,,,,  strat ======
+0011D:      pch = Sbb3Play_Task 
+0011E:      lcall Sbb3Play_Task 
+            ;; System message>>====== Macro. M_Sbb3Play_Task end ======
+            
+0011F:      		pch=		Sentence_Flow
+00120:      		lcall		Sentence_Flow
+            
+00121:      		ar		=rm[Sentence_Flag]
+00122:      		jeq		main_loop_Halt
+00123:      		ar		=rm[PauseFlag]
+00124:      		jeq		main_loop_Play
+            main_loop_Halt:
+00125:      		clr		io[PORTA].b0
+00126:      		clr		io[PORTA].b1
+00127:      		clr		io[PORTCI].b2
+00128:      		ar		=rm[HaltTime]
+00129:      		ax		=0x1000
+0012B:      		sf		=ar-ax
+0012C:      		jle		main_loop
+            
+            #If		_SPI_Rom_		== 0	;;0£∫SPI  1£∫Rom
+            		nop
+            		pch=		FlashRel_powerdown
+            		lcall		FlashRel_powerdown
+            		pch=		SPI_Close
+            		lcall		SPI_Close
+            #Endif
+            
+0012D:      		pch=		OFF_PWMOrDAC
+0012E:      		lcall		OFF_PWMOrDAC
+0012F:      		nop
+00130:      		halt
+00131:      		nop
+00132:      		nop
+00133:      		jmp		main_loop
+            main_loop_Play:
+00134:      		set		io[PORTA].b0
+00135:      		set		io[PORTA].b1
+00136:      		set		io[PORTCI].b2
+00137:      		ar		=0x0000
+00138:      		rm[HaltTime]	=ar
+00139:      		jmp		main_loop
+            
+            
+            SysReliabilityChk:
+0013A:      		ar		=rm[RAM0]
+0013B:      		sf		=ar-0x0007
+0013C:      		jnz		SysReliabilityChk
+0013D:      		ar		=rm[RAM1]
+0013E:      		sf		=ar-0x0006
+0013F:      		jnz		SysReliabilityChk
+00140:      		rets
+            ;=========================Include <TR16_SYSINIT.ASM> Start=========================
+            ;;******************************************************************************
+            #Define	STACK_Size_Set	_STACK_Size_-1		;;∂—’ª
+            #Define	SRAM_Size_Set	_Sram_Size_-1		;;SRAM
+            ;;******************************************************************************
+            #Define		_Sram_Size_	0X0C00	;3K Sram To Rm,  1K Sram To Pm.
+            ;#Define	_Sram_Size_	0X1000	;4K Sram To Rm	;;∂˛—°“ª
+            
+            #Define		_Stack_Size_	0x0040	;∂—’ªª∫¥Ê«¯¥Û–°
+            
+            #define  	_SRAM_BANK_	RamBank
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Power_on_init
+            ;π¶ƒ‹√Ë ˆ:…œµÁIC≥ı ºªØ
+            ;-----------------------------------------------------------
+            ;-----------------------------------------------------------
+            Power_on_init:
+00141:      		dsi
+00142:      		nop
+00143:      		call		SetUp_IO		;;…Ë÷√IO
+00144:      		io[Clrwdt]	=ar
+00145:      		call		PowerOndelay		;;…œµÁ—” ±
+00146:      		call		Ram_Clear		;;«ÂSRAM
+00147:      		call		SetUp_IO		;;…Ë÷√IO
+00148:      		call		SetUp_Timer		;;…Ë÷√∂® ±∆˜
+00149:      		call		On_PWMOrDAC		;;¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+0014A:      		call		SetUp_Other		;;…Ë÷√∆‰À˚
+0014B:      		io[Clrwdt]	=ar
+0014C:      		call		PowerOndelay		;;…œµÁ—” ±
+0014D:      		rets
+            
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:PowerOndelay
+            ;π¶ƒ‹√Ë ˆ:…œµÁ◊ˆ131msµƒ—” ±£¨ πICŒ»∂®∫Ûø™ ºπ§◊˜
+            ;-----------------------------------------------------------
+            ;16M:cx=15;;8M:cx=7;;6M:cx=5;;4M:cx=3;;2M:cx=1;;1M:cx=0;
+            PowerOndelay:	;;÷∏¡Ó∆µ¬ 4M
+0014E:      		push		cx
+0014F:      		cx		=0x0007
+            ;;;;;;;65536*2=131072Ãı÷∏¡Ó
+            
+00150:      		ar		=0x0000
+            	PowerOndelay_Loop:
+00151:      		ar++
+00152:      		jnz		PowerOndelay_Loop
+00153:      		nop
+00154:      		loop		PowerOndelay_Loop
+00155:      		pop		cx
+00156:      		rets
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:SetUp_IO
+            ;π¶ƒ‹√Ë ˆ:…Ë÷√IOµƒ◊¥Ã¨
+            ;-----------------------------------------------------------
+            SetUp_IO:
+            		;; PortA
+            		;;----------------------;;Io InPut/OutPut Set
+            
+00157:      		ar		=0x000f		;;PortA[3:0] 1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+00158:      		io[IOC_PA]	=ar
+00159:      		ar		=0x0000
+0015A:      		io[PORTA]=	ar		;; ‰≥ˆ∏ﬂµÕ
+            
+0015B:      		ar		=IOP_PA_PD50K	;;PortA[3:0] pull down 50k 1:enable 0:disable
+0015C:      		io[IOP_IX]	=ar
+0015D:      		ar		=0x0000
+0015E:      		io[IOP_DAT]	=ar
+            
+0015F:      		ar		=IOP_PA_PD220K	;;PortA[3:0] pull down 220k 1:enable 0:disable
+00160:      		io[IOP_IX]	=ar
+00161:      		ar		=0x0000
+00162:      		io[IOP_DAT]	=ar
+            
+00163:      		ar		=IOP_PA_PD1M	;;PortA[3:0] pull down 1M 1:enable 0:disable
+00164:      		io[IOP_IX]	=ar
+00165:      		ar		=0x0000
+00166:      		io[IOP_DAT]	=ar
+            
+            
+00167:      		ar		=IOP_PA_4MA	;;PortA[3:0] 1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+00168:      		io[IOP_IX]	=ar
+00169:      		ar		=0x0000
+0016A:      		io[IOP_DAT]	=ar
+            
+0016B:      		ar		=IOP_PA_WLOW	;;PortA[3:0] 1=  0 =
+0016C:      		io[IOP_IX]	=ar
+0016D:      		ar		=0x0000
+0016E:      		io[IOP_DAT]	=ar
+            
+0016F:      		ar		=IOP_WAKEN_PA	;;PortA[3:0] wake up enable   1:enable 0:disable
+00170:      		io[IOP_IX]	=ar		;;∂‘”¶œ‡”¶µƒbit
+00171:      		ar		=0x0000
+00172:      		io[IOP_DAT]	=ar
+            
+00173:      		ar		=IOP_WAKELV_PA	;;PortA[3:0] 1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+00174:      		io[IOP_IX]	=ar
+00175:      		ar		=0x0000
+00176:      		io[IOP_DAT]	=ar
+            
+            		;; PortB
+            		;;----------------------;;Io InPut/OutPut Set
+            
+            #If		_SPI_Rom_		== 0	;;0£∫SPI  1£∫Rom
+            		ar		=0x0030		;;PortB[5:0] 1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+            		io[IOC_PB]	=ar
+            		ar		=0x0000
+            		io[PORTB]	=ar		;; ‰≥ˆ∏ﬂµÕ
+            		ar		=IOP_PB_PD50K	;;PortB[5:0]pull down 50k 1:enable 0:disable
+            		io[IOP_IX]	=ar
+            		ar		=0x000f
+            		io[IOP_DAT]	=ar
+            
+            		ar		=IOP_PB_PD220K	;;PortB[5:0]pull down 220k 1:enable 0:disable
+            		io[IOP_IX]	=ar
+            		ar		=0x0000
+            		io[IOP_DAT]	=ar
+            		ar		=IOP_PB_PD1M	;;PortB[5:0]pull down 1M 1:enable 0:disable
+            		io[IOP_IX]	=ar
+            		ar		=0x0000
+            		io[IOP_DAT]	=ar
+            
+            
+            		ar		=IOP_PB_4MA	;;PortB[5:0] 1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+            		io[IOP_IX]	=ar
+            		ar		=0x0000
+            		io[IOP_DAT]	=ar
+            
+            		ar		=IOP_PB_WLOW	;PortB[5:0]   1=  0 =
+            		io[IOP_IX]	=ar
+            		ar		=0x0000
+            		io[IOP_DAT]	=ar
+            
+            		ar		=IOP_WAKEN_PB	;;PortB[5:0]  wake up enable   1:enable 0:disable
+            		io[IOP_IX]	=ar		;;∂‘”¶œ‡”¶µƒbit
+            		ar		=0x000f
+            		io[IOP_DAT]	=ar
+            
+            		ar		=IOP_WAKELV_PB	;;PortB[5:0]  1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+            		io[IOP_IX]	=ar
+            		ar		=0x000f
+            		io[IOP_DAT]	=ar
+            
+            
+            		ar		=IOP_WAKEDLV_PB	;;PortB[3:0]]  1= À´—ÿªΩ–—
+            		io[IOP_IX]	=ar
+            		ar		=0x000f
+            		io[IOP_DAT]	=ar
+            
+            
+            #else
+00177:      		ar		=0x003b		;;PortB[5:0] 1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+00178:      		io[IOC_PB]	=ar
+00179:      		ar		=0x0000
+0017A:      		io[PORTB]	=ar		;; ‰≥ˆ∏ﬂµÕ
+            
+            
+            
+0017B:      		ar		=IOP_PB_PD50K	;;PortB[5:0]pull down 50k 1:enable 0:disable
+0017C:      		io[IOP_IX]	=ar
+0017D:      		ar		=0x0004
+0017E:      		io[IOP_DAT]	=ar
+            
+0017F:      		ar		=IOP_PB_PD220K	;;PortB[5:0]pull down 220k 1:enable 0:disable
+00180:      		io[IOP_IX]	=ar
+00181:      		ar		=0x0000
+00182:      		io[IOP_DAT]	=ar
+00183:      		ar		=IOP_PB_PD1M	;;PortB[5:0]pull down 1M 1:enable 0:disable
+00184:      		io[IOP_IX]	=ar
+00185:      		ar		=0x0000
+00186:      		io[IOP_DAT]	=ar
+            
+            
+00187:      		ar		=IOP_PB_4MA	;;PortB[5:0] 1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+00188:      		io[IOP_IX]	=ar
+00189:      		ar		=0x0000
+0018A:      		io[IOP_DAT]	=ar
+            
+0018B:      		ar		=IOP_PB_WLOW	;PortB[5:0]   1=  0 =
+0018C:      		io[IOP_IX]	=ar
+0018D:      		ar		=0x0000
+0018E:      		io[IOP_DAT]	=ar
+            
+0018F:      		ar		=IOP_WAKEN_PB	;;PortB[5:0]  wake up enable   1:enable 0:disable
+00190:      		io[IOP_IX]	=ar		;;∂‘”¶œ‡”¶µƒbit
+00191:      		ar		=0x0004
+00192:      		io[IOP_DAT]	=ar
+            
+00193:      		ar		=IOP_WAKELV_PB	;;PortB[5:0]  1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+00194:      		io[IOP_IX]	=ar
+00195:      		ar		=0x0004
+00196:      		io[IOP_DAT]	=ar
+            
+            
+00197:      		ar		=IOP_WAKEDLV_PB	;;PortB[3:0]]  1= À´—ÿªΩ–—
+00198:      		io[IOP_IX]	=ar
+00199:      		ar		=0x0004
+0019A:      		io[IOP_DAT]	=ar
+            
+            #Endif
+            
+            		;; PortCI
+            		;;----------------------;;Io InPut/OutPut Set
+0019B:      		ar		=0xcfff		;;PortCI[15:14] PortCI[11:0]
+0019D:      		io[IOC_PCI]	=ar		;;1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+0019E:      		ar		=0x0000
+0019F:      		io[PORTCI]	=ar		;; ‰≥ˆ∏ﬂµÕ
+            
+            
+            #Define		PCI_PD50k	0X0000
+            
+            ;;;¬º“Ù≥Ã–Ú–Ë“™≤Ÿ◊˜PCIœ‡πÿø⁄£®PCI4 PCI5 PCI6 PC7£©µƒ50kœ¬¿≠
+            ;;;÷ªƒ‹Õ®π˝¡ÀΩ‚PCI_PD50k≥£ ˝µƒ◊¥Ã¨»•≤Ÿ◊˜¬º“ÙµƒIO£¨≤ª÷¡”⁄”∞œÏ∑«¬º“Ùø⁄µƒ…Ë÷√°£
+            ;;;À˘“‘‘⁄…Ë÷√PCIø⁄µƒœ¬¿≠£¨«Î∏¸∏ƒ≥£ ˝PCI_PD50k°£
+            ;;;◊¢“‚¬º“Ùø⁄£®PCI4 PCI5 PCI6 PC7£©£¨
+            ;;;¬º“Ùø™∆Ù « ‰»Î≤ª¥¯œ¬¿≠£¨¬º“Ùπÿ±’ « ‰»Îœ¬¿≠£¨ °µÁ
+            
+001A0:      		ar		=IOP_PCI_PD50K	;;pull down 50k 1:enable 0:disable
+001A1:      		io[IOP_IX]	=ar		;;PortCI[15:14] PortCI
+001A2:      		ar		=PCI_PD50k
+001A3:      		io[IOP_DAT]	=ar
+            
+001A4:      		ar		=IOP_PCI_PD220K	;;pull down 220k 1:enable 0:disable
+001A5:      		io[IOP_IX]	=ar		;;PortCI[15:14] Po0]
+001A6:      		ar		=0x0000
+001A7:      		io[IOP_DAT]	=ar
+            
+001A8:      		ar		=IOP_PCI_PD1M	;;pull down 1M 1:enable 0:disable
+001A9:      		io[IOP_IX]	=ar		;;PortCI[15:14] PortCI[11:0]
+001AA:      		ar		=0x0000
+001AB:      		io[IOP_DAT]	=ar
+            
+            
+001AC:      		ar		=IOP_PCI_4MA	;;1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+001AD:      		io[IOP_IX]	=ar		;;PortCI[15:14] PortCI[11:0]
+001AE:      		ar		=0x0000
+001AF:      		io[IOP_DAT]	=ar
+            
+001B0:      		ar		=IOP_PCI_WLOW	;;1=  0 =
+001B1:      		io[IOP_IX]	=ar		;;PortCI[15:14] PortCI[11:0]
+001B2:      		ar		=0x0000
+001B3:      		io[IOP_DAT]	=ar
+            
+001B4:      		ar		=IOP_WAKEN_PC	;;wake up enable   1:enable 0:disable
+001B5:      		io[IOP_IX]	=ar		;;∂‘”it
+001B6:      		ar		=0x0000		;;PortCI[11:0]
+001B7:      		io[IOP_DAT]	=ar
+            
+001B8:      		ar		=IOP_WAKELV_PC	;;1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+001B9:      		io[IOP_IX]	=ar	;;PortCI[11:0]
+001BA:      		ar		=0x0000
+001BB:      		io[IOP_DAT]	=ar
+            
+001BC:      		rets
+            
+            
+            
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Ram_Clear
+            ;π¶ƒ‹√Ë ˆ:…œµÁ∫Û«Â≥˝RM,PM∫ÕÃÿ ‚ºƒ¥Ê∆˜°£Õ¨ ±…Ë÷√∂—’ªbpµΩ’ª∂•
+            ;-----------------------------------------------------------
+            Ram_Clear:
+            
+001BD:      		ar		=STACK_Size_Set
+001BE:      		ax		=StackBuffer
+001C0:      		ar		=ar+ax
+001C1:      		bp		=ar
+            
+001C2:      		ar		=SRAM_Size_Set
+001C4:      		ar		=ar-2
+001C5:      		cx		=ar
+001C6:      		ar		=0x0000
+001C7:      		i1		=0x0002
+            CLR_RM:
+001C8:      		rm[i1++]	=ar;
+001C9:      		loop		CLR_RM
+001CA:              	p1.hh		=PrgBank
+001CB:              	p0.hh		=PrgBank
+001CC:      		i0		=0x0000;
+001CD:      		i1		=0x0000;
+001CE:      		p0		=0x0000;
+001CF:      		p1		=0x0000;
+001D0:      		ax		=0x0000
+001D1:      		bx		=0x0000;
+001D2:      		cx		=0x0000;
+001D3:      		dx		=0x0000;
+001D4:      		r0		=0x0000;
+001D5:      		r1		=0x0000;
+001D6:      		r2		=0x0000;
+001D7:      		r3		=0x0000;
+001D8:      		ar		=0x0000
+            ;		io[MISC]	=ar
+            ;		io[MISC2]	=ar
+001D9:      		ar		=io[MISC3]
+001DA:      		ax		=0xe07f
+001DC:      		ar		&=ax
+001DD:      		io[MISC3]	=ar
+001DE:      		ar		=0x0000
+001DF:      		io[MISC4]	=ar
+001E0:      		io[MISC5]	=ar
+            
+001E1:      		rets
+            
+            
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:SetUp_Timer
+            ;π¶ƒ‹√Ë ˆ:…Ë÷√∂® ±∆˜µƒ◊¥Ã¨
+            ;-----------------------------------------------------------
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            SetUp_Timer:
+            
+001E2:      		ar		=IOP_Timer1	;…Ë÷√∂® ±∆˜Timer1
+001E3:      		io[IOP_IX]	=ar
+001E4:      		ar		=0x07ff
+001E6:      		io[IOP_DAT]	=ar
+            
+001E7:      		ar		=IOP_Timer2	;…Ë÷√∂® ±∆˜Timer2
+001E8:      		io[IOP_IX]	=ar
+001E9:      		ar		=0x07ff
+001EB:      		io[IOP_DAT]	=ar
+            
+001EC:      		ar		=IOP_RTC32K	;…Ë÷√∂® ±∆˜RTC32K
+001ED:      		io[IOP_IX]	=ar
+001EE:      		ar		=0x7fff
+001F0:      		io[IOP_DAT]	=ar
+            
+001F1:      		ar		=IOP_FetchCNT	;…Ë÷√πÿ¡™CPµƒ∂® ±∆˜
+001F2:      		io[IOP_IX]	=ar	;[1:0]=[Fetch_Timer2:Fetch_Timer1]
+001F3:      		ar		=0x0000
+001F4:      		io[IOP_DAT]	=ar
+            
+001F5:      		rets
+            
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:On_PWMOrDAC
+            ;π¶ƒ‹√Ë ˆ:¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+            ;-----------------------------------------------------------
+            ;#define 	DAC_Output    //use DAC output
+            
+            On_PWMOrDAC:
+            
+            #ifdef DAC_Output
+            		SET	io[MISC].b6                ;DAC Enable
+            		CLR	io[MISC].b9                ;PWM Disable
+            		SET	io[MISC].b4                ;DAC Mute off
+            #else
+001F6:      		CLR	io[MISC].b6                ;DAC Disable
+001F7:      		SET	io[MISC].b9                ;PWM Enable
+001F8:      		CLR	io[MISC].b5                ;PWM Mute off
+            #endif
+            
+            
+001F9:      		ar		=0x0000
+001FA:       		io[DACL]	=ar;  // output DAC L FIFO 0
+001FB:       		io[DACL]	=ar;  // output DAC L FIFO 1
+001FC:      		io[DACL]	=ar;  // output DAC L FIFO 2
+001FD:       		io[DACL]	=ar;  // output DAC L FIFO 3
+001FE:      		FLTI		=ar;
+001FF:      		FLTI		=ar;
+00200:      		FLTI		=ar;
+00201:      		FLTI		=ar;
+00202:      		FLTA		=ar;
+00203:      		ar		=0x003f;
+00204:      		ar		=0x0000
+00205:      		FLTG		=ar;
+00206:      		ar		=0x1fff
+00208:      		FLTP		=ar;
+            ;;<<System message ======  Macro. Audio_Config_Adjust_Fltp,471,481,,,,,,,,,,,,,,,,  strat ======
+            
+00209:      Clr C 
+            
+0020A:      Src Ar 1 
+            
+            
+            
+            
+            
+            ;; System message>>====== Macro. Audio_Config_Adjust_Fltp end ======
+            
+0020B:      		ar		=FLTO		// initial filter state
+0020C:      		ar		=0		// 2^9=512 ==> CBL
+0020D:      		CBL		=ar
+0020E:      		rets
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:SetUp_Other
+            ;π¶ƒ‹√Ë ˆ:…Ë÷√∆‰À˚
+            ;-----------------------------------------------------------
+            SetUp_Other:
+0020F:      		ar		=0xDB3F
+00211:      		io[ENC_DAT]	=ar
+00212:      		ar		=0x8A17
+00214:      		io[ENC_DAT]	=ar
+00215:      		rets
+            
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:OFF_PWMOrDAC
+            ;π¶ƒ‹√Ë ˆ:¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+            ;-----------------------------------------------------------
+            OFF_PWMOrDAC:
+00216:      		clr	io[MISC].b6                ;DAC Disable
+00217:      		clr	io[MISC].b9                ;PWM Enable
+00218:                      clr	io[MISC].b5                ;PWM Mute off
+00219:      		rets
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Copy_Bank0_To_Bank7
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            CopyProm_To_Sram:
+            
+0021A:      		CBL		= 0
+0021B:      		p1.hh		= PH_H
+0021C:      		p0.hh		= PrgBank
+0021D:      		ar		= ar - p0
+0021E:      		cx		= ar
+0021F:      		cx--
+            	CopyProm_To_Sram_Loop:
+00220:      		ar		= pm[p0++]
+00221:      		pm[p1++]	= ar
+00222:      		loop		CopyProm_To_Sram_Loop
+00223:      		p1		= PrgBank
+00224:      		p1.hh		= PrgBank
+00225:      		rets
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:SetUp_Int
+            ;π¶ƒ‹√Ë ˆ:÷–∂œœÚ¡ø
+            ;-----------------------------------------------------------
+            
+            SetUp_Int:
+00226:      		pcb		=ar
+00227:      		set		io[STATUS].B13	;Enabled Intvect Change
+00228:      		cx		=0x0005
+00229:      		p1.hh		=0
+0022A:      		p1		=#SetUp_ADDRTAB
+            SetUp_Int_Lp:
+0022D:      		ar		=pm[p1++]
+0022E:      		io[Intvect]	=ar		;<---¥ÀÃı÷∏¡Óª·≤ŒøºPCBµƒ÷µ£¨Ω´pcbµƒ÷µ–¥»ÎµΩTABLE◊Ó∏ﬂŒª£¨À˘“‘ø…“‘Õ®π˝∏ƒ±‰PCB¿¥øÿ÷∆÷–∂œ∑˛ŒÒ÷¥––µƒbank.
+0022F:      		loop		SetUp_Int_Lp
+00230:      		clr		io[STATUS].B13
+00231:      		pcb		=PrgBank
+00232:      		rets
+            
+            SetUp_ADDRTAB:
+00233:      		DW		#Touch_INT	;;SPI Master
+00234:      		DW		#PEORPP_INT
+00235:      		DW		#RTC_INT		;;SPI Master
+00236:      		DW		#Timer2_INT	;;CMP2,EXTINT1 SPI Master
+00237:      		DW		#Timer1_INT	;;CMP1,EXTINT0 SPI Master
+00238:      		DW		#AudioPwm_INT
+            
+            
+            
+            ;=========================Include <TR16_SYSINIT.ASM> End=========================
+            
+            ;=========================Include <TR16_KEY.ASM> Start=========================
+            
+            Key_Task:
+00239:      		ax		=0x0001
+0023A:      		ar		=io[PORTB]
+0023B:      		test		ar.b2
+0023C:      		jne		Scan_Key_End
+0023D:      		ax		=0x0000
+0023E:      		jmp		Scan_Key_End
+            
+            Scan_Key_End:
+0023F:      		ar		=rm[KeyNew]
+00240:      		sf		=ar-ax
+00241:      		jeq		KeyDsp_Time
+00242:      		ar		=ax
+00243:      		rm[KeyNew]	=ar
+00244:      		ar		=0x0000
+00245:      		rm[KeyTime]	=ar
+            
+            KeyDsp_Time:
+00246:      		ar		=rm[KeyTime]	;;16k
+00247:      		ax		=0x007f
+00248:      		sf		=ar-ax
+00249:      		jle		KeyDsp_End
+            
+0024A:      		ar		=rm[KeyNew]
+0024B:      		ax		=rm[KeyOld]
+0024C:      		sf		=ar-ax
+0024D:      		jeq		KeyDsp_End
+            
+0024E:      		ar		=rm[KeyNew]
+0024F:      		rm[KeyOld]	=ar
+00250:      		jeq		KeyDsp_End
+            
+            KeyDsp_Down:
+00251:      		pch=		Sentence_Pause_disable
+00252:      		lcall		Sentence_Pause_disable
+00253:      		pch=		Sentence_Mute_disable
+00254:      		lcall		Sentence_Mute_disable
+00255:      		ar		=rm[SentenceNumMax]
+00256:      		ax		=ar
+00257:      		ar		=rm[SentenceNum]
+00258:      		ar++
+00259:      		rm[SentenceNum]	=ar
+0025A:      		sf		=ar-ax
+0025B:      		jle		KeyDsp_Down_Play
+0025C:      		ar		=0x0001
+0025D:      		rm[SentenceNum]	=ar
+0025E:      		ar		=rm[Sentence_Flag]
+0025F:      		jeq		KeyDsp_Down_Play
+00260:      		ar		=0x0000
+00261:      		rm[SentenceNum]	=ar
+            KeyDsp_Down_Stop:
+00262:      		pch=		Sentence_Pause_disable
+00263:      		lcall		Sentence_Pause_disable
+00264:      		ar		=0x0000
+00265:      		rm[SentenceLoop]=ar
+00266:      		pch=		Sentence_Stop
+00267:      		lcall		Sentence_Stop
+00268:      		pch=		Sentence_Mute_disable
+00269:      		lcall		Sentence_Mute_disable
+0026A:      		jmp		KeyDsp_End
+            
+            KeyDsp_Down_Play:
+0026B:      		pch=		Sentence_Start
+0026C:      		lcall		Sentence_Start
+0026D:      		ar		=0x0000
+0026E:      		rm[SentenceLoop]=ar
+            KeyDsp_End:
+0026F:      		rets
+            
+            
+            ;=========================Include <TR16_KEY.ASM> End=========================
+            
+            ;=========================Include <SENTENCEFLOW.ASM> Start=========================
+            ;;******************************************************************************
+            ;;******************************************************************************
+            Sentence_Pause_Enable:
+00270:      		ar		=0x0001
+00271:      		rm[PauseFlag]	=ar
+00272:      		rets
+            		
+            Sentence_Pause_disable:
+00273:      		ar		=0x0000
+00274:      		rm[PauseFlag]	=ar
+00275:      		rets
+            		
+            Sentence_Mute_Enable:
+00276:      		ar		=0x0001
+00277:      		rm[MuteFlag]	=ar
+00278:      		rets
+            Sentence_Mute_disable:
+00279:      		ar		=0x0000
+0027A:      		rm[MuteFlag]	=ar
+0027B:      		rets
+            ;-----------------------------------------------------------
+            ;Õ‚≤ø–Ë“™¡ÀΩ‚µƒ∫Ø ˝∫Õºƒ¥Ê∆˜
+            ;∫Ø ˝√˚≥∆£∫	Sentence_Flow
+            ;∫Ø ˝√˚≥∆£∫	Sentence_Start
+            ;∫Ø ˝√˚≥∆£∫	Sentence_Stop
+            ;∆Ï±Íºƒ¥Ê∆˜:	Sentence_Flag
+            ;-----------------------------------------------------------
+            Sentence_Start:
+0027C:      		ar		=0x0001
+0027D:      		rm[Sentence_Flag]=ar
+0027E:      		call		Sentence_Pause_disable
+0027F:      		rets
+            
+            ;-----------------------------------------------------------
+            ;-----------------------------------------------------------
+            ;-----------------------------------------------------------
+            Sentence_Flow:
+            
+            
+00280:      		ar		=rm[Sentence_Flag]
+00281:      		ar		&=0x0003
+00282:      		p1		=#Sentence_Tab
+00285:      		p1		+=ar
+00286:      		p1		=pm[p1]
+00287:      		fjmp		pm[p1]
+            
+            
+            Sentence_Tab:
+00288:      		DW		#Sentence_Exit		;;Exit
+00289:      		DW		#Sentence_Init		;;01 
+0028A:      		DW		#Sentence_Program	;;02
+0028B:      		DW		#Sentence_Stop		;;03
+            
+            
+            Sentence_Next:	;;ªªœ¬“ª∏ˆ¡˜≥Ã∂Ø◊˜
+            
+0028C:      		ar		=rm[Sentence_Flag]
+0028D:      		ar++
+0028E:      		rm[Sentence_Flag]=ar
+0028F:      		jmp		Sentence_Flow
+            		
+            Sentence_Last:	;;ªª…œ“ª∏ˆ¡˜≥Ã∂Ø◊˜
+            
+00290:      		ar		=rm[Sentence_Flag]
+00291:      		ar--
+00292:      		rm[Sentence_Flag]=ar
+00293:      		jmp		Sentence_Flow
+            		
+            Sentence_Exit:		;;÷±Ω”ÕÀ≥ˆ
+00294:      		rets
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sentence_Init
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sentence_Init:
+00295:      		ar		=0x0000
+00296:      		rm[Sentence_PT]	=ar
+00297:      		rm[Sentence_Time]=ar
+00298:      		rm[Sentence_Loop]=ar
+            ;;<<System message ======  Macro. M_Sbb3Play_Stop,608,611,,,,,,,,,,,,,,,,  strat ======
+00299:      pch = Sbb3Play_Stop 
+0029A:      lcall Sbb3Play_Stop 
+            ;; System message>>====== Macro. M_Sbb3Play_Stop end ======
+0029B:      		jmp		Sentence_Next
+            		
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sentence_Program
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sentence_Program:
+0029C:      		ar		=rm[Sbb3_Flag]
+0029D:      		jne		Sentence_Exit
+0029E:      		ar		=rm[Sentence_Time]
+0029F:      		jne		Sentence_Exit
+002A0:      		call		Sentence_Data
+            Sentence_Program_Ing:
+            
+002A1:      		bx		=0x0fff
+002A3:      		bx		&=ar
+            		
+002A4:      		ax		=0xf000
+002A6:      		ax		&=ar
+            		
+002A7:      		ar		=0x1000
+002A9:      		sf		=ar-ax
+002AA:      		jeq		Sentence_Program_Loop
+002AB:      		ar		=0x2000
+002AD:      		sf		=ar-ax
+002AE:      		jeq		Sentence_Program_LoopEnd
+002AF:      		ar		=0x3000
+002B1:      		sf		=ar-ax
+002B2:      		jeq		Sentence_Program_Delay
+002B3:      		ar		=0xf000
+002B5:      		sf		=ar-ax
+002B6:      		jeq		Sentence_Program_Next
+            		
+            
+002B7:      		ar		=rm[SPIorRomFlag]
+002B8:      		test		ar.b2
+002B9:      		jne		Play_SPIData
+            Play_ROMData:
+002BA:      		ar		=bx
+002BB:      		rm[Sbb3_Num]	=ar
+            ;;<<System message ======  Macro. M_Sbb3Play_Start,599,602,,,,,,,,,,,,,,,,  strat ======
+002BC:      pch = Sbb3Play_Start 
+002BD:      lcall Sbb3Play_Start 
+            ;; System message>>====== Macro. M_Sbb3Play_Start end ======
+002BE:      		jmp		Sentence_Program_PTInc
+            Play_SPIData:
+002BF:      		ar		=bx
+002C0:      		set		ar.b15
+002C1:      		rm[Sbb3_Num]	=ar
+            ;;<<System message ======  Macro. M_Sbb3Play_Start,599,602,,,,,,,,,,,,,,,,  strat ======
+002C2:      pch = Sbb3Play_Start 
+002C3:      lcall Sbb3Play_Start 
+            ;; System message>>====== Macro. M_Sbb3Play_Start end ======
+002C4:      		jmp		Sentence_Program_PTInc
+            		
+            Sentence_Program_Loop:
+002C5:      		ar		=rm[Sentence_PT]
+002C6:      		rm[SentenceLoop_PT]=ar
+002C7:      		ar		=0x0000
+002C8:      		rm[Sentence_Loop]=ar
+002C9:      		jmp		Sentence_Program_PTInc
+            Sentence_Program_LoopEnd:
+002CA:      		ar		=rm[Sentence_Loop]
+002CB:      		ar++
+002CC:      		rm[Sentence_Loop]=ar
+002CD:      		sf		=ar-bx
+002CE:      		jge		Sentence_Program_PTInc
+002CF:      		ar		=rm[SentenceLoop_PT]
+002D0:      		rm[Sentence_PT]	=ar
+002D1:      		jmp		Sentence_Program_PTInc
+            Sentence_Program_Delay:
+002D2:      		ar		=bx
+002D3:      		rm[Sentence_Time]=ar
+002D4:      		jmp		Sentence_Program_PTInc
+            Sentence_Program_PTInc:
+002D5:      		ar		=rm[Sentence_PT]
+002D6:      		ar++
+002D7:      		rm[Sentence_PT]	=ar
+002D8:      		jmp		Sentence_Exit
+            Sentence_Program_Next:
+002D9:      		ar		=rm[SentenceLoop]
+002DA:      		jne		Sentence_Start
+            Sentence_Stop:
+002DB:      		ar		=0x0000
+002DC:      		rm[Sentence_Flag]=ar
+            ;;<<System message ======  Macro. M_Sbb3Play_Stop,608,611,,,,,,,,,,,,,,,,  strat ======
+002DD:      pch = Sbb3Play_Stop 
+002DE:      lcall Sbb3Play_Stop 
+            ;; System message>>====== Macro. M_Sbb3Play_Stop end ======
+002DF:      		call		Sentence_Pause_disable
+002E0:      		jmp		Sentence_Exit
+            
+            
+            
+            
+            
+            Sentence_Data:
+            ;		ar		=rm[SPIorRomFlag]
+            ;		test		ar.b2
+            ;		jne		Sentence_SPI_Data
+            ;		jmp		Sentence_Rom_Data
+            		
+            #If		_SPI_Rom_		== 0	;;0£∫SPI  1£∫Rom
+            
+            	
+            Sentence_SPI_Data:
+            
+            		ar		=0x000a
+            		rm[FlashAddrL]	=ar
+            		ar		=0x0000
+            		rm[FlashAddrH]	=ar
+            		pch=		FlashRead_LoadAddr
+            		lcall		FlashRead_LoadAddr
+            		pch=		FlashRead_WordData
+            		lcall		FlashRead_WordData
+            		ax		=ar
+            		pch=		FlashRead_WordData
+            		lcall		FlashRead_WordData
+            		rm[FlashAddrH]	=ar
+            		ar		=ax
+            		rm[FlashAddrL]	=ar
+            		FlashCS_Set	;;cs∏ﬂ
+            		
+            		pch=		FlashRead_LoadAddr
+            		lcall		FlashRead_LoadAddr
+            		pch=		FlashRead_WordData
+            		lcall		FlashRead_WordData
+            		ax		=ar
+            		FlashCS_Set	;;cs∏ﬂ
+            		
+            		
+            		ar		=rm[SentenceNum]
+            		jeq		Sentence_SPI_Data_Error
+            		sf		=ar-ax
+            		jle		Sentence_SPI_Data_OK
+            Sentence_SPI_Data_Error:
+            		ar		=0x0001
+            Sentence_SPI_Data_OK:
+            		ar--
+            		bx		=0x0000
+            		slz		ar
+            		slc		bx
+            		slz		ar
+            		slc		bx
+            		
+            		ax		=ar
+            		ar		=rm[FlashAddrL]
+            		ar		+=ax
+            		rm[FlashAddrL]	=ar
+            		ar		=rm[FlashAddrH]
+            		ar		+=bx+c
+            		rm[FlashAddrH]	=ar
+            		pch=		FlashRead_LoadAddr
+            		lcall		FlashRead_LoadAddr
+            		pch=		FlashRead_WordData
+            		lcall		FlashRead_WordData
+            		ax		=ar
+            		pch=		FlashRead_WordData
+            		lcall		FlashRead_WordData
+            		rm[FlashAddrH]	=ar
+            		ar		=ax
+            		rm[FlashAddrL]	=ar
+            		FlashCS_Set	;;cs∏ﬂ
+            		
+            		ar		=rm[Sentence_PT]
+            		slz		ar
+            		ax		=ar
+            		ar		=rm[FlashAddrL]
+            		ar		+=ax
+            		rm[FlashAddrL]	=ar
+            		ax		=0x0000
+            		ar		=rm[FlashAddrH]
+            		ar		+=ax+c
+            		rm[FlashAddrH]	=ar
+            		pch=		FlashRead_LoadAddr
+            		lcall		FlashRead_LoadAddr
+            		pch=		FlashRead_WordData
+            		lcall		FlashRead_WordData
+            		push		ar
+            		FlashCS_Set	;;cs∏ﬂ
+            		pop		ar
+            		rets
+            #else
+            
+            Sentence_Rom_Data:
+002E1:      		p1		=#BinTab
+002E4:      		p1.hh		=#BinTab.h
+002E5:      		ar		=0x0005
+002E6:      		p1		+=ar
+002E7:      		ar		=pm[p1++]
+002E8:      		ax		=ar
+002E9:      		ar		=pm[p1++]
+002EA:      		bx		=ar
+            		
+002EB:      		clr		c
+002EC:      		src		bx
+002ED:      		src		ax
+            		
+002EE:      		ar		=#BinTab
+002F0:      		ar		+=ax
+002F1:      		p1		=ar
+002F2:      		ar		=#BinTab.h
+002F3:      		ar		+=bx+c
+002F4:      		p1.hh		=ar
+            		
+002F5:      		ar		=pm[p1++]
+002F6:      		ax		=ar
+002F7:      		ar		=rm[SentenceNum]
+002F8:      		jeq		Sentence_Rom_Data_Error
+002F9:      		sf		=ar-ax
+002FA:      		jle		Sentence_Rom_Data_OK
+            Sentence_Rom_Data_Error:
+002FB:      		ar		=0x0001
+            Sentence_Rom_Data_OK:
+002FC:      		ar--
+002FD:      		bx		=0x0000
+002FE:      		slz		ar
+002FF:      		slc		bx
+00300:      		ax		=ar
+            		
+00301:      		ar		=p1
+00302:      		ar		+=ax
+00303:      		p1		=ar
+00304:      		ar		=p1.hh
+00305:      		ar		+=bx+c
+00306:      		p1.hh		=ar
+            		
+00307:      		ar		=pm[p1++]
+00308:      		ax		=ar
+00309:      		ar		=pm[p1++]
+0030A:      		bx		=ar
+0030B:      		clr		c
+0030C:      		src		bx
+0030D:      		src		ax
+            		
+0030E:      		ar		=#BinTab
+00310:      		ar		+=ax
+00311:      		p1		=ar
+00312:      		ar		=#BinTab.h
+00313:      		ar		+=bx+c
+00314:      		p1.hh		=ar
+            		
+00315:      		ar		=rm[Sentence_PT]
+00316:      		ax		=ar
+00317:      		ar		=p1
+00318:      		ar		+=ax
+00319:      		p1		=ar
+0031A:      		bx		=0x0000
+0031B:      		ar		=p1.hh
+0031C:      		ar		+=bx+c
+0031D:      		p1.hh		=ar
+0031E:      		ar		=pm[p1]
+0031F:      		rets
+            #Endif
+            ;=========================Include <SENTENCEFLOW.ASM> End=========================
+            
+            ;=========================Include <TR16_SPI_ROM.ASM> Start=========================
+            
+            
+            #define		SPI_Rom
+            
+            SPIorROM_Init:
+00320:      		ar		=0x0000
+00321:      		rm[SPIorRomFlag]=ar
+            
+            #If		_SPI_Rom_		== 0	;;0£∫SPI  1£∫Rom
+            
+            SPI_Init:
+            		pch=		SPI_Open
+            		lcall		SPI_Open
+            		FlashCS_Set
+            		call		FlashRel_powerdown
+            		ar		=0x0000
+            		rm[FlashAddrL]	=ar
+            		rm[FlashAddrH]	=ar
+            		call		FlashRead_LoadAddr
+            
+            		call		FlashRead_WordData
+            		ax		=0x5452
+            		sf		=ar-ax
+            		jne		SPI_Init_Error
+            	
+            		call		FlashRead_WordData
+            		ax		=0x4954
+            		sf		=ar-ax
+            		jne		SPI_Init_Error
+            		call		FlashRead_WordData
+            		ax		=0x414E
+            		sf		=ar-ax
+            		jne		SPI_Init_Error
+            		ar		=0x0001
+            		rm[SPIorRomFlag]=ar
+            		jmp		SPI_InitEnd
+            SPI_Init_Error:
+            		FlashCS_Set		;;cs∏ﬂ
+            		loop		SPI_Init
+            		jmp		SPI_Init
+            SPI_InitEnd:
+            
+            Data_FunctionSPI:
+            
+            		ar=0x000a
+            		rm[FlashAddrL]	=ar
+            		ar=0x0000
+            		rm[FlashAddrH]	=ar
+            		call		FlashRead_LoadAddr
+            		call		FlashRead_WordData
+            		ax		=ar
+            		call		FlashRead_WordData
+            		bx		=ar
+            		FlashCS_Set
+            		ar		=ax
+            		rm[FlashAddrL]	=ar
+            		ar		=bx
+            		rm[FlashAddrH]	=ar
+            		call		FlashRead_LoadAddr
+            		call		FlashRead_WordData
+            		sf		=ar-0x0000
+            		jeq		Data_FunctionSPI_Error
+            		ax		=0x00ff
+            		sf		=ax-ar
+            		jan		Data_FunctionSPI_Error
+            		rm[SentenceNumMax]=ar
+            		FlashCS_Set			;;cs∏ﬂ
+            		ar		=rm[SPIorRomFlag]
+            		set		ar.b2
+            		rm[SPIorRomFlag]=ar
+            		rets
+            Data_FunctionSPI_Error:
+            		FlashCS_Set			;;cs∏ﬂ
+            		io[ClrWDT]	=ar
+            		jmp		Data_FunctionSPI
+            		rets
+            				
+            #else
+            		
+            Rom_Init:
+00322:      		p1		=#BinTab
+00325:      		p1.hh		=#BinTab.h
+00326:      		ar		=pm[p1++]
+00327:      		ax		=0x5452
+00329:      		sf		=ar-ax
+0032A:      		jne		Rom_Init_Error
+0032B:      		ar		=pm[p1++]
+0032C:      		ax		=0x4954
+0032E:      		sf		=ar-ax
+0032F:      		jne		Rom_Init_Error
+00330:      		ar		=pm[p1++]
+00331:      		ax		=0x414E
+00333:      		sf		=ar-ax
+00334:      		jne		Rom_Init_Error
+00335:      		ar		=rm[SPIorRomFlag]
+00336:      		ar		=0x0002
+00337:      		rm[SPIorRomFlag]=ar
+00338:      		jmp		Rom_InitEnd
+            Rom_Init_Error:
+00339:      		io[ClrWDT]	=ar
+0033A:      		jmp		Rom_Init
+            Rom_InitEnd:
+            Data_FunctionRom:
+0033B:      		p1		=#BinTab
+0033E:      		p1.hh		=#BinTab.h
+0033F:      		ar		=0x0005
+00340:      		p1		+=ar
+00341:      		ar		=pm[p1++]
+00342:      		ax		=ar
+00343:      		ar		=pm[p1++]
+00344:      		bx		=ar
+00345:      		clr		c
+00346:      		src		bx
+00347:      		src		ax
+            
+00348:      		p1		=#BinTab
+0034B:      		p1.hh		=#BinTab.h
+0034C:      		ar		=ax
+0034D:      		p1		+=ar
+0034E:      		ar		=p1.hh
+0034F:      		ar		+=bx+c
+00350:      		p1.hh		=ar
+00351:      		ar		=pm[p1]
+00352:      		jeq		Data_FunctionRom_Error
+00353:      		ax		=0x00ff
+00355:      		sf		=ax-ar
+00356:      		jan		Data_FunctionRom_Error
+00357:      		rm[SentenceNumMax]=ar
+00358:      		ar		=rm[SPIorRomFlag]
+00359:      		clr		ar.b2
+0035A:      		rm[SPIorRomFlag]=ar
+0035B:      		rets
+            Data_FunctionRom_Error:
+0035C:      		io[ClrWDT]	=ar
+0035D:      		jmp		Data_FunctionRom_Error		
+            #Endif
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            
+            
+            
+            		
+            
+            
+            
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;=========================Include <TR16_SPI_ROM.ASM> End=========================
+            
+            
+            ;#If		_SPI_Rom_		== 0	;;0£∫SPI  1£∫Rom
+            ;=========================Include <TR16_SPI_HW.ASM> Start=========================
+            
+            MACRO	FlashCS_Set
+            	set	IO[PortB].b3	
+            	set	IO[PortB].b5
+            	ar=0x0b00		//bit11
+            	io[SPI_CTL]=ar		//“ÚŒ™Œ“√« «”≤º˛µƒ£¨SPI_CTL–Ë“™…Ë÷√”≤º˛≤Œ ˝
+            ENDM				//’‚∏ˆmacro «…Ë÷√CS∏ﬂ
+            
+            
+            MACRO	FlashCS_Clr
+            	clr	IO[PortB].b3
+            	clr	IO[PortB].b5
+            	ar=0x0300
+            	io[SPI_CTL]=ar		//“ÚŒ™Œ“√« «”≤º˛µƒ£¨SPI_CTL–Ë“™…Ë÷√”≤º˛≤Œ ˝
+            ENDM				//’‚∏ˆmacro «…Ë÷√CS∏ﬂ
+            
+            SPI_Open:
+0035E:      	set	io[STATUS].b8	// Enable SPI Control
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+0035F:      set IO[PortB].b3 
+00360:      set IO[PortB].b5 
+00361:      ar = 0x0b00 
+00363:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+00364:      	set	io[IOC_PCI].b6
+00365:      	set	io[IOC_PCI].b5
+00366:      	set	io[IOC_PCI].b4
+00367:      	set	IO[PortCI].b6
+00368:      	set	IO[PortCI].b5
+00369:      	set	IO[PortCI].b4
+0036A:      	rets
+            	
+            SPI_Close:
+0036B:      	clr	io[STATUS].b8	// Enable SPI Control
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+0036C:      set IO[PortB].b3 
+0036D:      set IO[PortB].b5 
+0036E:      ar = 0x0b00 
+00370:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+            
+00371:      	set	io[IOC_PCI].b6
+00372:      	set	io[IOC_PCI].b5
+00373:      	set	io[IOC_PCI].b4
+00374:      	clr	IO[PortCI].b6
+00375:      	clr	IO[PortCI].b5
+00376:      	clr	IO[PortCI].b4		;; ‰≥ˆ∏ﬂµÕ
+00377:      	ar		=0x003f		;;PortB[5:0] 1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+00378:      	io[IOC_PB]	=ar
+00379:      	ar		=0x0000
+0037A:      	io[PORTB]	=ar		;; ‰≥ˆ∏ﬂµÕ
+0037B:      	rets
+            	
+            	
+            ;#define		SPI_CLK_WB		0x1311		;16M
+            ;#define		SPI_CLK_WW		0x1312		;16M
+            ;#define		SPI_CLK_RB		0x1321		;16M
+            ;#define		SPI_CLK_RW		0x1322		;16M
+            
+            ;#define		SPI_CLK_WB		0x2311		;8M
+            ;#define		SPI_CLK_WW		0x2312		;8M
+            ;#define		SPI_CLK_RB		0x2321		;8M
+            ;#define		SPI_CLK_RW		0x2322		;8M
+            
+            #define			SPI_CLK_WB		0x3311		;4M
+            #define			SPI_CLK_WW		0x3312		;4M
+            #define			SPI_CLK_RB		0x3321		;4M
+            #define			SPI_CLK_RW		0x3322		;4M
+            
+            
+            ;;;;;;;;;;;;;;;;;;;;
+            ;spi–¥»Î
+            ;;;;;;;;;;;;;;;;;;;;
+            Spi_Write_Byte:			//∑¢ÀÕ“ª∏ˆ8bit ˝æ›
+0037C:      	ar=SPI_CLK_WB
+0037E:      	io[SPI_CTL]=ar		// send_data = 1;
+0037F:      	jmp	Spi_Wait_Ok
+            Spi_Write_Word:			//∑¢ÀÕ“ª∏ˆ16bit ˝æ›
+00380:      	ar=SPI_CLK_WW
+00382:      	io[SPI_CTL]=ar		// send_data = 2;
+00383:      	jmp	Spi_Wait_Ok
+            	
+            Spi_Read_Byte:
+00384:      	ar=SPI_CLK_RB		//Ω” ’“ª∏ˆ8bit ˝æ› 
+00386:      	io[SPI_CTL]=ar		//RCV_data = 1;
+00387:      	jmp	Spi_Wait_Ok
+            	
+            Spi_Read_Word:
+00388:      	ar=SPI_CLK_RW		//Ω” ’“ª∏ˆ16bit ˝æ›
+0038A:      	io[SPI_CTL]=ar		//RCV_data = 2;
+0038B:      	jmp	Spi_Wait_Ok
+            	
+            Spi_Wait_Ok:
+0038C:      	ar=io[SPI_CTL]		//µ»¥˝CLK∑¢ÀÕΩ· ¯°¢
+0038D:      	test	ar.b7
+0038E:      	jeq	Spi_Wait_Ok
+0038F:      	rets
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //∂¡flashµƒ◊¥Ã¨ºƒ¥Ê∆˜
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            FlashRead_Status:
+            ;;<<System message ======  Macro. FlashCS_Clr,1837,1842,,,,,,,,,,,,,,,,  strat ======
+00390:      clr IO[PortB].b3 
+00391:      clr IO[PortB].b5 
+00392:      ar = 0x0300 
+00394:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Clr end ======
+00395:      	ar=0x0005
+00396:       	io[SPI_DAT]=ar
+00397:        	call	Spi_Write_Byte		//–¥“ª∏ˆ∂¡◊¥Ã¨µƒ√¸¡Ó
+00398:      	call	Spi_Read_Byte		//ªÒµ√◊¥Ã¨µƒºƒ¥Ê∆˜µƒ ˝æ›
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+00399:      set IO[PortB].b3 
+0039A:      set IO[PortB].b5 
+0039B:      ar = 0x0b00 
+0039D:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+0039E:      	ar=io[SPI_DAT]
+0039F:      	rets
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //µ»¥˝flashø’œ–
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            FlashBusy_Wait:
+003A0:      	IO[CLRWDT]=ar
+003A1:      	call	FlashRead_Status	//ªÒµ√◊¥Ã¨ºƒ¥Ê∆˜µƒ ˝æ›
+003A2:      	test ar.b0			//≈–∂œbit0   bit0 «flashø’œ–ªÚ’ﬂ√¶µƒ±Í÷æ
+003A3:      	jnz	FlashBusy_Wait		//÷ª”–flash¥¶”⁄ø’œ–£¨≤≈ø…“‘≤Ÿ◊˜flash
+003A4:      	rets
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //…Ë÷√–¥±£ª§«¯0block~15block
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;		
+            Protection_NO:
+            ;;<<System message ======  Macro. FlashCS_Clr,1837,1842,,,,,,,,,,,,,,,,  strat ======
+003A5:      clr IO[PortB].b3 
+003A6:      clr IO[PortB].b5 
+003A7:      ar = 0x0300 
+003A9:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Clr end ======
+003AA:      	ar=0x1C01;;;;
+003AC:      	io[SPI_DAT]=ar		//∑¢ÀÕ“ª∏ˆ16bitµƒ ˝æ›°£µÕ8Œª «√¸¡Ó°£∏ﬂ8Œª ˝æ›£®…Ë÷√±£ª§«¯Œª÷√£©
+003AD:      	call	Spi_Write_Word		//…Ë÷√±£ª§«¯£¨
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+003AE:      set IO[PortB].b3 
+003AF:      set IO[PortB].b5 
+003B0:      ar = 0x0b00 
+003B2:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+003B3:      	rets
+            		
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //–¥ πƒ‹
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+            ;Write_Flash_Enable:
+            ;	FlashCS_Clr			//csµÕ		
+            ;	ar=0x0006
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Byte		//∑¢ÀÕ“ª∏ˆ8Œª ˝æ›£¨–¥ πƒ‹µƒ√¸¡Ó
+            ;	FlashCS_Set			//cs∏ﬂ
+            ;	rets
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //≤¡≥˝“ª∏ˆsector
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;Erase_Sector:
+            ;
+            ;	FlashCS_Clr			//csµÕ	
+            ;	ar=rm[FlashAddrH]
+            ;	ah=0x20
+            ;	xchg ar
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Word		//∑¢ÀÕ“ª∏ˆ16bitµƒ ˝æ›
+            ;					//µÕ8Œª «≤¡≥˝sectorµƒ√¸¡Ó°£∏ﬂ8Œª «sectorµƒµÿ÷∑∏ﬂŒª
+            ;	ar=rm[FlashAddrL]
+            ;	xchg	ar	
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Word		//∑¢ÀÕ“ª∏ˆ16bitµƒ ˝æ›
+            ;					//µÕ8Œª «sectorµƒµÿ÷∑÷–Œª°£∏ﬂ8Œª «sectorµƒµÿ÷∑µÕŒª
+            ;	FlashCS_Set			//cs∏ﬂ		
+            ;	rets
+            	
+            	
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //≤¡≥˝“ª∏ˆChip
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;Erase_Chip:
+            ;	FlashCS_Clr			//csµÕ
+            ;	ar=0x0060
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Byte		//∑¢ÀÕ“ª∏ˆ8bitµƒ≤¡≥˝’˚∏ˆ–æ∆¨ ˝æ›√¸¡Ó	
+            ;	FlashCS_Set			//cs∏ﬂ
+            ;
+            ;	rets	
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //◊¢“‚√ø¥ŒCS±‰µÕ∫Û£¨µ⁄“ª∏ˆ8bit ˝æ›∂º «√¸¡Ó ∏˘æ›≤ªÕ¨µƒ√¸¡Ó¥¯≤ªÕ¨∫Û√Êµƒ≤Œ ˝
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            
+            Deep_powerdown:
+            
+            ;;<<System message ======  Macro. FlashCS_Clr,1837,1842,,,,,,,,,,,,,,,,  strat ======
+003B4:      clr IO[PortB].b3 
+003B5:      clr IO[PortB].b5 
+003B6:      ar = 0x0300 
+003B8:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Clr end ======
+003B9:      	ar=0x00b9
+003BB:        	call	Spi_Write_Byte
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+003BC:      set IO[PortB].b3 
+003BD:      set IO[PortB].b5 
+003BE:      ar = 0x0b00 
+003C0:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+003C1:      	rets
+            
+            Rel_powerdown:
+            ;;<<System message ======  Macro. FlashCS_Clr,1837,1842,,,,,,,,,,,,,,,,  strat ======
+003C2:      clr IO[PortB].b3 
+003C3:      clr IO[PortB].b5 
+003C4:      ar = 0x0300 
+003C6:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Clr end ======
+003C7:      	ar=0x00ab
+003C9:        	call	Spi_Write_Byte
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+003CA:      set IO[PortB].b3 
+003CB:      set IO[PortB].b5 
+003CC:      ar = 0x0b00 
+003CE:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+003CF:      	rets
+            
+            FlashDeep_powerdown:
+003D0:      	call	FlashBusy_Wait
+003D1:      	call	Deep_powerdown
+003D2:      	rets
+            FlashRel_powerdown:
+003D3:      	call	Rel_powerdown
+003D4:      	rets
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //–¥±£ª§,…Ë÷√–Ë“™±£ª§µƒ«¯øÈ
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;FlashProtection:
+            ;	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+            ;	call	Protection_NO		//…Ë÷√±£ª§Œª÷√	’‚∏ˆ◊”≥Ã–Ú¿Ô√Ê”–πÿœµ…Ë÷√±£ª§«¯øÈµƒ≤Œ ˝
+            ;	rets
+            	
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //≤¡≥˝“ª∏ˆsector
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;		
+            ;FlashErase_Sector:
+            ;	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+            ;	call	Write_Flash_Enable	//–¥ πƒ‹
+            ;	call	Erase_Sector		//≤¡≥˝“ª∏ˆsector    
+            ;					//¿Ô√Ê”–≤¡≥˝ƒƒ∏ˆsectorµƒºƒ¥Ê∆˜£¨–Ë“™Õ‚≤ø…Ë÷√
+            ;					//FlashAddrH  FlashAddrL
+            ;	rets
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //≤¡≥˝“ª∏ˆChip
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+            ;FlashErase_Chip:
+            ;	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+            ;	call	Write_Flash_Enable	//–¥ πƒ‹
+            ;	call	Erase_Chip		//≤¡≥˝–æ∆¨
+            ;	rets
+            	
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //∑¢ÀÕ“ª∏ˆ∂¡ ˝æ›µƒµÿ÷∑
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            Read_LoadAddr:
+            ;;<<System message ======  Macro. FlashCS_Clr,1837,1842,,,,,,,,,,,,,,,,  strat ======
+003D5:      clr IO[PortB].b3 
+003D6:      clr IO[PortB].b5 
+003D7:      ar = 0x0300 
+003D9:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Clr end ======
+003DA:      	ar=rm[FlashAddrH]
+003DB:      	ah=0x03
+003DC:      	xchg ar
+003DD:      	io[SPI_DAT]=ar
+003DE:      	call	Spi_Write_Word		//∑¢ÀÕ∂¡√¸¡Ó°£Õ¨ ±∫Û√ÊΩÙ∏˙◊≈∑¢ÀÕµÿ÷∑
+003DF:      	ar=rm[FlashAddrL]
+003E0:      	xchg	ar
+003E1:      	io[SPI_DAT]=ar
+003E2:      	call	Spi_Write_Word
+003E3:      	rets
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //∑¢ÀÕ“ª∏ˆ–¥ ˝æ›µƒµÿ÷∑
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;Write_LoadAddr:
+            ;	FlashCS_Clr	;;csµÕ
+            ;	ar=rm[FlashAddrH]
+            ;	ah=0x02
+            ;	xchg ar
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Word		//∑¢ÀÕ–¥√¸¡Ó°£Õ¨ ±∫Û√ÊΩÙ∏˙◊≈∑¢ÀÕµÿ÷∑
+            ;	ar=rm[FlashAddrL]
+            ;	xchg	ar
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Word
+            ;	rets	
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //¡¨–¯–¥256byte 
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;FlashWrite_Program:
+            ;	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+            ;	call	Write_Flash_Enable	//–¥ πƒ‹	
+            ;	call	Write_LoadAddr		//∑¢ÀÕ–¥ ˝æ›µƒµÿ÷∑	FlashAddrH  FlashAddrL
+            ;					//¿Ô√Êºƒ¥Ê∆˜£¨–Ë“™Õ‚≤ø…Ë÷√
+            ;	push	cx
+            ;	cx=0x007f;
+            ;FlashWrite_Program_Start:
+            ;	ar=rm[i0++];
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Word		//¡¨–¯–¥256byte
+            ;	loop	FlashWrite_Program_Start
+            ;	FlashCS_Set	;;cs∏ﬂ	
+            ;	pop	cx
+            ;	rets
+            
+            
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //∑¢ÀÕ–¥µÿ÷∑ 	
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;FlashWrite_LoadAddr:
+            ;	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+            ;	call	Write_Flash_Enable	//–¥ πƒ‹
+            ;	call	Write_LoadAddr		//∑¢ÀÕ–¥µÿ÷∑	FlashAddrH  FlashAddrL
+            ;	rets				//¿Ô√Êºƒ¥Ê∆˜£¨–Ë“™Õ‚≤ø…Ë÷√
+            ;
+            ;FlashWrite_WordData:
+            ;	io[SPI_DAT]=ar
+            ;	call	Spi_Write_Word		//∂¡word	
+            ;	rets
+            ;FlashWrite_ByteData:
+            ;	io[SPI_DAT]=ar
+            ;	ar=0x0001
+            ;	call	Spi_Write_Byte		//∂¡byte
+            ;	rets
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //∑¢ÀÕ∂¡µÿ÷∑ 	
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            FlashRead_LoadAddr:
+003E4:      	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+003E5:      	call	Read_LoadAddr		//∑¢ÀÕ∂¡µÿ÷∑	FlashAddrH  FlashAddrL
+003E6:      	rets				//¿Ô√Êºƒ¥Ê∆˜£¨–Ë“™Õ‚≤ø…Ë÷√
+            
+            
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            //¡¨–¯∂¡	
+            //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;		
+            FlashRead_Program:
+003E7:      	call	FlashBusy_Wait		//µ»¥˝flashø’œ–
+003E8:      	call	Read_LoadAddr		//∑¢ÀÕ∂¡µÿ÷∑	FlashAddrH  FlashAddrL
+003E9:      	push	cx
+003EA:      	slz	cx
+003EB:      	ar=rm[FlashAddrL]
+003EC:      	ar+=cx
+003ED:      	rm[FlashAddrL]=ar
+003EE:      	cx=0x0000
+003EF:      	ar=rm[FlashAddrH]
+003F0:      	ar+=cx+c
+003F1:      	rm[FlashAddrH]=ar
+003F2:      	pop	cx
+003F3:      	cx--		
+            FlashRead_Program_Start:
+003F4:      	call	Spi_Read_Word		//¡¨–¯∂¡ ˝æ›
+003F5:      	ar=io[SPI_DAT]
+003F6:      	rm[i0++]=ar;
+003F7:      	loop	FlashRead_Program_Start
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+003F8:      set IO[PortB].b3 
+003F9:      set IO[PortB].b5 
+003FA:      ar = 0x0b00 
+003FC:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+003FD:      	rets
+            		
+            
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            		
+            FlashRead_WordData:		
+003FE:      	push	ax
+003FF:      	call	Spi_Read_Word		//∂¡word ˝æ›
+00400:      	ar=rm[FlashAddrL]		//Õ¨ ±µÿ÷∑ª·º”2
+00401:      	ax=0x0002
+00402:      	ar+=ax
+00403:      	rm[FlashAddrL]=ar
+00404:      	ax=0x0000
+00405:      	ar=rm[FlashAddrH]
+00406:      	ar+=ax+c
+00407:      	rm[FlashAddrH]=ar
+00408:      	pop	ax
+00409:      	ar=io[SPI_DAT]
+0040A:      	rets
+            
+            		
+            	
+            FlashRead_ByteData:
+0040B:      	push	ax
+0040C:      	call	Spi_Read_Byte		//∂¡byte ˝æ›
+0040D:      	ar=rm[FlashAddrL]		//Õ¨ ±µÿ÷∑ª·º”1
+0040E:      	ax=0x0001
+0040F:      	ar+=ax
+00410:      	rm[FlashAddrL]=ar
+00411:      	ax=0x0000
+00412:      	ar=rm[FlashAddrH]
+00413:      	ar+=ax+c
+00414:      	rm[FlashAddrH]=ar
+00415:      	pop	ax
+00416:      	ar=io[SPI_DAT]
+00417:      	rets
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+            
+            
+            ;=========================Include <TR16_SPI_HW.ASM> End=========================
+            
+            ;#Endif
+            
+            ;;***********************************
+            .CODE
+            ;		ORG		0x0B9c
+            
+            Copy_To_Sram_StartAddr:
+            
+            ;=========================Include <TR16_ISR.ASM> Start=========================
+            
+            ; =================================================================
+            ; ------------- Interrupt Service Routine--------------------------
+            ; =================================================================
+            Touch_INT:	;Clear Int5 Request!!
+00418:      		clr		io[INTREQ].b5
+00419:      		reti
+            
+            PEORPP_INT:	;Clear Int4 Request!!
+0041A:      		clr		io[INTREQ].b4
+0041B:      		reti
+            
+            RTC_INT:	;Clear Int3 Request!!
+0041C:      		clr		io[INTREQ].b3
+0041D:      		reti
+            
+            Timer2_INT:	;Clear Int2 Request!!
+0041E:      		clr		io[INTREQ].b2
+0041F:      		reti
+            
+            Timer1_INT:	;Clear Int1 Request!!
+00420:      		clr		io[INTREQ].b1
+00421:      		reti
+            
+            
+            AudioPwm_INT:	;Clear Int0 Request!!
+            
+00422:      		push		i0
+00423:      		push		cx
+00424:      		push		cbl
+            
+00425:      		clr		io[INTREQ].b0
+00426:      		ar		=rm[Filter_GainNum]
+00427:      		ar++
+00428:      		ar		&=_Filter_GainNum
+00429:      		rm[Filter_GainNum]=ar
+            
+0042A:      		ar		=rm[Sbb3_Flag]
+0042B:      		cx		=ar
+0042C:      		ar		=rm[PCM_Flag]
+0042D:      		cx		|=ar
+0042E:      		ar		=cx
+0042F:      		jan		AudioPwm_Play
+00430:      		ar		=0x0000
+00431:                      io[DACL]        =ar
+00432:                      io[DACL]        =ar
+00433:                      io[DACL]        =ar
+00434:                      io[DACL]        =ar
+00435:                      jmp		AudioPwm_INT_Time
+            AudioPwm_Play:
+            ;;<<System message ======  Macro. M_Sbb3Play_PWM,612,615,,,,,,,,,,,,,,,,  strat ======
+00436:      pch = Sbb3Play_PWM 
+00437:      lcall Sbb3Play_PWM 
+            ;; System message>>====== Macro. M_Sbb3Play_PWM end ======
+            ;;<<System message ======  Macro. M_PCMPlay_PWM,706,707,,,,,,,,,,,,,,,,  strat ======
+            ;; System message>>====== Macro. M_PCMPlay_PWM end ======
+            
+            
+            
+            
+            AudioPwm_INT_Time:
+            
+00438:      		ar		=rm[Filter_GainNum]
+00439:      		jne		AudioPwm_INT_Exit		;;250us
+            
+0043A:      		ar		=rm[PauseFlag]
+0043B:      		jne		Sentence_Time_End
+0043C:      		ar		=rm[Sentence_Time]
+0043D:      		jeq		Sentence_Time_End
+0043E:      		ar--
+0043F:      		rm[Sentence_Time]=ar
+            Sentence_Time_End:
+00440:      		ar		=rm[KeyTime]
+00441:      		ar++
+00442:      		clr		ar.b15
+00443:      		rm[KeyTime]	=ar
+00444:      		ar		=rm[HaltTime]
+00445:      		ar++
+00446:      		clr		ar.b15
+00447:      		rm[HaltTime]	=ar
+            
+            
+            AudioPwm_INT_Exit:
+            
+            
+00448:      		pop		CBL
+00449:      		pop		cx
+0044A:      		pop		i0
+            
+0044B:      		reti
+            
+            
+            
+            
+            
+            
+            
+            ;;******************************************************************************
+            ;;******************************************************************************
+            Play_RampUpDown:
+0044C:      		test		ar.b14
+0044D:      		jne		Play_RampUpDown_Up
+            	Play_RampUpDown_Down:
+0044E:      		ar		=i0
+0044F:      		jeq		Play_RampUpDown_Exit
+00450:      		i0--
+00451:      		jmp		Play_RampUpDown_Exit
+            	Play_RampUpDown_Up:
+00452:      		ar		=i0
+00453:      		sf		=ar-cx
+00454:      		jeq		Play_RampUpDown_Exit
+00455:      		jge		Play_RampUpDown_Down
+00456:      		i0++
+            	Play_RampUpDown_Exit:
+00457:      		ar		=i0
+00458:      		rets
+            
+            ;=========================Include <TR16_ISR.ASM> End=========================
+            
+            PE_Sector:
+00459:      		PE		=ar
+0045A:      		jmp		Wait_Ready
+            PP_Word:
+0045B:      		pm[p1++]	=ar
+            Wait_Ready:
+0045C:      		ar		=ps
+0045D:      		jeq		Wait_Ready
+0045E:      		rets
+            
+            Copy_To_Sram_EndAddr:
+            
+            
+            
+            
+            
+            #If		_TR16_PlaySbb3_			!= 0	;;
+            ;=========================Include <SBB3_PRG\SBB3_PLAY.ASM> Start=========================
+            ;∫Ø ˝√˚≥∆£∫	Sbb3Play_Task
+            ;∫Ø ˝√˚≥∆£∫	Sbb3Play_Start
+            ;∫Ø ˝√˚≥∆£∫	Sbb3Play_Stop
+            
+            
+            ;∆Ï±Íºƒ¥Ê∆˜:	Sbb3_Flag
+            ;Sbb3_Flag	bit15	Play			1=Play£¨0=No Play
+            ;		bit14	RampUp or RampDown	1=RampUp£¨0=RampDown
+            ;		bit12	∏Ë«˙Œﬁ∑Ï—≠ª∑		1=loop£¨0=no loop
+            
+            ;		bit5	 ˝æ›¿¥‘¥ rom or spi	1=spi£¨0=rom
+            ;		bit4	Sbb3_Num		1=Œ¥ π”√£¨0= π”√∫Ûø…∏¸∏ƒ
+            ;		bit3	¡˜≥Ã
+            ;		bit2	¡˜≥Ã
+            ;		bit1	¡˜≥Ã
+            ;		bit0	¡˜≥Ã
+            ;-----------------------------------------------------------
+            Sbb3Play_Start:
+0045F:      		ar		=rm[Sbb3_Flag]
+00460:      		clr		ar.b12		;;loop∆Ï±Í	1=loop	0=no loop
+00461:      		jmp		Sbb3Play_Start_Ing
+            
+            Sbb3Play_StartLp:
+00462:      		ar		=rm[Sbb3_Flag]
+00463:      		set		ar.b12		;;loop∆Ï±Í	1=loop	0=no loop
+            		
+            Sbb3Play_Start_Ing:
+00464:      		clr		ar.b14		;;RampUp or RampDown	1=RampUp£¨0=RampDown
+00465:      		set		ar.b4		;;Sbb3_Num	Œ¥ π”√
+00466:      		rm[Sbb3_Flag]	=ar
+00467:      		clr		ar.b3
+00468:      		clr		ar.b2
+00469:      		clr		ar.b1
+0046A:      		set		ar.b0
+0046B:      		rm[Sbb3_Flag]	=ar
+0046C:      		rets
+            ;-----------------------------------------------------------
+            ;-----------------------------------------------------------
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_Task
+            ;π¶ƒ‹√Ë ˆ:Sbb3≤•∑≈…˘“Ù
+            ;»Îø⁄∆Ï±Íºƒ¥Ê∆˜:Sbb3_Flag  
+            ;-----------------------------------------------------------
+            Sbb3Play_Task:
+            
+            
+            
+            Sbb3Play_Step:
+            
+            
+            		
+0046D:      		ar		=rm[Sbb3_Flag]
+0046E:      		ar		&=0x0007
+0046F:      		p1		=#Sbb3Play_Tab
+00472:      		p1		+=ar
+00473:      		p1		=pm[p1]
+00474:      		fjmp		pm[p1]
+            
+            
+            Sbb3Play_Tab:
+00475:      		DW		#Sbb3Play_Exit		;;Exit
+00476:      		DW		#Sbb3Play_RampDown	;;01
+00477:      		DW		#Sbb3Play_Init		;;02
+00478:      		DW		#Sbb3Play_Program	;;03
+00479:      		DW		#Sbb3Play_Stop		;;04
+0047A:      		DW		#Sbb3Play_Stop		;;05
+0047B:      		DW		#Sbb3Play_Stop		;;06
+0047C:      		DW		#Sbb3Play_Stop		;;07
+            Sbb3Play_Next:	;;ªªœ¬“ª∏ˆ¡˜≥Ã∂Ø◊˜
+            
+0047D:      		ar		=rm[Sbb3_Flag]
+0047E:      		ar++
+0047F:      		rm[Sbb3_Flag]=ar
+00480:      		jmp		Sbb3Play_Step
+            		
+            Sbb3Play_Last:	;;ªª…œ“ª∏ˆ¡˜≥Ã∂Ø◊˜
+            
+00481:      		ar		=rm[Sbb3_Flag]
+00482:      		ar--
+00483:      		rm[Sbb3_Flag]	=ar
+00484:      		jmp		Sbb3Play_Step
+            		
+            Sbb3Play_Exit:		;;÷±Ω”ÕÀ≥ˆ
+00485:      		rets
+            		
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_RampDown
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sbb3Play_RampDown:
+00486:      		ar		=rm[Sbb3_Flag]
+00487:      		test		ar.b15
+00488:      		jeq		Sbb3Play_RampDown_Exit
+00489:      		clr		ar.b14
+0048A:      		rm[Sbb3_Flag]	=ar
+            
+0048B:      		ar		=rm[Sbb3Filter_Gain]
+0048C:      		jne		Sbb3Play_Exit
+            Sbb3Play_RampDown_Exit:
+0048D:      		jmp		Sbb3Play_Next
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_Init
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sbb3Play_Init:
+0048E:      		call		Sbb3PlayFlash_Clr
+0048F:      		call		Sbb3Play_Clr
+00490:      		call		Sbb3Play_Adr
+00491:      		ar		=0x0000	
+00492:      		rm[Sbb3Filter_Gain]=ar;
+00493:      		FLTI            =ar
+00494:                      FLTI            =ar
+00495:                      FLTI            =ar
+00496:                      FLTI            =ar
+00497:                      FLTA            =ar
+00498:      		ar		=rm[Samplech0Rate]
+            ;;<<System message ======  Macro. Audio_Config_Adjust_Fltp,471,481,,,,,,,,,,,,,,,,  strat ======
+            
+00499:      Clr C 
+            
+0049A:      Src Ar 1 
+            
+            
+            
+            
+            
+            ;; System message>>====== Macro. Audio_Config_Adjust_Fltp end ======
+0049B:      		FLTP            =ar
+            		
+0049C:      		ar		=Sbb3Buf
+0049E:      		rm[Sbb3YOU_PTR]	=ar;
+0049F:      		ar++
+004A0:      		rm[Sbb3YIN_PTR]	=ar;
+            		
+            		
+            		
+004A1:      		ENA		INT0		;;ø™∆Ù÷–∂œ0
+004A2:      		ENI
+004A3:      		jmp		Sbb3Play_Next
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_Program
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sbb3Play_Program:
+004A4:      		call		Sbb3Play_DeCode
+004A5:      		jac		Sbb3Play_Program_Next
+004A6:      		ar		=rm[Sbb3_Flag]
+004A7:      		set		ar.b15
+004A8:      		set		ar.b14
+004A9:      		rm[Sbb3_Flag]	=ar
+004AA:      		jmp		Sbb3Play_Exit
+            		
+            Sbb3Play_Program_Next:
+004AB:      		ar		=rm[Sbb3_Flag]
+004AC:      		test		ar.b12
+004AD:      		jne		Sbb3Play_Program_Ing
+004AE:      		jmp		Sbb3Play_Stop
+            		
+            Sbb3Play_Program_Ing:
+004AF:      		call		Sbb3Play_Adr
+004B0:      		ar		=rm[Samplech0Rate]
+            ;;<<System message ======  Macro. Audio_Config_Adjust_Fltp,471,481,,,,,,,,,,,,,,,,  strat ======
+            
+004B1:      Clr C 
+            
+004B2:      Src Ar 1 
+            
+            
+            
+            
+            
+            ;; System message>>====== Macro. Audio_Config_Adjust_Fltp end ======
+004B3:      		FLTP            =ar
+004B4:      		jmp		Sbb3Play_Exit
+            		
+            		
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_Stop
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sbb3Play_Stop:
+004B5:      		ar		=rm[Sbb3_Flag]
+004B6:      		test		ar.b15
+004B7:      		jeq		Sbb3Play_Stop_Exit
+004B8:      		ar		=0x800f
+004BA:      		rm[Sbb3_Flag]	=ar
+            
+004BB:      		ar		=rm[Sbb3Filter_Gain]
+004BC:      		jne		Sbb3Play_Stop
+            Sbb3Play_Stop_Exit:
+004BD:      		ar		=0x0000
+004BE:      		rm[Sbb3_Flag]	=ar
+004BF:      		jmp		Sbb3Play_Exit
+            		
+            		
+            	
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb_Ch0GetBts
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sbb_Ch0GetBts:
+004C0:      		ar		=rm[Sbb3_Flag]
+004C1:      		test		ar.b5
+004C2:      		jne		Sbb_Ch0GetBts_SPI
+            Sbb_Ch0GetBts_Rom:
+004C3:      		push		p1
+004C4:      		push		ax
+004C5:      		ar		=p1.hh 
+004C6:      		push		ar 		
+004C7:      		p1		=rm[Sbb3_AddrL]
+004C8:      		ar		=rm[Sbb3_AddrH]
+004C9:      		p1.hh		=ar 
+004CA:      		ar		=pm[p1++]
+004CB:      		xchg		ar
+            		
+004CC:      		push		ar 		
+004CD:      		rm[Sbb3_AddrL]=p1
+004CE:      		ar		=p1.hh		
+004CF:      		rm[Sbb3_AddrH]=ar 
+004D0:      		pop		ax 		
+004D1:      		pop		ar 
+004D2:      		p1.hh		=ar 
+004D3:      		ar		=ax 
+004D4:      		pop		ax 
+004D5:      		pop		p1
+004D6:      		rets
+            		
+            Sbb_Ch0GetBts_SPI:
+004D7:      		push		i0
+004D8:      		push		CBL
+004D9:      		CBL		=0x0008
+004DA:      		i0		=rm[Sbb3FlashOU_PTR]
+004DB:      		ar		=rm[i0++]
+004DC:      		rm[Sbb3FlashOU_PTR]=i0
+004DD:      		xchg		ar
+004DE:      		pop		CBL
+004DF:      		pop		i0
+004E0:      		rets
+            		
+            
+            
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_Clr
+            ;π¶ƒ‹√Ë ˆ:«Âºƒ¥Ê∆˜
+            ;-----------------------------------------------------------
+            Sbb3Play_Clr:
+004E1:      		i1		=Sbb3Buf
+004E3:      		cx		=0x01ff
+004E5:      		ar		=0x0000
+004E6:      		jmp		Sbb3Play_Clr_Lp
+            		
+            Sbb3PlayFlash_Clr:
+004E7:      		i1		=Sbb3FlashBuf
+004E9:      		cx		=0x00ff
+004EB:      		ar		=0x0000		
+004EC:      		jmp		Sbb3Play_Clr_Lp
+            Sbb3Play_Clr_Lp:
+004ED:      		rm[i1++]	=ar
+004EE:      		Loop		Sbb3Play_Clr_Lp
+004EF:      		rets
+            
+            
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_Adr
+            ;π¶ƒ‹√Ë ˆ:ªÒµ√µÿ÷∑
+            ;-----------------------------------------------------------
+            Sbb3Play_Adr:
+            	;;-------------------------------------------------------;;
+            	;;…Ë÷√≤•∑≈…˘“Ùµƒ≥ı ºµÿ÷∑
+            	;;-------------------------------------------------------;;
+004F0:      		pch=		Sbb3_Adr_Init	
+004F1:      		lcall		Sbb3_Adr_Init
+004F2:      		jac		Sbb3Play_init_SPI
+            Sbb3Play_init_Rom:
+004F3:      		ar		=rm[Sbb3_Flag]
+004F4:      		clr		ar.b4
+004F5:      		clr		ar.b5
+004F6:      		rm[Sbb3_Flag]	=ar
+            Sbb3Play_init_Rom_again:
+            ;;<<System message ======  Macro. Sbb3_Ch0Init,9472,9475,,,,,,,,,,,,,,,,  strat ======
+004F7:      PCH = Sbb3_Ch0InitV06 
+004F8:      lcall Sbb3_Ch0InitV06 
+            ;; System message>>====== Macro. Sbb3_Ch0Init end ======
+004F9:      		jzr		Sbb3Play_init_Rom_again 
+004FA:      		rets
+            		
+            		
+            		
+            Sbb3Play_init_SPI:
+004FB:      		ar		=rm[Sbb3_Flag]
+004FC:      		clr		ar.b4
+004FD:      		set		ar.b5
+004FE:      		rm[Sbb3_Flag]	=ar
+004FF:      		call		Sbb3_ReadDataToBufFirst
+            Sbb3Play_init_SPI_again:
+            ;;<<System message ======  Macro. Sbb3_Ch0Init,9472,9475,,,,,,,,,,,,,,,,  strat ======
+00500:      PCH = Sbb3_Ch0InitV06 
+00501:      lcall Sbb3_Ch0InitV06 
+            ;; System message>>====== Macro. Sbb3_Ch0Init end ======
+00502:      		jzr		Sbb3Play_init_SPI_again 
+00503:      		rets
+            		
+            		
+            		
+            		
+            Sbb3_ReadDataToBufFirst:
+00504:      		ar		=Sbb3FlashBuf
+00506:      		rm[Sbb3FlashIN_PTR]=ar
+00507:      		rm[Sbb3FlashOU_PTR]=ar
+00508:      		cx		=0x0100
+0050A:      		jmp		Sbb3_ReadDataToBuf_Prg
+            		
+            Sbb3_ReadDataToBuf:
+0050B:      		ar		=rm[Sbb3FlashIN_PTR]
+0050C:      		ax		=ar
+0050D:      		ar		=rm[Sbb3FlashOU_PTR]
+0050E:      		ar		=ar-ax
+0050F:      		ax		=0x00ff
+00511:      		ar		&=ax
+00512:      		jeq		Sbb3_ReadDataToBuf_End
+00513:      		cx		=ar
+            Sbb3_ReadDataToBuf_Prg:
+00514:      		CBL		=8
+00515:      		ar		=rm[Sbb3_AddrL]
+00516:      		rm[FlashAddrL]	=ar
+00517:      		ar		=rm[Sbb3_AddrH]
+00518:      		rm[FlashAddrH]	=ar
+00519:      		i0		=rm[Sbb3FlashIN_PTR]
+0051A:      		pch=		FlashRead_Program
+0051B:      		lcall		FlashRead_Program
+0051C:      		rm[Sbb3FlashIN_PTR]=i0
+0051D:      		ar		=rm[FlashAddrL]
+0051E:      		rm[Sbb3_AddrL]	=ar
+0051F:      		ar		=rm[FlashAddrH]
+00520:      		rm[Sbb3_AddrH]	=ar
+            Sbb3_ReadDataToBuf_End:
+            		
+00521:      		rets
+            		
+            		
+            ;-----------------------------------------------------------
+            ;∫Ø ˝√˚≥∆:Sbb3Play_DeCode
+            ;π¶ƒ‹√Ë ˆ:
+            ;-----------------------------------------------------------
+            Sbb3Play_DeCode:
+            ;		ax		=rm[Sbb3YOU_PTR]
+            ;		ar		=rm[Sbb3YIN_PTR]
+            ;Sbb3Play_Empty:
+            ;		ar		=ax-ar
+            ;		jan		Sbb3Play_Empty_Over
+            ;		jmp		Sbb3Play_Empty_OK
+            ;	Sbb3Play_Empty_Over:
+            ;		ax		=0x01ff
+            ;		ar		&=ax
+            ;	Sbb3Play_Empty_OK:
+            ;		ax		=0x121
+            ;		sf		=ar-ax
+            ;		jan		Sbb3Play_DeCode_Exit
+            		
+            ;		ar		=rm[Sbb3YIN_PTR]
+            ;		rm[VolBuf]	=ar
+            
+            		
+00522:      		ar		=rm[Sbb3_Flag]
+00523:      		test		ar.b5
+00524:      		jne		Sbb3Play_DeCode_SPI
+            Sbb3Play_DeCode_Rom:
+00525:      		ar=0
+00526:      		CBL=ar
+            ;;<<System message ======  Macro. Sbb3_Ch0dec,9477,9481,,,,,,,,,,,,,,,,  strat ======
+            
+00527:      PCH = Sbb3_Ch0decV06 
+00528:      lcall Sbb3_Ch0decV06 
+            ;; System message>>====== Macro. Sbb3_Ch0dec end ======
+00529:                      jzr		Sbb3Play_DeCode_Rom_Next
+            ;		ar		=9
+            ;		CBL		=ar
+            ;		ar		=rm[VolBuf]
+            ;		i0		=ar
+            ;		cx		=0x011f
+            ;		pch=		WaveGain_Prg
+            ;		lcall		WaveGain_Prg
+0052A:      		clr		c
+0052B:      		rets
+            Sbb3Play_DeCode_Rom_Next:
+            ;		ar		=9
+            ;		CBL		=ar
+            ;		ar		=rm[VolBuf]
+            ;		i0		=ar
+            ;		cx		=0x011f
+            ;		pch=		WaveGain_Prg
+            ;		lcall		WaveGain_Prg
+0052C:      		set		c
+0052D:      		rets
+            
+            
+            Sbb3Play_DeCode_SPI:
+0052E:      		ar=0
+0052F:      		CBL=ar
+            ;;<<System message ======  Macro. Sbb3_Ch0dec,9477,9481,,,,,,,,,,,,,,,,  strat ======
+            
+00530:      PCH = Sbb3_Ch0decV06 
+00531:      lcall Sbb3_Ch0decV06 
+            ;; System message>>====== Macro. Sbb3_Ch0dec end ======
+00532:                      jzr		Sbb3Play_DeCode_SPI_Next
+00533:      		call		Sbb3_ReadDataToBuf
+            		
+            ;		ar		=9
+            ;		CBL		=ar
+            ;		ar		=rm[VolBuf]
+            ;		i0		=ar
+            ;		cx		=0x011f
+            ;		pch=		WaveGain_Prg
+            ;		lcall		WaveGain_Prg
+00534:      		clr		c
+00535:      		rets
+            
+            Sbb3Play_DeCode_SPI_Next:
+00536:      		call		Sbb3_ReadDataToBuf
+            		
+            ;		ar		=9
+            ;		CBL		=ar
+            ;		ar		=rm[VolBuf]
+            ;		i0		=ar
+            ;		cx		=0x011f
+            ;		pch=		WaveGain_Prg
+            ;		lcall		WaveGain_Prg
+00537:      		set		c
+00538:      		rets
+            
+            Sbb3Play_DeCode_Exit:
+00539:      		rets
+            
+            Sbb3Play_PWM:	
+0053A:      		push		ax
+            		
+0053B:      		ar		=rm[Sbb3_Flag]
+0053C:      		test		ar.b15
+0053D:      		jeq		Sbb3Play_PWM_Exit
+            		
+            	
+0053E:      		ar		=rm[Sbb3_Flag]
+0053F:      		ax		=ar
+            		
+00540:      		ar		=rm[MuteFlag]
+00541:      		jeq		Sbb3Play_PWM_Mute
+00542:      		ax		=0x0000
+            Sbb3Play_PWM_Mute:
+00543:      		ar		=rm[PauseFlag]
+00544:      		jeq		Sbb3Play_PWM_Ing
+00545:      		ar		=rm[Sbb3Filter_Gain]
+00546:      		jeq		Sbb3Play_PWM_Exit
+00547:      		ax		=0x0000
+00548:      		jmp		Sbb3Play_PWM_Ing
+            
+            Sbb3Play_PWM_Ing:
+00549:      		ar		=rm[Filter_GainNum]
+0054A:      		jne		Sbb3Play_PWM_RampUpDownEnd
+            
+0054B:      		ar		=rm[Sbb3Volum]
+0054C:      		cx		=ar
+0054D:      		ar		=rm[Sbb3Filter_Gain]
+0054E:      		i0		=ar
+0054F:      		ar		=ax
+00550:      		pch=		Play_RampUpDown
+00551:      		lcall		Play_RampUpDown
+00552:      		rm[Sbb3Filter_Gain]=ar
+            		
+            Sbb3Play_PWM_RampUpDownEnd:
+            
+00553:      		ar		=rm[Samplech0Rate]
+            ;;<<System message ======  Macro. Audio_Config_Adjust_Fltp,471,481,,,,,,,,,,,,,,,,  strat ======
+            
+00554:      Clr C 
+            
+00555:      Src Ar 1 
+            
+            
+            
+            
+            
+            ;; System message>>====== Macro. Audio_Config_Adjust_Fltp end ======
+00556:      		FLTP            =ar
+            
+00557:      		ar		=rm[Sbb3Filter_Gain]
+00558:      		FLTG		=ar
+            
+00559:      		i0		=rm[Sbb3YOU_PTR]
+0055A:      		ar		=9
+0055B:      		CBL		=ar
+0055C:      		cx		=0x0003
+            	Sbb3Play_PWM_Lp:
+0055D:      		jfa		Sbb3Play_PWM_Out
+0055E:      		ar		=0x0000
+0055F:      		FLTI		=rm[i0]
+00560:      		rm[i0++]	=ar
+            	Sbb3Play_PWM_Out:
+00561:      		ar		=FLTO
+00562:                      io[DACL]        =ar
+00563:      		nop
+00564:      		nop
+00565:      		loop		Sbb3Play_PWM_Lp
+00566:      		rm[Sbb3YOU_PTR]	=i0
+            Sbb3Play_PWM_Exit:
+00567:      		pop		ax
+00568:                      rets
+            	
+            
+            
+            
+            ;=========================Include <SBB3_PRG\SBB3_SETUP.ASM> Start=========================
+            ;;-------------------------------------------------------;;
+            ;;…Ë÷√≤•∑≈…˘“Ùµƒ≥ı ºµÿ÷∑	ªÒµ√”Ô“Ù≤•∑≈ ◊µÿ÷∑
+            ;;
+            ;;-------------------------------------------------------;;
+            Sbb3_Adr_Init:
+00569:      		ar		=rm[Sbb3_Num]
+0056A:      		jan		Sbb3_SPIAdr_Init
+            ;;-------------------------------------------------------;;
+            ;;”Ô“Ù‘⁄rom÷– ªÒµ√”Ô“Ù≤•∑≈ ◊µÿ÷∑
+            ;;-------------------------------------------------------;;	
+            Sbb3_RomAdr_Init:
+0056B:      		r0		=0x0fff
+0056D:      		r0		&=ar
+            		
+0056E:      		p1		=#BinTab
+00571:      		p1.hh		=#BinTab.h
+00572:      		ar		=0x0003
+00573:      		p1		+=ar
+00574:      		ar		=pm[p1++]
+00575:      		ax		=ar
+00576:      		ar		=pm[p1++]
+00577:      		bx		=ar
+            
+00578:      		clr		c
+00579:      		src		bx
+0057A:      		src		ax
+            
+0057B:      		ar		=#BinTab
+0057D:      		ar		+=ax
+0057E:      		p1		=ar
+0057F:      		ax		=ar
+00580:      		ar		=#BinTab.h
+00581:      		ar		+=bx+c
+00582:      		p1.hh		=ar
+00583:      		bx		=ar
+            
+            		
+00584:      		ar		=pm[p1++]
+00585:      		p1++
+00586:      		dx		=ar
+00587:      		ar		=r0
+00588:      		sf		=ar-0x0000
+00589:      		jeq		Sbb3_RomAdr_Init_Error
+0058A:      		sf		=ar-dx
+0058B:      		jle		Sbb3_RomAdr_Init_OK
+            Sbb3_RomAdr_Init_Error:
+0058C:      		ar		=0x0001
+            	Sbb3_RomAdr_Init_OK:
+0058D:      		ar--
+0058E:      		slz		ar
+0058F:      		clr		c
+00590:      		p1		+=ar
+00591:      		dx		=0x0000
+00592:      		ar		=p1.hh
+00593:      		ar		+=dx+c
+00594:      		p1.hh		=ar
+00595:      		ar		=pm[p1++]
+00596:      		dx		=ar
+00597:      		ar		=pm[p1++]
+00598:      		clr		c
+00599:      		cx		=ar
+0059A:      		src		cx
+0059B:      		src		dx
+            		
+0059C:      		ar		=dx
+0059D:      		ar		+=ax
+0059E:      		rm[Sbb3_AddrL]	=ar
+0059F:      		ar		=cx
+005A0:      		ar		+=bx+c
+005A1:      		rm[Sbb3_AddrH]	=ar	
+005A2:      		clr		c	;;Õ®÷™≥Ã–Ú « ˝æ›‘⁄rom
+005A3:      		rets
+            
+            		
+            ;;-------------------------------------------------------;;
+            ;;”Ô“Ù‘⁄SPI÷– ªÒµ√”Ô“Ù≤•∑≈ ◊µÿ÷∑
+            ;;-------------------------------------------------------;;
+            Sbb3_SPIAdr_Init:
+005A4:      		r0		=0x0fff
+005A6:      		r0		&=ar
+005A7:      		ar		=0x0006
+005A8:      		rm[FlashAddrL]	=ar
+005A9:      		ar		=0x0000
+005AA:      		rm[FlashAddrH]	=ar
+005AB:      		pch=		FlashRead_LoadAddr
+005AC:      		lcall		FlashRead_LoadAddr
+005AD:      		pch=		FlashRead_WordData
+005AE:      		lcall		FlashRead_WordData
+005AF:      		ax		=ar
+            		
+005B0:      		pch=		FlashRead_WordData
+005B1:      		lcall		FlashRead_WordData
+005B2:      		bx		=ar
+005B3:      		rm[FlashAddrH]	=ar
+005B4:      		rm[Sbb3_AddrH]	=ar
+005B5:      		ar		=ax
+005B6:      		rm[FlashAddrL]	=ar
+005B7:      		rm[Sbb3_AddrL]	=ar
+            		
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+005B8:      set IO[PortB].b3 
+005B9:      set IO[PortB].b5 
+005BA:      ar = 0x0b00 
+005BC:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+005BD:      		pch=		FlashRead_LoadAddr
+005BE:      		lcall		FlashRead_LoadAddr
+005BF:      		pch=		FlashRead_WordData
+005C0:      		lcall		FlashRead_WordData
+005C1:      		ax		=ar
+005C2:      		pch=		FlashRead_WordData
+005C3:      		lcall		FlashRead_WordData
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+005C4:      set IO[PortB].b3 
+005C5:      set IO[PortB].b5 
+005C6:      ar = 0x0b00 
+005C8:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+            		
+            
+005C9:      		ar		=r0
+005CA:      		sf		=ar-0x0000
+005CB:      		jeq		Sbb3_Adr_SPI_Init_Error
+005CC:      		sf		=ar-ax
+005CD:      		jle		Sbb3_Adr_SPI_Init_Ing
+            Sbb3_Adr_SPI_Init_Error:
+005CE:      		ar		=0x0001
+            Sbb3_Adr_SPI_Init_Ing:
+005CF:      		ar--
+005D0:      		bx		=0x0000
+            		
+005D1:      		slz		ar
+005D2:      		slc		bx
+005D3:      		slz		ar
+005D4:      		slc		bx
+            
+005D5:      		ax		=ar
+005D6:      		ar		=rm[FlashAddrL]
+005D7:      		ar		+=ax
+005D8:      		rm[FlashAddrL]	=ar
+005D9:      		ar		=rm[FlashAddrH]
+005DA:      		ar		+=bx+c
+005DB:      		rm[FlashAddrH]	=ar
+005DC:      		pch=		FlashRead_LoadAddr
+005DD:      		lcall		FlashRead_LoadAddr
+005DE:      		pch=		FlashRead_WordData
+005DF:      		lcall		FlashRead_WordData
+005E0:      		ax		=ar
+            
+005E1:      		pch=		FlashRead_WordData
+005E2:      		lcall		FlashRead_WordData
+005E3:      		bx		=ar
+005E4:      		ar		=rm[Sbb3_AddrL]
+005E5:      		ar		+=ax
+005E6:      		rm[Sbb3_AddrL]	=ar
+005E7:      		ar		=rm[Sbb3_AddrH]
+005E8:      		ar		+=bx+c
+005E9:      		rm[Sbb3_AddrH]	=ar
+            ;;<<System message ======  Macro. FlashCS_Set,1829,1834,,,,,,,,,,,,,,,,  strat ======
+005EA:      set IO[PortB].b3 
+005EB:      set IO[PortB].b5 
+005EC:      ar = 0x0b00 
+005EE:      io[SPI_CTL] = ar 
+            ;; System message>>====== Macro. FlashCS_Set end ======
+005EF:      		set		c	;;Õ®÷™≥Ã–Ú « ˝æ›‘⁄SPI
+005F0:      		rets
+            	
+            	
+            	
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ;.DATA
+            ;Tzb_Adr_Tab:
+            ;	DW	0x0001
+            ;	DW	#Tzb_Adr_01,#Tzb_Adr_01.H
+            ;
+            ;Tzb_Adr_01:
+            ;;	DW	"Sbb3_Prg/TZB/Baby_Silen.T3Z"	
+            ;.CODE	
+            
+            	
+            	
+            	
+            ;=========================Include <SBB3_PRG\SBB3_SETUP.ASM> End=========================
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ;-----------------------------------------------------------
+            ; –Õ∫≈≤ªÕ¨—°‘ÒµƒobjŒƒº˛≤ªÕ¨
+            ;;-----------------------------------------------------------
+            
+            #ifdef _MSPEECHDSP_
+            
+            	Macro		Sbb3_Ch0Init
+            		PCH=            SDSP_Sbb3_Ch0InitV06
+            		lcall           SDSP_Sbb3_Ch0InitV06
+            	Endm
+            	
+            	Macro		Sbb3_Ch0dec
+            
+            		PCH=		SDSP_Sbb3_Ch0decV06
+            		lcall		SDSP_Sbb3_Ch0decV06
+            	Endm
+            	
+            ;
+            	#LINKOBJ	"SBB3_PRG\SDSP_SBB3_CH0DECV06.OBJ"
+            ;
+            
+            	
+            
+            #else
+            
+            
+            
+            
+            	Macro		Sbb3_Ch0Init
+            		PCH=            Sbb3_Ch0InitV06
+            		lcall           Sbb3_Ch0InitV06
+            	Endm
+            	
+            	Macro		Sbb3_Ch0dec
+            
+            		PCH=		Sbb3_Ch0decV06
+            		lcall		Sbb3_Ch0decV06
+            	Endm
+            	
+            	
+            
+            ;
+            	#LINKOBJ	"SBB3_PRG\SBB3_CH0DECV06.OBJ"
+            ;
+            
+            #endif
+            
+            
+            
+            ;=========================Include <SBB3_PRG\SBB3_PLAY.ASM> End=========================
+            
+            #Endif
+            
+            ;#If		_TR16_PlayPCM_			!= 0	;;
+            ;#include		"PCM_Prg\PCM_Play.asm"
+            ;#Endif
+            
+            #If		_SPI_Rom_		== 1	;;0£∫SPI  1£∫Rom
+            .DATA
+            BinTab:
+02990:      		dw	"DATA\DATA.BIN"
+            .CODE
+            #Endif
+            
+            
+            ;;FDSP-IDE V2.53
+            _SYSTEM_MAIN_PROGRAM_END_ADDRESS: 

@@ -1,0 +1,68 @@
+
+Key_Task:
+		ax		=0x0001
+		ar		=io[PORTB]
+		test		ar.b2
+		jne		Scan_Key_End
+		ax		=0x0000
+		jmp		Scan_Key_End
+
+Scan_Key_End:
+		ar		=rm[KeyNew]
+		sf		=ar-ax
+		jeq		KeyDsp_Time
+		ar		=ax
+		rm[KeyNew]	=ar
+		ar		=0x0000
+		rm[KeyTime]	=ar
+
+KeyDsp_Time:
+		ar		=rm[KeyTime]	;;16k
+		ax		=0x007f
+		sf		=ar-ax
+		jle		KeyDsp_End
+
+		ar		=rm[KeyNew]
+		ax		=rm[KeyOld]
+		sf		=ar-ax
+		jeq		KeyDsp_End
+
+		ar		=rm[KeyNew]
+		rm[KeyOld]	=ar
+		jeq		KeyDsp_End
+
+KeyDsp_Down:
+		pch=		Sentence_Pause_disable
+		lcall		Sentence_Pause_disable
+		pch=		Sentence_Mute_disable
+		lcall		Sentence_Mute_disable
+		ar		=rm[SentenceNumMax]
+		ax		=ar
+		ar		=rm[SentenceNum]
+		ar++
+		rm[SentenceNum]	=ar
+		sf		=ar-ax
+		jle		KeyDsp_Down_Play
+		ar		=0x0000
+		rm[SentenceNum]	=ar
+
+KeyDsp_Down_Stop:
+		pch=		Sentence_Pause_disable
+		lcall		Sentence_Pause_disable
+		ar		=0x0000
+		rm[SentenceLoop]=ar
+		pch=		Sentence_Stop
+		lcall		Sentence_Stop
+		pch=		Sentence_Mute_disable
+		lcall		Sentence_Mute_disable
+		jmp		KeyDsp_End
+
+KeyDsp_Down_Play:
+		pch=		Sentence_Start
+		lcall		Sentence_Start
+		ar		=0x0000
+		rm[SentenceLoop]=ar
+KeyDsp_End:
+		rets
+
+
