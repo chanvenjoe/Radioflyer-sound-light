@@ -1,0 +1,15 @@
+[_FDSP-IDE]
+FDSP-IDE C PROJECT DEFINE:
+IM=B.C
+SOURCES=
+B.C
+global.c
+playadp.c
+keypad.c
+linkfile.c
+HEADERS=
+config.h
+playadp.h
+global.h
+keypad.h
+
