@@ -1,0 +1,51 @@
+ SYMBOL         ADDR 
+=====================
+ ADPCM_ADR_TAB             0010H
+
+ SUB3_ADR_TAB             0052H
+
+ MIDI_ADR_TAB             0094H
+
+ MIDI_ADR_01             009CH
+
+ MIDI_ADR_02             24388H
+
+ ADPCM_ADR_01             60EEAH
+
+ ADPCM_ADR_02             614C9H
+
+ ADPCM_ADR_03             61E42H
+
+ ADPCM_ADR_04             634B1H
+
+ ADPCM_ADR_05             66C78H
+
+ ADPCM_ADR_06             68C35H
+
+ ADPCM_ADR_07             6AC70H
+
+ ADPCM_ADR_08             6AFFBH
+
+ SUB3_ADR_01             6C408H
+
+ SUB3_ADR_02             7C1CFH
+
+ SUB3_ADR_03             D89F6H
+
+ SUB3_ADR_04             DC8D8H
+
+ SUB3_ADR_05             E126BH
+
+ SUB3_ADR_06             E3146H
+
+ SUB3_ADR_07             E4F7CH
+
+ SUB3_ADR_08             E6807H
+
+ VOICE_END_ADR             EA6BAH
+
+ REC_STAR_ADR             EA6BAH
+
+ REC_END_ADR             EA6BAH
+
+=====================

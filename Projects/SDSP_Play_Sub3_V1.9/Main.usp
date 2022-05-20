@@ -1,0 +1,13 @@
+[_FDSP-IDE]
+FDSP-IDE Project Define:
+IM=MAIN.ASM
+INCLUDE=COMMON.inc
+SUBASM=General.inc
+SUBASM=Option.inc
+SUBASM=ISR_Pack.Asm
+SUBASM=ScanKey.asm
+SUBASM=Sdsp_HwConFig.Asm
+SUBASM=SDSP_HW_SPI.asm
+SUBASM=M_SpiFlash_GPIO.Asm
+SUBASM=SDSP_Play_Sub3.Asm
+SUBASM=Dac_Ramp.Asm

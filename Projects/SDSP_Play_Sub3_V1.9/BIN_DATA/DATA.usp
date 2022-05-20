@@ -1,0 +1,4 @@
+[_TroView]
+TroView Project Define:
+IM=DATA.ASM
+INCLUDE=DATA.inc

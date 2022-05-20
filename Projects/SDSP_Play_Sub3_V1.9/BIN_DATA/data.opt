@@ -1,0 +1,20 @@
+              
+CHIP TYPE : TRS3AM06A
+Program ROM Size : 4K X 12 bits
+Data ROM Size : 20K X 8 bits
+User SRAM Size : (64+2) X 4 bits
+              
+Interrupt : PWM
+Subroutine : YES, 1 level
+Timer : none
+PWM : 8 bits, signed
+DAC : none
+Multiplier : none
+              
+PD50KPA0 : YPD50KPA1 : YPD50KPA2 : YPD50KPA3 : Y
+              
+PD1MPA0 : NPD1MPA1 : NPD1MPA2 : NPD1MPA3 : N
+              
+WAKEUPBA0 : NWAKEUPBA1 : NWAKEUPBA2 : NWAKEUPBA3 : N
+              
+WDGENB : YHALTENB : NLRST : Y

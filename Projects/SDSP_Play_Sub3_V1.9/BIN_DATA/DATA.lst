@@ -1,0 +1,33 @@
+         ;; CHIP TYPE (TRS3AM06A) ....................
+         ;;========================================================
+         /*
+         ;;    TROVIEW        BIN      
+         ;;DEFINEROM	                      :SPI_FLASH\XXX.BIN                ,        ;
+         ;;SIZE	            ,    2048K (BYTE)=16M                      
+      
+         ±                                 
+         ×                           
+         ×                                  DPCM      SUB3      MIDI                      
+      
+         ×               
+         1  HXAM  HPAM  SUB3              
+         DW		        
+         DW		    ,	        ,      ,	      
+         £  	  	  	  	  
+         £  	  	  	  	  
+         DW		    ,	        ,      ,	      	                  
+      
+         2            	0001H    8BIT XX01H    :ADPCM    ;
+         		00102H    8BIT XX02H    :SUB3    ;
+         3                
+         		0000H      1    
+         		0001H      2    
+         		0XXXH      X+1    
+         		8000H  BIT15=1,              		
+         */
+         ;;========================================================
+       DEFINEROM SPI_FLASH\ADPCM8_SUB8_MD2.BIN SIZE 1024K   ;=8M
+      
+      
+      
+       ================== Symbol Define ==================
