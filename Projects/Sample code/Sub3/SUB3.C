@@ -8,7 +8,7 @@
 
 #include <io.h>
 #include <lptr.h>
-#include <pwm.h>
+#include <pwm.h>// for system head file?
 
 #include "global.h"
 #include "sub3play.h"
@@ -24,7 +24,7 @@ void INITIAL(void);
 
 // subband2 data
 // const int MyData[];
-LinkFile(MyData, "subband3\\5003reezeounceusicong_1@34K3bps.T3Z");
+LinkFile(MyData, "subband3\\3104-Bounce-Count-Song@34K3bps.T3Z");
 
 
 import void Pwm_process(void) interrupt(0);
@@ -33,7 +33,7 @@ import void F_ChangePWMVectTabletobank2(void);
 
 void main(void)
 {
-	F_ChangePWMVectTabletobank2();
+	F_ChangePWMVectTabletobank2();//Where does it come from
 
 	sub_vol = 0;
 

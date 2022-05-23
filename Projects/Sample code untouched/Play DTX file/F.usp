@@ -1,0 +1,17 @@
+[_FDSP-IDE]
+FDSP-IDE C PROJECT DEFINE:
+IM=F.C
+SOURCES=
+F.C
+global.c
+keypad.c
+led.c
+asmfunc\interrupt.asm
+data.c
+HEADERS=
+config.h
+global.h
+keypad.h
+led.h
+support.h
+

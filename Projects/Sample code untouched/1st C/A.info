@@ -1,0 +1,12 @@
+======================================
+FDSP-IDE Information file
+======================================
+File Name   : A.FLH
+Part Number : TRSF16127A
+Check sum   : 262A
+
+01 % , RAM[__0:_127] = Used : 1 word(s) , Free : 127 word(s)
+00 % , RAM[128:_511] = Used : 0 word(s) , Free : 384 word(s) 
+00 % , RAM[512:3072] = Used : 0 word(s) , Free : 2560 word(s) 
+02 % , PROM          = Used :  2.55k word(s) , Free : 125.45k word(s) 
+======================================
