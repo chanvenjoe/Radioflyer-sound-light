@@ -82,7 +82,7 @@ void main(void)
 	{
 		ClrWatchDog();
 		
-		delay(100);
+		delay(1);// 100 5 1 500
 		
 		outp(PortA, i);
 		if(i<15) i++;  else  i=0;

@@ -3,10 +3,10 @@ FDSP-IDE Information file
 ======================================
 File Name   : SUB3.FLH
 Part Number : TRSF16127A
-Check sum   : 75ED
+Check sum   : C5B0
 
 50 % , RAM[__0:_127] = Used : 64 word(s) , Free : 64 word(s)
 20 % , RAM[128:_511] = Used : 75 word(s) , Free : 309 word(s) 
 00 % , RAM[512:3072] = Used : 2208 word(s) , Free : 352 word(s) 
-35 % , PROM          = Used : 45.33k word(s) , Free : 82.67k word(s) 
+55 % , PROM          = Used : 69.83k word(s) , Free : 58.17k word(s) 
 ======================================
