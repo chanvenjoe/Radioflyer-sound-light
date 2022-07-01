@@ -96,7 +96,7 @@ void KeyPlayPrev(void)
 	iADP--;
 
 	if(iADP < 0)
-		iADP = 8;
+		iADP = 5;
 
 	KeyPlayAdp();
 }
