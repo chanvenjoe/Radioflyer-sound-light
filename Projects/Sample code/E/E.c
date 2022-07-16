@@ -96,6 +96,7 @@ void main(void)
 		{
 			if(Subb3_Dec())
 			{
+				LED0_ON();
 				PLAY = 0;
 				Sub3ZeroFill();
 			}
@@ -104,6 +105,7 @@ void main(void)
 		{
 			Sub3ZeroFill();
 		}
+		LED0_OFF();
 	}
 }
 

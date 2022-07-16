@@ -596,101 +596,101 @@
             ; //rjmp void _main()				
             _main:
             ; //{
-            ; //_AE3845712_0:;					
-            _AE3845712_0:
+            ; //_AECA8DE46_0:;					
+            _AECA8DE46_0:
             ; //	
-            ; //_AE3845712_1:;					
-            _AE3845712_1:
-            ; //_AE3845712_2:;					
-            _AE3845712_2:
+            ; //_AECA8DE46_1:;					
+            _AECA8DE46_1:
+            ; //_AECA8DE46_2:;					
+            _AECA8DE46_2:
             ; //	_InitialDA4A7CC4();			
 0011D:      	pch	= _InitialDA4A7CC4
 0011E:      	lcall	_InitialDA4A7CC4
-            ; //_AE3845712_3:;					
-            _AE3845712_3:
-            ; //_AE3845712_4:;					
-            _AE3845712_4:
+            ; //_AECA8DE46_3:;					
+            _AECA8DE46_3:
+            ; //_AECA8DE46_4:;					
+            _AECA8DE46_4:
             ; //	_InitKey3C587B6D();			
 0011F:      	pch	= _InitKey3C587B6D
 00120:      	lcall	_InitKey3C587B6D
-            ; //_AE3845712_5:;					
-            _AE3845712_5:
-            ; //_AE3845712_6:;					
-            _AE3845712_6:
+            ; //_AECA8DE46_5:;					
+            _AECA8DE46_5:
+            ; //_AECA8DE46_6:;					
+            _AECA8DE46_6:
             ; //	ADPCM_CHX_Init();			
 00121:      	pch	= ADPCM_CHX_Init
 00122:      	lcall	ADPCM_CHX_Init
-            ; //_AE3845712_7:;					
-            _AE3845712_7:
+            ; //_AECA8DE46_7:;					
+            _AECA8DE46_7:
             ; //	asm set io[0x06].b0;			
 00123:      	set io[0x06].b0//
-            ; //_AE3845712_8:;					
-            _AE3845712_8:
+            ; //_AECA8DE46_8:;					
+            _AECA8DE46_8:
             ; //	sAX	= 0x0001;			
 00124:      	AX	= 0x01
             ; //	asm I1 = CopyToBank+0;			
 00125:      	I1 = CopyToBank+0//
             ; //	*(__int16*)sSI	= sAX			
 00126:      	rm[I1]	= AX
-            ; //_AE3845712_9:;					
-            _AE3845712_9:
+            ; //_AECA8DE46_9:;					
+            _AECA8DE46_9:
             ; //	asm	set io[INTENA].b0		
 00127:      	set io[INTENA].b0
-            ; //_AE3845712_10:;					
-            _AE3845712_10:
+            ; //_AECA8DE46_10:;					
+            _AECA8DE46_10:
             ; //	asm	eni				
 00128:      	eni
             ; //LE6FF7BEA_5:;					
             LE6FF7BEA_5:
-            ; //_AE3845712_11:;					
-            _AE3845712_11:
-            ; //_AE3845712_12:;					
-            _AE3845712_12:
+            ; //_AECA8DE46_11:;					
+            _AECA8DE46_11:
+            ; //_AECA8DE46_12:;					
+            _AECA8DE46_12:
             ; //	asm	io[ClrWDT] = AR			
 00129:      	io[ClrWDT] = AR
             ; //	
-            ; //_AE3845712_13:;					
-            _AE3845712_13:
-            ; //_AE3845712_14:;					
-            _AE3845712_14:
+            ; //_AECA8DE46_13:;					
+            _AECA8DE46_13:
+            ; //_AECA8DE46_14:;					
+            _AECA8DE46_14:
             ; //	_PollingKey3B90E3B1();			
 0012A:      	pch	= _PollingKey3B90E3B1
 0012B:      	lcall	_PollingKey3B90E3B1
-            ; //_AE3845712_15:;					
-            _AE3845712_15:
-            ; //_AE3845712_16:;					
-            _AE3845712_16:
+            ; //_AECA8DE46_15:;					
+            _AECA8DE46_15:
+            ; //_AECA8DE46_16:;					
+            _AECA8DE46_16:
             ; //	_DoADPCM9CD0E20D();			
 0012C:      	pch	= _DoADPCM9CD0E20D
 0012D:      	lcall	_DoADPCM9CD0E20D
-            ; //_AE3845712_17:;					
-            _AE3845712_17:
+            ; //_AECA8DE46_17:;					
+            _AECA8DE46_17:
             ; //	goto LE6FF7BEA_5;			
 0012E:      	jmp	LE6FF7BEA_5
             ; //LE6FF7BEA_4:;					
             LE6FF7BEA_4:
             ; //LE6FF7BEA_3:;					
             LE6FF7BEA_3:
-            ; //_AE3845712_18:;					
-            _AE3845712_18:
+            ; //_AECA8DE46_18:;					
+            _AECA8DE46_18:
             ; //	return;					
 0012F:      	rets
             ; //_main_end:;					
             _main_end:
-            ; //_AE3845712_19:;					
-            _AE3845712_19:
+            ; //_AECA8DE46_19:;					
+            _AECA8DE46_19:
             ; //}
             ; //
             ; //rjmp void _KeyPlayAdpECABF1D0()			
             _KeyPlayAdpECABF1D0:
             ; //{
-            ; //_AE3845712_20:;					
-            _AE3845712_20:
+            ; //_AECA8DE46_20:;					
+            _AECA8DE46_20:
             ; //	
-            ; //_AE3845712_21:;					
-            _AE3845712_21:
-            ; //_AE3845712_22:;					
-            _AE3845712_22:
+            ; //_AECA8DE46_21:;					
+            _AECA8DE46_21:
+            ; //_AECA8DE46_22:;					
+            _AECA8DE46_22:
             ; //	asm I1 = _iADPCCACC469+0;		
 00130:      	I1 = _iADPCCACC469+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -704,24 +704,24 @@
 00135:      	pop	AR
             ; //LE6FF7BEA_6:;					
             LE6FF7BEA_6:
-            ; //_AE3845712_23:;					
-            _AE3845712_23:
+            ; //_AECA8DE46_23:;					
+            _AECA8DE46_23:
             ; //	return;					
 00136:      	rets
             ; //_KeyPlayAdpECABF1D0_end:;			
             _KeyPlayAdpECABF1D0_end:
-            ; //_AE3845712_24:;					
-            _AE3845712_24:
+            ; //_AECA8DE46_24:;					
+            _AECA8DE46_24:
             ; //}
             ; //
             ; //rjmp void _KeyPlayNextAFBA8CED()		
             _KeyPlayNextAFBA8CED:
             ; //{
-            ; //_AE3845712_25:;					
-            _AE3845712_25:
+            ; //_AECA8DE46_25:;					
+            _AECA8DE46_25:
             ; //	
-            ; //_AE3845712_26:;					
-            _AE3845712_26:
+            ; //_AECA8DE46_26:;					
+            _AECA8DE46_26:
             ; //	asm I1 = _iADPCCACC469+0;		
 00137:      	I1 = _iADPCCACC469+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -734,8 +734,8 @@
 0013B:      	CX++
             ; //	*(__int16*)sSI	= sCX;			
 0013C:      	rm[I1]	= CX
-            ; //_AE3845712_27:;					
-            _AE3845712_27:
+            ; //_AECA8DE46_27:;					
+            _AECA8DE46_27:
             ; //	asm I1 = _iADPCCACC469+0;		
 0013D:      	I1 = _iADPCCACC469+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -751,8 +751,8 @@
 00143:      	jmp	LE6FF7BEA_8
             ; //LE6FF7BEA_9:;					
             LE6FF7BEA_9:
-            ; //_AE3845712_28:;					
-            _AE3845712_28:
+            ; //_AECA8DE46_28:;					
+            _AECA8DE46_28:
             ; //	sAX	= 0x0000;			
 00144:      	AX	= 0x00
             ; //	asm I1 = _iADPCCACC469+0;		
@@ -761,35 +761,35 @@
 00146:      	rm[I1]	= AX
             ; //LE6FF7BEA_8:;					
             LE6FF7BEA_8:
-            ; //_AE3845712_29:;					
-            _AE3845712_29:
-            ; //_AE3845712_30:;					
-            _AE3845712_30:
-            ; //_AE3845712_31:;					
-            _AE3845712_31:
+            ; //_AECA8DE46_29:;					
+            _AECA8DE46_29:
+            ; //_AECA8DE46_30:;					
+            _AECA8DE46_30:
+            ; //_AECA8DE46_31:;					
+            _AECA8DE46_31:
             ; //	_KeyPlayAdpECABF1D0();			
 00147:      	pch	= _KeyPlayAdpECABF1D0
 00148:      	lcall	_KeyPlayAdpECABF1D0
             ; //LE6FF7BEA_7:;					
             LE6FF7BEA_7:
-            ; //_AE3845712_32:;					
-            _AE3845712_32:
+            ; //_AECA8DE46_32:;					
+            _AECA8DE46_32:
             ; //	return;					
 00149:      	rets
             ; //_KeyPlayNextAFBA8CED_end:;			
             _KeyPlayNextAFBA8CED_end:
-            ; //_AE3845712_33:;					
-            _AE3845712_33:
+            ; //_AECA8DE46_33:;					
+            _AECA8DE46_33:
             ; //}
             ; //
             ; //rjmp void _KeyPlayPrev8E98A35A()		
             _KeyPlayPrev8E98A35A:
             ; //{
-            ; //_AE3845712_34:;					
-            _AE3845712_34:
+            ; //_AECA8DE46_34:;					
+            _AECA8DE46_34:
             ; //	
-            ; //_AE3845712_35:;					
-            _AE3845712_35:
+            ; //_AECA8DE46_35:;					
+            _AECA8DE46_35:
             ; //	asm I1 = _iADPCCACC469+0;		
 0014A:      	I1 = _iADPCCACC469+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -802,8 +802,8 @@
 0014E:      	CX--
             ; //	*(__int16*)sSI	= sCX;			
 0014F:      	rm[I1]	= CX
-            ; //_AE3845712_36:;					
-            _AE3845712_36:
+            ; //_AECA8DE46_36:;					
+            _AECA8DE46_36:
             ; //	asm I1 = _iADPCCACC469+0;		
 00150:      	I1 = _iADPCCACC469+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -819,8 +819,8 @@
 00156:      	jmp	LE6FF7BEA_11
             ; //LE6FF7BEA_12:;					
             LE6FF7BEA_12:
-            ; //_AE3845712_37:;					
-            _AE3845712_37:
+            ; //_AECA8DE46_37:;					
+            _AECA8DE46_37:
             ; //	sAX	= 0x0005;			
 00157:      	AX	= 0x05
             ; //	asm I1 = _iADPCCACC469+0;		
@@ -829,25 +829,25 @@
 00159:      	rm[I1]	= AX
             ; //LE6FF7BEA_11:;					
             LE6FF7BEA_11:
-            ; //_AE3845712_38:;					
-            _AE3845712_38:
-            ; //_AE3845712_39:;					
-            _AE3845712_39:
-            ; //_AE3845712_40:;					
-            _AE3845712_40:
+            ; //_AECA8DE46_38:;					
+            _AECA8DE46_38:
+            ; //_AECA8DE46_39:;					
+            _AECA8DE46_39:
+            ; //_AECA8DE46_40:;					
+            _AECA8DE46_40:
             ; //	_KeyPlayAdpECABF1D0();			
 0015A:      	pch	= _KeyPlayAdpECABF1D0
 0015B:      	lcall	_KeyPlayAdpECABF1D0
             ; //LE6FF7BEA_10:;					
             LE6FF7BEA_10:
-            ; //_AE3845712_41:;					
-            _AE3845712_41:
+            ; //_AECA8DE46_41:;					
+            _AECA8DE46_41:
             ; //	return;					
 0015C:      	rets
             ; //_KeyPlayPrev8E98A35A_end:;			
             _KeyPlayPrev8E98A35A_end:
-            ; //_AE3845712_42:;					
-            _AE3845712_42:
+            ; //_AECA8DE46_42:;					
+            _AECA8DE46_42:
             ; //}
             ; //
             ; //
@@ -954,105 +954,105 @@
 00179:      	push mr2
 0017A:      	ar = p1.hh
 0017B:      	push ar
-            ; //_AE3845712_43:;					
-            _AE3845712_43:
-            ; //_AE3845712_44:;					
-            _AE3845712_44:
+            ; //_AECA8DE46_43:;					
+            _AECA8DE46_43:
+            ; //_AECA8DE46_44:;					
+            _AECA8DE46_44:
             ; //	asm	clr io[INTREQ].b0		
 0017C:      	clr io[INTREQ].b0
-            ; //_AE3845712_45:;					
-            _AE3845712_45:
+            ; //_AECA8DE46_45:;					
+            _AECA8DE46_45:
             ; //	asm	push AX				
 0017D:      	push AX
-            ; //_AE3845712_46:;					
-            _AE3845712_46:
+            ; //_AECA8DE46_46:;					
+            _AECA8DE46_46:
             ; //	asm	push I0				
 0017E:      	push I0
-            ; //_AE3845712_47:;					
-            _AE3845712_47:
+            ; //_AECA8DE46_47:;					
+            _AECA8DE46_47:
             ; //	asm	push CBL			
 0017F:      	push CBL
             ; //	
-            ; //_AE3845712_48:;					
-            _AE3845712_48:
+            ; //_AECA8DE46_48:;					
+            _AECA8DE46_48:
             ; //	io[0x3B]	= 0x0007;		
 00180:      	AR	= 0x07
 00181:      	io[0x3B]	= AR
             ; //	
-            ; //_AE3845712_49:;					
-            _AE3845712_49:
+            ; //_AECA8DE46_49:;					
+            _AECA8DE46_49:
             ; //	asm AX = rm[outbuf+0];			
 00182:      	AX = rm[outbuf+0]//
-            ; //_AE3845712_50:;					
-            _AE3845712_50:
+            ; //_AECA8DE46_50:;					
+            _AECA8DE46_50:
             ; //	asm	AR = AX				
 00183:      	AR = AX
-            ; //_AE3845712_51:;					
-            _AE3845712_51:
+            ; //_AECA8DE46_51:;					
+            _AECA8DE46_51:
             ; //	asm	I0 = AR				
 00184:      	I0 = AR
             ; //	
-            ; //_AE3845712_52:;					
-            _AE3845712_52:
-            ; //_AE3845712_53:;					
-            _AE3845712_53:
+            ; //_AECA8DE46_52:;					
+            _AECA8DE46_52:
+            ; //_AECA8DE46_53:;					
+            _AECA8DE46_53:
             ; //	read_I0P2();				
 00185:      	AX	= rm[I0++2]
             ; //	io[0x16]	= sAX;			
 00186:      	AR	= AX
 00187:      	io[0x16]	= AR
-            ; //_AE3845712_54:;					
-            _AE3845712_54:
-            ; //_AE3845712_55:;					
-            _AE3845712_55:
+            ; //_AECA8DE46_54:;					
+            _AECA8DE46_54:
+            ; //_AECA8DE46_55:;					
+            _AECA8DE46_55:
             ; //	read_I0P2();				
 00188:      	AX	= rm[I0++2]
             ; //	io[0x16]	= sAX;			
 00189:      	AR	= AX
 0018A:      	io[0x16]	= AR
-            ; //_AE3845712_56:;					
-            _AE3845712_56:
-            ; //_AE3845712_57:;					
-            _AE3845712_57:
+            ; //_AECA8DE46_56:;					
+            _AECA8DE46_56:
+            ; //_AECA8DE46_57:;					
+            _AECA8DE46_57:
             ; //	read_I0P2();				
 0018B:      	AX	= rm[I0++2]
             ; //	io[0x16]	= sAX;			
 0018C:      	AR	= AX
 0018D:      	io[0x16]	= AR
-            ; //_AE3845712_58:;					
-            _AE3845712_58:
-            ; //_AE3845712_59:;					
-            _AE3845712_59:
+            ; //_AECA8DE46_58:;					
+            _AECA8DE46_58:
+            ; //_AECA8DE46_59:;					
+            _AECA8DE46_59:
             ; //	read_I0P2();				
 0018E:      	AX	= rm[I0++2]
             ; //	io[0x16]	= sAX;			
 0018F:      	AR	= AX
 00190:      	io[0x16]	= AR
-            ; //_AE3845712_60:;					
-            _AE3845712_60:
-            ; //_AE3845712_61:;					
-            _AE3845712_61:
+            ; //_AECA8DE46_60:;					
+            _AECA8DE46_60:
+            ; //_AECA8DE46_61:;					
+            _AECA8DE46_61:
             ; //	get_I0();				
 00191:      	push	I0
 00192:      	pop	AX
             ; //	outbuf+0 = sAX				
 00193:      	rm[outbuf+0]	= AX
-            ; //_AE3845712_62:;					
-            _AE3845712_62:
+            ; //_AECA8DE46_62:;					
+            _AECA8DE46_62:
             ; //	asm	pop CBL				
 00194:      	pop CBL
-            ; //_AE3845712_63:;					
-            _AE3845712_63:
+            ; //_AECA8DE46_63:;					
+            _AECA8DE46_63:
             ; //	asm	pop I0				
 00195:      	pop I0
-            ; //_AE3845712_64:;					
-            _AE3845712_64:
+            ; //_AECA8DE46_64:;					
+            _AECA8DE46_64:
             ; //	asm	pop AX				
 00196:      	pop AX
             ; //L0E8FA404_15:;					
             L0E8FA404_15:
-            ; //_AE3845712_65:;					
-            _AE3845712_65:
+            ; //_AECA8DE46_65:;					
+            _AECA8DE46_65:
             ; //	return;					
 00197:      	pop ar
 00198:      	p1.hh = ar
@@ -1073,196 +1073,196 @@
 001A7:      	reti
             ; //_PWM_Entry4EB0B003_end:;			
             _PWM_Entry4EB0B003_end:
-            ; //_AE3845712_66:;					
-            _AE3845712_66:
+            ; //_AECA8DE46_66:;					
+            _AECA8DE46_66:
             ; //}
             ; //
             ; //rjmp void L0E8FA404_16()			
             L0E8FA404_16:
             ; //{
-            ; //_AE3845712_67:;					
-            _AE3845712_67:
+            ; //_AECA8DE46_67:;					
+            _AECA8DE46_67:
             ; //	
-            ; //_AE3845712_68:;					
-            _AE3845712_68:
+            ; //_AECA8DE46_68:;					
+            _AECA8DE46_68:
             ; //	io[0x16]	= 0x0000;		
 001A8:      	AR	= 0x00
 001A9:      	io[0x16]	= AR
-            ; //_AE3845712_69:;					
-            _AE3845712_69:
+            ; //_AECA8DE46_69:;					
+            _AECA8DE46_69:
             ; //	io[0x16]	= 0x0000;		
 001AA:      	AR	= 0x00
 001AB:      	io[0x16]	= AR
-            ; //_AE3845712_70:;					
-            _AE3845712_70:
+            ; //_AECA8DE46_70:;					
+            _AECA8DE46_70:
             ; //	io[0x16]	= 0x0000;		
 001AC:      	AR	= 0x00
 001AD:      	io[0x16]	= AR
-            ; //_AE3845712_71:;					
-            _AE3845712_71:
+            ; //_AECA8DE46_71:;					
+            _AECA8DE46_71:
             ; //	io[0x16]	= 0x0000;		
 001AE:      	AR	= 0x00
 001AF:      	io[0x16]	= AR
-            ; //_AE3845712_72:;					
-            _AE3845712_72:
+            ; //_AECA8DE46_72:;					
+            _AECA8DE46_72:
             ; //	io[0x36]	= 0x0000;		
 001B0:      	AR	= 0x00
 001B1:      	io[0x36]	= AR
-            ; //_AE3845712_73:;					
-            _AE3845712_73:
+            ; //_AECA8DE46_73:;					
+            _AECA8DE46_73:
             ; //	io[0x36]	= 0x0000;		
 001B2:      	AR	= 0x00
 001B3:      	io[0x36]	= AR
-            ; //_AE3845712_74:;					
-            _AE3845712_74:
+            ; //_AECA8DE46_74:;					
+            _AECA8DE46_74:
             ; //	io[0x36]	= 0x0000;		
 001B4:      	AR	= 0x00
 001B5:      	io[0x36]	= AR
-            ; //_AE3845712_75:;					
-            _AE3845712_75:
+            ; //_AECA8DE46_75:;					
+            _AECA8DE46_75:
             ; //	io[0x36]	= 0x0000;		
 001B6:      	AR	= 0x00
 001B7:      	io[0x36]	= AR
-            ; //_AE3845712_76:;					
-            _AE3845712_76:
+            ; //_AECA8DE46_76:;					
+            _AECA8DE46_76:
             ; //	io[0x36]	= 0x0000;		
 001B8:      	AR	= 0x00
 001B9:      	io[0x36]	= AR
-            ; //_AE3845712_77:;					
-            _AE3845712_77:
+            ; //_AECA8DE46_77:;					
+            _AECA8DE46_77:
             ; //	io[0x36]	= 0x0000;		
 001BA:      	AR	= 0x00
 001BB:      	io[0x36]	= AR
-            ; //_AE3845712_78:;					
-            _AE3845712_78:
+            ; //_AECA8DE46_78:;					
+            _AECA8DE46_78:
             ; //	io[0x36]	= 0x0000;		
 001BC:      	AR	= 0x00
 001BD:      	io[0x36]	= AR
-            ; //_AE3845712_79:;					
-            _AE3845712_79:
+            ; //_AECA8DE46_79:;					
+            _AECA8DE46_79:
             ; //	io[0x36]	= 0x0000;		
 001BE:      	AR	= 0x00
 001BF:      	io[0x36]	= AR
-            ; //_AE3845712_80:;					
-            _AE3845712_80:
+            ; //_AECA8DE46_80:;					
+            _AECA8DE46_80:
             ; //	io[0x3C]	= 0x003F;		
 001C0:      	AR	= 0x3F
 001C1:      	io[0x3C]	= AR
-            ; //_AE3845712_81:;					
-            _AE3845712_81:
+            ; //_AECA8DE46_81:;					
+            _AECA8DE46_81:
             ; //	sAX	= io[0x3C];			
 001C2:      	AR	= io[0x3C]
 001C3:      	AX	= AR
-            ; //_AE3845712_82:;					
-            _AE3845712_82:
+            ; //_AECA8DE46_82:;					
+            _AECA8DE46_82:
             ; //	asm	set io[MISC].b9			
 001C4:      	set io[MISC].b9
-            ; //_AE3845712_83:;					
-            _AE3845712_83:
+            ; //_AECA8DE46_83:;					
+            _AECA8DE46_83:
             ; //	asm	set io[MISC].b8			
 001C5:      	set io[MISC].b8
-            ; //_AE3845712_84:;					
-            _AE3845712_84:
+            ; //_AECA8DE46_84:;					
+            _AECA8DE46_84:
             ; //	asm	set io[MISC].b4			
 001C6:      	set io[MISC].b4
             ; //L0E8FA404_18:;					
             L0E8FA404_18:
-            ; //_AE3845712_85:;					
-            _AE3845712_85:
+            ; //_AECA8DE46_85:;					
+            _AECA8DE46_85:
             ; //	return;					
 001C7:      	rets
             ; //L0E8FA404_16_end:;				
             L0E8FA404_16_end:
-            ; //_AE3845712_86:;					
-            _AE3845712_86:
+            ; //_AECA8DE46_86:;					
+            _AECA8DE46_86:
             ; //}
             ; //
             ; //rjmp void L0E8FA404_19()			
             L0E8FA404_19:
             ; //{
-            ; //_AE3845712_87:;					
-            _AE3845712_87:
+            ; //_AECA8DE46_87:;					
+            _AECA8DE46_87:
             ; //	
-            ; //_AE3845712_88:;					
-            _AE3845712_88:
+            ; //_AECA8DE46_88:;					
+            _AECA8DE46_88:
             ; //	io[0x04]	= 0x000F;		
 001C8:      	AR	= 0x0F
 001C9:      	io[0x04]	= AR
-            ; //_AE3845712_89:;					
-            _AE3845712_89:
+            ; //_AECA8DE46_89:;					
+            _AECA8DE46_89:
             ; //	io[0x05]	= 0xFFFF;		
 001CA:      	AR	= 0xFFFF
 001CC:      	io[0x05]	= AR
-            ; //_AE3845712_90:;					
-            _AE3845712_90:
+            ; //_AECA8DE46_90:;					
+            _AECA8DE46_90:
             ; //	io[0x07]	= 0x0000;		
 001CD:      	AR	= 0x00
 001CE:      	io[0x07]	= AR
-            ; //_AE3845712_91:;					
-            _AE3845712_91:
+            ; //_AECA8DE46_91:;					
+            _AECA8DE46_91:
             ; //	io[0x08]	= 0x0000;		
 001CF:      	AR	= 0x00
 001D0:      	io[0x08]	= AR
             ; //L0E8FA404_21:;					
             L0E8FA404_21:
-            ; //_AE3845712_92:;					
-            _AE3845712_92:
+            ; //_AECA8DE46_92:;					
+            _AECA8DE46_92:
             ; //	return;					
 001D1:      	rets
             ; //L0E8FA404_19_end:;				
             L0E8FA404_19_end:
-            ; //_AE3845712_93:;					
-            _AE3845712_93:
+            ; //_AECA8DE46_93:;					
+            _AECA8DE46_93:
             ; //}
             ; //
             ; //rjmp void _InitialDA4A7CC4()			
             _InitialDA4A7CC4:
             ; //{
-            ; //_AE3845712_94:;					
-            _AE3845712_94:
+            ; //_AECA8DE46_94:;					
+            _AECA8DE46_94:
             ; //	
-            ; //_AE3845712_95:;					
-            _AE3845712_95:
+            ; //_AECA8DE46_95:;					
+            _AECA8DE46_95:
             ; //	sAX	= 0xFFFF;			
 001D2:      	AX	= 0xFFFF
             ; //	asm I1 = _iADPCCACC469+0;		
 001D4:      	I1 = _iADPCCACC469+0//
             ; //	*(__int16*)sSI	= sAX			
 001D5:      	rm[I1]	= AX
-            ; //_AE3845712_96:;					
-            _AE3845712_96:
+            ; //_AECA8DE46_96:;					
+            _AECA8DE46_96:
             ; //	asm AX = PCMY+0;			
 001D6:      	AX = PCMY+0//
             ; //	inbuf+0 = sAX				
 001D8:      	rm[inbuf+0]	= AX
-            ; //_AE3845712_97:;					
-            _AE3845712_97:
+            ; //_AECA8DE46_97:;					
+            _AECA8DE46_97:
             ; //	asm AX = PCMY+0;			
 001D9:      	AX = PCMY+0//
             ; //	outbuf+0 = sAX				
 001DB:      	rm[outbuf+0]	= AX
-            ; //_AE3845712_98:;					
-            _AE3845712_98:
-            ; //_AE3845712_99:;					
-            _AE3845712_99:
+            ; //_AECA8DE46_98:;					
+            _AECA8DE46_98:
+            ; //_AECA8DE46_99:;					
+            _AECA8DE46_99:
             ; //	NEARCALL(L0E8FA404_16);			
 001DC:      	call	L0E8FA404_16
-            ; //_AE3845712_100:;				
-            _AE3845712_100:
-            ; //_AE3845712_101:;				
-            _AE3845712_101:
+            ; //_AECA8DE46_100:;				
+            _AECA8DE46_100:
+            ; //_AECA8DE46_101:;				
+            _AECA8DE46_101:
             ; //	NEARCALL(L0E8FA404_19);			
 001DD:      	call	L0E8FA404_19
             ; //L0E8FA404_22:;					
             L0E8FA404_22:
-            ; //_AE3845712_102:;				
-            _AE3845712_102:
+            ; //_AECA8DE46_102:;				
+            _AECA8DE46_102:
             ; //	return;					
 001DE:      	rets
             ; //_InitialDA4A7CC4_end:;				
             _InitialDA4A7CC4_end:
-            ; //_AE3845712_103:;				
-            _AE3845712_103:
+            ; //_AECA8DE46_103:;				
+            _AECA8DE46_103:
             ; //}
             ; //
             ; //
@@ -1343,11 +1343,11 @@
 001E2:      	rm[BP_SAVE]	= AR
 001E3:      	AR	 = -3
 001E4:      	BP	+= AR
-            ; //_AE3845712_104:;				
-            _AE3845712_104:
+            ; //_AECA8DE46_104:;				
+            _AECA8DE46_104:
             ; //	
-            ; //_AE3845712_105:;				
-            _AE3845712_105:
+            ; //_AECA8DE46_105:;				
+            _AECA8DE46_105:
             ; //	asm AX = _adpch30670376+0;		
 001E5:      	AX = _adpch30670376+0//
             ; //	sSI	= (int)&_p_1_4;			
@@ -1356,8 +1356,8 @@
 001E8:      	I1	+= AR
             ; //	*(__int16*)sSI	= sAX;			
 001E9:      	rm[I1]	= AX
-            ; //_AE3845712_106:;				
-            _AE3845712_106:
+            ; //_AECA8DE46_106:;				
+            _AECA8DE46_106:
             ; //	_i_1_2+0	= 0x00;			
 001EA:      	I1	= rm[BP_SAVE]
 001EB:      	AX	= 0x00
@@ -1400,8 +1400,8 @@
             ; //L7F5A46A0_27:;					
             L7F5A46A0_27:
             ; //	
-            ; //_AE3845712_107:;				
-            _AE3845712_107:
+            ; //_AECA8DE46_107:;				
+            _AECA8DE46_107:
             ; //	sSI	= (int)&_p_1_4;			
 001FC:      	AR	= -1
 001FD:      	I1	= rm[BP_SAVE]
@@ -1430,10 +1430,10 @@
             ; //L7F5A46A0_32:;					
             L7F5A46A0_32:
             ; //	
-            ; //_AE3845712_108:;				
-            _AE3845712_108:
-            ; //_AE3845712_109:;				
-            _AE3845712_109:
+            ; //_AECA8DE46_108:;				
+            _AECA8DE46_108:
+            ; //_AECA8DE46_109:;				
+            _AECA8DE46_109:
             ; //	sAX	= 0x0012;			
 0020B:      	AX	= 0x12
             ; //	PUSH(sAX);				
@@ -1460,8 +1460,8 @@
             ; //	RESTORESP(4);				
 00218:      	AR	= 4
 00219:      	BP	+= AR
-            ; //_AE3845712_110:;				
-            _AE3845712_110:
+            ; //_AECA8DE46_110:;				
+            _AECA8DE46_110:
             ; //	asm AX = #_adpdata32993E3B+0;		
 0021A:      	AX = #_adpdata32993E3B+0//
             ; //	PUSH(sAX);				
@@ -1488,8 +1488,8 @@
 00229:      	I1	+= AR
             ; //	*(__int16*)sSI	= sAX;			
 0022A:      	rm[I1]	= AX
-            ; //_AE3845712_111:;				
-            _AE3845712_111:
+            ; //_AECA8DE46_111:;				
+            _AECA8DE46_111:
             ; //	sSI	= (int)&_p_1_4;			
 0022B:      	AR	= -1
 0022C:      	I1	= rm[BP_SAVE]
@@ -1521,8 +1521,8 @@
             ; //	sfx_STORSILONG();			
 0023C:      	rm[I1++]	= AX
 0023D:      	rm[I1--]	= DX
-            ; //_AE3845712_112:;				
-            _AE3845712_112:
+            ; //_AECA8DE46_112:;				
+            _AECA8DE46_112:
             ; //	sSI	= (int)&_p_1_4;			
 0023E:      	AR	= -1
 0023F:      	I1	= rm[BP_SAVE]
@@ -1556,8 +1556,8 @@
 00250:      	pop	I1
             ; //	*(__int16*)sSI	= sAX;			
 00251:      	rm[I1]	= AX
-            ; //_AE3845712_113:;				
-            _AE3845712_113:
+            ; //_AECA8DE46_113:;				
+            _AECA8DE46_113:
             ; //	asm AX = _adpFLTG0FBE3CB5+0;		
 00252:      	AX = _adpFLTG0FBE3CB5+0//
             ; //	PUSH(sAX);				
@@ -1594,18 +1594,18 @@
 00264:      	pop	I1
             ; //	*(__int16*)sSI	= sAX;			
 00265:      	rm[I1]	= AX
-            ; //_AE3845712_114:;				
-            _AE3845712_114:
+            ; //_AECA8DE46_114:;				
+            _AECA8DE46_114:
             ; //	sAX	= 0x0001;			
 00266:      	AX	= 0x01
             ; //	goto L7F5A46A0_25;			
 00267:      	jmp	L7F5A46A0_25
             ; //L7F5A46A0_31:;					
             L7F5A46A0_31:
-            ; //_AE3845712_115:;				
-            _AE3845712_115:
-            ; //_AE3845712_116:;				
-            _AE3845712_116:
+            ; //_AECA8DE46_115:;				
+            _AECA8DE46_115:
+            ; //_AECA8DE46_116:;				
+            _AECA8DE46_116:
             ; //	sSI	= (int)&_p_1_4;			
 00268:      	AR	= -1
 00269:      	I1	= rm[BP_SAVE]
@@ -1622,22 +1622,22 @@
 00270:      	CX	= rm[I1]
             ; //	asm rm[I1] = CX + AR;			
 00271:      	rm[I1] = CX + AR//
-            ; //_AE3845712_117:;				
-            _AE3845712_117:
+            ; //_AECA8DE46_117:;				
+            _AECA8DE46_117:
             ; //	goto L7F5A46A0_29;			
 00272:      	jmp	L7F5A46A0_29
             ; //L7F5A46A0_28:;					
             L7F5A46A0_28:
-            ; //_AE3845712_118:;				
-            _AE3845712_118:
+            ; //_AECA8DE46_118:;				
+            _AECA8DE46_118:
             ; //	sAX	= 0x0000;			
 00273:      	AX	= 0x00
             ; //	goto L7F5A46A0_25;			
 00274:      	jmp	L7F5A46A0_25
             ; //L7F5A46A0_25:;					
             L7F5A46A0_25:
-            ; //_AE3845712_119:;				
-            _AE3845712_119:
+            ; //_AECA8DE46_119:;				
+            _AECA8DE46_119:
             ; //	return;					
 00275:      	AR	= 3
 00276:      	BP	+= AR
@@ -1646,28 +1646,28 @@
 00279:      	rets
             ; //_playADPCMBACD5AFD_end:;			
             _playADPCMBACD5AFD_end:
-            ; //_AE3845712_120:;				
-            _AE3845712_120:
+            ; //_AECA8DE46_120:;				
+            _AECA8DE46_120:
             ; //}
             ; //
             ; //rjmp void ADPCM_CHX_Init()			
             ADPCM_CHX_Init:
             ; //{
-            ; //_AE3845712_121:;				
-            _AE3845712_121:
+            ; //_AECA8DE46_121:;				
+            _AECA8DE46_121:
             ; //	
-            ; //_AE3845712_122:;				
-            _AE3845712_122:
+            ; //_AECA8DE46_122:;				
+            _AECA8DE46_122:
             ; //	sAX	= 0x0000;			
 0027A:      	AX	= 0x00
             ; //	asm I1 = _iADPCCACC469+0;		
 0027B:      	I1 = _iADPCCACC469+0//
             ; //	*(__int16*)sSI	= sAX			
 0027C:      	rm[I1]	= AX
-            ; //_AE3845712_123:;				
-            _AE3845712_123:
-            ; //_AE3845712_124:;				
-            _AE3845712_124:
+            ; //_AECA8DE46_123:;				
+            _AECA8DE46_123:
+            ; //_AECA8DE46_124:;				
+            _AECA8DE46_124:
             ; //	sAX	= 0x0024;			
 0027D:      	AX	= 0x24
             ; //	PUSH(sAX);				
@@ -1692,56 +1692,56 @@
 00288:      	BP	+= AR
             ; //L7F5A46A0_33:;					
             L7F5A46A0_33:
-            ; //_AE3845712_125:;				
-            _AE3845712_125:
+            ; //_AECA8DE46_125:;				
+            _AECA8DE46_125:
             ; //	return;					
 00289:      	rets
             ; //ADPCM_CHX_Init_end:;				
             ADPCM_CHX_Init_end:
-            ; //_AE3845712_126:;				
-            _AE3845712_126:
+            ; //_AECA8DE46_126:;				
+            _AECA8DE46_126:
             ; //}
             ; //
             ; //rjmp void ADPCM_CHXGetBts()			
             ADPCM_CHXGetBts:
             ; //{
-            ; //_AE3845712_127:;				
-            _AE3845712_127:
-            ; //_AE3845712_128:;				
-            _AE3845712_128:
+            ; //_AECA8DE46_127:;				
+            _AECA8DE46_127:
+            ; //_AECA8DE46_128:;				
+            _AECA8DE46_128:
             ; //	asm	push AX				
 0028A:      	push AX
-            ; //_AE3845712_129:;				
-            _AE3845712_129:
+            ; //_AECA8DE46_129:;				
+            _AECA8DE46_129:
             ; //	asm	push BX				
 0028B:      	push BX
-            ; //_AE3845712_130:;				
-            _AE3845712_130:
+            ; //_AECA8DE46_130:;				
+            _AECA8DE46_130:
             ; //	asm	push CX				
 0028C:      	push CX
-            ; //_AE3845712_131:;				
-            _AE3845712_131:
+            ; //_AECA8DE46_131:;				
+            _AECA8DE46_131:
             ; //	asm	push DX				
 0028D:      	push DX
-            ; //_AE3845712_132:;				
-            _AE3845712_132:
+            ; //_AECA8DE46_132:;				
+            _AECA8DE46_132:
             ; //	asm	push I1				
 0028E:      	push I1
-            ; //_AE3845712_133:;				
-            _AE3845712_133:
+            ; //_AECA8DE46_133:;				
+            _AECA8DE46_133:
             ; //	asm	push P0				
 0028F:      	push P0
-            ; //_AE3845712_134:;				
-            _AE3845712_134:
+            ; //_AECA8DE46_134:;				
+            _AECA8DE46_134:
             ; //	asm	AR = P0.hh			
 00290:      	AR = P0.hh
-            ; //_AE3845712_135:;				
-            _AE3845712_135:
+            ; //_AECA8DE46_135:;				
+            _AECA8DE46_135:
             ; //	asm	push AR				
 00291:      	push AR
             ; //	
-            ; //_AE3845712_136:;				
-            _AE3845712_136:
+            ; //_AECA8DE46_136:;				
+            _AECA8DE46_136:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 00292:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -1778,81 +1778,81 @@
 002A5:      	pop	DX
             ; //	sAX	= POP();			
 002A6:      	pop	AX
-            ; //_AE3845712_137:;				
-            _AE3845712_137:
+            ; //_AECA8DE46_137:;				
+            _AECA8DE46_137:
             ; //	asm	AR = AX				
 002A7:      	AR = AX
-            ; //_AE3845712_138:;				
-            _AE3845712_138:
+            ; //_AECA8DE46_138:;				
+            _AECA8DE46_138:
             ; //	asm	P0 = AR				
 002A8:      	P0 = AR
-            ; //_AE3845712_139:;				
-            _AE3845712_139:
+            ; //_AECA8DE46_139:;				
+            _AECA8DE46_139:
             ; //	asm	AR = DX				
 002A9:      	AR = DX
-            ; //_AE3845712_140:;				
-            _AE3845712_140:
+            ; //_AECA8DE46_140:;				
+            _AECA8DE46_140:
             ; //	asm	P0.hh = AR			
 002AA:      	P0.hh = AR
             ; //	
-            ; //_AE3845712_141:;				
-            _AE3845712_141:
-            ; //_AE3845712_142:;				
-            _AE3845712_142:
+            ; //_AECA8DE46_141:;				
+            _AECA8DE46_141:
+            ; //_AECA8DE46_142:;				
+            _AECA8DE46_142:
             ; //	read_P0();				
 002AB:      	AX	= pm[P0]
-            ; //_AE3845712_143:;				
-            _AE3845712_143:
+            ; //_AECA8DE46_143:;				
+            _AECA8DE46_143:
             ; //	asm	pop AR				
 002AC:      	pop AR
-            ; //_AE3845712_144:;				
-            _AE3845712_144:
+            ; //_AECA8DE46_144:;				
+            _AECA8DE46_144:
             ; //	asm	P0.hh = AR			
 002AD:      	P0.hh = AR
-            ; //_AE3845712_145:;				
-            _AE3845712_145:
+            ; //_AECA8DE46_145:;				
+            _AECA8DE46_145:
             ; //	asm	pop P0				
 002AE:      	pop P0
-            ; //_AE3845712_146:;				
-            _AE3845712_146:
+            ; //_AECA8DE46_146:;				
+            _AECA8DE46_146:
             ; //	asm	pop I1				
 002AF:      	pop I1
-            ; //_AE3845712_147:;				
-            _AE3845712_147:
+            ; //_AECA8DE46_147:;				
+            _AECA8DE46_147:
             ; //	asm	pop DX				
 002B0:      	pop DX
-            ; //_AE3845712_148:;				
-            _AE3845712_148:
+            ; //_AECA8DE46_148:;				
+            _AECA8DE46_148:
             ; //	asm	pop CX				
 002B1:      	pop CX
-            ; //_AE3845712_149:;				
-            _AE3845712_149:
+            ; //_AECA8DE46_149:;				
+            _AECA8DE46_149:
             ; //	asm	pop BX				
 002B2:      	pop BX
             ; //	
-            ; //_AE3845712_150:;				
-            _AE3845712_150:
-            ; //_AE3845712_151:;				
-            _AE3845712_151:
+            ; //_AECA8DE46_150:;				
+            _AECA8DE46_150:
+            ; //_AECA8DE46_151:;				
+            _AECA8DE46_151:
             ; //	asintax();				
-            ; //_AE3845712_152:;				
-            _AE3845712_152:
+            ; //_AECA8DE46_152:;				
+            _AECA8DE46_152:
             ; //	asm	AR = AX				
 002B3:      	AR = AX
-            ; //_AE3845712_153:;				
-            _AE3845712_153:
+            ; //_AECA8DE46_153:;				
+            _AECA8DE46_153:
             ; //	asm	pop AX				
 002B4:      	pop AX
             ; //L7F5A46A0_34:;					
             L7F5A46A0_34:
-            ; //_AE3845712_154:;				
-            _AE3845712_154:
+            ; //_AECA8DE46_154:;				
+            _AECA8DE46_154:
             ; //	return;					
 002B5:      	rets
             ; //ADPCM_CHXGetBts_end:;				
             ADPCM_CHXGetBts_end:
-            ; //_AE3845712_155:;				
-            _AE3845712_155:
+            ; //_AECA8DE46_155:;				
+            _AECA8DE46_155:
             ; //}
             ; //
             ; //rjmp void L7F5A46A0_35()			
@@ -1866,35 +1866,35 @@
 002B9:      	rm[BP_SAVE]	= AR
 002BA:      	AR	 = -1
 002BB:      	BP	+= AR
-            ; //_AE3845712_156:;				
-            _AE3845712_156:
+            ; //_AECA8DE46_156:;				
+            _AECA8DE46_156:
             ; //	
-            ; //_AE3845712_157:;				
-            _AE3845712_157:
+            ; //_AECA8DE46_157:;				
+            _AECA8DE46_157:
             ; //	asm I1 = inbuf+0;			
 002BC:      	I1 = inbuf+0//
             ; //	sAX	= *(__int16*)sSI;		
 002BD:      	AX	= rm[I1]
-            ; //_AE3845712_158:;				
-            _AE3845712_158:
+            ; //_AECA8DE46_158:;				
+            _AECA8DE46_158:
             ; //	asm	AR = AX				
 002BE:      	AR = AX
-            ; //_AE3845712_159:;				
-            _AE3845712_159:
+            ; //_AECA8DE46_159:;				
+            _AECA8DE46_159:
             ; //	asm	I0 = AR				
 002BF:      	I0 = AR
             ; //	
             ; //	
-            ; //_AE3845712_160:;				
-            _AE3845712_160:
+            ; //_AECA8DE46_160:;				
+            _AECA8DE46_160:
             ; //	_i_1_2+0	= 0x40;			
 002C0:      	I1	= rm[BP_SAVE]
 002C1:      	AX	= 0x40
 002C2:      	rm[I1]	= AX
             ; //L7F5A46A0_39:;					
             L7F5A46A0_39:
-            ; //_AE3845712_161:;				
-            _AE3845712_161:
+            ; //_AECA8DE46_161:;				
+            _AECA8DE46_161:
             ; //	sSI	= (int)&_i_1_2;			
 002C3:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
@@ -1908,17 +1908,17 @@
             ; //L7F5A46A0_40:;					
             L7F5A46A0_40:
             ; //	
-            ; //_AE3845712_162:;				
-            _AE3845712_162:
+            ; //_AECA8DE46_162:;				
+            _AECA8DE46_162:
             ; //	sAX	= 0x0000;			
 002C8:      	AX	= 0x00
-            ; //_AE3845712_163:;				
-            _AE3845712_163:
+            ; //_AECA8DE46_163:;				
+            _AECA8DE46_163:
             ; //	asm	rm[I0++] = AX			
 002C9:      	rm[I0++] = AX
             ; //	
-            ; //_AE3845712_164:;				
-            _AE3845712_164:
+            ; //_AECA8DE46_164:;				
+            _AECA8DE46_164:
             ; //	sSI	= (int)&_i_1_2;			
 002CA:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
@@ -1931,16 +1931,16 @@
 002CE:      	CX	= rm[I1]
             ; //	asm rm[I1] = CX - AR;			
 002CF:      	rm[I1] = CX - AR//
-            ; //_AE3845712_165:;				
-            _AE3845712_165:
+            ; //_AECA8DE46_165:;				
+            _AECA8DE46_165:
             ; //	goto L7F5A46A0_39;			
 002D0:      	jmp	L7F5A46A0_39
             ; //L7F5A46A0_38:;					
             L7F5A46A0_38:
             ; //L7F5A46A0_37:;					
             L7F5A46A0_37:
-            ; //_AE3845712_166:;				
-            _AE3845712_166:
+            ; //_AECA8DE46_166:;				
+            _AECA8DE46_166:
             ; //	return;					
 002D1:      	AR	= 1
 002D2:      	BP	+= AR
@@ -1949,8 +1949,8 @@
 002D5:      	rets
             ; //L7F5A46A0_35_end:;				
             L7F5A46A0_35_end:
-            ; //_AE3845712_167:;				
-            _AE3845712_167:
+            ; //_AECA8DE46_167:;				
+            _AECA8DE46_167:
             ; //}
             ; //
             ; //rjmp void L7F5A46A0_41(__int16 _vol_0_4)	
@@ -1965,11 +1965,11 @@
 002D9:      	rm[BP_SAVE]	= AR
 002DA:      	AR	 = -2
 002DB:      	BP	+= AR
-            ; //_AE3845712_168:;				
-            _AE3845712_168:
+            ; //_AECA8DE46_168:;				
+            _AECA8DE46_168:
             ; //	
-            ; //_AE3845712_169:;				
-            _AE3845712_169:
+            ; //_AECA8DE46_169:;				
+            _AECA8DE46_169:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 002DC:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -1996,8 +1996,8 @@
             ; //L7F5A46A0_45:;					
             L7F5A46A0_45:
             ; //	
-            ; //_AE3845712_170:;				
-            _AE3845712_170:
+            ; //_AECA8DE46_170:;				
+            _AECA8DE46_170:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 002E9:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2007,72 +2007,72 @@
             ; //	sAX	= sAX + sCX;			
 002EC:      	AR	= CX
 002ED:      	AX	+= AR
-            ; //_AE3845712_171:;				
-            _AE3845712_171:
+            ; //_AECA8DE46_171:;				
+            _AECA8DE46_171:
             ; //	asm	AR = AX				
 002EE:      	AR = AX
-            ; //_AE3845712_172:;				
-            _AE3845712_172:
+            ; //_AECA8DE46_172:;				
+            _AECA8DE46_172:
             ; //	asm	I0 = AR				
 002EF:      	I0 = AR
             ; //	
             ; //	
-            ; //_AE3845712_173:;				
-            _AE3845712_173:
-            ; //_AE3845712_174:;				
-            _AE3845712_174:
+            ; //_AECA8DE46_173:;				
+            _AECA8DE46_173:
+            ; //_AECA8DE46_174:;				
+            _AECA8DE46_174:
             ; //	read_I0P();				
 002F0:      	AX	= rm[I0++]
             ; //	io[0x36]	= sAX;			
 002F1:      	AR	= AX
 002F2:      	io[0x36]	= AR
-            ; //_AE3845712_175:;				
-            _AE3845712_175:
-            ; //_AE3845712_176:;				
-            _AE3845712_176:
+            ; //_AECA8DE46_175:;				
+            _AECA8DE46_175:
+            ; //_AECA8DE46_176:;				
+            _AECA8DE46_176:
             ; //	read_I0P();				
 002F3:      	AX	= rm[I0++]
             ; //	io[0x36]	= sAX;			
 002F4:      	AR	= AX
 002F5:      	io[0x36]	= AR
-            ; //_AE3845712_177:;				
-            _AE3845712_177:
-            ; //_AE3845712_178:;				
-            _AE3845712_178:
+            ; //_AECA8DE46_177:;				
+            _AECA8DE46_177:
+            ; //_AECA8DE46_178:;				
+            _AECA8DE46_178:
             ; //	read_I0P();				
 002F6:      	AX	= rm[I0++]
             ; //	io[0x36]	= sAX;			
 002F7:      	AR	= AX
 002F8:      	io[0x36]	= AR
-            ; //_AE3845712_179:;				
-            _AE3845712_179:
-            ; //_AE3845712_180:;				
-            _AE3845712_180:
+            ; //_AECA8DE46_179:;				
+            _AECA8DE46_179:
+            ; //_AECA8DE46_180:;				
+            _AECA8DE46_180:
             ; //	read_I0P();				
 002F9:      	AX	= rm[I0++]
             ; //	io[0x36]	= sAX;			
 002FA:      	AR	= AX
 002FB:      	io[0x36]	= AR
-            ; //_AE3845712_181:;				
-            _AE3845712_181:
-            ; //_AE3845712_182:;				
-            _AE3845712_182:
+            ; //_AECA8DE46_181:;				
+            _AECA8DE46_181:
+            ; //_AECA8DE46_182:;				
+            _AECA8DE46_182:
             ; //	read_I0P();				
 002FC:      	AX	= rm[I0++]
             ; //	io[0x3D]	= sAX;			
 002FD:      	AR	= AX
 002FE:      	io[0x3D]	= AR
-            ; //_AE3845712_183:;				
-            _AE3845712_183:
-            ; //_AE3845712_184:;				
-            _AE3845712_184:
+            ; //_AECA8DE46_183:;				
+            _AECA8DE46_183:
+            ; //_AECA8DE46_184:;				
+            _AECA8DE46_184:
             ; //	read_I0P();				
 002FF:      	AX	= rm[I0++]
             ; //	io[0x3E]	= sAX;			
 00300:      	AR	= AX
 00301:      	io[0x3E]	= AR
-            ; //_AE3845712_185:;				
-            _AE3845712_185:
+            ; //_AECA8DE46_185:;				
+            _AECA8DE46_185:
             ; //	sSI	= (int)&_vol_0_4;		
 00302:      	AR	= 2
 00303:      	I1	= rm[BP_SAVE]
@@ -2082,13 +2082,13 @@
             ; //	io[0x3C]	= sAX;			
 00306:      	AR	= AX
 00307:      	io[0x3C]	= AR
-            ; //_AE3845712_186:;				
-            _AE3845712_186:
+            ; //_AECA8DE46_186:;				
+            _AECA8DE46_186:
             ; //	sAX	= io[0x3C];			
 00308:      	AR	= io[0x3C]
 00309:      	AX	= AR
-            ; //_AE3845712_187:;				
-            _AE3845712_187:
+            ; //_AECA8DE46_187:;				
+            _AECA8DE46_187:
             ; //	asm I1 = inbuf+0;			
 0030A:      	I1 = inbuf+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2097,8 +2097,8 @@
 0030C:      	I1	= rm[BP_SAVE]
             ; //	*(__int16*)sSI	= sAX;			
 0030D:      	rm[I1]	= AX
-            ; //_AE3845712_188:;				
-            _AE3845712_188:
+            ; //_AECA8DE46_188:;				
+            _AECA8DE46_188:
             ; //	_i_1_4+0	= 0x20;			
 0030E:      	AR	= -1
 0030F:      	I1	= rm[BP_SAVE]
@@ -2107,8 +2107,8 @@
 00312:      	rm[I1]	= AX
             ; //L7F5A46A0_47:;					
             L7F5A46A0_47:
-            ; //_AE3845712_189:;				
-            _AE3845712_189:
+            ; //_AECA8DE46_189:;				
+            _AECA8DE46_189:
             ; //	sSI	= (int)&_i_1_4;			
 00313:      	AR	= -1
 00314:      	I1	= rm[BP_SAVE]
@@ -2134,8 +2134,8 @@
             ; //L7F5A46A0_48:;					
             L7F5A46A0_48:
             ; //	
-            ; //_AE3845712_190:;				
-            _AE3845712_190:
+            ; //_AECA8DE46_190:;				
+            _AECA8DE46_190:
             ; //	sAX	= 0;				
 00320:      	AX	= 0x00
             ; //	asm test io[0x00].b14;			
@@ -2155,10 +2155,10 @@
             ; //L7F5A46A0_51:;					
             L7F5A46A0_51:
             ; //	
-            ; //_AE3845712_191:;				
-            _AE3845712_191:
-            ; //_AE3845712_192:;				
-            _AE3845712_192:
+            ; //_AECA8DE46_191:;				
+            _AECA8DE46_191:
+            ; //_AECA8DE46_192:;				
+            _AECA8DE46_192:
             ; //	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E();
 00327:      	pch	= _SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E
 00328:      	lcall	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E
@@ -2171,8 +2171,8 @@
             ; //L7F5A46A0_53:;					
             L7F5A46A0_53:
             ; //	
-            ; //_AE3845712_193:;				
-            _AE3845712_193:
+            ; //_AECA8DE46_193:;				
+            _AECA8DE46_193:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 0032C:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2193,16 +2193,16 @@
             ; //	sfx_STORSILONG();			
 00335:      	rm[I1++]	= AX
 00336:      	rm[I1--]	= DX
-            ; //_AE3845712_194:;				
-            _AE3845712_194:
+            ; //_AECA8DE46_194:;				
+            _AECA8DE46_194:
             ; //	goto L7F5A46A0_43;			
 00337:      	jmp	L7F5A46A0_43
             ; //L7F5A46A0_52:;					
             L7F5A46A0_52:
-            ; //_AE3845712_195:;				
-            _AE3845712_195:
-            ; //_AE3845712_196:;				
-            _AE3845712_196:
+            ; //_AECA8DE46_195:;				
+            _AECA8DE46_195:
+            ; //_AECA8DE46_196:;				
+            _AECA8DE46_196:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 00338:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2217,10 +2217,10 @@
 0033E:      	io[0x36]	= AR
             ; //L7F5A46A0_50:;					
             L7F5A46A0_50:
-            ; //_AE3845712_197:;				
-            _AE3845712_197:
-            ; //_AE3845712_198:;				
-            _AE3845712_198:
+            ; //_AECA8DE46_197:;				
+            _AECA8DE46_197:
+            ; //_AECA8DE46_198:;				
+            _AECA8DE46_198:
             ; //	sSI	= (int)&_p_1_2;			
 0033F:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
@@ -2248,9 +2248,9 @@
             ; //	sfx_INT2LONG_AX();			
 0034C:      	DX	= 0
 0034D:      	test	AX.b15
-0034E:      	if ZR jmp LFE021D20_0
+0034E:      	if ZR jmp L7E288010_0
 0034F:      	DX = -1
-            LFE021D20_0:
+            L7E288010_0:
             ; //	sCX	= POP();			
 00350:      	pop	CX
             ; //	sBX	= POP();			
@@ -2273,15 +2273,15 @@
 0035B:      	AX	= rm[I1]
             ; //	asm rm[I1] = AX + AR;			
 0035C:      	rm[I1] = AX + AR//
-            ; //_AE3845712_199:;				
-            _AE3845712_199:
+            ; //_AECA8DE46_199:;				
+            _AECA8DE46_199:
             ; //	goto L7F5A46A0_47;			
 0035D:      	jmp	L7F5A46A0_47
             ; //L7F5A46A0_46:;					
             L7F5A46A0_46:
             ; //	
-            ; //_AE3845712_200:;				
-            _AE3845712_200:
+            ; //_AECA8DE46_200:;				
+            _AECA8DE46_200:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 0035E:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2291,73 +2291,73 @@
             ; //	sAX	= sAX + sCX;			
 00361:      	AR	= CX
 00362:      	AX	+= AR
-            ; //_AE3845712_201:;				
-            _AE3845712_201:
+            ; //_AECA8DE46_201:;				
+            _AECA8DE46_201:
             ; //	asm	AR = AX				
 00363:      	AR = AX
-            ; //_AE3845712_202:;				
-            _AE3845712_202:
+            ; //_AECA8DE46_202:;				
+            _AECA8DE46_202:
             ; //	asm	I0 = AR				
 00364:      	I0 = AR
             ; //	
             ; //	
-            ; //_AE3845712_203:;				
-            _AE3845712_203:
+            ; //_AECA8DE46_203:;				
+            _AECA8DE46_203:
             ; //	sAX	= io[0x36];			
 00365:      	AR	= io[0x36]
 00366:      	AX	= AR
-            ; //_AE3845712_204:;				
-            _AE3845712_204:
+            ; //_AECA8DE46_204:;				
+            _AECA8DE46_204:
             ; //	asm	rm[I0++] = AX			
 00367:      	rm[I0++] = AX
             ; //	
-            ; //_AE3845712_205:;				
-            _AE3845712_205:
+            ; //_AECA8DE46_205:;				
+            _AECA8DE46_205:
             ; //	sAX	= io[0x36];			
 00368:      	AR	= io[0x36]
 00369:      	AX	= AR
-            ; //_AE3845712_206:;				
-            _AE3845712_206:
+            ; //_AECA8DE46_206:;				
+            _AECA8DE46_206:
             ; //	asm	rm[I0++] = AX			
 0036A:      	rm[I0++] = AX
             ; //	
-            ; //_AE3845712_207:;				
-            _AE3845712_207:
+            ; //_AECA8DE46_207:;				
+            _AECA8DE46_207:
             ; //	sAX	= io[0x36];			
 0036B:      	AR	= io[0x36]
 0036C:      	AX	= AR
-            ; //_AE3845712_208:;				
-            _AE3845712_208:
+            ; //_AECA8DE46_208:;				
+            _AECA8DE46_208:
             ; //	asm	rm[I0++] = AX			
 0036D:      	rm[I0++] = AX
             ; //	
-            ; //_AE3845712_209:;				
-            _AE3845712_209:
+            ; //_AECA8DE46_209:;				
+            _AECA8DE46_209:
             ; //	sAX	= io[0x36];			
 0036E:      	AR	= io[0x36]
 0036F:      	AX	= AR
-            ; //_AE3845712_210:;				
-            _AE3845712_210:
+            ; //_AECA8DE46_210:;				
+            _AECA8DE46_210:
             ; //	asm	rm[I0++] = AX			
 00370:      	rm[I0++] = AX
             ; //	
-            ; //_AE3845712_211:;				
-            _AE3845712_211:
+            ; //_AECA8DE46_211:;				
+            _AECA8DE46_211:
             ; //	sAX	= io[0x3D];			
 00371:      	AR	= io[0x3D]
 00372:      	AX	= AR
-            ; //_AE3845712_212:;				
-            _AE3845712_212:
+            ; //_AECA8DE46_212:;				
+            _AECA8DE46_212:
             ; //	asm	rm[I0++] = AX			
 00373:      	rm[I0++] = AX
             ; //L7F5A46A0_44:;					
             L7F5A46A0_44:
-            ; //_AE3845712_213:;				
-            _AE3845712_213:
+            ; //_AECA8DE46_213:;				
+            _AECA8DE46_213:
             ; //L7F5A46A0_43:;					
             L7F5A46A0_43:
-            ; //_AE3845712_214:;				
-            _AE3845712_214:
+            ; //_AECA8DE46_214:;				
+            _AECA8DE46_214:
             ; //	return;					
 00374:      	AR	= 2
 00375:      	BP	+= AR
@@ -2366,8 +2366,8 @@
 00378:      	rets
             ; //L7F5A46A0_41_end:;				
             L7F5A46A0_41_end:
-            ; //_AE3845712_215:;				
-            _AE3845712_215:
+            ; //_AECA8DE46_215:;				
+            _AECA8DE46_215:
             ; //}
             ; //
             ; //rjmp void L7F5A46A0_54()			
@@ -2381,40 +2381,40 @@
 0037C:      	rm[BP_SAVE]	= AR
 0037D:      	AR	 = -1
 0037E:      	BP	+= AR
-            ; //_AE3845712_216:;				
-            _AE3845712_216:
+            ; //_AECA8DE46_216:;				
+            _AECA8DE46_216:
             ; //	
-            ; //_AE3845712_217:;				
-            _AE3845712_217:
+            ; //_AECA8DE46_217:;				
+            _AECA8DE46_217:
             ; //	asm I1 = inbuf+0;			
 0037F:      	I1 = inbuf+0//
             ; //	sAX	= *(__int16*)sSI;		
 00380:      	AX	= rm[I1]
-            ; //_AE3845712_218:;				
-            _AE3845712_218:
+            ; //_AECA8DE46_218:;				
+            _AECA8DE46_218:
             ; //	asm	AR = AX				
 00381:      	AR = AX
-            ; //_AE3845712_219:;				
-            _AE3845712_219:
+            ; //_AECA8DE46_219:;				
+            _AECA8DE46_219:
             ; //	asm	I0 = AR				
 00382:      	I0 = AR
             ; //	
             ; //	
-            ; //_AE3845712_220:;				
-            _AE3845712_220:
+            ; //_AECA8DE46_220:;				
+            _AECA8DE46_220:
             ; //	sAX	= io[0x33];			
 00383:      	AR	= io[0x33]
 00384:      	AX	= AR
-            ; //_AE3845712_221:;				
-            _AE3845712_221:
+            ; //_AECA8DE46_221:;				
+            _AECA8DE46_221:
             ; //	_i_1_2+0	= 0x20;			
 00385:      	I1	= rm[BP_SAVE]
 00386:      	AX	= 0x20
 00387:      	rm[I1]	= AX
             ; //L7F5A46A0_58:;					
             L7F5A46A0_58:
-            ; //_AE3845712_222:;				
-            _AE3845712_222:
+            ; //_AECA8DE46_222:;				
+            _AECA8DE46_222:
             ; //	sSI	= (int)&_i_1_2;			
 00388:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
@@ -2436,42 +2436,42 @@
             ; //L7F5A46A0_59:;					
             L7F5A46A0_59:
             ; //	
-            ; //_AE3845712_223:;				
-            _AE3845712_223:
-            ; //_AE3845712_224:;				
-            _AE3845712_224:
+            ; //_AECA8DE46_223:;				
+            _AECA8DE46_223:
+            ; //_AECA8DE46_224:;				
+            _AECA8DE46_224:
             ; //	read_I0P();				
 00391:      	AX	= rm[I0++]
             ; //	io[0x33]	= sAX;			
 00392:      	AR	= AX
 00393:      	io[0x33]	= AR
-            ; //_AE3845712_225:;				
-            _AE3845712_225:
-            ; //_AE3845712_226:;				
-            _AE3845712_226:
+            ; //_AECA8DE46_225:;				
+            _AECA8DE46_225:
+            ; //_AECA8DE46_226:;				
+            _AECA8DE46_226:
             ; //	read_I0M();				
 00394:      	AX	= rm[I0--]
             ; //	io[0x33]	= sAX;			
 00395:      	AR	= AX
 00396:      	io[0x33]	= AR
             ; //	
-            ; //_AE3845712_227:;				
-            _AE3845712_227:
+            ; //_AECA8DE46_227:;				
+            _AECA8DE46_227:
             ; //	sAX	= io[0x33];			
 00397:      	AR	= io[0x33]
 00398:      	AX	= AR
-            ; //_AE3845712_228:;				
-            _AE3845712_228:
+            ; //_AECA8DE46_228:;				
+            _AECA8DE46_228:
             ; //	asm	rm[I0++2] = AX			
 00399:      	rm[I0++2] = AX
-            ; //_AE3845712_229:;				
-            _AE3845712_229:
+            ; //_AECA8DE46_229:;				
+            _AECA8DE46_229:
             ; //	goto L7F5A46A0_58;			
 0039A:      	jmp	L7F5A46A0_58
             ; //L7F5A46A0_57:;					
             L7F5A46A0_57:
-            ; //_AE3845712_230:;				
-            _AE3845712_230:
+            ; //_AECA8DE46_230:;				
+            _AECA8DE46_230:
             ; //	asm I1 = inbuf+0;			
 0039B:      	I1 = inbuf+0//
             ; //	asm AR = rm[I1];			
@@ -2482,8 +2482,8 @@
 0039E:      	rm[I1] = AR//
             ; //L7F5A46A0_56:;					
             L7F5A46A0_56:
-            ; //_AE3845712_231:;				
-            _AE3845712_231:
+            ; //_AECA8DE46_231:;				
+            _AECA8DE46_231:
             ; //	return;					
 0039F:      	AR	= 1
 003A0:      	BP	+= AR
@@ -2492,8 +2492,8 @@
 003A3:      	rets
             ; //L7F5A46A0_54_end:;				
             L7F5A46A0_54_end:
-            ; //_AE3845712_232:;				
-            _AE3845712_232:
+            ; //_AECA8DE46_232:;				
+            _AECA8DE46_232:
             ; //}
             ; //
             ; //rjmp void _DoADPCM9CD0E20D()			
@@ -2508,11 +2508,11 @@
 003A7:      	rm[BP_SAVE]	= AR
 003A8:      	AR	 = -2
 003A9:      	BP	+= AR
-            ; //_AE3845712_233:;				
-            _AE3845712_233:
+            ; //_AECA8DE46_233:;				
+            _AECA8DE46_233:
             ; //	
-            ; //_AE3845712_234:;				
-            _AE3845712_234:
+            ; //_AECA8DE46_234:;				
+            _AECA8DE46_234:
             ; //	asm I1 = inbuf+0;			
 003AA:      	I1 = inbuf+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2535,27 +2535,27 @@
 003B3:      	jmp	L7F5A46A0_61
             ; //L7F5A46A0_62:;					
             L7F5A46A0_62:
-            ; //_AE3845712_235:;				
-            _AE3845712_235:
+            ; //_AECA8DE46_235:;				
+            _AECA8DE46_235:
             ; //	goto L7F5A46A0_60;			
 003B4:      	jmp	L7F5A46A0_60
             ; //L7F5A46A0_61:;					
             L7F5A46A0_61:
-            ; //_AE3845712_236:;				
-            _AE3845712_236:
-            ; //_AE3845712_237:;				
-            _AE3845712_237:
+            ; //_AECA8DE46_236:;				
+            _AECA8DE46_236:
+            ; //_AECA8DE46_237:;				
+            _AECA8DE46_237:
             ; //	asm set io[0x09].b0;			
 003B5:      	set io[0x09].b0//
-            ; //_AE3845712_238:;				
-            _AE3845712_238:
-            ; //_AE3845712_239:;				
-            _AE3845712_239:
+            ; //_AECA8DE46_238:;				
+            _AECA8DE46_238:
+            ; //_AECA8DE46_239:;				
+            _AECA8DE46_239:
             ; //	L7F5A46A0_35();				
 003B6:      	pch	= L7F5A46A0_35
 003B7:      	lcall	L7F5A46A0_35
-            ; //_AE3845712_240:;				
-            _AE3845712_240:
+            ; //_AECA8DE46_240:;				
+            _AECA8DE46_240:
             ; //	asm AX = _adpFLTG0FBE3CB5+0;		
 003B8:      	AX = _adpFLTG0FBE3CB5+0//
             ; //	sSI	= (int)&_p_1_4;			
@@ -2564,24 +2564,24 @@
 003BB:      	I1	+= AR
             ; //	*(__int16*)sSI	= sAX;			
 003BC:      	rm[I1]	= AX
-            ; //_AE3845712_241:;				
-            _AE3845712_241:
+            ; //_AECA8DE46_241:;				
+            _AECA8DE46_241:
             ; //	asm AX = _adpch30670376+0;		
 003BD:      	AX = _adpch30670376+0//
             ; //	asm I1 = ADPCM_Tmpi+0;			
 003BE:      	I1 = ADPCM_Tmpi+0//
             ; //	*(__int16*)sSI	= sAX			
 003BF:      	rm[I1]	= AX
-            ; //_AE3845712_242:;				
-            _AE3845712_242:
+            ; //_AECA8DE46_242:;				
+            _AECA8DE46_242:
             ; //	_i_1_2+0	= 0x02;			
 003C0:      	I1	= rm[BP_SAVE]
 003C1:      	AX	= 0x02
 003C2:      	rm[I1]	= AX
             ; //L7F5A46A0_64:;					
             L7F5A46A0_64:
-            ; //_AE3845712_243:;				
-            _AE3845712_243:
+            ; //_AECA8DE46_243:;				
+            _AECA8DE46_243:
             ; //	sSI	= (int)&_i_1_2;			
 003C3:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
@@ -2603,10 +2603,10 @@
             ; //L7F5A46A0_65:;					
             L7F5A46A0_65:
             ; //	
-            ; //_AE3845712_244:;				
-            _AE3845712_244:
-            ; //_AE3845712_245:;				
-            _AE3845712_245:
+            ; //_AECA8DE46_244:;				
+            _AECA8DE46_244:
+            ; //_AECA8DE46_245:;				
+            _AECA8DE46_245:
             ; //	sSI	= (int)&_p_1_4;			
 003CC:      	AR	= -1
 003CD:      	I1	= rm[BP_SAVE]
@@ -2635,8 +2635,8 @@
 003DB:      	lcall	L7F5A46A0_41
             ; //	RESTORESP(1);				
 003DC:      	pop	AR
-            ; //_AE3845712_246:;				
-            _AE3845712_246:
+            ; //_AECA8DE46_246:;				
+            _AECA8DE46_246:
             ; //	asm I1 = ADPCM_Tmpi+0;			
 003DD:      	I1 = ADPCM_Tmpi+0//
             ; //	sAX	= *(__int16*)sSI;		
@@ -2649,37 +2649,45 @@
 003E1:      	AR = 0x0012//
             ; //	asm rm[I1] = CX + AR;			
 003E2:      	rm[I1] = CX + AR//
-            ; //_AE3845712_247:;				
-            _AE3845712_247:
+            ; //_AECA8DE46_247:;				
+            _AECA8DE46_247:
+            ; //	asm set io[0x09].b0;			
+003E3:      	set io[0x09].b0//
+            ; //_AECA8DE46_248:;				
+            _AECA8DE46_248:
             ; //	goto L7F5A46A0_64;			
-003E3:      	jmp	L7F5A46A0_64
+003E4:      	jmp	L7F5A46A0_64
             ; //L7F5A46A0_63:;					
             L7F5A46A0_63:
-            ; //_AE3845712_248:;				
-            _AE3845712_248:
-            ; //_AE3845712_249:;				
-            _AE3845712_249:
+            ; //_AECA8DE46_249:;				
+            _AECA8DE46_249:
+            ; //_AECA8DE46_250:;				
+            _AECA8DE46_250:
             ; //	L7F5A46A0_54();				
-003E4:      	pch	= L7F5A46A0_54
-003E5:      	lcall	L7F5A46A0_54
-            ; //_AE3845712_250:;				
-            _AE3845712_250:
+003E5:      	pch	= L7F5A46A0_54
+003E6:      	lcall	L7F5A46A0_54
+            ; //_AECA8DE46_251:;				
+            _AECA8DE46_251:
             ; //	asm clr io[0x09].b0;			
-003E6:      	clr io[0x09].b0//
+003E7:      	clr io[0x09].b0//
+            ; //_AECA8DE46_252:;				
+            _AECA8DE46_252:
+            ; //	asm clr io[0x09].b0;			
+003E8:      	clr io[0x09].b0//
             ; //L7F5A46A0_60:;					
             L7F5A46A0_60:
-            ; //_AE3845712_251:;				
-            _AE3845712_251:
+            ; //_AECA8DE46_253:;				
+            _AECA8DE46_253:
             ; //	return;					
-003E7:      	AR	= 2
-003E8:      	BP	+= AR
-003E9:      	pop	AR
-003EA:      	rm[BP_SAVE]	= AR
-003EB:      	rets
+003E9:      	AR	= 2
+003EA:      	BP	+= AR
+003EB:      	pop	AR
+003EC:      	rm[BP_SAVE]	= AR
+003ED:      	rets
             ; //_DoADPCM9CD0E20D_end:;				
             _DoADPCM9CD0E20D_end:
-            ; //_AE3845712_252:;				
-            _AE3845712_252:
+            ; //_AECA8DE46_254:;				
+            _AECA8DE46_254:
             ; //}
             ; //
             ; //
@@ -2758,74 +2766,82 @@
             ; //rjmp void _InitKey3C587B6D()			
             _InitKey3C587B6D:
             ; //{
-            ; //_AE3845712_253:;				
-            _AE3845712_253:
+            ; //_AECA8DE46_255:;				
+            _AECA8DE46_255:
             ; //	
-            ; //_AE3845712_254:;				
-            _AE3845712_254:
+            ; //_AECA8DE46_256:;				
+            _AECA8DE46_256:
             ; //	asm clr io[0x04].b0;			
-003EC:      	clr io[0x04].b0//
-            ; //_AE3845712_255:;				
-            _AE3845712_255:
+003EE:      	clr io[0x04].b0//
+            ; //_AECA8DE46_257:;				
+            _AECA8DE46_257:
             ; //	asm clr io[0x04].b1;			
-003ED:      	clr io[0x04].b1//
-            ; //_AE3845712_256:;				
-            _AE3845712_256:
+003EF:      	clr io[0x04].b1//
+            ; //_AECA8DE46_258:;				
+            _AECA8DE46_258:
             ; //	asm clr io[0x04].b2;			
-003EE:      	clr io[0x04].b2//
-            ; //_AE3845712_257:;				
-            _AE3845712_257:
+003F0:      	clr io[0x04].b2//
+            ; //_AECA8DE46_259:;				
+            _AECA8DE46_259:
             ; //	asm clr io[0x04].b3;			
-003EF:      	clr io[0x04].b3//
-            ; //_AE3845712_258:;				
-            _AE3845712_258:
+003F1:      	clr io[0x04].b3//
+            ; //_AECA8DE46_260:;				
+            _AECA8DE46_260:
+            ; //	asm set io[0x05].b2;			
+003F2:      	set io[0x05].b2//
+            ; //_AECA8DE46_261:;				
+            _AECA8DE46_261:
+            ; //	asm set io[0x05].b0;			
+003F3:      	set io[0x05].b0//
+            ; //_AECA8DE46_262:;				
+            _AECA8DE46_262:
             ; //	io[0x1E]	= 0x0005;		
-003F0:      	AR	= 0x05
-003F1:      	io[0x1E]	= AR
-            ; //_AE3845712_259:;				
-            _AE3845712_259:
+003F4:      	AR	= 0x05
+003F5:      	io[0x1E]	= AR
+            ; //_AECA8DE46_263:;				
+            _AECA8DE46_263:
             ; //	sAX	= 0x000F;			
-003F2:      	AX	= 0x0F
+003F6:      	AX	= 0x0F
             ; //	sAX	= sAX | io[0x1F];		
-003F3:      	AR	= io[0x1F]
-003F4:      	AX	|= AR
+003F7:      	AR	= io[0x1F]
+003F8:      	AX	|= AR
             ; //	io[0x1F]	= sAX;			
-003F5:      	AR	= AX
-003F6:      	io[0x1F]	= AR
-            ; //_AE3845712_260:;				
-            _AE3845712_260:
+003F9:      	AR	= AX
+003FA:      	io[0x1F]	= AR
+            ; //_AECA8DE46_264:;				
+            _AECA8DE46_264:
             ; //	sAX	= 0x0000;			
-003F7:      	AX	= 0x00
+003FB:      	AX	= 0x00
             ; //	sSI	= (int)&L5589D4CE_67;		
-003F8:      	I1	= L5589D4CE_67
+003FC:      	I1	= L5589D4CE_67
             ; //	*(__int16*)sSI	= sAX			
-003F9:      	rm[I1]	= AX
-            ; //_AE3845712_261:;				
-            _AE3845712_261:
+003FD:      	rm[I1]	= AX
+            ; //_AECA8DE46_265:;				
+            _AECA8DE46_265:
             ; //	sAX	= 0x0000;			
-003FA:      	AX	= 0x00
+003FE:      	AX	= 0x00
             ; //	sSI	= (int)&L5589D4CE_68;		
-003FB:      	I1	= L5589D4CE_68
-            ; //	*(__int16*)sSI	= sAX			
-003FC:      	rm[I1]	= AX
-            ; //_AE3845712_262:;				
-            _AE3845712_262:
-            ; //	sAX	= 0x0200;			
-003FD:      	AX	= 0x0200
-            ; //	sSI	= (int)&L5589D4CE_69;		
-003FF:      	I1	= L5589D4CE_69
+003FF:      	I1	= L5589D4CE_68
             ; //	*(__int16*)sSI	= sAX			
 00400:      	rm[I1]	= AX
+            ; //_AECA8DE46_266:;				
+            _AECA8DE46_266:
+            ; //	sAX	= 0x0200;			
+00401:      	AX	= 0x0200
+            ; //	sSI	= (int)&L5589D4CE_69;		
+00403:      	I1	= L5589D4CE_69
+            ; //	*(__int16*)sSI	= sAX			
+00404:      	rm[I1]	= AX
             ; //L5589D4CE_70:;					
             L5589D4CE_70:
-            ; //_AE3845712_263:;				
-            _AE3845712_263:
+            ; //_AECA8DE46_267:;				
+            _AECA8DE46_267:
             ; //	return;					
-00401:      	rets
+00405:      	rets
             ; //_InitKey3C587B6D_end:;				
             _InitKey3C587B6D_end:
-            ; //_AE3845712_264:;				
-            _AE3845712_264:
+            ; //_AECA8DE46_268:;				
+            _AECA8DE46_268:
             ; //}
             ; //
             ; //rjmp void L5589D4CE_71()			
@@ -2833,48 +2849,48 @@
             ; //{
             ; //	__int16 _btn_1_2;
             ; //						
-00402:      	AR	= rm[BP_SAVE]
-00403:      	push	AR
-00404:      	AR	= BP
-00405:      	rm[BP_SAVE]	= AR
-00406:      	AR	 = -1
-00407:      	BP	+= AR
-            ; //_AE3845712_265:;				
-            _AE3845712_265:
+00406:      	AR	= rm[BP_SAVE]
+00407:      	push	AR
+00408:      	AR	= BP
+00409:      	rm[BP_SAVE]	= AR
+0040A:      	AR	 = -1
+0040B:      	BP	+= AR
+            ; //_AECA8DE46_269:;				
+            _AECA8DE46_269:
             ; //	
-            ; //_AE3845712_266:;				
-            _AE3845712_266:
+            ; //_AECA8DE46_270:;				
+            _AECA8DE46_270:
             ; //	sAX	= 0x000F;			
-00408:      	AX	= 0x0F
+0040C:      	AX	= 0x0F
             ; //	sAX	= sAX & io[0x07];		
-00409:      	AR	= io[0x07]
-0040A:      	AX	&= AR
+0040D:      	AR	= io[0x07]
+0040E:      	AX	&= AR
             ; //	sSI	= (int)&_btn_1_2;		
-0040B:      	I1	= rm[BP_SAVE]
+0040F:      	I1	= rm[BP_SAVE]
             ; //	*(__int16*)sSI	= sAX;			
-0040C:      	rm[I1]	= AX
-            ; //_AE3845712_267:;				
-            _AE3845712_267:
+00410:      	rm[I1]	= AX
+            ; //_AECA8DE46_271:;				
+            _AECA8DE46_271:
             ; //	sSI	= (int)&_btn_1_2;		
-0040D:      	I1	= rm[BP_SAVE]
+00411:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
-0040E:      	AX	= rm[I1]
+00412:      	AX	= rm[I1]
             ; //	goto L5589D4CE_73;			
-0040F:      	jmp	L5589D4CE_73
+00413:      	jmp	L5589D4CE_73
             ; //L5589D4CE_73:;					
             L5589D4CE_73:
-            ; //_AE3845712_268:;				
-            _AE3845712_268:
+            ; //_AECA8DE46_272:;				
+            _AECA8DE46_272:
             ; //	return;					
-00410:      	AR	= 1
-00411:      	BP	+= AR
-00412:      	pop	AR
-00413:      	rm[BP_SAVE]	= AR
-00414:      	rets
+00414:      	AR	= 1
+00415:      	BP	+= AR
+00416:      	pop	AR
+00417:      	rm[BP_SAVE]	= AR
+00418:      	rets
             ; //L5589D4CE_71_end:;				
             L5589D4CE_71_end:
-            ; //_AE3845712_269:;				
-            _AE3845712_269:
+            ; //_AECA8DE46_273:;				
+            _AECA8DE46_273:
             ; //}
             ; //
             ; //rjmp void _PollingKey3B90E3B1()			
@@ -2886,532 +2902,532 @@
             ; //	__int16 _bitp_1_8;
             ; //	__int16 _pkey_1_10;
             ; //						
-00415:      	AR	= rm[BP_SAVE]
-00416:      	push	AR
-00417:      	AR	= BP
-00418:      	rm[BP_SAVE]	= AR
-00419:      	AR	 = -5
-0041A:      	BP	+= AR
-            ; //_AE3845712_270:;				
-            _AE3845712_270:
+00419:      	AR	= rm[BP_SAVE]
+0041A:      	push	AR
+0041B:      	AR	= BP
+0041C:      	rm[BP_SAVE]	= AR
+0041D:      	AR	 = -5
+0041E:      	BP	+= AR
+            ; //_AECA8DE46_274:;				
+            _AECA8DE46_274:
             ; //	
-            ; //_AE3845712_271:;				
-            _AE3845712_271:
-            ; //_AE3845712_272:;				
-            _AE3845712_272:
+            ; //_AECA8DE46_275:;				
+            _AECA8DE46_275:
+            ; //_AECA8DE46_276:;				
+            _AECA8DE46_276:
             ; //	NEARCALL(L5589D4CE_71);			
-0041B:      	call	L5589D4CE_71
-            ; //	sSI	= (int)&_keynow_1_2;		
-0041C:      	I1	= rm[BP_SAVE]
-            ; //	*(__int16*)sSI	= sAX;			
-0041D:      	rm[I1]	= AX
-            ; //_AE3845712_273:;				
-            _AE3845712_273:
-            ; //	asm I1 = L5589D4CE_67+0;		
-0041E:      	I1 = L5589D4CE_67+0//
-            ; //	sAX	= *(__int16*)sSI;		
-0041F:      	AX	= rm[I1]
+0041F:      	call	L5589D4CE_71
             ; //	sSI	= (int)&_keynow_1_2;		
 00420:      	I1	= rm[BP_SAVE]
+            ; //	*(__int16*)sSI	= sAX;			
+00421:      	rm[I1]	= AX
+            ; //_AECA8DE46_277:;				
+            _AECA8DE46_277:
+            ; //	asm I1 = L5589D4CE_67+0;		
+00422:      	I1 = L5589D4CE_67+0//
+            ; //	sAX	= *(__int16*)sSI;		
+00423:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_keynow_1_2;		
+00424:      	I1	= rm[BP_SAVE]
             ; //	sCX	= *(__int16*)sSI;		
-00421:      	CX	= rm[I1]
+00425:      	CX	= rm[I1]
             ; //	sfx_CMP_AX_CX_JNE();			
-00422:      	pch	= sfx_CMP_AX_CX_JNE
-00423:      	lcall	sfx_CMP_AX_CX_JNE
+00426:      	pch	= sfx_CMP_AX_CX_JNE
+00427:      	lcall	sfx_CMP_AX_CX_JNE
             ; //	if(__je__)	goto L5589D4CE_76;	
-00424:      	if ZR	jmp L5589D4CE_76
+00428:      	if ZR	jmp L5589D4CE_76
             ; //	goto	L5589D4CE_75;			
-00425:      	jmp	L5589D4CE_75
+00429:      	jmp	L5589D4CE_75
             ; //L5589D4CE_76:;					
             L5589D4CE_76:
             ; //	
-            ; //_AE3845712_274:;				
-            _AE3845712_274:
+            ; //_AECA8DE46_278:;				
+            _AECA8DE46_278:
             ; //	sSI	= (int)&_keynow_1_2;		
-00426:      	I1	= rm[BP_SAVE]
+0042A:      	I1	= rm[BP_SAVE]
             ; //	sAX	= *(__int16*)sSI;		
-00427:      	AX	= rm[I1]
+0042B:      	AX	= rm[I1]
             ; //	sSI	= (int)&L5589D4CE_67;		
-00428:      	I1	= L5589D4CE_67
-            ; //	*(__int16*)sSI	= sAX			
-00429:      	rm[I1]	= AX
-            ; //_AE3845712_275:;				
-            _AE3845712_275:
-            ; //	sAX	= 0x0200;			
-0042A:      	AX	= 0x0200
-            ; //	sSI	= (int)&L5589D4CE_69;		
-0042C:      	I1	= L5589D4CE_69
+0042C:      	I1	= L5589D4CE_67
             ; //	*(__int16*)sSI	= sAX			
 0042D:      	rm[I1]	= AX
-            ; //_AE3845712_276:;				
-            _AE3845712_276:
+            ; //_AECA8DE46_279:;				
+            _AECA8DE46_279:
+            ; //	sAX	= 0x0200;			
+0042E:      	AX	= 0x0200
+            ; //	sSI	= (int)&L5589D4CE_69;		
+00430:      	I1	= L5589D4CE_69
+            ; //	*(__int16*)sSI	= sAX			
+00431:      	rm[I1]	= AX
+            ; //_AECA8DE46_280:;				
+            _AECA8DE46_280:
             ; //	goto L5589D4CE_74;			
-0042E:      	jmp	L5589D4CE_74
+00432:      	jmp	L5589D4CE_74
             ; //L5589D4CE_75:;					
             L5589D4CE_75:
-            ; //_AE3845712_277:;				
-            _AE3845712_277:
-            ; //_AE3845712_278:;				
-            _AE3845712_278:
+            ; //_AECA8DE46_281:;				
+            _AECA8DE46_281:
+            ; //_AECA8DE46_282:;				
+            _AECA8DE46_282:
             ; //	asm I1 = L5589D4CE_69+0;		
-0042F:      	I1 = L5589D4CE_69+0//
+00433:      	I1 = L5589D4CE_69+0//
             ; //	sAX	= *(__int16*)sSI;		
-00430:      	AX	= rm[I1]
+00434:      	AX	= rm[I1]
             ; //	sfx_CHECKZERO();			
-00431:      	AR	= AX
+00435:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_78;	
-00432:      	if NZ	jmp L5589D4CE_78
+00436:      	if NZ	jmp L5589D4CE_78
             ; //	goto	L5589D4CE_77;			
-00433:      	jmp	L5589D4CE_77
+00437:      	jmp	L5589D4CE_77
             ; //L5589D4CE_78:;					
             L5589D4CE_78:
             ; //	
-            ; //_AE3845712_279:;				
-            _AE3845712_279:
+            ; //_AECA8DE46_283:;				
+            _AECA8DE46_283:
             ; //	asm I1 = L5589D4CE_69+0;		
-00434:      	I1 = L5589D4CE_69+0//
+00438:      	I1 = L5589D4CE_69+0//
             ; //	sAX	= *(__int16*)sSI;		
-00435:      	AX	= rm[I1]
+00439:      	AX	= rm[I1]
             ; //	sCX	= 0x0001;			
-00436:      	CX	= 0x01
+0043A:      	CX	= 0x01
             ; //	sAX	= sAX - sCX;			
-00437:      	AR	= CX
-00438:      	AX	-= AR
+0043B:      	AR	= CX
+0043C:      	AX	-= AR
             ; //	sSI	= (int)&L5589D4CE_69;		
-00439:      	I1	= L5589D4CE_69
+0043D:      	I1	= L5589D4CE_69
             ; //	*(__int16*)sSI	= sAX			
-0043A:      	rm[I1]	= AX
-            ; //_AE3845712_280:;				
-            _AE3845712_280:
+0043E:      	rm[I1]	= AX
+            ; //_AECA8DE46_284:;				
+            _AECA8DE46_284:
             ; //	goto L5589D4CE_74;			
-0043B:      	jmp	L5589D4CE_74
+0043F:      	jmp	L5589D4CE_74
             ; //L5589D4CE_77:;					
             L5589D4CE_77:
-            ; //_AE3845712_281:;				
-            _AE3845712_281:
-            ; //_AE3845712_282:;				
-            _AE3845712_282:
+            ; //_AECA8DE46_285:;				
+            _AECA8DE46_285:
+            ; //_AECA8DE46_286:;				
+            _AECA8DE46_286:
             ; //	asm AX = #_keyfuncF06F3D55+0;		
-0043C:      	AX = #_keyfuncF06F3D55+0//
+00440:      	AX = #_keyfuncF06F3D55+0//
             ; //	sSI	= (int)&_pkey_1_10;		
-0043E:      	AR	= -4
-0043F:      	I1	= rm[BP_SAVE]
-00440:      	I1	+= AR
+00442:      	AR	= -4
+00443:      	I1	= rm[BP_SAVE]
+00444:      	I1	+= AR
             ; //	*(__int16*)sSI	= sAX;			
-00441:      	rm[I1]	= AX
-            ; //_AE3845712_283:;				
-            _AE3845712_283:
-            ; //	sAX	= 0x0200;			
-00442:      	AX	= 0x0200
-            ; //	sSI	= (int)&L5589D4CE_69;		
-00444:      	I1	= L5589D4CE_69
-            ; //	*(__int16*)sSI	= sAX			
 00445:      	rm[I1]	= AX
-            ; //_AE3845712_284:;				
-            _AE3845712_284:
-            ; //	asm I1 = L5589D4CE_68+0;		
-00446:      	I1 = L5589D4CE_68+0//
-            ; //	sAX	= *(__int16*)sSI;		
-00447:      	AX	= rm[I1]
-            ; //	asm I1 = L5589D4CE_67+0;		
-00448:      	I1 = L5589D4CE_67+0//
-            ; //	asm AR = rm[I1];			
-00449:      	AR = rm[I1]//
-            ; //	asm AX = AX ^ AR;			
-0044A:      	AX = AX ^ AR//
-            ; //	sSI	= (int)&_bits_1_6;		
-0044B:      	AR	= -2
-0044C:      	I1	= rm[BP_SAVE]
-0044D:      	I1	+= AR
-            ; //	*(__int16*)sSI	= sAX;			
-0044E:      	rm[I1]	= AX
-            ; //_AE3845712_285:;				
-            _AE3845712_285:
-            ; //	asm I1 = L5589D4CE_68+0;		
-0044F:      	I1 = L5589D4CE_68+0//
-            ; //	sAX	= *(__int16*)sSI;		
-00450:      	AX	= rm[I1]
-            ; //	sSI	= (int)&_bitp_1_8;		
-00451:      	AR	= -3
-00452:      	I1	= rm[BP_SAVE]
-00453:      	I1	+= AR
-            ; //	*(__int16*)sSI	= sAX;			
-00454:      	rm[I1]	= AX
-            ; //_AE3845712_286:;				
-            _AE3845712_286:
-            ; //	asm I1 = L5589D4CE_67+0;		
-00455:      	I1 = L5589D4CE_67+0//
-            ; //	sAX	= *(__int16*)sSI;		
-00456:      	AX	= rm[I1]
-            ; //	sSI	= (int)&L5589D4CE_68;		
-00457:      	I1	= L5589D4CE_68
+            ; //_AECA8DE46_287:;				
+            _AECA8DE46_287:
+            ; //	sAX	= 0x0200;			
+00446:      	AX	= 0x0200
+            ; //	sSI	= (int)&L5589D4CE_69;		
+00448:      	I1	= L5589D4CE_69
             ; //	*(__int16*)sSI	= sAX			
+00449:      	rm[I1]	= AX
+            ; //_AECA8DE46_288:;				
+            _AECA8DE46_288:
+            ; //	asm I1 = L5589D4CE_68+0;		
+0044A:      	I1 = L5589D4CE_68+0//
+            ; //	sAX	= *(__int16*)sSI;		
+0044B:      	AX	= rm[I1]
+            ; //	asm I1 = L5589D4CE_67+0;		
+0044C:      	I1 = L5589D4CE_67+0//
+            ; //	asm AR = rm[I1];			
+0044D:      	AR = rm[I1]//
+            ; //	asm AX = AX ^ AR;			
+0044E:      	AX = AX ^ AR//
+            ; //	sSI	= (int)&_bits_1_6;		
+0044F:      	AR	= -2
+00450:      	I1	= rm[BP_SAVE]
+00451:      	I1	+= AR
+            ; //	*(__int16*)sSI	= sAX;			
+00452:      	rm[I1]	= AX
+            ; //_AECA8DE46_289:;				
+            _AECA8DE46_289:
+            ; //	asm I1 = L5589D4CE_68+0;		
+00453:      	I1 = L5589D4CE_68+0//
+            ; //	sAX	= *(__int16*)sSI;		
+00454:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_bitp_1_8;		
+00455:      	AR	= -3
+00456:      	I1	= rm[BP_SAVE]
+00457:      	I1	+= AR
+            ; //	*(__int16*)sSI	= sAX;			
 00458:      	rm[I1]	= AX
-            ; //_AE3845712_287:;				
-            _AE3845712_287:
+            ; //_AECA8DE46_290:;				
+            _AECA8DE46_290:
+            ; //	asm I1 = L5589D4CE_67+0;		
+00459:      	I1 = L5589D4CE_67+0//
+            ; //	sAX	= *(__int16*)sSI;		
+0045A:      	AX	= rm[I1]
+            ; //	sSI	= (int)&L5589D4CE_68;		
+0045B:      	I1	= L5589D4CE_68
+            ; //	*(__int16*)sSI	= sAX			
+0045C:      	rm[I1]	= AX
+            ; //_AECA8DE46_291:;				
+            _AECA8DE46_291:
             ; //	_i_1_4+0	= 0x05;			
-00459:      	AR	= -1
-0045A:      	I1	= rm[BP_SAVE]
-0045B:      	I1	+= AR
-0045C:      	AX	= 0x05
-0045D:      	rm[I1]	= AX
+0045D:      	AR	= -1
+0045E:      	I1	= rm[BP_SAVE]
+0045F:      	I1	+= AR
+00460:      	AX	= 0x05
+00461:      	rm[I1]	= AX
             ; //L5589D4CE_80:;					
             L5589D4CE_80:
-            ; //_AE3845712_288:;				
-            _AE3845712_288:
-            ; //	sSI	= (int)&_i_1_4;			
-0045E:      	AR	= -1
-0045F:      	I1	= rm[BP_SAVE]
-00460:      	I1	+= AR
-            ; //	sAX	= *(__int16*)sSI;		
-00461:      	AX	= rm[I1]
+            ; //_AECA8DE46_292:;				
+            _AECA8DE46_292:
             ; //	sSI	= (int)&_i_1_4;			
 00462:      	AR	= -1
 00463:      	I1	= rm[BP_SAVE]
 00464:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+00465:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_i_1_4;			
+00466:      	AR	= -1
+00467:      	I1	= rm[BP_SAVE]
+00468:      	I1	+= AR
             ; //	asm AR = 0x0001;			
-00465:      	AR = 0x0001//
+00469:      	AR = 0x0001//
             ; //	sCX	= *(__int16*)sSI;		
-00466:      	CX	= rm[I1]
+0046A:      	CX	= rm[I1]
             ; //	asm rm[I1] = CX - AR;			
-00467:      	rm[I1] = CX - AR//
+0046B:      	rm[I1] = CX - AR//
             ; //	sfx_CHECKZERO();			
-00468:      	AR	= AX
+0046C:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_81;	
-00469:      	if NZ	jmp L5589D4CE_81
+0046D:      	if NZ	jmp L5589D4CE_81
             ; //	goto	L5589D4CE_79;			
-0046A:      	jmp	L5589D4CE_79
+0046E:      	jmp	L5589D4CE_79
             ; //L5589D4CE_81:;					
             L5589D4CE_81:
             ; //	
-            ; //_AE3845712_289:;				
-            _AE3845712_289:
+            ; //_AECA8DE46_293:;				
+            _AECA8DE46_293:
             ; //	sAX	= 0;				
-0046B:      	AX	= 0x00
+0046F:      	AX	= 0x00
             ; //	sSI	= (int)&_bits_1_6+0;		
-0046C:      	AR	= -2
-0046D:      	I1	= rm[BP_SAVE]
-0046E:      	I1	+= AR
+00470:      	AR	= -2
+00471:      	I1	= rm[BP_SAVE]
+00472:      	I1	+= AR
             ; //	asm AR = rm[I1];			
-0046F:      	AR = rm[I1]//
+00473:      	AR = rm[I1]//
             ; //	asm test AR.b0;				
-00470:      	test AR.b0//
+00474:      	test AR.b0//
             ; //	if(__jz__) goto L5589D4CE_83;		
-00471:      	if ZR	jmp L5589D4CE_83
+00475:      	if ZR	jmp L5589D4CE_83
             ; //	sAX	= 1;				
-00472:      	AX	= 0x01
+00476:      	AX	= 0x01
             ; //L5589D4CE_83:;					
             L5589D4CE_83:
             ; //	sfx_CHECKZERO();			
-00473:      	AR	= AX
+00477:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_84;	
-00474:      	if NZ	jmp L5589D4CE_84
+00478:      	if NZ	jmp L5589D4CE_84
             ; //	goto	L5589D4CE_82;			
-00475:      	jmp	L5589D4CE_82
+00479:      	jmp	L5589D4CE_82
             ; //L5589D4CE_84:;					
             L5589D4CE_84:
             ; //	
-            ; //_AE3845712_290:;				
-            _AE3845712_290:
+            ; //_AECA8DE46_294:;				
+            _AECA8DE46_294:
             ; //	sAX	= 0;				
-00476:      	AX	= 0x00
+0047A:      	AX	= 0x00
             ; //	sSI	= (int)&_bitp_1_8+0;		
-00477:      	AR	= -3
-00478:      	I1	= rm[BP_SAVE]
-00479:      	I1	+= AR
+0047B:      	AR	= -3
+0047C:      	I1	= rm[BP_SAVE]
+0047D:      	I1	+= AR
             ; //	asm AR = rm[I1];			
-0047A:      	AR = rm[I1]//
+0047E:      	AR = rm[I1]//
             ; //	asm test AR.b0;				
-0047B:      	test AR.b0//
+0047F:      	test AR.b0//
             ; //	if(__jz__) goto L5589D4CE_86;		
-0047C:      	if ZR	jmp L5589D4CE_86
+00480:      	if ZR	jmp L5589D4CE_86
             ; //	sAX	= 1;				
-0047D:      	AX	= 0x01
+00481:      	AX	= 0x01
             ; //L5589D4CE_86:;					
             L5589D4CE_86:
             ; //	sfx_CHECKZERO();			
-0047E:      	AR	= AX
+00482:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_87;	
-0047F:      	if NZ	jmp L5589D4CE_87
+00483:      	if NZ	jmp L5589D4CE_87
             ; //	goto	L5589D4CE_85;			
-00480:      	jmp	L5589D4CE_85
+00484:      	jmp	L5589D4CE_85
             ; //L5589D4CE_87:;					
             L5589D4CE_87:
             ; //	
-            ; //_AE3845712_291:;				
-            _AE3845712_291:
+            ; //_AECA8DE46_295:;				
+            _AECA8DE46_295:
             ; //	sSI	= (int)&_pkey_1_10;		
-00481:      	AR	= -4
-00482:      	I1	= rm[BP_SAVE]
-00483:      	I1	+= AR
+00485:      	AR	= -4
+00486:      	I1	= rm[BP_SAVE]
+00487:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-00484:      	AX	= rm[I1]
+00488:      	AX	= rm[I1]
             ; //	sCX	= 0x0002;			
-00485:      	CX	= 0x02
+00489:      	CX	= 0x02
             ; //	sAX	= sAX + sCX;			
-00486:      	AR	= CX
-00487:      	AX	+= AR
+0048A:      	AR	= CX
+0048B:      	AX	+= AR
             ; //	sDI	= sAX;				
-00488:      	AR	= AX
-00489:      	P1	= AR
+0048C:      	AR	= AX
+0048D:      	P1	= AR
             ; //	sAX	= *(__int16*)sDI;		
-0048A:      	AX	= pm[P1]
+0048E:      	AX	= pm[P1]
             ; //	sfx_CHECKZERO();			
-0048B:      	AR	= AX
+0048F:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_89;	
-0048C:      	if NZ	jmp L5589D4CE_89
+00490:      	if NZ	jmp L5589D4CE_89
             ; //	goto	L5589D4CE_88;			
-0048D:      	jmp	L5589D4CE_88
+00491:      	jmp	L5589D4CE_88
             ; //L5589D4CE_89:;					
             L5589D4CE_89:
-            ; //_AE3845712_292:;				
-            _AE3845712_292:
-            ; //_AE3845712_293:;				
-            _AE3845712_293:
+            ; //_AECA8DE46_296:;				
+            _AECA8DE46_296:
+            ; //_AECA8DE46_297:;				
+            _AECA8DE46_297:
             ; //	sSI	= (int)&_pkey_1_10;		
-0048E:      	AR	= -4
-0048F:      	I1	= rm[BP_SAVE]
-00490:      	I1	+= AR
+00492:      	AR	= -4
+00493:      	I1	= rm[BP_SAVE]
+00494:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-00491:      	AX	= rm[I1]
+00495:      	AX	= rm[I1]
             ; //	sCX	= 0x0002;			
-00492:      	CX	= 0x02
+00496:      	CX	= 0x02
             ; //	sAX	= sAX + sCX;			
-00493:      	AR	= CX
-00494:      	AX	+= AR
+00497:      	AR	= CX
+00498:      	AX	+= AR
             ; //	sDI	= sAX;				
-00495:      	AR	= AX
-00496:      	P1	= AR
+00499:      	AR	= AX
+0049A:      	P1	= AR
             ; //	sAX	= *(__int16*)sDI;		
-00497:      	AX	= pm[P1]
+0049B:      	AX	= pm[P1]
             ; //	sfx_CALL_BY_AX();			
-00498:      	AR	= AX
-00499:      	P1	= AR
-0049A:      	P1.hh	= 0
-0049B:      	fcall	pm[P1]
+0049C:      	AR	= AX
+0049D:      	P1	= AR
+0049E:      	P1.hh	= 0
+0049F:      	fcall	pm[P1]
             ; //L5589D4CE_88:;					
             L5589D4CE_88:
-            ; //_AE3845712_294:;				
-            _AE3845712_294:
+            ; //_AECA8DE46_298:;				
+            _AECA8DE46_298:
             ; //	goto L5589D4CE_90;			
-0049C:      	jmp	L5589D4CE_90
+004A0:      	jmp	L5589D4CE_90
             ; //L5589D4CE_85:;					
             L5589D4CE_85:
             ; //	
-            ; //_AE3845712_295:;				
-            _AE3845712_295:
+            ; //_AECA8DE46_299:;				
+            _AECA8DE46_299:
             ; //	sSI	= (int)&_pkey_1_10;		
-0049D:      	AR	= -4
-0049E:      	I1	= rm[BP_SAVE]
-0049F:      	I1	+= AR
+004A1:      	AR	= -4
+004A2:      	I1	= rm[BP_SAVE]
+004A3:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-004A0:      	AX	= rm[I1]
+004A4:      	AX	= rm[I1]
             ; //	sDI	= sAX;				
-004A1:      	AR	= AX
-004A2:      	P1	= AR
+004A5:      	AR	= AX
+004A6:      	P1	= AR
             ; //	sAX	= *(__int16*)sDI;		
-004A3:      	AX	= pm[P1]
+004A7:      	AX	= pm[P1]
             ; //	sfx_CHECKZERO();			
-004A4:      	AR	= AX
+004A8:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_92;	
-004A5:      	if NZ	jmp L5589D4CE_92
+004A9:      	if NZ	jmp L5589D4CE_92
             ; //	goto	L5589D4CE_91;			
-004A6:      	jmp	L5589D4CE_91
+004AA:      	jmp	L5589D4CE_91
             ; //L5589D4CE_92:;					
             L5589D4CE_92:
-            ; //_AE3845712_296:;				
-            _AE3845712_296:
-            ; //_AE3845712_297:;				
-            _AE3845712_297:
+            ; //_AECA8DE46_300:;				
+            _AECA8DE46_300:
+            ; //_AECA8DE46_301:;				
+            _AECA8DE46_301:
             ; //	sSI	= (int)&_pkey_1_10;		
-004A7:      	AR	= -4
-004A8:      	I1	= rm[BP_SAVE]
-004A9:      	I1	+= AR
+004AB:      	AR	= -4
+004AC:      	I1	= rm[BP_SAVE]
+004AD:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-004AA:      	AX	= rm[I1]
+004AE:      	AX	= rm[I1]
             ; //	sDI	= sAX;				
-004AB:      	AR	= AX
-004AC:      	P1	= AR
+004AF:      	AR	= AX
+004B0:      	P1	= AR
             ; //	sAX	= *(__int16*)sDI;		
-004AD:      	AX	= pm[P1]
+004B1:      	AX	= pm[P1]
             ; //	sfx_CALL_BY_AX();			
-004AE:      	AR	= AX
-004AF:      	P1	= AR
-004B0:      	P1.hh	= 0
-004B1:      	fcall	pm[P1]
+004B2:      	AR	= AX
+004B3:      	P1	= AR
+004B4:      	P1.hh	= 0
+004B5:      	fcall	pm[P1]
             ; //L5589D4CE_91:;					
             L5589D4CE_91:
-            ; //_AE3845712_298:;				
-            _AE3845712_298:
+            ; //_AECA8DE46_302:;				
+            _AECA8DE46_302:
             ; //L5589D4CE_90:;					
             L5589D4CE_90:
-            ; //_AE3845712_299:;				
-            _AE3845712_299:
+            ; //_AECA8DE46_303:;				
+            _AECA8DE46_303:
             ; //	goto L5589D4CE_93;			
-004B2:      	jmp	L5589D4CE_93
+004B6:      	jmp	L5589D4CE_93
             ; //L5589D4CE_82:;					
             L5589D4CE_82:
             ; //	
-            ; //_AE3845712_300:;				
-            _AE3845712_300:
+            ; //_AECA8DE46_304:;				
+            _AECA8DE46_304:
             ; //	sAX	= 0;				
-004B3:      	AX	= 0x00
+004B7:      	AX	= 0x00
             ; //	sSI	= (int)&_bitp_1_8+0;		
-004B4:      	AR	= -3
-004B5:      	I1	= rm[BP_SAVE]
-004B6:      	I1	+= AR
+004B8:      	AR	= -3
+004B9:      	I1	= rm[BP_SAVE]
+004BA:      	I1	+= AR
             ; //	asm AR = rm[I1];			
-004B7:      	AR = rm[I1]//
+004BB:      	AR = rm[I1]//
             ; //	asm test AR.b0;				
-004B8:      	test AR.b0//
+004BC:      	test AR.b0//
             ; //	if(__jz__) goto L5589D4CE_95;		
-004B9:      	if ZR	jmp L5589D4CE_95
+004BD:      	if ZR	jmp L5589D4CE_95
             ; //	sAX	= 1;				
-004BA:      	AX	= 0x01
+004BE:      	AX	= 0x01
             ; //L5589D4CE_95:;					
             L5589D4CE_95:
             ; //	sfx_CHECKZERO();			
-004BB:      	AR	= AX
+004BF:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_96;	
-004BC:      	if NZ	jmp L5589D4CE_96
+004C0:      	if NZ	jmp L5589D4CE_96
             ; //	goto	L5589D4CE_94;			
-004BD:      	jmp	L5589D4CE_94
+004C1:      	jmp	L5589D4CE_94
             ; //L5589D4CE_96:;					
             L5589D4CE_96:
             ; //	
-            ; //_AE3845712_301:;				
-            _AE3845712_301:
+            ; //_AECA8DE46_305:;				
+            _AECA8DE46_305:
             ; //	sSI	= (int)&_pkey_1_10;		
-004BE:      	AR	= -4
-004BF:      	I1	= rm[BP_SAVE]
-004C0:      	I1	+= AR
+004C2:      	AR	= -4
+004C3:      	I1	= rm[BP_SAVE]
+004C4:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-004C1:      	AX	= rm[I1]
+004C5:      	AX	= rm[I1]
             ; //	sCX	= 0x0001;			
-004C2:      	CX	= 0x01
+004C6:      	CX	= 0x01
             ; //	sAX	= sAX + sCX;			
-004C3:      	AR	= CX
-004C4:      	AX	+= AR
+004C7:      	AR	= CX
+004C8:      	AX	+= AR
             ; //	sDI	= sAX;				
-004C5:      	AR	= AX
-004C6:      	P1	= AR
+004C9:      	AR	= AX
+004CA:      	P1	= AR
             ; //	sAX	= *(__int16*)sDI;		
-004C7:      	AX	= pm[P1]
+004CB:      	AX	= pm[P1]
             ; //	sfx_CHECKZERO();			
-004C8:      	AR	= AX
+004CC:      	AR	= AX
             ; //	if(__jnz__)	goto L5589D4CE_98;	
-004C9:      	if NZ	jmp L5589D4CE_98
+004CD:      	if NZ	jmp L5589D4CE_98
             ; //	goto	L5589D4CE_97;			
-004CA:      	jmp	L5589D4CE_97
+004CE:      	jmp	L5589D4CE_97
             ; //L5589D4CE_98:;					
             L5589D4CE_98:
-            ; //_AE3845712_302:;				
-            _AE3845712_302:
-            ; //_AE3845712_303:;				
-            _AE3845712_303:
+            ; //_AECA8DE46_306:;				
+            _AECA8DE46_306:
+            ; //_AECA8DE46_307:;				
+            _AECA8DE46_307:
             ; //	sSI	= (int)&_pkey_1_10;		
-004CB:      	AR	= -4
-004CC:      	I1	= rm[BP_SAVE]
-004CD:      	I1	+= AR
+004CF:      	AR	= -4
+004D0:      	I1	= rm[BP_SAVE]
+004D1:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-004CE:      	AX	= rm[I1]
+004D2:      	AX	= rm[I1]
             ; //	sCX	= 0x0001;			
-004CF:      	CX	= 0x01
+004D3:      	CX	= 0x01
             ; //	sAX	= sAX + sCX;			
-004D0:      	AR	= CX
-004D1:      	AX	+= AR
+004D4:      	AR	= CX
+004D5:      	AX	+= AR
             ; //	sDI	= sAX;				
-004D2:      	AR	= AX
-004D3:      	P1	= AR
+004D6:      	AR	= AX
+004D7:      	P1	= AR
             ; //	sAX	= *(__int16*)sDI;		
-004D4:      	AX	= pm[P1]
+004D8:      	AX	= pm[P1]
             ; //	sfx_CALL_BY_AX();			
-004D5:      	AR	= AX
-004D6:      	P1	= AR
-004D7:      	P1.hh	= 0
-004D8:      	fcall	pm[P1]
+004D9:      	AR	= AX
+004DA:      	P1	= AR
+004DB:      	P1.hh	= 0
+004DC:      	fcall	pm[P1]
             ; //L5589D4CE_97:;					
             L5589D4CE_97:
-            ; //_AE3845712_304:;				
-            _AE3845712_304:
+            ; //_AECA8DE46_308:;				
+            _AECA8DE46_308:
             ; //L5589D4CE_94:;					
             L5589D4CE_94:
-            ; //_AE3845712_305:;				
-            _AE3845712_305:
+            ; //_AECA8DE46_309:;				
+            _AECA8DE46_309:
             ; //L5589D4CE_93:;					
             L5589D4CE_93:
-            ; //_AE3845712_306:;				
-            _AE3845712_306:
-            ; //_AE3845712_307:;				
-            _AE3845712_307:
+            ; //_AECA8DE46_310:;				
+            _AECA8DE46_310:
+            ; //_AECA8DE46_311:;				
+            _AECA8DE46_311:
             ; //	sSI	= (int)&_bits_1_6;		
-004D9:      	AR	= -2
-004DA:      	I1	= rm[BP_SAVE]
-004DB:      	I1	+= AR
+004DD:      	AR	= -2
+004DE:      	I1	= rm[BP_SAVE]
+004DF:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-004DC:      	AX	= rm[I1]
+004E0:      	AX	= rm[I1]
             ; //	asm sra AX, 1;				
-004DD:      	sra AX, 1//
+004E1:      	sra AX, 1//
             ; //	sSI	= (int)&_bits_1_6;		
-004DE:      	AR	= -2
-004DF:      	I1	= rm[BP_SAVE]
-004E0:      	I1	+= AR
-            ; //	*(__int16*)sSI	= sAX;			
-004E1:      	rm[I1]	= AX
-            ; //_AE3845712_308:;				
-            _AE3845712_308:
-            ; //	sSI	= (int)&_bitp_1_8;		
-004E2:      	AR	= -3
+004E2:      	AR	= -2
 004E3:      	I1	= rm[BP_SAVE]
 004E4:      	I1	+= AR
-            ; //	sAX	= *(__int16*)sSI;		
-004E5:      	AX	= rm[I1]
-            ; //	asm sra AX, 1;				
-004E6:      	sra AX, 1//
-            ; //	sSI	= (int)&_bitp_1_8;		
-004E7:      	AR	= -3
-004E8:      	I1	= rm[BP_SAVE]
-004E9:      	I1	+= AR
             ; //	*(__int16*)sSI	= sAX;			
-004EA:      	rm[I1]	= AX
-            ; //_AE3845712_309:;				
-            _AE3845712_309:
-            ; //	sSI	= (int)&_pkey_1_10;		
-004EB:      	AR	= -4
+004E5:      	rm[I1]	= AX
+            ; //_AECA8DE46_312:;				
+            _AECA8DE46_312:
+            ; //	sSI	= (int)&_bitp_1_8;		
+004E6:      	AR	= -3
+004E7:      	I1	= rm[BP_SAVE]
+004E8:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+004E9:      	AX	= rm[I1]
+            ; //	asm sra AX, 1;				
+004EA:      	sra AX, 1//
+            ; //	sSI	= (int)&_bitp_1_8;		
+004EB:      	AR	= -3
 004EC:      	I1	= rm[BP_SAVE]
 004ED:      	I1	+= AR
-            ; //	sAX	= *(__int16*)sSI;		
-004EE:      	AX	= rm[I1]
+            ; //	*(__int16*)sSI	= sAX;			
+004EE:      	rm[I1]	= AX
+            ; //_AECA8DE46_313:;				
+            _AECA8DE46_313:
             ; //	sSI	= (int)&_pkey_1_10;		
 004EF:      	AR	= -4
 004F0:      	I1	= rm[BP_SAVE]
 004F1:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+004F2:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_pkey_1_10;		
+004F3:      	AR	= -4
+004F4:      	I1	= rm[BP_SAVE]
+004F5:      	I1	+= AR
             ; //	asm AR = 0x0003;			
-004F2:      	AR = 0x0003//
+004F6:      	AR = 0x0003//
             ; //	sCX	= *(__int16*)sSI;		
-004F3:      	CX	= rm[I1]
+004F7:      	CX	= rm[I1]
             ; //	asm rm[I1] = CX + AR;			
-004F4:      	rm[I1] = CX + AR//
-            ; //_AE3845712_310:;				
-            _AE3845712_310:
+004F8:      	rm[I1] = CX + AR//
+            ; //_AECA8DE46_314:;				
+            _AECA8DE46_314:
             ; //	goto L5589D4CE_80;			
-004F5:      	jmp	L5589D4CE_80
+004F9:      	jmp	L5589D4CE_80
             ; //L5589D4CE_79:;					
             L5589D4CE_79:
             ; //L5589D4CE_74:;					
             L5589D4CE_74:
-            ; //_AE3845712_311:;				
-            _AE3845712_311:
+            ; //_AECA8DE46_315:;				
+            _AECA8DE46_315:
             ; //	return;					
-004F6:      	AR	= 5
-004F7:      	BP	+= AR
-004F8:      	pop	AR
-004F9:      	rm[BP_SAVE]	= AR
-004FA:      	rets
+004FA:      	AR	= 5
+004FB:      	BP	+= AR
+004FC:      	pop	AR
+004FD:      	rm[BP_SAVE]	= AR
+004FE:      	rets
             ; //_PollingKey3B90E3B1_end:;			
             _PollingKey3B90E3B1_end:
-            ; //_AE3845712_312:;				
-            _AE3845712_312:
+            ; //_AECA8DE46_316:;				
+            _AECA8DE46_316:
             ; //}
             ; //
             ; //
@@ -3490,11 +3506,11 @@
             ; //__int16 _adpdata32993E3B[24] = {		
             _adpdata32993E3B:
             ; //	(int)&ADPCM_CH0_Data, (int)&ADPCM_CH0_Data.h|0x0800, 0x1FFF, 0x003F, (int)&ADPCM_CH1_Data, (int)&ADPCM_CH1_Data.h|0x0800, 0x3FFF, 0x003F, 
-004FB:      DW #ADPCM_CH0_Data,#ADPCM_CH0_Data.h|0x0800,0x1FFF,0x003F,#ADPCM_CH1_Data,#ADPCM_CH1_Data.h|0x0800,0x3FFF,0x003F,
+004FF:      DW #ADPCM_CH0_Data,#ADPCM_CH0_Data.h|0x0800,0x1FFF,0x003F,#ADPCM_CH1_Data,#ADPCM_CH1_Data.h|0x0800,0x3FFF,0x003F,
             ; //	(int)&ADPCM_CH2_Data, (int)&ADPCM_CH2_Data.h|0x0800, 0x3FFF, 0x003F, (int)&ADPCM_CH3_Data, (int)&ADPCM_CH3_Data.h|0x0800, 0x3FFF, 0x003F, 
-00503:      DW #ADPCM_CH2_Data,#ADPCM_CH2_Data.h|0x0800,0x3FFF,0x003F,#ADPCM_CH3_Data,#ADPCM_CH3_Data.h|0x0800,0x3FFF,0x003F,
+00507:      DW #ADPCM_CH2_Data,#ADPCM_CH2_Data.h|0x0800,0x3FFF,0x003F,#ADPCM_CH3_Data,#ADPCM_CH3_Data.h|0x0800,0x3FFF,0x003F,
             ; //	(int)&ADPCM_CH4_Data, (int)&ADPCM_CH4_Data.h|0x0800, 0x3FFF, 0x003F, 0x0000, 0x0000, 0x0000, 0x0000
-0050B:      DW #ADPCM_CH4_Data,#ADPCM_CH4_Data.h|0x0800,0x3FFF,0x003F,0x0000,0x0000,0x0000,0x0000,
+0050F:      DW #ADPCM_CH4_Data,#ADPCM_CH4_Data.h|0x0800,0x3FFF,0x003F,0x0000,0x0000,0x0000,0x0000,
             ; //};
             ; //
             ; //
@@ -3506,35 +3522,35 @@
             ADPCM_CH0_Data:
             ; //{
             ; //	asm	DW "adpcm\Media1_8000_4-12.xam"	
-00D3C:      DW "adpcm\Media1_8000_4-12.xam"
+00D40:      DW "adpcm\Media1_8000_4-12.xam"
             ; //}
             ; //
             ; //naked void ADPCM_CH1_Data()			
             ADPCM_CH1_Data:
             ; //{
             ; //	asm	DW "adpcm\Media1_16000_4-12.xam"
-0394C:      DW "adpcm\Media1_16000_4-12.xam"
+03950:      DW "adpcm\Media1_16000_4-12.xam"
             ; //}
             ; //
             ; //naked void ADPCM_CH2_Data()			
             ADPCM_CH2_Data:
             ; //{
             ; //	asm	DW "adpcm\Media2_16000_4-12.xam"
-09197:      DW "adpcm\Media2_16000_4-12.xam"
+0919B:      DW "adpcm\Media2_16000_4-12.xam"
             ; //}
             ; //
             ; //naked void ADPCM_CH3_Data()			
             ADPCM_CH3_Data:
             ; //{
             ; //	asm	DW "adpcm\Media3_16000_4-12.xam"
-13298:      DW "adpcm\Media3_16000_4-12.xam"
+1329C:      DW "adpcm\Media3_16000_4-12.xam"
             ; //}
             ; //
             ; //naked void ADPCM_CH4_Data()			
             ADPCM_CH4_Data:
             ; //{
             ; //	asm	DW "adpcm\Media4_16000_4-12.xam"
-15530:      DW "adpcm\Media4_16000_4-12.xam"
+15534:      DW "adpcm\Media4_16000_4-12.xam"
             ; //}
             ; //
             ; //
@@ -3583,17 +3599,17 @@
             ; ~~ --------------------------
             ; int get_SATV(long value)
             get_SATV:
-00513:      	AR=		BP
-00514:      	AR=		AR + 1		; ~~ value
-00515:      	I1=		AR
-00516:      	AR=		SATV
-00517:      	AR=		rm[I1++]
-00518:      	SATV=		AR
-00519:      	AR=		rm[I1++]
-0051A:      	SATV=		AR
-0051B:      	AR=		SATV
-0051C:      	AX=		AR
-0051D:      	rets
+00517:      	AR=		BP
+00518:      	AR=		AR + 1		; ~~ value
+00519:      	I1=		AR
+0051A:      	AR=		SATV
+0051B:      	AR=		rm[I1++]
+0051C:      	SATV=		AR
+0051D:      	AR=		rm[I1++]
+0051E:      	SATV=		AR
+0051F:      	AR=		SATV
+00520:      	AX=		AR
+00521:      	rets
             
             #ifdef _MSPEECHDSP_
             
@@ -3610,37 +3626,37 @@
             ; ~~ --------------------------
             ; void set_ADPHD(int value)
             set_ADPHD:
-0051E:      	AR=		BP
-0051F:      	AR=		AR + 1		; ~~ value
-00520:      	I1=		AR
-00521:      	ADPHD=		rm[I1]
-00522:      	rets
+00522:      	AR=		BP
+00523:      	AR=		AR + 1		; ~~ value
+00524:      	I1=		AR
+00525:      	ADPHD=		rm[I1]
+00526:      	rets
             
             
             ; ~~ --------------------------
             ; int get_ADPHD(void)
             get_ADPHD:
-00523:      	AR=		ADPHD
-00524:      	AX=		AR
-00525:      	rets
+00527:      	AR=		ADPHD
+00528:      	AX=		AR
+00529:      	rets
             
             
             ; ~~ --------------------------
             ; void set_ADPDAT(int value)
             set_ADPDAT:
-00526:      	AR=		BP
-00527:      	AR=		AR + 1		; ~~ value
-00528:      	I1=		AR
-00529:      	ADPDAT=		rm[I1]
-0052A:      	rets
+0052A:      	AR=		BP
+0052B:      	AR=		AR + 1		; ~~ value
+0052C:      	I1=		AR
+0052D:      	ADPDAT=		rm[I1]
+0052E:      	rets
             
             
             ; ~~ --------------------------
             ; int get_ADPDAT(void)
             get_ADPDAT:
-0052B:      	AR=		ADPDAT
-0052C:      	AX=		AR
-0052D:      	rets
+0052F:      	AR=		ADPDAT
+00530:      	AX=		AR
+00531:      	rets
             
             #endif
             
@@ -3650,41 +3666,41 @@
             ; int get_ADPPCM(void)
             get_FLTI:
             get_ADPPCM:
-0052E:      	AR=		ADPPCM
-0052F:      	AX=		AR
-00530:      	rets
+00532:      	AR=		ADPPCM
+00533:      	AX=		AR
+00534:      	rets
             
             
             ; ~~ --------------------------
             ; int get_CBL(void)
             get_CBL:
-00531:      	AR=		CBL
-00532:      	AX=		AR
-00533:      	rets
+00535:      	AR=		CBL
+00536:      	AX=		AR
+00537:      	rets
             
             
             ; ~~ --------------------------
             ; int get_FLTO(void)
             get_FLTO:
-00534:      	AR=		FLTO
-00535:      	AX=		AR
-00536:      	rets
+00538:      	AR=		FLTO
+00539:      	AX=		AR
+0053A:      	rets
             
             
             ; ~~ --------------------------
             ; int get_FLTA(void)
             get_FLTA:
-00537:      	AR=		FLTA
-00538:      	AX=		AR
-00539:      	rets
+0053B:      	AR=		FLTA
+0053C:      	AX=		AR
+0053D:      	rets
             
             
             ; ~~ --------------------------
             ; int get_FLTP(void)
             get_FLTP:
-0053A:      	AR=		FLTP
-0053B:      	AX=		AR
-0053C:      	rets
+0053E:      	AR=		FLTP
+0053F:      	AX=		AR
+00540:      	rets
             
             ; ///////////////////////////////////////////////////////////////////////////
             ; ///////////////////////////////////////////////////////////////////////////
@@ -3692,238 +3708,238 @@
             ; ~~ --------------------------
             ; void set_UART(void)
             set_UART:
-0053D:      	set		io[STATUS].b5
-0053E:      	rets
+00541:      	set		io[STATUS].b5
+00542:      	rets
             
             ; ~~ --------------------------
             ; void clr_UART(void)
             clr_UART:
-0053F:      	clr		io[STATUS].b5
-00540:      	rets
+00543:      	clr		io[STATUS].b5
+00544:      	rets
             
             ; ~~ --------------------------
             ; void set_SPIM(void)
             set_SPIM:
-00541:      	set		io[STATUS].b8
-00542:      	rets
+00545:      	set		io[STATUS].b8
+00546:      	rets
             
             ; ~~ --------------------------
             ; void clr_SPIM(void)
             clr_SPIM:
-00543:      	clr		io[STATUS].b8
-00544:      	rets
+00547:      	clr		io[STATUS].b8
+00548:      	rets
             
             ; ~~ --------------------------
             ; void set_SPIS(void)
             set_SPIS:
-00545:      	set		io[STATUS].b9
-00546:      	rets
+00549:      	set		io[STATUS].b9
+0054A:      	rets
             
             ; ~~ --------------------------
             ; void clr_SPIS(void)
             clr_SPIS:
-00547:      	clr		io[STATUS].b9
-00548:      	rets
-            
-            ; ~~ --------------------------
-            ; void set_IntPrWR(void)
-            set_IntPrWR:
-00549:      	set		io[STATUS].b11
-0054A:      	rets
-            
-            ; ~~ --------------------------
-            ; void clr_IntPrWR(void)
-            clr_IntPrWR:
-0054B:      	clr		io[STATUS].b11
+0054B:      	clr		io[STATUS].b9
 0054C:      	rets
             
             ; ~~ --------------------------
             ; void set_IntPrWR(void)
-            set_SD:
-0054D:      	set		io[STATUS].b12
+            set_IntPrWR:
+0054D:      	set		io[STATUS].b11
 0054E:      	rets
             
             ; ~~ --------------------------
             ; void clr_IntPrWR(void)
-            clr_SD:
-0054F:      	clr		io[STATUS].b12
+            clr_IntPrWR:
+0054F:      	clr		io[STATUS].b11
 00550:      	rets
+            
+            ; ~~ --------------------------
+            ; void set_IntPrWR(void)
+            set_SD:
+00551:      	set		io[STATUS].b12
+00552:      	rets
+            
+            ; ~~ --------------------------
+            ; void clr_IntPrWR(void)
+            clr_SD:
+00553:      	clr		io[STATUS].b12
+00554:      	rets
             
             ; ~~ --------------------------
             ; void set_IntVWR(void)
             set_IntVWR:
-00551:      	set		io[STATUS].b13
-00552:      	rets
+00555:      	set		io[STATUS].b13
+00556:      	rets
             
             ; ~~ --------------------------
             ; void clr_IntVWR(void)
             clr_IntVWR:
-00553:      	clr		io[STATUS].b13
-00554:      	rets
+00557:      	clr		io[STATUS].b13
+00558:      	rets
             
             ; ~~ --------------------------
             ; void set_INTENA(int value)
             set_INTENA:
-00555:      	AR=		BP
-00556:      	AR=		AR + 1		; ~~ value
-00557:      	I1=		AR
-00558:      	AR=		rm[I1]
-00559:      	io[INTENA]=	AR
-0055A:      	rets
+00559:      	AR=		BP
+0055A:      	AR=		AR + 1		; ~~ value
+0055B:      	I1=		AR
+0055C:      	AR=		rm[I1]
+0055D:      	io[INTENA]=	AR
+0055E:      	rets
             
             ; ~~ --------------------------
             ; int get_INTENA(int value)
             get_INTENA:
-0055B:      	AR=		io[INTENA]
-0055C:      	AX=		AR
-0055D:      	rets
+0055F:      	AR=		io[INTENA]
+00560:      	AX=		AR
+00561:      	rets
             
             ; ~~ --------------------------
             ; void set_INTREQ(int value)
             set_INTREQ:
-0055E:      	AR=		BP
-0055F:      	AR=		AR + 1		; ~~ value
-00560:      	I1=		AR
-00561:      	AR=		rm[I1]
-00562:      	io[INTREQ]	=AR
-00563:      	rets
+00562:      	AR=		BP
+00563:      	AR=		AR + 1		; ~~ value
+00564:      	I1=		AR
+00565:      	AR=		rm[I1]
+00566:      	io[INTREQ]	=AR
+00567:      	rets
             
             ; ~~ --------------------------
             ; int get_INTREQ(int value)
             get_INTREQ:
-00564:      	AR=		io[INTREQ]
-00565:      	AX=		AR
-00566:      	rets
+00568:      	AR=		io[INTREQ]
+00569:      	AX=		AR
+0056A:      	rets
             
             ; ~~ --------------------------
             ; void set_IntVect(int value)
             set_IntVect:
-00567:      	AR=		BP
-00568:      	AR=		AR + 1		; ~~ value
-00569:      	I1=		AR
-0056A:      	AR=		rm[I1]
-0056B:      	io[IntVect]	=AR
-0056C:      	rets
+0056B:      	AR=		BP
+0056C:      	AR=		AR + 1		; ~~ value
+0056D:      	I1=		AR
+0056E:      	AR=		rm[I1]
+0056F:      	io[IntVect]	=AR
+00570:      	rets
             
             ; ~~ --------------------------
             ; int get_IntVect(int value)
             get_IntVect:
-0056D:      	AR=		io[IntVect]
-0056E:      	AX=		AR
-0056F:      	rets
+00571:      	AR=		io[IntVect]
+00572:      	AX=		AR
+00573:      	rets
             
             
             ; ~~ --------------------------
             ; int get_IOC_PA(int value)
             get_IOC_PA:
-00570:      	AR=		io[IOC_PA]
-00571:      	AX=		AR
-00572:      	rets
+00574:      	AR=		io[IOC_PA]
+00575:      	AX=		AR
+00576:      	rets
             
             
             ; ~~ --------------------------
             ; int get_IOC_PB(int value)
             get_IOC_PB:
-00573:      	AR=		io[IOC_PB]
-00574:      	AX=		AR
-00575:      	rets
+00577:      	AR=		io[IOC_PB]
+00578:      	AX=		AR
+00579:      	rets
             
             
             ; ~~ --------------------------
             ; int get_IOC_PC(int value)
             get_IOC_PC:
-00576:      	AR=		io[IOC_PC]
-00577:      	AX=		AR
-00578:      	rets
+0057A:      	AR=		io[IOC_PC]
+0057B:      	AX=		AR
+0057C:      	rets
             
             ; ~~ --------------------------
             ; int get_PortA(int value)
             get_PortA:
-00579:      	AR=		io[PortA]
-0057A:      	AX=		AR
-0057B:      	rets
+0057D:      	AR=		io[PortA]
+0057E:      	AX=		AR
+0057F:      	rets
             
             ; ~~ --------------------------
             ; int get_PortB(int value)
             get_PortB:
-0057C:      	AR=		io[PortB]
-0057D:      	AX=		AR
-0057E:      	rets
+00580:      	AR=		io[PortB]
+00581:      	AX=		AR
+00582:      	rets
             
             
             ; ~~ --------------------------
             ; int get_PortC(int value)
             get_PortC:
-0057F:      	AR=		io[PortC]
-00580:      	AX=		AR
-00581:      	rets
+00583:      	AR=		io[PortC]
+00584:      	AX=		AR
+00585:      	rets
             
             ; ~~ --------------------------
             ; void set_SPI_CTL(int value)
             set_SPI_CTL:
-00582:      	AR=		BP
-00583:      	AR=		AR + 1		; ~~ value
-00584:      	I1=		AR
-00585:      	AR=		rm[I1]
-00586:      	io[SPI_CTL]=	AR
-00587:      	rets
+00586:      	AR=		BP
+00587:      	AR=		AR + 1		; ~~ value
+00588:      	I1=		AR
+00589:      	AR=		rm[I1]
+0058A:      	io[SPI_CTL]=	AR
+0058B:      	rets
             
             ; ~~ --------------------------
             ; int get_SPI_CTL(int value)
             get_SPI_CTL:
-00588:      	AR=		io[SPI_CTL]
-00589:      	AX=		AR
-0058A:      	rets
+0058C:      	AR=		io[SPI_CTL]
+0058D:      	AX=		AR
+0058E:      	rets
             
             ; ~~ --------------------------
             ; void set_SPI_DAT(int value)
             set_SPI_DAT:
-0058B:      	AR=		BP
-0058C:      	AR=		AR + 1		; ~~ value
-0058D:      	I1=		AR
-0058E:      	AR=		rm[I1]
-0058F:      	io[SPI_DAT]=	AR
-00590:      	rets
+0058F:      	AR=		BP
+00590:      	AR=		AR + 1		; ~~ value
+00591:      	I1=		AR
+00592:      	AR=		rm[I1]
+00593:      	io[SPI_DAT]=	AR
+00594:      	rets
             
             ; ~~ --------------------------
             ; int get_SPI_DAT(int value)
             get_SPI_DAT:
-00591:      	AR=		io[SPI_DAT]
-00592:      	AX=		AR
-00593:      	rets
+00595:      	AR=		io[SPI_DAT]
+00596:      	AX=		AR
+00597:      	rets
             
             
             ; ~~ --------------------------
             ; void set_MISC(int value)
             set_MISC:
-00594:      	AR=		BP
-00595:      	AR=		AR + 1		; ~~ value
-00596:      	I1=		AR
-00597:      	AR=		rm[I1]
+00598:      	AR=		BP
+00599:      	AR=		AR + 1		; ~~ value
+0059A:      	I1=		AR
+0059B:      	AR=		rm[I1]
             	;~ io[0x1C]	=AR
-00598:      	rets
+0059C:      	rets
             
             ; ~~ --------------------------
             ; int get_MISC(int value)
             get_MISC:
-00599:      	AR=		io[MISC]
-0059A:      	AX=		AR
-0059B:      	rets
+0059D:      	AR=		io[MISC]
+0059E:      	AX=		AR
+0059F:      	rets
             
             ; ~~ --------------------------
             ; int get_Real_T(int value)
             get_Real_T:
             	;~ AR=		io[0x1D]
-0059C:      	AX=		AR
-0059D:      	rets
+005A0:      	AX=		AR
+005A1:      	rets
             
             
             ; ~~ --------------------------
             ; int get_MACOP(void)
             get_MACOP:
-0059E:      	AR=		MACOP
-0059F:      	AX=		AR
-005A0:      	rets
+005A2:      	AR=		MACOP
+005A3:      	AX=		AR
+005A4:      	rets
             
             
             ; ~~ --------------------------
@@ -3946,18 +3962,18 @@
             ; ~~ --------------------------
             ; int vXCHG(int value)
             vXCHG:
-005A1:      	AR=		BP
-005A2:      	AR=		AR + 1
-005A3:      	I1=		AR
-005A4:      	AR=		rm[I1]
-005A5:      	xchg		AR
-005A6:      	AX=		AR
-005A7:      	rets
+005A5:      	AR=		BP
+005A6:      	AR=		AR + 1
+005A7:      	I1=		AR
+005A8:      	AR=		rm[I1]
+005A9:      	xchg		AR
+005AA:      	AX=		AR
+005AB:      	rets
             
             ; ~~ --------------------------
             ; void cpuHalt(void)
             cpuHalt:
-005A8:      	halt
+005AC:      	halt
             
             
             #ifdef _MFDSP_
@@ -4215,58 +4231,58 @@
             ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             
             read_I0:
-005A9:      	AX=		rm[I0]
-005AA:      	rets
-            
-            read_I0P:
-005AB:      	AX=		rm[I0++]
-005AC:      	rets
-            
-            read_I0P2:
-005AD:      	AX=		rm[I0++2]
+005AD:      	AX=		rm[I0]
 005AE:      	rets
             
-            read_I0M:
-005AF:      	AX=		rm[I0--]
+            read_I0P:
+005AF:      	AX=		rm[I0++]
 005B0:      	rets
+            
+            read_I0P2:
+005B1:      	AX=		rm[I0++2]
+005B2:      	rets
+            
+            read_I0M:
+005B3:      	AX=		rm[I0--]
+005B4:      	rets
             
             
             ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             get_I0:
-005B1:      	AR=		I0
-005B2:      	AX=		AR
-005B3:      	rets
+005B5:      	AR=		I0
+005B6:      	AX=		AR
+005B7:      	rets
             
             ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             
             read_P0:
-005B4:      	AX=		pm[P0]
-005B5:      	rets
+005B8:      	AX=		pm[P0]
+005B9:      	rets
             
             read_P0P:
-005B6:      	AX=		pm[P0++]
-005B7:      	rets
+005BA:      	AX=		pm[P0++]
+005BB:      	rets
             
             read_P0M:
-005B8:      	AX=		pm[P0--]
-005B9:      	rets
+005BC:      	AX=		pm[P0--]
+005BD:      	rets
             
             
             ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             get_P0:
-005BA:      	AR=		P0
-005BB:      	AX=		AR
-005BC:      	rets
+005BE:      	AR=		P0
+005BF:      	AX=		AR
+005C0:      	rets
             
             ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             
             
             FA:
-005BD:      	AX=		1
-005BE:      	if FA jmp	@fa_label_1504
-005BF:      	AX=		0
+005C1:      	AX=		1
+005C2:      	if FA jmp	@fa_label_1504
+005C3:      	AX=		0
             @fa_label_1504:
-005C0:      	rets
+005C4:      	rets
             
             
             
@@ -4300,111 +4316,111 @@
             ; //{
             ; //	__int16 _ret_1_2;
             ; //						
-005C1:      	AR	= rm[BP_SAVE]
-005C2:      	push	AR
-005C3:      	AR	= BP
-005C4:      	rm[BP_SAVE]	= AR
-005C5:      	AR	 = -1
-005C6:      	BP	+= AR
-            ; //_AE3845712_313:;				
-            _AE3845712_313:
+005C5:      	AR	= rm[BP_SAVE]
+005C6:      	push	AR
+005C7:      	AR	= BP
+005C8:      	rm[BP_SAVE]	= AR
+005C9:      	AR	 = -1
+005CA:      	BP	+= AR
+            ; //_AECA8DE46_317:;				
+            _AECA8DE46_317:
             ; //	
-            ; //_AE3845712_314:;				
-            _AE3845712_314:
+            ; //_AECA8DE46_318:;				
+            _AECA8DE46_318:
             ; //	sSI	= (int)&_s_0_4;			
-005C7:      	AR	= 2
-005C8:      	I1	= rm[BP_SAVE]
-005C9:      	I1	+= AR
+005CB:      	AR	= 2
+005CC:      	I1	= rm[BP_SAVE]
+005CD:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-005CA:      	AX	= rm[I1]
+005CE:      	AX	= rm[I1]
             ; //	sSI	= (int)&_ret_1_2;		
-005CB:      	I1	= rm[BP_SAVE]
+005CF:      	I1	= rm[BP_SAVE]
             ; //	*(__int16*)sSI	= sAX;			
-005CC:      	rm[I1]	= AX
+005D0:      	rm[I1]	= AX
             ; //LF2D2B0F3_102:;					
             LF2D2B0F3_102:
-            ; //_AE3845712_315:;				
-            _AE3845712_315:
-            ; //	sSI	= (int)&_n_0_8;			
-005CD:      	AR	= 4
-005CE:      	I1	= rm[BP_SAVE]
-005CF:      	I1	+= AR
-            ; //	sAX	= *(__int16*)sSI;		
-005D0:      	AX	= rm[I1]
+            ; //_AECA8DE46_319:;				
+            _AECA8DE46_319:
             ; //	sSI	= (int)&_n_0_8;			
 005D1:      	AR	= 4
 005D2:      	I1	= rm[BP_SAVE]
 005D3:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+005D4:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_n_0_8;			
+005D5:      	AR	= 4
+005D6:      	I1	= rm[BP_SAVE]
+005D7:      	I1	+= AR
             ; //	asm AR = 0x0001;			
-005D4:      	AR = 0x0001//
+005D8:      	AR = 0x0001//
             ; //	sCX	= *(__int16*)sSI;		
-005D5:      	CX	= rm[I1]
+005D9:      	CX	= rm[I1]
             ; //	asm rm[I1] = CX - AR;			
-005D6:      	rm[I1] = CX - AR//
+005DA:      	rm[I1] = CX - AR//
             ; //	sfx_CHECKZERO();			
-005D7:      	AR	= AX
+005DB:      	AR	= AX
             ; //	if(__jnz__)	goto LF2D2B0F3_103;	
-005D8:      	if NZ	jmp LF2D2B0F3_103
+005DC:      	if NZ	jmp LF2D2B0F3_103
             ; //	goto	LF2D2B0F3_101;			
-005D9:      	jmp	LF2D2B0F3_101
+005DD:      	jmp	LF2D2B0F3_101
             ; //LF2D2B0F3_103:;					
             LF2D2B0F3_103:
-            ; //_AE3845712_316:;				
-            _AE3845712_316:
+            ; //_AECA8DE46_320:;				
+            _AECA8DE46_320:
             ; //	sSI	= (int)&_ret_1_2;		
-005DA:      	I1	= rm[BP_SAVE]
-            ; //	sAX	= *(__int16*)sSI;		
-005DB:      	AX	= rm[I1]
-            ; //	PUSH(sAX);				
-005DC:      	push	AX
-            ; //	sSI	= (int)&_c_0_6;			
-005DD:      	AR	= 3
 005DE:      	I1	= rm[BP_SAVE]
-005DF:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-005E0:      	AX	= rm[I1]
+005DF:      	AX	= rm[I1]
+            ; //	PUSH(sAX);				
+005E0:      	push	AX
+            ; //	sSI	= (int)&_c_0_6;			
+005E1:      	AR	= 3
+005E2:      	I1	= rm[BP_SAVE]
+005E3:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+005E4:      	AX	= rm[I1]
             ; //	sSI	= POP();			
-005E1:      	pop	I1
+005E5:      	pop	I1
             ; //	*(__int16*)sSI	= sAX;			
-005E2:      	rm[I1]	= AX
+005E6:      	rm[I1]	= AX
             ; //	sSI	= (int)&_ret_1_2;		
-005E3:      	I1	= rm[BP_SAVE]
+005E7:      	I1	= rm[BP_SAVE]
             ; //	asm AR = 0x0001;			
-005E4:      	AR = 0x0001//
+005E8:      	AR = 0x0001//
             ; //	sAX	= *(__int16*)sSI;		
-005E5:      	AX	= rm[I1]
+005E9:      	AX	= rm[I1]
             ; //	asm rm[I1] = AX + AR;			
-005E6:      	rm[I1] = AX + AR//
-            ; //_AE3845712_317:;				
-            _AE3845712_317:
+005EA:      	rm[I1] = AX + AR//
+            ; //_AECA8DE46_321:;				
+            _AECA8DE46_321:
             ; //	goto LF2D2B0F3_102;			
-005E7:      	jmp	LF2D2B0F3_102
+005EB:      	jmp	LF2D2B0F3_102
             ; //LF2D2B0F3_101:;					
             LF2D2B0F3_101:
-            ; //_AE3845712_318:;				
-            _AE3845712_318:
+            ; //_AECA8DE46_322:;				
+            _AECA8DE46_322:
             ; //	sSI	= (int)&_s_0_4;			
-005E8:      	AR	= 2
-005E9:      	I1	= rm[BP_SAVE]
-005EA:      	I1	+= AR
+005EC:      	AR	= 2
+005ED:      	I1	= rm[BP_SAVE]
+005EE:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-005EB:      	AX	= rm[I1]
+005EF:      	AX	= rm[I1]
             ; //	goto LF2D2B0F3_100;			
-005EC:      	jmp	LF2D2B0F3_100
+005F0:      	jmp	LF2D2B0F3_100
             ; //LF2D2B0F3_100:;					
             LF2D2B0F3_100:
-            ; //_AE3845712_319:;				
-            _AE3845712_319:
+            ; //_AECA8DE46_323:;				
+            _AECA8DE46_323:
             ; //	return;					
-005ED:      	AR	= 1
-005EE:      	BP	+= AR
-005EF:      	pop	AR
-005F0:      	rm[BP_SAVE]	= AR
-005F1:      	rets
+005F1:      	AR	= 1
+005F2:      	BP	+= AR
+005F3:      	pop	AR
+005F4:      	rm[BP_SAVE]	= AR
+005F5:      	rets
             ; //_memset_sC3E11DB1_end:;				
             _memset_sC3E11DB1_end:
-            ; //_AE3845712_320:;				
-            _AE3845712_320:
+            ; //_AECA8DE46_324:;				
+            _AECA8DE46_324:
             ; //}
             ; //
             ; //rcall rjmp void _memset_rC7200006(__int16 _s_0_4, __int16 _c_0_6, __int16 _n_0_8)
@@ -4412,243 +4428,243 @@
             ; //{
             ; //	__int16 _ret_1_2;
             ; //						
-005F2:      	AR	= rm[BP_SAVE]
-005F3:      	push	AR
-005F4:      	AR	= BP
-005F5:      	rm[BP_SAVE]	= AR
-005F6:      	AR	 = -1
-005F7:      	BP	+= AR
-            ; //_AE3845712_321:;				
-            _AE3845712_321:
+005F6:      	AR	= rm[BP_SAVE]
+005F7:      	push	AR
+005F8:      	AR	= BP
+005F9:      	rm[BP_SAVE]	= AR
+005FA:      	AR	 = -1
+005FB:      	BP	+= AR
+            ; //_AECA8DE46_325:;				
+            _AECA8DE46_325:
             ; //	
-            ; //_AE3845712_322:;				
-            _AE3845712_322:
+            ; //_AECA8DE46_326:;				
+            _AECA8DE46_326:
             ; //	sSI	= (int)&_s_0_4;			
-005F8:      	AR	= 2
-005F9:      	I1	= rm[BP_SAVE]
-005FA:      	I1	+= AR
+005FC:      	AR	= 2
+005FD:      	I1	= rm[BP_SAVE]
+005FE:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-005FB:      	AX	= rm[I1]
+005FF:      	AX	= rm[I1]
             ; //	sSI	= (int)&_ret_1_2;		
-005FC:      	I1	= rm[BP_SAVE]
+00600:      	I1	= rm[BP_SAVE]
             ; //	*(__int16*)sSI	= sAX;			
-005FD:      	rm[I1]	= AX
+00601:      	rm[I1]	= AX
             ; //LF2D2B0F3_106:;					
             LF2D2B0F3_106:
-            ; //_AE3845712_323:;				
-            _AE3845712_323:
-            ; //	sSI	= (int)&_n_0_8;			
-005FE:      	AR	= 4
-005FF:      	I1	= rm[BP_SAVE]
-00600:      	I1	+= AR
-            ; //	sAX	= *(__int16*)sSI;		
-00601:      	AX	= rm[I1]
+            ; //_AECA8DE46_327:;				
+            _AECA8DE46_327:
             ; //	sSI	= (int)&_n_0_8;			
 00602:      	AR	= 4
 00603:      	I1	= rm[BP_SAVE]
 00604:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+00605:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_n_0_8;			
+00606:      	AR	= 4
+00607:      	I1	= rm[BP_SAVE]
+00608:      	I1	+= AR
             ; //	asm AR = 0x0001;			
-00605:      	AR = 0x0001//
+00609:      	AR = 0x0001//
             ; //	sCX	= *(__int16*)sSI;		
-00606:      	CX	= rm[I1]
+0060A:      	CX	= rm[I1]
             ; //	asm rm[I1] = CX - AR;			
-00607:      	rm[I1] = CX - AR//
+0060B:      	rm[I1] = CX - AR//
             ; //	sfx_CHECKZERO();			
-00608:      	AR	= AX
+0060C:      	AR	= AX
             ; //	if(__jnz__)	goto LF2D2B0F3_107;	
-00609:      	if NZ	jmp LF2D2B0F3_107
+0060D:      	if NZ	jmp LF2D2B0F3_107
             ; //	goto	LF2D2B0F3_105;			
-0060A:      	jmp	LF2D2B0F3_105
+0060E:      	jmp	LF2D2B0F3_105
             ; //LF2D2B0F3_107:;					
             LF2D2B0F3_107:
-            ; //_AE3845712_324:;				
-            _AE3845712_324:
+            ; //_AECA8DE46_328:;				
+            _AECA8DE46_328:
             ; //	sSI	= (int)&_ret_1_2;		
-0060B:      	I1	= rm[BP_SAVE]
-            ; //	sAX	= *(__int16*)sSI;		
-0060C:      	AX	= rm[I1]
-            ; //	PUSH(sAX);				
-0060D:      	push	AX
-            ; //	sSI	= (int)&_c_0_6;			
-0060E:      	AR	= 3
 0060F:      	I1	= rm[BP_SAVE]
-00610:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-00611:      	AX	= rm[I1]
+00610:      	AX	= rm[I1]
+            ; //	PUSH(sAX);				
+00611:      	push	AX
+            ; //	sSI	= (int)&_c_0_6;			
+00612:      	AR	= 3
+00613:      	I1	= rm[BP_SAVE]
+00614:      	I1	+= AR
+            ; //	sAX	= *(__int16*)sSI;		
+00615:      	AX	= rm[I1]
             ; //	sSI	= POP();			
-00612:      	pop	I1
+00616:      	pop	I1
             ; //	*(__int16*)sSI	= sAX;			
-00613:      	rm[I1]	= AX
+00617:      	rm[I1]	= AX
             ; //	sSI	= (int)&_ret_1_2;		
-00614:      	I1	= rm[BP_SAVE]
+00618:      	I1	= rm[BP_SAVE]
             ; //	asm AR = 0x0001;			
-00615:      	AR = 0x0001//
+00619:      	AR = 0x0001//
             ; //	sAX	= *(__int16*)sSI;		
-00616:      	AX	= rm[I1]
+0061A:      	AX	= rm[I1]
             ; //	asm rm[I1] = AX + AR;			
-00617:      	rm[I1] = AX + AR//
-            ; //_AE3845712_325:;				
-            _AE3845712_325:
+0061B:      	rm[I1] = AX + AR//
+            ; //_AECA8DE46_329:;				
+            _AECA8DE46_329:
             ; //	goto LF2D2B0F3_106;			
-00618:      	jmp	LF2D2B0F3_106
+0061C:      	jmp	LF2D2B0F3_106
             ; //LF2D2B0F3_105:;					
             LF2D2B0F3_105:
-            ; //_AE3845712_326:;				
-            _AE3845712_326:
+            ; //_AECA8DE46_330:;				
+            _AECA8DE46_330:
             ; //	sSI	= (int)&_s_0_4;			
-00619:      	AR	= 2
-0061A:      	I1	= rm[BP_SAVE]
-0061B:      	I1	+= AR
+0061D:      	AR	= 2
+0061E:      	I1	= rm[BP_SAVE]
+0061F:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-0061C:      	AX	= rm[I1]
+00620:      	AX	= rm[I1]
             ; //	goto LF2D2B0F3_104;			
-0061D:      	jmp	LF2D2B0F3_104
+00621:      	jmp	LF2D2B0F3_104
             ; //LF2D2B0F3_104:;					
             LF2D2B0F3_104:
-            ; //_AE3845712_327:;				
-            _AE3845712_327:
+            ; //_AECA8DE46_331:;				
+            _AECA8DE46_331:
             ; //	return;					
-0061E:      	AR	= 1
-0061F:      	BP	+= AR
-00620:      	pop	AR
-00621:      	rm[BP_SAVE]	= AR
-00622:      	rets
+00622:      	AR	= 1
+00623:      	BP	+= AR
+00624:      	pop	AR
+00625:      	rm[BP_SAVE]	= AR
+00626:      	rets
             ; //_memset_rC7200006_end:;				
             _memset_rC7200006_end:
-            ; //_AE3845712_328:;				
-            _AE3845712_328:
+            ; //_AECA8DE46_332:;				
+            _AECA8DE46_332:
             ; //}
             ; //
             ; //rcall rjmp void _memset5A9D755A(__int16 _s_0_4_0, __int16 _s_0_4_1, __int16 _c_0_8, __int16 _n_0_10)
             _memset5A9D755A:
             ; //{						
-00623:      	AR	= rm[BP_SAVE]
-00624:      	push	AR
-00625:      	AR	= BP
-00626:      	rm[BP_SAVE]	= AR
-            ; //_AE3845712_329:;				
-            _AE3845712_329:
+00627:      	AR	= rm[BP_SAVE]
+00628:      	push	AR
+00629:      	AR	= BP
+0062A:      	rm[BP_SAVE]	= AR
+            ; //_AECA8DE46_333:;				
+            _AECA8DE46_333:
             ; //	
-            ; //_AE3845712_330:;				
-            _AE3845712_330:
+            ; //_AECA8DE46_334:;				
+            _AECA8DE46_334:
             ; //	sAX	= (int)&_s_0_4_0;		
-00627:      	AR	= 2
-00628:      	AX	= rm[BP_SAVE]
-00629:      	AX	+= AR
+0062B:      	AR	= 2
+0062C:      	AX	= rm[BP_SAVE]
+0062D:      	AX	+= AR
             ; //	sCX	= 0x0001;			
-0062A:      	CX	= 0x01
+0062E:      	CX	= 0x01
             ; //	sAX	= sAX + sCX;			
-0062B:      	AR	= CX
-0062C:      	AX	+= AR
+0062F:      	AR	= CX
+00630:      	AX	+= AR
             ; //	sSI	= sAX;				
-0062D:      	AR	= AX
-0062E:      	I1	= AR
+00631:      	AR	= AX
+00632:      	I1	= AR
             ; //	sAX	= *(__int16*)sSI;		
-0062F:      	AX	= rm[I1]
+00633:      	AX	= rm[I1]
             ; //	sfx_CHECKZERO();			
-00630:      	AR	= AX
+00634:      	AR	= AX
             ; //	if(__jnz__)	goto LF2D2B0F3_110;	
-00631:      	if NZ	jmp LF2D2B0F3_110
+00635:      	if NZ	jmp LF2D2B0F3_110
             ; //	goto	LF2D2B0F3_109;			
-00632:      	jmp	LF2D2B0F3_109
+00636:      	jmp	LF2D2B0F3_109
             ; //LF2D2B0F3_110:;					
             LF2D2B0F3_110:
-            ; //_AE3845712_331:;				
-            _AE3845712_331:
-            ; //_AE3845712_332:;				
-            _AE3845712_332:
+            ; //_AECA8DE46_335:;				
+            _AECA8DE46_335:
+            ; //_AECA8DE46_336:;				
+            _AECA8DE46_336:
             ; //	sSI	= (int)&_n_0_10;		
-00633:      	AR	= 5
-00634:      	I1	= rm[BP_SAVE]
-00635:      	I1	+= AR
+00637:      	AR	= 5
+00638:      	I1	= rm[BP_SAVE]
+00639:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-00636:      	AX	= rm[I1]
+0063A:      	AX	= rm[I1]
             ; //	PUSH(sAX);				
-00637:      	push	AX
+0063B:      	push	AX
             ; //	sSI	= (int)&_c_0_8;			
-00638:      	AR	= 4
-00639:      	I1	= rm[BP_SAVE]
-0063A:      	I1	+= AR
+0063C:      	AR	= 4
+0063D:      	I1	= rm[BP_SAVE]
+0063E:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-0063B:      	AX	= rm[I1]
+0063F:      	AX	= rm[I1]
             ; //	PUSH(sAX);				
-0063C:      	push	AX
+00640:      	push	AX
             ; //	sAX	= (int)&_s_0_4_0;		
-0063D:      	AR	= 2
-0063E:      	AX	= rm[BP_SAVE]
-0063F:      	AX	+= AR
+00641:      	AR	= 2
+00642:      	AX	= rm[BP_SAVE]
+00643:      	AX	+= AR
             ; //	sSI	= sAX;				
-00640:      	AR	= AX
-00641:      	I1	= AR
+00644:      	AR	= AX
+00645:      	I1	= AR
             ; //	sAX	= *(__int16*)sSI;		
-00642:      	AX	= rm[I1]
+00646:      	AX	= rm[I1]
             ; //	PUSH(sAX);				
-00643:      	push	AX
+00647:      	push	AX
             ; //	_memset_rC7200006(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2]);
-00644:      	call	_memset_rC7200006
+00648:      	call	_memset_rC7200006
             ; //	RESTORESP(3);				
-00645:      	AR	= 3
-00646:      	BP	+= AR
+00649:      	AR	= 3
+0064A:      	BP	+= AR
             ; //	sDX	= 0x0800;			
-00647:      	DX	= 0x0800
+0064B:      	DX	= 0x0800
             ; //	goto LF2D2B0F3_108;			
-00649:      	jmp	LF2D2B0F3_108
+0064D:      	jmp	LF2D2B0F3_108
             ; //LF2D2B0F3_109:;					
             LF2D2B0F3_109:
-            ; //_AE3845712_333:;				
-            _AE3845712_333:
-            ; //_AE3845712_334:;				
-            _AE3845712_334:
-            ; //_AE3845712_335:;				
-            _AE3845712_335:
+            ; //_AECA8DE46_337:;				
+            _AECA8DE46_337:
+            ; //_AECA8DE46_338:;				
+            _AECA8DE46_338:
+            ; //_AECA8DE46_339:;				
+            _AECA8DE46_339:
             ; //	sSI	= (int)&_n_0_10;		
-0064A:      	AR	= 5
-0064B:      	I1	= rm[BP_SAVE]
-0064C:      	I1	+= AR
+0064E:      	AR	= 5
+0064F:      	I1	= rm[BP_SAVE]
+00650:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-0064D:      	AX	= rm[I1]
+00651:      	AX	= rm[I1]
             ; //	PUSH(sAX);				
-0064E:      	push	AX
+00652:      	push	AX
             ; //	sSI	= (int)&_c_0_8;			
-0064F:      	AR	= 4
-00650:      	I1	= rm[BP_SAVE]
-00651:      	I1	+= AR
+00653:      	AR	= 4
+00654:      	I1	= rm[BP_SAVE]
+00655:      	I1	+= AR
             ; //	sAX	= *(__int16*)sSI;		
-00652:      	AX	= rm[I1]
+00656:      	AX	= rm[I1]
             ; //	PUSH(sAX);				
-00653:      	push	AX
+00657:      	push	AX
             ; //	sAX	= (int)&_s_0_4_0;		
-00654:      	AR	= 2
-00655:      	AX	= rm[BP_SAVE]
-00656:      	AX	+= AR
+00658:      	AR	= 2
+00659:      	AX	= rm[BP_SAVE]
+0065A:      	AX	+= AR
             ; //	sSI	= sAX;				
-00657:      	AR	= AX
-00658:      	I1	= AR
+0065B:      	AR	= AX
+0065C:      	I1	= AR
             ; //	sAX	= *(__int16*)sSI;		
-00659:      	AX	= rm[I1]
+0065D:      	AX	= rm[I1]
             ; //	PUSH(sAX);				
-0065A:      	push	AX
+0065E:      	push	AX
             ; //	_memset_sC3E11DB1(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2]);
-0065B:      	call	_memset_sC3E11DB1
+0065F:      	call	_memset_sC3E11DB1
             ; //	RESTORESP(3);				
-0065C:      	AR	= 3
-0065D:      	BP	+= AR
+00660:      	AR	= 3
+00661:      	BP	+= AR
             ; //	sDX	= 0;				
-0065E:      	DX	= 0x00
+00662:      	DX	= 0x00
             ; //	goto LF2D2B0F3_108;			
-0065F:      	jmp	LF2D2B0F3_108
+00663:      	jmp	LF2D2B0F3_108
             ; //LF2D2B0F3_108:;					
             LF2D2B0F3_108:
-            ; //_AE3845712_336:;				
-            _AE3845712_336:
+            ; //_AECA8DE46_340:;				
+            _AECA8DE46_340:
             ; //	return;					
-00660:      	pop	AR
-00661:      	rm[BP_SAVE]	= AR
-00662:      	rets
+00664:      	pop	AR
+00665:      	rm[BP_SAVE]	= AR
+00666:      	rets
             ; //_memset5A9D755A_end:;				
             _memset5A9D755A_end:
-            ; //_AE3845712_337:;				
-            _AE3845712_337:
+            ; //_AECA8DE46_341:;				
+            _AECA8DE46_341:
             ; //}
             ; //
             ; //
@@ -4738,13 +4754,13 @@
             
             _SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E:
             ; {
-00663:      	PCH=            SDSP_ADPCM_4Bit_SingleCH_decoder
-00664:              lcall           SDSP_ADPCM_4Bit_SingleCH_decoder	; Z fail
-00665:              AX=		1
-00666:              if NZ jmp	L9E1082DD_0
-00667:              AX=		0
+00667:      	PCH=            SDSP_ADPCM_4Bit_SingleCH_decoder
+00668:              lcall           SDSP_ADPCM_4Bit_SingleCH_decoder	; Z fail
+00669:              AX=		1
+0066A:              if NZ jmp	L9E1082DD_0
+0066B:              AX=		0
             L9E1082DD_0:
-00668:      	rets
+0066C:      	rets
             ; }
             
             
@@ -4797,7 +4813,7 @@
             ginit_code:
             ; //{
             ; //	return;					
-0099E:      	rets
+009A2:      	rets
             ; //}
             ; //
             ; //
@@ -4825,14 +4841,14 @@
             ; --------------------------------------------
             sfx_GLOBALINIT:
             sfx_LOCALINIT:
-0099F:      	P1.hh=		0
-009A0:      	jmp		@glinit_label_1409
+009A3:      	P1.hh=		0
+009A4:      	jmp		@glinit_label_1409
             @glinit_loop_1409:
-009A1:      	AR=		pm[P1++]
-009A2:      	rm[I1++]=	AR
+009A5:      	AR=		pm[P1++]
+009A6:      	rm[I1++]=	AR
             @glinit_label_1409:
-009A3:      	loop		@glinit_loop_1409
-009A4:      	rets
+009A7:      	loop		@glinit_loop_1409
+009A8:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -4851,22 +4867,22 @@
             ; --------------------------------------------
             sfx_MUL_AX_CX:
             
-009A5:      	AR=		AX
-009A6:      	MX=		AR
-009A7:      	AR=		CX
+009A9:      	AR=		AX
+009AA:      	MX=		AR
+009AB:      	AR=		CX
             
             #ifdef _MSPEECHDSP_
             	MULUU
             #else
-009A8:      	MACOP=		3
-009A9:      	MR=		MX * AR
+009AC:      	MACOP=		3
+009AD:      	MR=		MX * AR
             #endif
             
-009AA:      	AR=		MR0
-009AB:      	AX=		AR
-009AC:      	AR=		MR1
-009AD:      	DX=		AR
-009AE:      	rets
+009AE:      	AR=		MR0
+009AF:      	AX=		AR
+009B0:      	AR=		MR1
+009B1:      	DX=		AR
+009B2:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -4885,22 +4901,22 @@
             ; --------------------------------------------
             sfx_IMUL_AX_CX:
             
-009AF:      	AR=		AX
-009B0:      	MX=		AR
-009B1:      	AR=		CX
+009B3:      	AR=		AX
+009B4:      	MX=		AR
+009B5:      	AR=		CX
             
             #ifdef _MSPEECHDSP_
             	MULSS
             #else
-009B2:      	MACOP=		0
-009B3:      	MR=		MX * AR
+009B6:      	MACOP=		0
+009B7:      	MR=		MX * AR
             #endif
             
-009B4:      	AR=		MR0
-009B5:      	AX=		AR
-009B6:      	AR=		MR1
-009B7:      	DX=		AR
-009B8:      	rets
+009B8:      	AR=		MR0
+009B9:      	AX=		AR
+009BA:      	AR=		MR1
+009BB:      	DX=		AR
+009BC:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -4918,103 +4934,103 @@
             ;
             ; --------------------------------------------
             sfx_IMULLONG:
-009B9:      	AR=		rm[BP_SAVE]
-009BA:      	push		AR
-009BB:      	AR=		BP
-009BC:      	rm[BP_SAVE]=	AR
-009BD:      	AR=		AR - 3
-009BE:      	BP=		AR
+009BD:      	AR=		rm[BP_SAVE]
+009BE:      	push		AR
+009BF:      	AR=		BP
+009C0:      	rm[BP_SAVE]=	AR
+009C1:      	AR=		AR - 3
+009C2:      	BP=		AR
             
             	; ~~ low 16-bit
             	; ~~ |   ---- oooo
             	; ~~ | x ---- oooo
             
-009BF:      	AR=		CX
-009C0:      	MX=		AR
-009C1:      	AR=		AX
+009C3:      	AR=		CX
+009C4:      	MX=		AR
+009C5:      	AR=		AX
             
             #ifdef _MSPEECHDSP_
             	MULUU
             #else
-009C2:      	MACOP=		3		; unsigned
-009C3:      	MR=		MX * AR
+009C6:      	MACOP=		3		; unsigned
+009C7:      	MR=		MX * AR
             #endif
             
-009C4:      	I1=		rm[BP_SAVE]
-009C5:      	AR=		2
-009C6:      	I1=		I1 - AR
-009C7:      	rm[I1++]=	MR0
-009C8:      	rm[I1++]=	MR1
-009C9:      	rm[I1--]=	MR2
+009C8:      	I1=		rm[BP_SAVE]
+009C9:      	AR=		2
+009CA:      	I1=		I1 - AR
+009CB:      	rm[I1++]=	MR0
+009CC:      	rm[I1++]=	MR1
+009CD:      	rm[I1--]=	MR2
             
             	; ~~ |   oooo ----
             	; ~~ | x ---- oooo
             
-009CA:      	AR=		DX
+009CE:      	AR=		DX
             
             #ifdef _MSPEECHDSP_
             	MULUS
             #else
-009CB:      	MACOP=		1		; mx:unsigned / my:signed
-009CC:      	MR=		MX * AR
+009CF:      	MACOP=		1		; mx:unsigned / my:signed
+009D0:      	MR=		MX * AR
             #endif
             
-009CD:      	AR=		rm[I1]
-009CE:      	AR=		AR + MR0
-009CF:      	rm[I1++]=	AR
-009D0:      	AR=		rm[I1]
-009D1:      	AR=		AR + MR1 + C
-009D2:      	rm[I1--]=	AR
+009D1:      	AR=		rm[I1]
+009D2:      	AR=		AR + MR0
+009D3:      	rm[I1++]=	AR
+009D4:      	AR=		rm[I1]
+009D5:      	AR=		AR + MR1 + C
+009D6:      	rm[I1--]=	AR
             
             
             	; ~~ |   ---- oooo
             	; ~~ | x oooo ----
             
-009D3:      	AR=		BX
-009D4:      	MX=		AR
-009D5:      	AR=		AX
+009D7:      	AR=		BX
+009D8:      	MX=		AR
+009D9:      	AR=		AX
             
             #ifdef _MSPEECHDSP_
             	MULSU
             #else
-009D6:      	MACOP=		2		; mx:signed / my:unsigned
-009D7:      	MR=		MX * AR
+009DA:      	MACOP=		2		; mx:signed / my:unsigned
+009DB:      	MR=		MX * AR
             #endif
             
-009D8:      	AR=		rm[I1]
-009D9:      	AR=		AR + MR0
-009DA:      	rm[I1++]=	AR
-009DB:      	AR=		rm[I1]
-009DC:      	AR=		AR + MR1 + C
-009DD:      	rm[I1]=		AR
+009DC:      	AR=		rm[I1]
+009DD:      	AR=		AR + MR0
+009DE:      	rm[I1++]=	AR
+009DF:      	AR=		rm[I1]
+009E0:      	AR=		AR + MR1 + C
+009E1:      	rm[I1]=		AR
             
             	; ~~ |   oooo ----
             	; ~~ | x oooo ----
             
-009DE:      	AR=		DX
+009E2:      	AR=		DX
             
             #ifdef _MSPEECHDSP_
             	MULSS
             #else
-009DF:      	MACOP=		0		; mx:signed / my:signed
-009E0:      	MR=		MX * AR
+009E3:      	MACOP=		0		; mx:signed / my:signed
+009E4:      	MR=		MX * AR
             #endif
             
-009E1:      	AR=		rm[I1]
-009E2:      	AR=		AR + MR0
-009E3:      	rm[I1]=		AR
+009E5:      	AR=		rm[I1]
+009E6:      	AR=		AR + MR0
+009E7:      	rm[I1]=		AR
             
-009E4:      	I1=		rm[BP_SAVE]
-009E5:      	CX=		rm[I1--]
-009E6:      	DX=		rm[I1--]
-009E7:      	AX=		rm[I1]
+009E8:      	I1=		rm[BP_SAVE]
+009E9:      	CX=		rm[I1--]
+009EA:      	DX=		rm[I1--]
+009EB:      	AX=		rm[I1]
             
-009E8:      	AR=		3
-009E9:      	BP=		BP + AR
-009EA:      	pop		AR
-009EB:      	rm[BP_SAVE]=	AR
+009EC:      	AR=		3
+009ED:      	BP=		BP + AR
+009EE:      	pop		AR
+009EF:      	rm[BP_SAVE]=	AR
             
-009EC:      	rets
+009F0:      	rets
             
             
             
@@ -5033,100 +5049,100 @@
             ;
             ; --------------------------------------------
             sfx_MULLONG:
-009ED:      	AR=		rm[BP_SAVE]
-009EE:      	push		AR
-009EF:      	AR=		BP
-009F0:      	rm[BP_SAVE]=	AR
-009F1:      	AR=		AR - 3
-009F2:      	BP=		AR
+009F1:      	AR=		rm[BP_SAVE]
+009F2:      	push		AR
+009F3:      	AR=		BP
+009F4:      	rm[BP_SAVE]=	AR
+009F5:      	AR=		AR - 3
+009F6:      	BP=		AR
             
             	; ~~ low 16-bit
             	; ~~ |   ---- oooo
             	; ~~ | x ---- oooo
             
-009F3:      	AR=		CX
-009F4:      	MX=		AR
-009F5:      	AR=		AX
+009F7:      	AR=		CX
+009F8:      	MX=		AR
+009F9:      	AR=		AX
             
             #ifdef _MSPEECHDSP_
             	MULUU
             #else
-009F6:      	MACOP=		3		; unsigned
-009F7:      	MR=		MX * AR
+009FA:      	MACOP=		3		; unsigned
+009FB:      	MR=		MX * AR
             #endif
             
-009F8:      	I1=		rm[BP_SAVE]
-009F9:      	AR=		2
-009FA:      	I1=		I1 - AR
-009FB:      	rm[I1++]=	MR0
-009FC:      	rm[I1++]=	MR1
-009FD:      	rm[I1--]=	MR2
+009FC:      	I1=		rm[BP_SAVE]
+009FD:      	AR=		2
+009FE:      	I1=		I1 - AR
+009FF:      	rm[I1++]=	MR0
+00A00:      	rm[I1++]=	MR1
+00A01:      	rm[I1--]=	MR2
             
             	; ~~ |   oooo ----
             	; ~~ | x ---- oooo
             
-009FE:      	AR=		DX
+00A02:      	AR=		DX
             
             #ifdef _MSPEECHDSP_
             	MULUU
             #else
-009FF:      	MR=		MX * AR
+00A03:      	MR=		MX * AR
             #endif
             
-00A00:      	AR=		rm[I1]
-00A01:      	AR=		AR + MR0
-00A02:      	rm[I1++]=	AR
-00A03:      	AR=		rm[I1]
-00A04:      	AR=		AR + MR1 + C
-00A05:      	rm[I1--]=	AR
+00A04:      	AR=		rm[I1]
+00A05:      	AR=		AR + MR0
+00A06:      	rm[I1++]=	AR
+00A07:      	AR=		rm[I1]
+00A08:      	AR=		AR + MR1 + C
+00A09:      	rm[I1--]=	AR
             
             
             	; ~~ |   ---- oooo
             	; ~~ | x oooo ----
             
-00A06:      	AR=		BX
-00A07:      	MX=		AR
-00A08:      	AR=		AX
+00A0A:      	AR=		BX
+00A0B:      	MX=		AR
+00A0C:      	AR=		AX
             
             #ifdef _MSPEECHDSP_
             	MULUU
             #else
-00A09:      	MR=		MX * AR
+00A0D:      	MR=		MX * AR
             #endif
             
-00A0A:      	AR=		rm[I1]
-00A0B:      	AR=		AR + MR0
-00A0C:      	rm[I1++]=	AR
-00A0D:      	AR=		rm[I1]
-00A0E:      	AR=		AR + MR1 + C
-00A0F:      	rm[I1]=		AR
+00A0E:      	AR=		rm[I1]
+00A0F:      	AR=		AR + MR0
+00A10:      	rm[I1++]=	AR
+00A11:      	AR=		rm[I1]
+00A12:      	AR=		AR + MR1 + C
+00A13:      	rm[I1]=		AR
             
             	; ~~ |   oooo ----
             	; ~~ | x oooo ----
             
-00A10:      	AR=		DX
+00A14:      	AR=		DX
             
             #ifdef _MSPEECHDSP_
             	MULUU
             #else
-00A11:      	MR=		MX * AR
+00A15:      	MR=		MX * AR
             #endif
             
-00A12:      	AR=		rm[I1]
-00A13:      	AR=		AR + MR0
-00A14:      	rm[I1]=		AR
+00A16:      	AR=		rm[I1]
+00A17:      	AR=		AR + MR0
+00A18:      	rm[I1]=		AR
             
-00A15:      	I1=		rm[BP_SAVE]
-00A16:      	CX=		rm[I1--]
-00A17:      	DX=		rm[I1--]
-00A18:      	AX=		rm[I1]
+00A19:      	I1=		rm[BP_SAVE]
+00A1A:      	CX=		rm[I1--]
+00A1B:      	DX=		rm[I1--]
+00A1C:      	AX=		rm[I1]
             
-00A19:      	AR=		3
-00A1A:      	BP=		BP + AR
-00A1B:      	pop		AR
-00A1C:      	rm[BP_SAVE]=	AR
+00A1D:      	AR=		3
+00A1E:      	BP=		BP + AR
+00A1F:      	pop		AR
+00A20:      	rm[BP_SAVE]=	AR
             
-00A1D:      	rets
+00A21:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5146,9 +5162,9 @@
             ; --------------------------------------------
             sfx_DIV_AX_CX:
             	; unsigned int reste = 0;
-00A1E:      		DX=		0
+00A22:      		DX=		0
             	; unsigned char count = 16;
-00A1F:      		R0=		16
+00A23:      		R0=		16
             	; BOOL c;
             
             	; do
@@ -5158,9 +5174,9 @@
             		; c = MSB_SET(x);
             
             		; x <<= 1;
-00A20:      			slz		AX, 1
+00A24:      			slz		AX, 1
             		; reste <<= 1;
-00A21:      			slc		DX, 1
+00A25:      			slc		DX, 1
             
             		; if (c)
             		; {
@@ -5169,27 +5185,27 @@
             		@divword_label_1822:
             
             		; if (reste >= y)
-00A22:      			AR=		DX
-00A23:      			AR-=		CX
-00A24:      			AR=		0
-00A25:      			AR=		AR - 0 + C - 1
-00A26:      			if AN jmp	@divword_label_1823
+00A26:      			AR=		DX
+00A27:      			AR-=		CX
+00A28:      			AR=		0
+00A29:      			AR=		AR - 0 + C - 1
+00A2A:      			if AN jmp	@divword_label_1823
             		; {
             			; reste -= y;
-00A27:      				AR=		CX
-00A28:      				DX=		DX - AR
+00A2B:      				AR=		CX
+00A2C:      				DX=		DX - AR
             			; ~~ x <- (result = 1)
             			; x |= 1;
-00A29:      				set		AX.b0
+00A2D:      				set		AX.b0
             		; }
             		@divword_label_1823:
             
-00A2A:      		R0--
-00A2B:      		if NZ jmp	@divword_loop_1824
+00A2E:      		R0--
+00A2F:      		if NZ jmp	@divword_loop_1824
             	; }while (--count);
             
             	; return x;
-00A2C:      		rets
+00A30:      		rets
             
             
             
@@ -5213,37 +5229,37 @@
             	; register int r;
             
             	; r = sfx_DIV_AX_CX((x < 0 ? -x : x), (y < 0 ? -y : y));
-00A2D:      		R1=		0
-00A2E:      		AR=		0
-00A2F:      		test		AX.b15
-00A30:      		if ZR jmp	@divsword_label_1833
-00A31:      			AX=		AR - AX
-00A32:      			set		R1.b0
+00A31:      		R1=		0
+00A32:      		AR=		0
+00A33:      		test		AX.b15
+00A34:      		if ZR jmp	@divsword_label_1833
+00A35:      			AX=		AR - AX
+00A36:      			set		R1.b0
             		@divsword_label_1833:
-00A33:      		test		CX.b15
-00A34:      		if ZR jmp	@divsword_label_1834
-00A35:      			CX=		AR - CX
-00A36:      			set		R1.b1
+00A37:      		test		CX.b15
+00A38:      		if ZR jmp	@divsword_label_1834
+00A39:      			CX=		AR - CX
+00A3A:      			set		R1.b1
             		@divsword_label_1834:
-00A37:      		call		sfx_DIV_AX_CX
+00A3B:      		call		sfx_DIV_AX_CX
             
             	; if ((x < 0) ^ (y < 0))
-00A38:      		AR=		R1
-00A39:      		slz		AR, 1
-00A3A:      		AR^=		R1
-00A3B:      		test		AR.b1
-00A3C:      		if ZR jmp	@divsword_label_1835
+00A3C:      		AR=		R1
+00A3D:      		slz		AR, 1
+00A3E:      		AR^=		R1
+00A3F:      		test		AR.b1
+00A40:      		if ZR jmp	@divsword_label_1835
             	; {
             		; return (0 - r);
-00A3D:      			AR=		0
-00A3E:      			AX=		AR - AX
-00A3F:      			DX=		AR - DX
+00A41:      			AR=		0
+00A42:      			AX=		AR - AX
+00A43:      			DX=		AR - DX
             
             	; }
             	@divsword_label_1835:
             
             	; return r;
-00A40:      		rets
+00A44:      		rets
             
             
             ; ~.~-----------------------------------------
@@ -5263,10 +5279,10 @@
             ; --------------------------------------------
             sfx_DIVLONG:
             	; unsigned long reste = 0L;
-00A41:      		R0=		0	; L
-00A42:      		R1=		0	; H
+00A45:      		R0=		0	; L
+00A46:      		R1=		0	; H
             	; unsigned char count = 32;
-00A43:      		R2=		32
+00A47:      		R2=		32
             	; BOOL c;
             
             	; do
@@ -5276,11 +5292,11 @@
             		; c = MSB_SET(x);
             
             		; x <<= 1;
-00A44:      			slz		AX, 1
-00A45:      			slc		DX, 1
+00A48:      			slz		AX, 1
+00A49:      			slc		DX, 1
             		; reste <<= 1;
-00A46:      			slc		R0, 1
-00A47:      			slc		R1, 1
+00A4A:      			slc		R0, 1
+00A4B:      			slc		R1, 1
             
             		; if (c)
             		; {
@@ -5289,29 +5305,29 @@
             		@divulong_label_1726:
             
             		; if (reste >= y)
-00A48:      			AR=		R0
-00A49:      			AR-=		CX
-00A4A:      			AR=		R1
-00A4B:      			AR=		AR - BX + C - 1
-00A4C:      			if AN jmp	@divulong_label_1734
+00A4C:      			AR=		R0
+00A4D:      			AR-=		CX
+00A4E:      			AR=		R1
+00A4F:      			AR=		AR - BX + C - 1
+00A50:      			if AN jmp	@divulong_label_1734
             		; {
             			; reste -= y;
-00A4D:      				AR=		CX
-00A4E:      				R0=		R0 - AR
-00A4F:      				AR=		BX
-00A50:      				R1=		R1 - AR + C - 1
+00A51:      				AR=		CX
+00A52:      				R0=		R0 - AR
+00A53:      				AR=		BX
+00A54:      				R1=		R1 - AR + C - 1
             			; ~~ x <- (result = 1)
             			; x |= 1L;
-00A51:      				set		AX.b0
+00A55:      				set		AX.b0
             		; }
             		@divulong_label_1734:
             
-00A52:      		R2--
-00A53:      		if NZ jmp	@divulong_loop_1723
+00A56:      		R2--
+00A57:      		if NZ jmp	@divulong_loop_1723
             	; }while (--count);
             
             	; return x;
-00A54:      		rets
+00A58:      		rets
             
             
             ; ~.~-----------------------------------------
@@ -5333,41 +5349,41 @@
             	; long r;
             
             	; r = divulong((x < 0 ? -x : x), (y < 0 ? -y : y));
-00A55:      		R3=		0
-00A56:      		AR=		0
-00A57:      		test		DX.b15
-00A58:      		if ZR jmp	@divslong_label_1759
-00A59:      			AX=		AR - AX
-00A5A:      			DX=		AR - DX + C - 1
-00A5B:      			set		R3.b0
+00A59:      		R3=		0
+00A5A:      		AR=		0
+00A5B:      		test		DX.b15
+00A5C:      		if ZR jmp	@divslong_label_1759
+00A5D:      			AX=		AR - AX
+00A5E:      			DX=		AR - DX + C - 1
+00A5F:      			set		R3.b0
             		@divslong_label_1759:
-00A5C:      		test		BX.b15
-00A5D:      		if ZR jmp	@divslong_label_1800
-00A5E:      			CX=		AR - CX
-00A5F:      			BX=		AR - BX + C - 1
-00A60:      			set		R3.b1
+00A60:      		test		BX.b15
+00A61:      		if ZR jmp	@divslong_label_1800
+00A62:      			CX=		AR - CX
+00A63:      			BX=		AR - BX + C - 1
+00A64:      			set		R3.b1
             		@divslong_label_1800:
-00A61:      		call		sfx_DIVLONG
+00A65:      		call		sfx_DIVLONG
             
             	; if ((x < 0) ^ (y < 0))
-00A62:      		AR=		R3
-00A63:      		slz		AR, 1
-00A64:      		AR^=		R3
-00A65:      		test		AR.b1
-00A66:      		if ZR jmp	@divslong_label_1807
+00A66:      		AR=		R3
+00A67:      		slz		AR, 1
+00A68:      		AR^=		R3
+00A69:      		test		AR.b1
+00A6A:      		if ZR jmp	@divslong_label_1807
             	; {
             		; return -r;
-00A67:      			AR=		0
-00A68:      			AX=		AR - AX
-00A69:      			DX=		AR - DX + C - 1
-00A6A:      			R0=		AR - R0
-00A6B:      			R1=		AR - R1 + C - 1
+00A6B:      			AR=		0
+00A6C:      			AX=		AR - AX
+00A6D:      			DX=		AR - DX + C - 1
+00A6E:      			R0=		AR - R0
+00A6F:      			R1=		AR - R1 + C - 1
             
             	; }
             	@divslong_label_1807:
             
             	; return r;
-00A6C:      		rets
+00A70:      		rets
             
             
             ; ~.~-----------------------------------------
@@ -5386,10 +5402,10 @@
             ;
             ; --------------------------------------------
             sfx_MOD_AX_CX:
-00A6D:      	call		sfx_DIV_AX_CX
-00A6E:      	AR=		DX
-00A6F:      	AX=		AR
-00A70:      	rets
+00A71:      	call		sfx_DIV_AX_CX
+00A72:      	AR=		DX
+00A73:      	AX=		AR
+00A74:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5408,10 +5424,10 @@
             ;
             ; --------------------------------------------
             sfx_IMOD_AX_CX:
-00A71:      	call		sfx_IDIV_AX_CX
-00A72:      	AR=		DX
-00A73:      	AX=		AR
-00A74:      	rets
+00A75:      	call		sfx_IDIV_AX_CX
+00A76:      	AR=		DX
+00A77:      	AX=		AR
+00A78:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5430,12 +5446,12 @@
             ;
             ; --------------------------------------------
             sfx_MODLONG:
-00A75:      	call		sfx_DIVLONG
-00A76:      	AR=		R0
-00A77:      	AX=		AR
-00A78:      	AR=		R1
-00A79:      	DX=		AR
-00A7A:      	rets
+00A79:      	call		sfx_DIVLONG
+00A7A:      	AR=		R0
+00A7B:      	AX=		AR
+00A7C:      	AR=		R1
+00A7D:      	DX=		AR
+00A7E:      	rets
             
             
             
@@ -5455,12 +5471,12 @@
             ;
             ; --------------------------------------------
             sfx_IMODLONG:
-00A7B:      	call		sfx_IDIVLONG
-00A7C:      	AR=		R0
-00A7D:      	AX=		AR
-00A7E:      	AR=		R1
-00A7F:      	DX=		AR
-00A80:      	rets
+00A7F:      	call		sfx_IDIVLONG
+00A80:      	AR=		R0
+00A81:      	AX=		AR
+00A82:      	AR=		R1
+00A83:      	DX=		AR
+00A84:      	rets
             
             
             
@@ -5545,9 +5561,9 @@
             ;
             ; --------------------------------------------
             sfx_ADDDIOFS:
-00A81:      	AR=		AX
-00A82:      	P1=		P1 + AR
-00A83:      	rets
+00A85:      	AR=		AX
+00A86:      	P1=		P1 + AR
+00A87:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5565,9 +5581,9 @@
             ;
             ; --------------------------------------------
             sfx_ADDSIOFS:
-00A84:      	AR=		AX
-00A85:      	I1=		I1 + AR
-00A86:      	rets
+00A88:      	AR=		AX
+00A89:      	I1=		I1 + AR
+00A8A:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5585,9 +5601,9 @@
             ;
             ; --------------------------------------------
             sfx_ADDAXOFS:
-00A87:      	AR=		CX
-00A88:      	AX=		AX + AR
-00A89:      	rets
+00A8B:      	AR=		CX
+00A8C:      	AX=		AX + AR
+00A8D:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5605,9 +5621,9 @@
             ;
             ; --------------------------------------------
             sfx_SUBDIOFS:
-00A8A:      	AR=		AX
-00A8B:      	P1=		P1 - AR
-00A8C:      	rets
+00A8E:      	AR=		AX
+00A8F:      	P1=		P1 - AR
+00A90:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5625,9 +5641,9 @@
             ;
             ; --------------------------------------------
             sfx_SUBSIOFS:
-00A8D:      	AR=		AX
-00A8E:      	I1=		I1 - AR
-00A8F:      	rets
+00A91:      	AR=		AX
+00A92:      	I1=		I1 - AR
+00A93:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -5645,9 +5661,9 @@
             ;
             ; --------------------------------------------
             sfx_SUBAXOFS:
-00A90:      	AR=		CX
-00A91:      	AX=		AX + AR
-00A92:      	rets
+00A94:      	AR=		CX
+00A95:      	AX=		AX + AR
+00A96:      	rets
             
             
             
@@ -6039,9 +6055,9 @@
             ;
             ; --------------------------------------------
             sfx_STORDILONG:
-00A93:      	pm[P1++]=	AX
-00A94:      	pm[P1--]=	DX
-00A95:      	rets
+00A97:      	pm[P1++]=	AX
+00A98:      	pm[P1--]=	DX
+00A99:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -6059,9 +6075,9 @@
             ;
             ; --------------------------------------------
             sfx_STORDILONG_BXCX:
-00A96:      	pm[P1++]=	CX
-00A97:      	pm[P1--]=	BX
-00A98:      	rets
+00A9A:      	pm[P1++]=	CX
+00A9B:      	pm[P1--]=	BX
+00A9C:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -6121,14 +6137,14 @@
             ;
             ; --------------------------------------------
             sfx_CHAR2LONG_CX:
-00A99:      	BX=		0
-00A9A:      	CX.h=		0
-00A9B:      	test		CX.b7
-00A9C:      	if ZR jmp	@c2lcx_label_1800
-00A9D:      	CX.h=		0xFF
-00A9E:      	BX=		-1
+00A9D:      	BX=		0
+00A9E:      	CX.h=		0
+00A9F:      	test		CX.b7
+00AA0:      	if ZR jmp	@c2lcx_label_1800
+00AA1:      	CX.h=		0xFF
+00AA2:      	BX=		-1
             @c2lcx_label_1800:
-00A9F:      	rets
+00AA3:      	rets
             
             ; ~.~-----------------------------------------
             ; void sfx_UCHAR2LONG_CX(void)
@@ -6206,14 +6222,14 @@
             ;
             ; --------------------------------------------
             sfx_CHAR2LONG_AX:
-00AA0:      	DX=		0
-00AA1:      	AX.h=		0
-00AA2:      	test		AX.b7
-00AA3:      	if ZR jmp	@c2lax_label_1800
-00AA4:      	AX.h=		0xFF
-00AA5:      	DX=		-1
+00AA4:      	DX=		0
+00AA5:      	AX.h=		0
+00AA6:      	test		AX.b7
+00AA7:      	if ZR jmp	@c2lax_label_1800
+00AA8:      	AX.h=		0xFF
+00AA9:      	DX=		-1
             @c2lax_label_1800:
-00AA6:      	rets
+00AAA:      	rets
             
             
             
@@ -6295,15 +6311,15 @@
             ;
             ; --------------------------------------------
             sfx_XCHGLONG:
-00AA7:      	push		AX
-00AA8:      	push		CX
-00AA9:      	pop		AX
-00AAA:      	pop		CX
-00AAB:      	push		DX
-00AAC:      	push		BX
-00AAD:      	pop		DX
-00AAE:      	pop		BX
-00AAF:      	rets
+00AAB:      	push		AX
+00AAC:      	push		CX
+00AAD:      	pop		AX
+00AAE:      	pop		CX
+00AAF:      	push		DX
+00AB0:      	push		BX
+00AB1:      	pop		DX
+00AB2:      	pop		BX
+00AB3:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -6430,14 +6446,14 @@
             	;   neg AX
             	;   sbb AX,AX
             	;   inc AX
-00AB0:      	AR=		DX
-00AB1:      	DX=		0
-00AB2:      	AR=		AR | AX
-00AB3:      	AX=		1
-00AB4:      	if ZR jmp	@longnotl_label_1120
-00AB5:      	AX=		0
+00AB4:      	AR=		DX
+00AB5:      	DX=		0
+00AB6:      	AR=		AR | AX
+00AB7:      	AX=		1
+00AB8:      	if ZR jmp	@longnotl_label_1120
+00AB9:      	AX=		0
             @longnotl_label_1120:
-00AB6:      	rets
+00ABA:      	rets
             
             
             ; ~.~-----------------------------------------
@@ -6527,62 +6543,62 @@
             ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             
             sfx_CMP_AX_CX_U_JNE:
-00AB7:      	DX=		0
-00AB8:      	BX=		0
+00ABB:      	DX=		0
+00ABC:      	BX=		0
             sfx_CMPLONG_JNE:
-00AB9:      	AR=		CX
-00ABA:      	AX=		AX - AR
-00ABB:      	AR=		BX
-00ABC:      	AR=		DX - AR + C - 1
-00ABD:      	AR=		AR | AX
-00ABE:      	if EQ jmp	@sfx_cl_jne_f
-00ABF:      	set		Z		; true
-00AC0:      	rets
+00ABD:      	AR=		CX
+00ABE:      	AX=		AX - AR
+00ABF:      	AR=		BX
+00AC0:      	AR=		DX - AR + C - 1
+00AC1:      	AR=		AR | AX
+00AC2:      	if EQ jmp	@sfx_cl_jne_f
+00AC3:      	set		Z		; true
+00AC4:      	rets
             @sfx_cl_jne_f:
-00AC1:      	clr		Z		; false
-00AC2:      	rets
+00AC5:      	clr		Z		; false
+00AC6:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_U_JNE:
-00AC3:      	DX=		0
-00AC4:      	BX=		0
+00AC7:      	DX=		0
+00AC8:      	BX=		0
             sfx_CMPLONG_BCDA_JNE:
-00AC5:      	AR=		AX
-00AC6:      	CX=		CX - AR
-00AC7:      	AR=		DX
-00AC8:      	AR=		BX - AR + C - 1
-00AC9:      	AR=		AR | CX
-00ACA:      	if EQ jmp	@sfx_clbcda_jne_f
-00ACB:      	set		Z		; true
-00ACC:      	rets
+00AC9:      	AR=		AX
+00ACA:      	CX=		CX - AR
+00ACB:      	AR=		DX
+00ACC:      	AR=		BX - AR + C - 1
+00ACD:      	AR=		AR | CX
+00ACE:      	if EQ jmp	@sfx_clbcda_jne_f
+00ACF:      	set		Z		; true
+00AD0:      	rets
             @sfx_clbcda_jne_f:
-00ACD:      	clr		Z		; false
-00ACE:      	rets
+00AD1:      	clr		Z		; false
+00AD2:      	rets
             
             ; ---------
             
             sfx_CMP_AX_CX_JNE:
-00ACF:      	AR=		CX
-00AD0:      	SF=		AX - AR
-00AD1:      	if EQ jmp	@sfx_ac_jne_f
-00AD2:      	set		Z
-00AD3:      	rets
+00AD3:      	AR=		CX
+00AD4:      	SF=		AX - AR
+00AD5:      	if EQ jmp	@sfx_ac_jne_f
+00AD6:      	set		Z
+00AD7:      	rets
             @sfx_ac_jne_f:
-00AD4:      	clr		Z
-00AD5:      	rets
+00AD8:      	clr		Z
+00AD9:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_JNE:
-00AD6:      	AR=		AX
-00AD7:      	SF=		CX - AR
-00AD8:      	if EQ jmp	@sfx_ca_jne_f
-00AD9:      	set		Z
-00ADA:      	rets
+00ADA:      	AR=		AX
+00ADB:      	SF=		CX - AR
+00ADC:      	if EQ jmp	@sfx_ca_jne_f
+00ADD:      	set		Z
+00ADE:      	rets
             @sfx_ca_jne_f:
-00ADB:      	clr		Z
-00ADC:      	rets
+00ADF:      	clr		Z
+00AE0:      	rets
             
             
             
@@ -6591,38 +6607,38 @@
             
             
             sfx_CMP_AX_CX_U_JE:
-00ADD:      	DX=		0
-00ADE:      	BX=		0
+00AE1:      	DX=		0
+00AE2:      	BX=		0
             sfx_CMPLONG_JE:
-00ADF:      	AR=		CX
-00AE0:      	AX=		AX - AR
-00AE1:      	AR=		BX
-00AE2:      	AR=		DX - AR + C - 1
-00AE3:      	AR=		AR | AX
-00AE4:      	if NE jmp	@sfx_cl_jz_f
-00AE5:      	set		Z		; true
-00AE6:      	rets
+00AE3:      	AR=		CX
+00AE4:      	AX=		AX - AR
+00AE5:      	AR=		BX
+00AE6:      	AR=		DX - AR + C - 1
+00AE7:      	AR=		AR | AX
+00AE8:      	if NE jmp	@sfx_cl_jz_f
+00AE9:      	set		Z		; true
+00AEA:      	rets
             @sfx_cl_jz_f:
-00AE7:      	clr		Z		; false
-00AE8:      	rets
+00AEB:      	clr		Z		; false
+00AEC:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_U_JE:
-00AE9:      	DX=		0
-00AEA:      	BX=		0
+00AED:      	DX=		0
+00AEE:      	BX=		0
             sfx_CMPLONG_BCDA_JE:
-00AEB:      	AR=		AX
-00AEC:      	CX=		CX - AR
-00AED:      	AR=		DX
-00AEE:      	AR=		BX - AR + C - 1
-00AEF:      	AR=		AR | CX
-00AF0:      	if NE jmp	@sfx_clbcda_jz_f
-00AF1:      	set		Z		; true
-00AF2:      	rets
+00AEF:      	AR=		AX
+00AF0:      	CX=		CX - AR
+00AF1:      	AR=		DX
+00AF2:      	AR=		BX - AR + C - 1
+00AF3:      	AR=		AR | CX
+00AF4:      	if NE jmp	@sfx_clbcda_jz_f
+00AF5:      	set		Z		; true
+00AF6:      	rets
             @sfx_clbcda_jz_f:
-00AF3:      	clr		Z		; false
-00AF4:      	rets
+00AF7:      	clr		Z		; false
+00AF8:      	rets
             
             ; ---------
             
@@ -6660,42 +6676,42 @@
             
             sfx_CMP_AX_CX_U_JA:
             sfx_CMP_AX_CX_JA:
-00AF5:      	DX=		0
-00AF6:      	BX=		0
+00AF9:      	DX=		0
+00AFA:      	BX=		0
             sfx_CMPLONG_JG:
-00AF7:      	AR=		CX
-00AF8:      	AX=		AX - AR
-00AF9:      	AR=		BX
-00AFA:      	AR=		DX - AR + C - 1
-00AFB:      	if AN jmp	@sfx_cl_jg_f
+00AFB:      	AR=		CX
+00AFC:      	AX=		AX - AR
+00AFD:      	AR=		BX
+00AFE:      	AR=		DX - AR + C - 1
+00AFF:      	if AN jmp	@sfx_cl_jg_f
             
             	; exclude EQU condition
-00AFC:      	AR=		AR | AX
-00AFD:      	if ZR jmp	@sfx_cl_jg_f
+00B00:      	AR=		AR | AX
+00B01:      	if ZR jmp	@sfx_cl_jg_f
             
-00AFE:      	set		Z		; true
-00AFF:      	rets
+00B02:      	set		Z		; true
+00B03:      	rets
             @sfx_cl_jg_f:
-00B00:      	clr		Z		; false
-00B01:      	rets
+00B04:      	clr		Z		; false
+00B05:      	rets
             
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_JA:
-00B02:      	AR=		CX
-00B03:      	AX=		AX - AR
-00B04:      	AR=		BX
-00B05:      	DX=		DX - AR + C - 1
-00B06:      	AR=		0
-00B07:      	AR=		AR - 0 + C - 1
-00B08:      	if AN jmp	@sfx_cl_jg_f
+00B06:      	AR=		CX
+00B07:      	AX=		AX - AR
+00B08:      	AR=		BX
+00B09:      	DX=		DX - AR + C - 1
+00B0A:      	AR=		0
+00B0B:      	AR=		AR - 0 + C - 1
+00B0C:      	if AN jmp	@sfx_cl_jg_f
             
-00B09:      	AR=		AR | DX		; exclude EQU condition
-00B0A:      	AR=		AR | AX
-00B0B:      	if ZR jmp	@sfx_cl_jg_f
+00B0D:      	AR=		AR | DX		; exclude EQU condition
+00B0E:      	AR=		AR | AX
+00B0F:      	if ZR jmp	@sfx_cl_jg_f
             
-00B0C:      	set		Z		; true
-00B0D:      	rets
+00B10:      	set		Z		; true
+00B11:      	rets
             
             ; ---------
             
@@ -6703,67 +6719,67 @@
             
             sfx_CMP_CX_AX_U_JA:
             sfx_CMP_CX_AX_JA:
-00B0E:      	DX=		0
-00B0F:      	BX=		0
+00B12:      	DX=		0
+00B13:      	BX=		0
             sfx_CMPLONG_BCDA_JG:
-00B10:      	AR=		AX
-00B11:      	CX=		CX - AR
-00B12:      	AR=		DX
-00B13:      	AR=		BX - AR + C - 1
-00B14:      	if AN jmp	@sfx_clbcda_jg_f
+00B14:      	AR=		AX
+00B15:      	CX=		CX - AR
+00B16:      	AR=		DX
+00B17:      	AR=		BX - AR + C - 1
+00B18:      	if AN jmp	@sfx_clbcda_jg_f
             
-00B15:      	AR=		AR | CX		; exclude EQU condition
-00B16:      	if ZR jmp	@sfx_clbcda_jg_f
+00B19:      	AR=		AR | CX		; exclude EQU condition
+00B1A:      	if ZR jmp	@sfx_clbcda_jg_f
             
-00B17:      	set		Z		; true
-00B18:      	rets
+00B1B:      	set		Z		; true
+00B1C:      	rets
             @sfx_clbcda_jg_f:
-00B19:      	clr		Z		; false
-00B1A:      	rets
+00B1D:      	clr		Z		; false
+00B1E:      	rets
             
             ; ~~---------
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_BCDA_JA:
-00B1B:      	AR=		AX
-00B1C:      	CX=		CX - AR
-00B1D:      	AR=		DX
-00B1E:      	BX=		BX - AR + C - 1
-00B1F:      	AR=		0
-00B20:      	AR=		AR - 0 + C - 1
-00B21:      	if AN jmp	@sfx_clbcda_jg_f
+00B1F:      	AR=		AX
+00B20:      	CX=		CX - AR
+00B21:      	AR=		DX
+00B22:      	BX=		BX - AR + C - 1
+00B23:      	AR=		0
+00B24:      	AR=		AR - 0 + C - 1
+00B25:      	if AN jmp	@sfx_clbcda_jg_f
             
-00B22:      	AR=		AR | BX		; exclude EQU condition
-00B23:      	AR=		AR | CX
-00B24:      	if ZR jmp	@sfx_clbcda_jg_f
+00B26:      	AR=		AR | BX		; exclude EQU condition
+00B27:      	AR=		AR | CX
+00B28:      	if ZR jmp	@sfx_clbcda_jg_f
             
-00B25:      	set		Z		; true
-00B26:      	rets
+00B29:      	set		Z		; true
+00B2A:      	rets
             
             
             ; ---------
             
             sfx_CMP_AX_CX_JG:
-00B27:      	AR=		CX
-00B28:      	SF=		AX - AR
-00B29:      	if LE jmp	@sfx_cmp_ac_jg_f
-00B2A:      	set		Z
-00B2B:      	rets
+00B2B:      	AR=		CX
+00B2C:      	SF=		AX - AR
+00B2D:      	if LE jmp	@sfx_cmp_ac_jg_f
+00B2E:      	set		Z
+00B2F:      	rets
             @sfx_cmp_ac_jg_f:
-00B2C:      	clr		Z
-00B2D:      	rets
+00B30:      	clr		Z
+00B31:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_JG:
-00B2E:      	AR=		AX
-00B2F:      	SF=		CX - AR
-00B30:      	if LE jmp	@sfx_cmp_ca_jg_f
-00B31:      	set		Z
-00B32:      	rets
+00B32:      	AR=		AX
+00B33:      	SF=		CX - AR
+00B34:      	if LE jmp	@sfx_cmp_ca_jg_f
+00B35:      	set		Z
+00B36:      	rets
             @sfx_cmp_ca_jg_f:
-00B33:      	clr		Z
-00B34:      	rets
+00B37:      	clr		Z
+00B38:      	rets
             
             
             ; JGE group
@@ -6772,100 +6788,100 @@
             
             sfx_CMP_AX_CX_U_JAE:
             sfx_CMP_AX_CX_JAE:
-00B35:      	DX=		0
-00B36:      	BX=		0
+00B39:      	DX=		0
+00B3A:      	BX=		0
             sfx_CMPLONG_JGE:
-00B37:      	AR=		CX
-00B38:      	AX=		AX - AR
-00B39:      	AR=		BX
-00B3A:      	DX=		DX - AR + C - 1
-00B3B:      	if AN jmp	@sfx_cl_jge_f
+00B3B:      	AR=		CX
+00B3C:      	AX=		AX - AR
+00B3D:      	AR=		BX
+00B3E:      	DX=		DX - AR + C - 1
+00B3F:      	if AN jmp	@sfx_cl_jge_f
             
             	; ~~ ignore equ condition
             
-00B3C:      	set		Z		; true
-00B3D:      	rets
+00B40:      	set		Z		; true
+00B41:      	rets
             @sfx_cl_jge_f:
-00B3E:      	clr		Z		; false
-00B3F:      	rets
+00B42:      	clr		Z		; false
+00B43:      	rets
             
             ; ~~-----------
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_JAE:
-00B40:      	AR=		CX
-00B41:      	AX=		AX - AR
-00B42:      	AR=		BX
-00B43:      	DX=		DX - AR + C - 1
-00B44:      	AR=		0
-00B45:      	AR=		AR - 0 + C - 1
-00B46:      	if AN jmp	@sfx_cl_jge_f
+00B44:      	AR=		CX
+00B45:      	AX=		AX - AR
+00B46:      	AR=		BX
+00B47:      	DX=		DX - AR + C - 1
+00B48:      	AR=		0
+00B49:      	AR=		AR - 0 + C - 1
+00B4A:      	if AN jmp	@sfx_cl_jge_f
             
             	; ~~ ignore equ condition
-00B47:      	set		Z		; true
-00B48:      	rets
+00B4B:      	set		Z		; true
+00B4C:      	rets
             
             ; ---------
             ; ~~ using 32-bit to correct flag
             
             sfx_CMP_CX_AX_U_JAE:
             sfx_CMP_CX_AX_JAE:
-00B49:      	DX=		0
-00B4A:      	BX=		0
+00B4D:      	DX=		0
+00B4E:      	BX=		0
             sfx_CMPLONG_BCDA_JGE:
-00B4B:      	AR=		AX
-00B4C:      	CX=		CX - AR
-00B4D:      	AR=		DX
-00B4E:      	BX=		BX - AR + C - 1
-00B4F:      	if AN jmp	@sfx_clbcda_jge_f
+00B4F:      	AR=		AX
+00B50:      	CX=		CX - AR
+00B51:      	AR=		DX
+00B52:      	BX=		BX - AR + C - 1
+00B53:      	if AN jmp	@sfx_clbcda_jge_f
             
             	; ~~ ignore equ condition
             
-00B50:      	set		Z		; true
-00B51:      	rets
+00B54:      	set		Z		; true
+00B55:      	rets
             @sfx_clbcda_jge_f:
-00B52:      	clr		Z		; false
-00B53:      	rets
+00B56:      	clr		Z		; false
+00B57:      	rets
             
             ; ---------
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_BCDA_JAE:
-00B54:      	AR=		AX
-00B55:      	CX=		CX - AR
-00B56:      	AR=		DX
-00B57:      	BX=		BX - AR + C - 1
-00B58:      	AR=		0
-00B59:      	AR=		AR - 0 + C - 1
-00B5A:      	if AN jmp	@sfx_clbcda_jge_f
+00B58:      	AR=		AX
+00B59:      	CX=		CX - AR
+00B5A:      	AR=		DX
+00B5B:      	BX=		BX - AR + C - 1
+00B5C:      	AR=		0
+00B5D:      	AR=		AR - 0 + C - 1
+00B5E:      	if AN jmp	@sfx_clbcda_jge_f
             
             	; ~~ ignore equ condition
-00B5B:      	set		Z		; true
-00B5C:      	rets
+00B5F:      	set		Z		; true
+00B60:      	rets
             
             ; ---------
             
             sfx_CMP_AX_CX_JGE:
-00B5D:      	AR=		CX
-00B5E:      	SF=		AX - AR
-00B5F:      	if AN jmp	@sfx_cmp_ac_jge_f
-00B60:      	set		Z
-00B61:      	rets
+00B61:      	AR=		CX
+00B62:      	SF=		AX - AR
+00B63:      	if AN jmp	@sfx_cmp_ac_jge_f
+00B64:      	set		Z
+00B65:      	rets
             @sfx_cmp_ac_jge_f:
-00B62:      	clr		Z
-00B63:      	rets
+00B66:      	clr		Z
+00B67:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_JGE:
-00B64:      	AR=		AX
-00B65:      	SF=		CX - AR
-00B66:      	if AN jmp	@sfx_cmp_ca_jge_f
-00B67:      	set		Z
-00B68:      	rets
+00B68:      	AR=		AX
+00B69:      	SF=		CX - AR
+00B6A:      	if AN jmp	@sfx_cmp_ca_jge_f
+00B6B:      	set		Z
+00B6C:      	rets
             @sfx_cmp_ca_jge_f:
-00B69:      	clr		Z
-00B6A:      	rets
+00B6D:      	clr		Z
+00B6E:      	rets
             
             
             ; JL group
@@ -6878,47 +6894,47 @@
             
             sfx_CMP_AX_CX_U_JB:
             sfx_CMP_AX_CX_JB:
-00B6B:      	DX=		0
-00B6C:      	BX=		0
+00B6F:      	DX=		0
+00B70:      	BX=		0
             sfx_CMPLONG_JL:
-00B6D:      	AR=		CX
-00B6E:      	AX=		AX - AR
-00B6F:      	AR=		BX
-00B70:      	AR=		DX - AR + C - 1
-00B71:      	if AN jmp	@sfx_cl_jl_chk
+00B71:      	AR=		CX
+00B72:      	AX=		AX - AR
+00B73:      	AR=		BX
+00B74:      	AR=		DX - AR + C - 1
+00B75:      	if AN jmp	@sfx_cl_jl_chk
             
             @sfx_cl_jl_f:
-00B72:      	clr		Z		; false
-00B73:      	rets
+00B76:      	clr		Z		; false
+00B77:      	rets
             
             @sfx_cl_jl_chk:
-00B74:      	AR=		AR | AX		; exclude EQU condition
-00B75:      	if ZR jmp	@sfx_cl_jl_f
-00B76:      	set		Z
-00B77:      	rets
+00B78:      	AR=		AR | AX		; exclude EQU condition
+00B79:      	if ZR jmp	@sfx_cl_jl_f
+00B7A:      	set		Z
+00B7B:      	rets
             
             
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_JB:
-00B78:      	AR=		CX
-00B79:      	AX=		AX - AR
-00B7A:      	AR=		BX
-00B7B:      	DX=		DX - AR + C - 1
-00B7C:      	AR=		0
-00B7D:      	AR=		AR - 0 + C - 1
-00B7E:      	if AN jmp	@sfx_cl_jb_chk
+00B7C:      	AR=		CX
+00B7D:      	AX=		AX - AR
+00B7E:      	AR=		BX
+00B7F:      	DX=		DX - AR + C - 1
+00B80:      	AR=		0
+00B81:      	AR=		AR - 0 + C - 1
+00B82:      	if AN jmp	@sfx_cl_jb_chk
             
             @sfx_cl_jb_f:
-00B7F:      	clr		Z		; false
-00B80:      	rets
+00B83:      	clr		Z		; false
+00B84:      	rets
             
             @sfx_cl_jb_chk:
-00B81:      	AR=		AR | DX
-00B82:      	AR=		AR | AX		; exclude EQU condition
-00B83:      	if ZR jmp	@sfx_cl_jb_f
-00B84:      	set		Z
-00B85:      	rets
+00B85:      	AR=		AR | DX
+00B86:      	AR=		AR | AX		; exclude EQU condition
+00B87:      	if ZR jmp	@sfx_cl_jb_f
+00B88:      	set		Z
+00B89:      	rets
             
             
             ; ---------
@@ -6927,71 +6943,71 @@
             
             sfx_CMP_CX_AX_U_JB:
             sfx_CMP_CX_AX_JB:
-00B86:      	DX=		0
-00B87:      	BX=		0
+00B8A:      	DX=		0
+00B8B:      	BX=		0
             sfx_CMPLONG_BCDA_JL:
-00B88:      	AR=		AX
-00B89:      	CX=		CX - AR
-00B8A:      	AR=		DX
-00B8B:      	AR=		BX - AR + C - 1
-00B8C:      	if AN jmp	@sfx_clbcda_jl_chk
+00B8C:      	AR=		AX
+00B8D:      	CX=		CX - AR
+00B8E:      	AR=		DX
+00B8F:      	AR=		BX - AR + C - 1
+00B90:      	if AN jmp	@sfx_clbcda_jl_chk
             
             @sfx_clbcda_jl_f:
-00B8D:      	clr		Z		; false
-00B8E:      	rets
+00B91:      	clr		Z		; false
+00B92:      	rets
             
             @sfx_clbcda_jl_chk:
-00B8F:      	AR=		AR | CX		; exclude EQU condition
-00B90:      	if ZR jmp	@sfx_clbcda_jl_f
-00B91:      	set		Z		; true
-00B92:      	rets
+00B93:      	AR=		AR | CX		; exclude EQU condition
+00B94:      	if ZR jmp	@sfx_clbcda_jl_f
+00B95:      	set		Z		; true
+00B96:      	rets
             
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_BCDA_JB:
-00B93:      	AR=		AX
-00B94:      	CX=		CX - AR
-00B95:      	AR=		DX
-00B96:      	BX=		BX - AR + C - 1
-00B97:      	AR=		0
-00B98:      	AR=		AR - 0 + C - 1
-00B99:      	if AN jmp	@sfx_clbcda_jb_chk
+00B97:      	AR=		AX
+00B98:      	CX=		CX - AR
+00B99:      	AR=		DX
+00B9A:      	BX=		BX - AR + C - 1
+00B9B:      	AR=		0
+00B9C:      	AR=		AR - 0 + C - 1
+00B9D:      	if AN jmp	@sfx_clbcda_jb_chk
             
             @sfx_clbcda_jb_f:
-00B9A:      	clr		Z		; false
-00B9B:      	rets
+00B9E:      	clr		Z		; false
+00B9F:      	rets
             
             @sfx_clbcda_jb_chk:
-00B9C:      	AR=		AR | CX
-00B9D:      	AR=		AR | BX
-00B9E:      	if ZR jmp	@sfx_clbcda_jb_f
-00B9F:      	set		Z		; true
-00BA0:      	rets
+00BA0:      	AR=		AR | CX
+00BA1:      	AR=		AR | BX
+00BA2:      	if ZR jmp	@sfx_clbcda_jb_f
+00BA3:      	set		Z		; true
+00BA4:      	rets
             
             
             ; ---------
             
             sfx_CMP_AX_CX_JL:
-00BA1:      	AR=		CX
-00BA2:      	SF=		AX - AR
-00BA3:      	if GE jmp	@sfx_cmp_ac_jl_f
-00BA4:      	set		Z
-00BA5:      	rets
+00BA5:      	AR=		CX
+00BA6:      	SF=		AX - AR
+00BA7:      	if GE jmp	@sfx_cmp_ac_jl_f
+00BA8:      	set		Z
+00BA9:      	rets
             @sfx_cmp_ac_jl_f:
-00BA6:      	clr		Z
-00BA7:      	rets
+00BAA:      	clr		Z
+00BAB:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_JL:
-00BA8:      	AR=		AX
-00BA9:      	SF=		CX - AR
-00BAA:      	if GE jmp	@sfx_cmp_ca_jl_f
-00BAB:      	set		Z
-00BAC:      	rets
+00BAC:      	AR=		AX
+00BAD:      	SF=		CX - AR
+00BAE:      	if GE jmp	@sfx_cmp_ca_jl_f
+00BAF:      	set		Z
+00BB0:      	rets
             @sfx_cmp_ca_jl_f:
-00BAD:      	clr		Z
-00BAE:      	rets
+00BB1:      	clr		Z
+00BB2:      	rets
             
             ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             
@@ -6999,41 +7015,41 @@
             
             sfx_CMP_AX_CX_U_JBE:
             sfx_CMP_AX_CX_JBE:
-00BAF:      	DX=		0
-00BB0:      	BX=		0
+00BB3:      	DX=		0
+00BB4:      	BX=		0
             sfx_CMPLONG_JLE:
-00BB1:      	AR=		CX
-00BB2:      	AX=		AX - AR
-00BB3:      	AR=		BX
-00BB4:      	AR=		DX - AR + C - 1
-00BB5:      	if AN jmp	@sfx_cl_jle_t
+00BB5:      	AR=		CX
+00BB6:      	AX=		AX - AR
+00BB7:      	AR=		BX
+00BB8:      	AR=		DX - AR + C - 1
+00BB9:      	if AN jmp	@sfx_cl_jle_t
             
-00BB6:      	AR=		AR | AX		; include EQU condition
-00BB7:      	if ZR jmp	@sfx_cl_jle_t
+00BBA:      	AR=		AR | AX		; include EQU condition
+00BBB:      	if ZR jmp	@sfx_cl_jle_t
             
-00BB8:      	clr		Z		; false
-00BB9:      	rets
+00BBC:      	clr		Z		; false
+00BBD:      	rets
             @sfx_cl_jle_t:
-00BBA:      	set		Z		; true
-00BBB:      	rets
+00BBE:      	set		Z		; true
+00BBF:      	rets
             
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_JBE:
-00BBC:      	AR=		CX
-00BBD:      	AX=		AX - AR
-00BBE:      	AR=		BX
-00BBF:      	DX=		DX - AR + C - 1
-00BC0:      	AR=		0
-00BC1:      	AR=		AR - 0 + C - 1
-00BC2:      	if AN jmp	@sfx_cl_jle_t
+00BC0:      	AR=		CX
+00BC1:      	AX=		AX - AR
+00BC2:      	AR=		BX
+00BC3:      	DX=		DX - AR + C - 1
+00BC4:      	AR=		0
+00BC5:      	AR=		AR - 0 + C - 1
+00BC6:      	if AN jmp	@sfx_cl_jle_t
             
-00BC3:      	AR=		AR | DX
-00BC4:      	AR=		AR | AX
-00BC5:      	if ZR jmp	@sfx_cl_jle_t
+00BC7:      	AR=		AR | DX
+00BC8:      	AR=		AR | AX
+00BC9:      	if ZR jmp	@sfx_cl_jle_t
             
-00BC6:      	clr		Z		; false
-00BC7:      	rets
+00BCA:      	clr		Z		; false
+00BCB:      	rets
             
             ; ---------
             
@@ -7041,394 +7057,394 @@
             
             sfx_CMP_CX_AX_U_JBE:
             sfx_CMP_CX_AX_JBE:
-00BC8:      	DX=		0
-00BC9:      	BX=		0
+00BCC:      	DX=		0
+00BCD:      	BX=		0
             sfx_CMPLONG_BCDA_JLE:
-00BCA:      	AR=		AX
-00BCB:      	CX=		CX - AR
-00BCC:      	AR=		DX
-00BCD:      	AR=		BX - AR + C - 1
-00BCE:      	if AN jmp	@sfx_clbcda_jle_t
+00BCE:      	AR=		AX
+00BCF:      	CX=		CX - AR
+00BD0:      	AR=		DX
+00BD1:      	AR=		BX - AR + C - 1
+00BD2:      	if AN jmp	@sfx_clbcda_jle_t
             
-00BCF:      	AR=		AR | CX		; include EQU condition
-00BD0:      	if ZR jmp	@sfx_clbcda_jle_t
+00BD3:      	AR=		AR | CX		; include EQU condition
+00BD4:      	if ZR jmp	@sfx_clbcda_jle_t
             
-00BD1:      	clr		Z		; false
-00BD2:      	rets
+00BD5:      	clr		Z		; false
+00BD6:      	rets
             @sfx_clbcda_jle_t:
-00BD3:      	set		Z		; true
-00BD4:      	rets
+00BD7:      	set		Z		; true
+00BD8:      	rets
             
             ; ~~ using 48-bit to correct flag
             
             sfx_CMPLONG_BCDA_JBE:
-00BD5:      	AR=		AX
-00BD6:      	CX=		CX - AR
-00BD7:      	AR=		DX
-00BD8:      	BX=		BX - AR + C - 1
-00BD9:      	AR=		0
-00BDA:      	AR=		AR - 0 + C - 1
-00BDB:      	if AN jmp	@sfx_clbcda_jle_t
+00BD9:      	AR=		AX
+00BDA:      	CX=		CX - AR
+00BDB:      	AR=		DX
+00BDC:      	BX=		BX - AR + C - 1
+00BDD:      	AR=		0
+00BDE:      	AR=		AR - 0 + C - 1
+00BDF:      	if AN jmp	@sfx_clbcda_jle_t
             
-00BDC:      	AR=		AR | BX
-00BDD:      	AR=		AR | CX
-00BDE:      	if ZR jmp	@sfx_clbcda_jle_t
+00BE0:      	AR=		AR | BX
+00BE1:      	AR=		AR | CX
+00BE2:      	if ZR jmp	@sfx_clbcda_jle_t
             
-00BDF:      	clr		Z		; false
-00BE0:      	rets
+00BE3:      	clr		Z		; false
+00BE4:      	rets
             
             ; ---------
             
             sfx_CMP_AX_CX_JLE:
-00BE1:      	AR=		CX
-00BE2:      	SF=		AX - AR
-00BE3:      	if LE jmp	@sfx_cmp_ac_jl_t
-00BE4:      	clr		Z
-00BE5:      	rets
+00BE5:      	AR=		CX
+00BE6:      	SF=		AX - AR
+00BE7:      	if LE jmp	@sfx_cmp_ac_jl_t
+00BE8:      	clr		Z
+00BE9:      	rets
             @sfx_cmp_ac_jl_t:
-00BE6:      	set		Z
-00BE7:      	rets
+00BEA:      	set		Z
+00BEB:      	rets
             
             ; ---------
             
             sfx_CMP_CX_AX_JLE:
-00BE8:      	AR=		AX
-00BE9:      	SF=		CX - AR
-00BEA:      	if LE jmp	@sfx_cmp_ca_jl_t
-00BEB:      	clr		Z
-00BEC:      	rets
+00BEC:      	AR=		AX
+00BED:      	SF=		CX - AR
+00BEE:      	if LE jmp	@sfx_cmp_ca_jl_t
+00BEF:      	clr		Z
+00BF0:      	rets
             @sfx_cmp_ca_jl_t:
-00BED:      	set		Z
-00BEE:      	rets
+00BF1:      	set		Z
+00BF2:      	rets
             
             
             ; ~!~ bit-field support
             
             @sfx_ortable_0:
-00BEF:      	DW 0xFFFE
+00BF3:      	DW 0xFFFE
             @sfx_ortable_1:
-00BF0:      	DW 0xFFFC
+00BF4:      	DW 0xFFFC
             @sfx_ortable_2:
-00BF1:      	DW 0xFFF8
+00BF5:      	DW 0xFFF8
             @sfx_ortable_3:
-00BF2:      	DW 0xFFF0
+00BF6:      	DW 0xFFF0
             @sfx_ortable_4:
-00BF3:      	DW 0xFFE0
+00BF7:      	DW 0xFFE0
             @sfx_ortable_5:
-00BF4:      	DW 0xFFC0
+00BF8:      	DW 0xFFC0
             @sfx_ortable_6:
-00BF5:      	DW 0xFF80
+00BF9:      	DW 0xFF80
             @sfx_ortable_7:
-00BF6:      	DW 0xFF00
+00BFA:      	DW 0xFF00
             @sfx_ortable_8:
-00BF7:      	DW 0xFE00
+00BFB:      	DW 0xFE00
             @sfx_ortable_9:
-00BF8:      	DW 0xFC00
+00BFC:      	DW 0xFC00
             @sfx_ortable_10:
-00BF9:      	DW 0xF800
+00BFD:      	DW 0xF800
             @sfx_ortable_11:
-00BFA:      	DW 0xF000
+00BFE:      	DW 0xF000
             @sfx_ortable_12:
-00BFB:      	DW 0xE000
+00BFF:      	DW 0xE000
             @sfx_ortable_13:
-00BFC:      	DW 0xC000
+00C00:      	DW 0xC000
             @sfx_ortable_14:
-00BFD:      	DW 0x8000
+00C01:      	DW 0x8000
             
             ; ~!~
             
             @sfx_orhigh:
-00BFE:      	AR=		pm[P1]
-00BFF:      	DX=		DX | AR
-00C00:      	rets
+00C02:      	AR=		pm[P1]
+00C03:      	DX=		DX | AR
+00C04:      	rets
             
             @sfx_orhigh_dx:
-00C01:      	DX=		-1
+00C05:      	DX=		-1
             @sfx_orlow:
-00C02:      	AR=		pm[P1]
-00C03:      	AX=		AX | AR
+00C06:      	AR=		pm[P1]
+00C07:      	AX=		AX | AR
             @sfx_sextw_rets:
-00C04:      	rets
+00C08:      	rets
             
             ; ~!~ signed short
             
             sfx_SignExtW0:
-00C05:      	P1=		#@sfx_ortable_0
-00C08:      	test		AX.b0
-00C09:      	if ZR jmp	@sfx_sextw_rets
-00C0A:      	jmp		@sfx_orlow
+00C09:      	P1=		#@sfx_ortable_0
+00C0C:      	test		AX.b0
+00C0D:      	if ZR jmp	@sfx_sextw_rets
+00C0E:      	jmp		@sfx_orlow
             
             sfx_SignExtW1:
-00C0B:      	P1=		#@sfx_ortable_1
-00C0E:      	test		AX.b1
-00C0F:      	if ZR jmp	@sfx_sextw_rets
-00C10:      	jmp		@sfx_orlow
+00C0F:      	P1=		#@sfx_ortable_1
+00C12:      	test		AX.b1
+00C13:      	if ZR jmp	@sfx_sextw_rets
+00C14:      	jmp		@sfx_orlow
             
             sfx_SignExtW2:
-00C11:      	P1=		#@sfx_ortable_2
-00C14:      	test		AX.b2
-00C15:      	if ZR jmp	@sfx_sextw_rets
-00C16:      	jmp		@sfx_orlow
+00C15:      	P1=		#@sfx_ortable_2
+00C18:      	test		AX.b2
+00C19:      	if ZR jmp	@sfx_sextw_rets
+00C1A:      	jmp		@sfx_orlow
             
             sfx_SignExtW3:
-00C17:      	P1=		#@sfx_ortable_3
-00C1A:      	test		AX.b3
-00C1B:      	if ZR jmp	@sfx_sextw_rets
-00C1C:      	jmp		@sfx_orlow
+00C1B:      	P1=		#@sfx_ortable_3
+00C1E:      	test		AX.b3
+00C1F:      	if ZR jmp	@sfx_sextw_rets
+00C20:      	jmp		@sfx_orlow
             
             sfx_SignExtW4:
-00C1D:      	P1=		#@sfx_ortable_4
-00C20:      	test		AX.b4
-00C21:      	if ZR jmp	@sfx_sextw_rets
-00C22:      	jmp		@sfx_orlow
+00C21:      	P1=		#@sfx_ortable_4
+00C24:      	test		AX.b4
+00C25:      	if ZR jmp	@sfx_sextw_rets
+00C26:      	jmp		@sfx_orlow
             
             sfx_SignExtW5:
-00C23:      	P1=		#@sfx_ortable_5
-00C26:      	test		AX.b5
-00C27:      	if ZR jmp	@sfx_sextw_rets
-00C28:      	jmp		@sfx_orlow
+00C27:      	P1=		#@sfx_ortable_5
+00C2A:      	test		AX.b5
+00C2B:      	if ZR jmp	@sfx_sextw_rets
+00C2C:      	jmp		@sfx_orlow
             
             sfx_SignExtW6:
-00C29:      	P1=		#@sfx_ortable_6
-00C2C:      	test		AX.b6
-00C2D:      	if ZR jmp	@sfx_sextw_rets
-00C2E:      	jmp		@sfx_orlow
+00C2D:      	P1=		#@sfx_ortable_6
+00C30:      	test		AX.b6
+00C31:      	if ZR jmp	@sfx_sextw_rets
+00C32:      	jmp		@sfx_orlow
             
             sfx_SignExtW7:
-00C2F:      	P1=		#@sfx_ortable_7
-00C32:      	test		AX.b7
-00C33:      	if ZR jmp	@sfx_sextw_rets
-00C34:      	jmp		@sfx_orlow
+00C33:      	P1=		#@sfx_ortable_7
+00C36:      	test		AX.b7
+00C37:      	if ZR jmp	@sfx_sextw_rets
+00C38:      	jmp		@sfx_orlow
             
             sfx_SignExtW8:
-00C35:      	P1=		#@sfx_ortable_8
-00C38:      	test		AX.b8
-00C39:      	if ZR jmp	@sfx_sextw_rets
-00C3A:      	jmp		@sfx_orlow
+00C39:      	P1=		#@sfx_ortable_8
+00C3C:      	test		AX.b8
+00C3D:      	if ZR jmp	@sfx_sextw_rets
+00C3E:      	jmp		@sfx_orlow
             
             sfx_SignExtW9:
-00C3B:      	P1=		#@sfx_ortable_9
-00C3E:      	test		AX.b9
-00C3F:      	if ZR jmp	@sfx_sextw_rets
-00C40:      	jmp		@sfx_orlow
+00C3F:      	P1=		#@sfx_ortable_9
+00C42:      	test		AX.b9
+00C43:      	if ZR jmp	@sfx_sextw_rets
+00C44:      	jmp		@sfx_orlow
             
             sfx_SignExtW10:
-00C41:      	P1=		#@sfx_ortable_10
-00C44:      	test		AX.b10
-00C45:      	if ZR jmp	@sfx_sextw_rets
-00C46:      	jmp		@sfx_orlow
+00C45:      	P1=		#@sfx_ortable_10
+00C48:      	test		AX.b10
+00C49:      	if ZR jmp	@sfx_sextw_rets
+00C4A:      	jmp		@sfx_orlow
             
             sfx_SignExtW11:
-00C47:      	P1=		#@sfx_ortable_11
-00C4A:      	test		AX.b11
-00C4B:      	if ZR jmp	@sfx_sextw_rets
-00C4C:      	jmp		@sfx_orlow
+00C4B:      	P1=		#@sfx_ortable_11
+00C4E:      	test		AX.b11
+00C4F:      	if ZR jmp	@sfx_sextw_rets
+00C50:      	jmp		@sfx_orlow
             
             sfx_SignExtW12:
-00C4D:      	P1=		#@sfx_ortable_12
-00C50:      	test		AX.b12
-00C51:      	if ZR jmp	@sfx_sextw_rets
-00C52:      	jmp		@sfx_orlow
+00C51:      	P1=		#@sfx_ortable_12
+00C54:      	test		AX.b12
+00C55:      	if ZR jmp	@sfx_sextw_rets
+00C56:      	jmp		@sfx_orlow
             
             sfx_SignExtW13:
-00C53:      	P1=		#@sfx_ortable_13
-00C56:      	test		AX.b13
-00C57:      	if ZR jmp	@sfx_sextw_rets
-00C58:      	jmp		@sfx_orlow
+00C57:      	P1=		#@sfx_ortable_13
+00C5A:      	test		AX.b13
+00C5B:      	if ZR jmp	@sfx_sextw_rets
+00C5C:      	jmp		@sfx_orlow
             
             sfx_SignExtW14:
-00C59:      	P1=		#@sfx_ortable_14
-00C5C:      	test		AX.b14
-00C5D:      	if ZR jmp	@sfx_sextw_rets
-00C5E:      	jmp		@sfx_orlow
+00C5D:      	P1=		#@sfx_ortable_14
+00C60:      	test		AX.b14
+00C61:      	if ZR jmp	@sfx_sextw_rets
+00C62:      	jmp		@sfx_orlow
             
             ; ~!~ signed long
             
             sfx_SignExtL0:
-00C5F:      	P1=		#@sfx_ortable_0
-00C62:      	test		AX.b0
-00C63:      	if ZR jmp	@sfx_sextw_rets
-00C64:      	jmp		@sfx_orhigh_dx
+00C63:      	P1=		#@sfx_ortable_0
+00C66:      	test		AX.b0
+00C67:      	if ZR jmp	@sfx_sextw_rets
+00C68:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL1:
-00C65:      	P1=		#@sfx_ortable_1
-00C68:      	test		AX.b1
-00C69:      	if ZR jmp	@sfx_sextw_rets
-00C6A:      	jmp		@sfx_orhigh_dx
+00C69:      	P1=		#@sfx_ortable_1
+00C6C:      	test		AX.b1
+00C6D:      	if ZR jmp	@sfx_sextw_rets
+00C6E:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL2:
-00C6B:      	P1=		#@sfx_ortable_2
-00C6E:      	test		AX.b2
-00C6F:      	if ZR jmp	@sfx_sextw_rets
-00C70:      	jmp		@sfx_orhigh_dx
+00C6F:      	P1=		#@sfx_ortable_2
+00C72:      	test		AX.b2
+00C73:      	if ZR jmp	@sfx_sextw_rets
+00C74:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL3:
-00C71:      	P1=		#@sfx_ortable_3
-00C74:      	test		AX.b3
-00C75:      	if ZR jmp	@sfx_sextw_rets
-00C76:      	jmp		@sfx_orhigh_dx
+00C75:      	P1=		#@sfx_ortable_3
+00C78:      	test		AX.b3
+00C79:      	if ZR jmp	@sfx_sextw_rets
+00C7A:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL4:
-00C77:      	P1=		#@sfx_ortable_4
-00C7A:      	test		AX.b4
-00C7B:      	if ZR jmp	@sfx_sextw_rets
-00C7C:      	jmp		@sfx_orhigh_dx
+00C7B:      	P1=		#@sfx_ortable_4
+00C7E:      	test		AX.b4
+00C7F:      	if ZR jmp	@sfx_sextw_rets
+00C80:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL5:
-00C7D:      	P1=		#@sfx_ortable_5
-00C80:      	test		AX.b5
-00C81:      	if ZR jmp	@sfx_sextw_rets
-00C82:      	jmp		@sfx_orhigh_dx
+00C81:      	P1=		#@sfx_ortable_5
+00C84:      	test		AX.b5
+00C85:      	if ZR jmp	@sfx_sextw_rets
+00C86:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL6:
-00C83:      	P1=		#@sfx_ortable_6
-00C86:      	test		AX.b6
-00C87:      	if ZR jmp	@sfx_sextw_rets
-00C88:      	jmp		@sfx_orhigh_dx
+00C87:      	P1=		#@sfx_ortable_6
+00C8A:      	test		AX.b6
+00C8B:      	if ZR jmp	@sfx_sextw_rets
+00C8C:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL7:
-00C89:      	P1=		#@sfx_ortable_7
-00C8C:      	test		AX.b7
-00C8D:      	if ZR jmp	@sfx_sextw_rets
-00C8E:      	jmp		@sfx_orhigh_dx
+00C8D:      	P1=		#@sfx_ortable_7
+00C90:      	test		AX.b7
+00C91:      	if ZR jmp	@sfx_sextw_rets
+00C92:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL8:
-00C8F:      	P1=		#@sfx_ortable_8
-00C92:      	test		AX.b8
-00C93:      	if ZR jmp	@sfx_sextw_rets
-00C94:      	jmp		@sfx_orhigh_dx
+00C93:      	P1=		#@sfx_ortable_8
+00C96:      	test		AX.b8
+00C97:      	if ZR jmp	@sfx_sextw_rets
+00C98:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL9:
-00C95:      	P1=		#@sfx_ortable_9
-00C98:      	test		AX.b9
-00C99:      	if ZR jmp	@sfx_sextw_rets
-00C9A:      	jmp		@sfx_orhigh_dx
+00C99:      	P1=		#@sfx_ortable_9
+00C9C:      	test		AX.b9
+00C9D:      	if ZR jmp	@sfx_sextw_rets
+00C9E:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL10:
-00C9B:      	P1=		#@sfx_ortable_10
-00C9E:      	test		AX.b10
-00C9F:      	if ZR jmp	@sfx_sextw_rets
-00CA0:      	jmp		@sfx_orhigh_dx
+00C9F:      	P1=		#@sfx_ortable_10
+00CA2:      	test		AX.b10
+00CA3:      	if ZR jmp	@sfx_sextw_rets
+00CA4:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL11:
-00CA1:      	P1=		#@sfx_ortable_11
-00CA4:      	test		AX.b11
-00CA5:      	if ZR jmp	@sfx_sextw_rets
-00CA6:      	jmp		@sfx_orhigh_dx
+00CA5:      	P1=		#@sfx_ortable_11
+00CA8:      	test		AX.b11
+00CA9:      	if ZR jmp	@sfx_sextw_rets
+00CAA:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL12:
-00CA7:      	P1=		#@sfx_ortable_12
-00CAA:      	test		AX.b12
-00CAB:      	if ZR jmp	@sfx_sextw_rets
-00CAC:      	jmp		@sfx_orhigh_dx
+00CAB:      	P1=		#@sfx_ortable_12
+00CAE:      	test		AX.b12
+00CAF:      	if ZR jmp	@sfx_sextw_rets
+00CB0:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL13:
-00CAD:      	P1=		#@sfx_ortable_13
-00CB0:      	test		AX.b13
-00CB1:      	if ZR jmp	@sfx_sextw_rets
-00CB2:      	jmp		@sfx_orhigh_dx
+00CB1:      	P1=		#@sfx_ortable_13
+00CB4:      	test		AX.b13
+00CB5:      	if ZR jmp	@sfx_sextw_rets
+00CB6:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL14:
-00CB3:      	P1=		#@sfx_ortable_14
-00CB6:      	test		AX.b14
-00CB7:      	if ZR jmp	@sfx_sextw_rets
-00CB8:      	jmp		@sfx_orhigh_dx
+00CB7:      	P1=		#@sfx_ortable_14
+00CBA:      	test		AX.b14
+00CBB:      	if ZR jmp	@sfx_sextw_rets
+00CBC:      	jmp		@sfx_orhigh_dx
             
             sfx_SignExtL15:
-00CB9:      	test		AX.b15
-00CBA:      	if ZR jmp	@sfx_sextw_rets
-00CBB:      	DX=		-1
-00CBC:      	rets
+00CBD:      	test		AX.b15
+00CBE:      	if ZR jmp	@sfx_sextw_rets
+00CBF:      	DX=		-1
+00CC0:      	rets
             
             sfx_SignExtL16:
-00CBD:      	P1=		#@sfx_ortable_0
-00CC0:      	test		DX.b0
-00CC1:      	if ZR jmp	@sfx_sextw_rets
-00CC2:      	jmp		@sfx_orhigh
+00CC1:      	P1=		#@sfx_ortable_0
+00CC4:      	test		DX.b0
+00CC5:      	if ZR jmp	@sfx_sextw_rets
+00CC6:      	jmp		@sfx_orhigh
             
             sfx_SignExtL17:
-00CC3:      	P1=		#@sfx_ortable_1
-00CC6:      	test		DX.b1
-00CC7:      	if ZR jmp	@sfx_sextw_rets
-00CC8:      	jmp		@sfx_orhigh
+00CC7:      	P1=		#@sfx_ortable_1
+00CCA:      	test		DX.b1
+00CCB:      	if ZR jmp	@sfx_sextw_rets
+00CCC:      	jmp		@sfx_orhigh
             
             sfx_SignExtL18:
-00CC9:      	P1=		#@sfx_ortable_2
-00CCC:      	test		DX.b2
-00CCD:      	if ZR jmp	@sfx_sextw_rets
-00CCE:      	jmp		@sfx_orhigh
+00CCD:      	P1=		#@sfx_ortable_2
+00CD0:      	test		DX.b2
+00CD1:      	if ZR jmp	@sfx_sextw_rets
+00CD2:      	jmp		@sfx_orhigh
             
             sfx_SignExtL19:
-00CCF:      	P1=		#@sfx_ortable_3
-00CD2:      	test		DX.b3
-00CD3:      	if ZR jmp	@sfx_sextw_rets
-00CD4:      	jmp		@sfx_orhigh
+00CD3:      	P1=		#@sfx_ortable_3
+00CD6:      	test		DX.b3
+00CD7:      	if ZR jmp	@sfx_sextw_rets
+00CD8:      	jmp		@sfx_orhigh
             
             sfx_SignExtL20:
-00CD5:      	P1=		#@sfx_ortable_4
-00CD8:      	test		DX.b4
-00CD9:      	if ZR jmp	@sfx_sextw_rets
-00CDA:      	jmp		@sfx_orhigh
+00CD9:      	P1=		#@sfx_ortable_4
+00CDC:      	test		DX.b4
+00CDD:      	if ZR jmp	@sfx_sextw_rets
+00CDE:      	jmp		@sfx_orhigh
             
             sfx_SignExtL21:
-00CDB:      	P1=		#@sfx_ortable_5
-00CDE:      	test		DX.b5
-00CDF:      	if ZR jmp	@sfx_sextw_rets
-00CE0:      	jmp		@sfx_orhigh
+00CDF:      	P1=		#@sfx_ortable_5
+00CE2:      	test		DX.b5
+00CE3:      	if ZR jmp	@sfx_sextw_rets
+00CE4:      	jmp		@sfx_orhigh
             
             sfx_SignExtL22:
-00CE1:      	P1=		#@sfx_ortable_6
-00CE4:      	test		DX.b6
-00CE5:      	if ZR jmp	@sfx_sextw_rets
-00CE6:      	jmp		@sfx_orhigh
+00CE5:      	P1=		#@sfx_ortable_6
+00CE8:      	test		DX.b6
+00CE9:      	if ZR jmp	@sfx_sextw_rets
+00CEA:      	jmp		@sfx_orhigh
             
             sfx_SignExtL23:
-00CE7:      	P1=		#@sfx_ortable_7
-00CEA:      	test		DX.b7
-00CEB:      	if ZR jmp	@sfx_sextw_rets
-00CEC:      	jmp		@sfx_orhigh
+00CEB:      	P1=		#@sfx_ortable_7
+00CEE:      	test		DX.b7
+00CEF:      	if ZR jmp	@sfx_sextw_rets
+00CF0:      	jmp		@sfx_orhigh
             
             sfx_SignExtL24:
-00CED:      	P1=		#@sfx_ortable_8
-00CF0:      	test		DX.b8
-00CF1:      	if ZR jmp	@sfx_sextw_rets
-00CF2:      	jmp		@sfx_orhigh
+00CF1:      	P1=		#@sfx_ortable_8
+00CF4:      	test		DX.b8
+00CF5:      	if ZR jmp	@sfx_sextw_rets
+00CF6:      	jmp		@sfx_orhigh
             
             sfx_SignExtL25:
-00CF3:      	P1=		#@sfx_ortable_9
-00CF6:      	test		DX.b9
-00CF7:      	if ZR jmp	@sfx_sextw_rets
-00CF8:      	jmp		@sfx_orhigh
+00CF7:      	P1=		#@sfx_ortable_9
+00CFA:      	test		DX.b9
+00CFB:      	if ZR jmp	@sfx_sextw_rets
+00CFC:      	jmp		@sfx_orhigh
             
             sfx_SignExtL26:
-00CF9:      	P1=		#@sfx_ortable_10
-00CFC:      	test		DX.b10
-00CFD:      	if ZR jmp	@sfx_sextw_rets
-00CFE:      	jmp		@sfx_orhigh
+00CFD:      	P1=		#@sfx_ortable_10
+00D00:      	test		DX.b10
+00D01:      	if ZR jmp	@sfx_sextw_rets
+00D02:      	jmp		@sfx_orhigh
             
             sfx_SignExtL27:
-00CFF:      	P1=		#@sfx_ortable_11
-00D02:      	test		DX.b11
-00D03:      	if ZR jmp	@sfx_sextw_rets
-00D04:      	jmp		@sfx_orhigh
+00D03:      	P1=		#@sfx_ortable_11
+00D06:      	test		DX.b11
+00D07:      	if ZR jmp	@sfx_sextw_rets
+00D08:      	jmp		@sfx_orhigh
             
             sfx_SignExtL28:
-00D05:      	P1=		#@sfx_ortable_12
-00D08:      	test		DX.b12
-00D09:      	if ZR jmp	@sfx_sextw_rets
-00D0A:      	jmp		@sfx_orhigh
+00D09:      	P1=		#@sfx_ortable_12
+00D0C:      	test		DX.b12
+00D0D:      	if ZR jmp	@sfx_sextw_rets
+00D0E:      	jmp		@sfx_orhigh
             
             sfx_SignExtL29:
-00D0B:      	P1=		#@sfx_ortable_13
-00D0E:      	test		DX.b13
-00D0F:      	if ZR jmp	@sfx_sextw_rets
-00D10:      	jmp		@sfx_orhigh
+00D0F:      	P1=		#@sfx_ortable_13
+00D12:      	test		DX.b13
+00D13:      	if ZR jmp	@sfx_sextw_rets
+00D14:      	jmp		@sfx_orhigh
             
             sfx_SignExtL30:
-00D11:      	P1=		#@sfx_ortable_14
-00D14:      	test		DX.b14
-00D15:      	if ZR jmp	@sfx_sextw_rets
-00D16:      	jmp		@sfx_orhigh
+00D15:      	P1=		#@sfx_ortable_14
+00D18:      	test		DX.b14
+00D19:      	if ZR jmp	@sfx_sextw_rets
+00D1A:      	jmp		@sfx_orhigh
             
             
             ; ~.~--------------------
@@ -7436,51 +7452,51 @@
             
             sfx_REPMOV_SS:
             @sfx_repmov_ss_loop_1804:
-00D17:      	push		I1
-00D18:      	AR=		AX
-00D19:      	I1=		AR
-00D1A:      	AR=		rm[I1]
-00D1B:      	pop		I1
-00D1C:      	rm[I1++]=	AR
-00D1D:      	AX++
-00D1E:      	loop		@sfx_repmov_ss_loop_1804
-00D1F:      	rets
+00D1B:      	push		I1
+00D1C:      	AR=		AX
+00D1D:      	I1=		AR
+00D1E:      	AR=		rm[I1]
+00D1F:      	pop		I1
+00D20:      	rm[I1++]=	AR
+00D21:      	AX++
+00D22:      	loop		@sfx_repmov_ss_loop_1804
+00D23:      	rets
             
             ; ~~
             
             sfx_REPMOV_SR:
-00D20:      	AR=		AX
-00D21:      	P1=		AR
+00D24:      	AR=		AX
+00D25:      	P1=		AR
             @sfx_repmov_sr_loop_1804:
-00D22:      	rm[I1++]=	pm[P1++]
-00D23:      	loop		@sfx_repmov_sr_loop_1804
-00D24:      	rets
+00D26:      	rm[I1++]=	pm[P1++]
+00D27:      	loop		@sfx_repmov_sr_loop_1804
+00D28:      	rets
             
             
             ; ~~
             
             sfx_REPMOV_RS:
-00D25:      	AR=		AX
-00D26:      	I1=		AR
+00D29:      	AR=		AX
+00D2A:      	I1=		AR
             @sfx_repmov_rs_loop_1804:
-00D27:      	AR=		rm[I1++]
-00D28:      	pm[P1++]=	AR
-00D29:      	loop		@sfx_repmov_rs_loop_1804
-00D2A:      	rets
+00D2B:      	AR=		rm[I1++]
+00D2C:      	pm[P1++]=	AR
+00D2D:      	loop		@sfx_repmov_rs_loop_1804
+00D2E:      	rets
             
             ; ~~
             
             sfx_REPMOV_RR:
             @sfx_repmov_rr_loop_1804:
-00D2B:      	push		P1
-00D2C:      	AR=		AX
-00D2D:      	P1=		AR
-00D2E:      	AR=		pm[P1]
-00D2F:      	pop		P1
-00D30:      	pm[P1++]=	AR
-00D31:      	AX++
-00D32:      	loop		@sfx_repmov_rr_loop_1804
-00D33:      	rets
+00D2F:      	push		P1
+00D30:      	AR=		AX
+00D31:      	P1=		AR
+00D32:      	AR=		pm[P1]
+00D33:      	pop		P1
+00D34:      	pm[P1++]=	AR
+00D35:      	AX++
+00D36:      	loop		@sfx_repmov_rr_loop_1804
+00D37:      	rets
             
             ; ~~
             
@@ -7800,16 +7816,16 @@
             // .code segment
             
             WAKEUP_PROC:
-00D34:      	PCH=	SYS_PROG_ENTRY
-00D35:      	ljmp	SYS_PROG_ENTRY
+00D38:      	PCH=	SYS_PROG_ENTRY
+00D39:      	ljmp	SYS_PROG_ENTRY
             
             IntVectTable:
-00D36:      	DW #EMPTY_INTENTRY
-00D37:      	DW #EMPTY_INTENTRY
-00D38:      	DW #EMPTY_INTENTRY
-00D39:      	DW #EMPTY_INTENTRY
 00D3A:      	DW #EMPTY_INTENTRY
-00D3B:      	DW #_PWM_Entry4EB0B003
+00D3B:      	DW #EMPTY_INTENTRY
+00D3C:      	DW #EMPTY_INTENTRY
+00D3D:      	DW #EMPTY_INTENTRY
+00D3E:      	DW #EMPTY_INTENTRY
+00D3F:      	DW #_PWM_Entry4EB0B003
             
             // .code ends
             ;;FDSP-IDE V2.64

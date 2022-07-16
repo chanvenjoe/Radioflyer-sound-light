@@ -194,9 +194,11 @@ void DoADPCM(void)
 	{
 		DecodeChannel(*(p++));
 		ADPCM_Tmpi++;
+		R_PORTC.b0=1;
 	}
 
 	Satv();
+	R_PORTC.b0=0;
 	B_PORTC0 = 0;
 }
 

@@ -47,13 +47,13 @@ rjmp void _playADPCMBACD5AFD(__int16 _index_0_4)
 	__int16 _p_1_4;
 	__int16 _q_1_6;
 	////////////////////////////
-_AE3845712_104:;
+_AECA8DE46_104:;
 	////////////////////////////
-_AE3845712_105:;
+_AECA8DE46_105:;
 	asm AX = _adpch30670376+0;
 	sSI	= (int)&_p_1_4;
 	*(__int16*)sSI	= sAX;
-_AE3845712_106:;
+_AECA8DE46_106:;
 	_i_1_2+0	= 0x00;
 L7F5A46A0_26:;
 	sSI	= (int)&_i_1_2;
@@ -74,7 +74,7 @@ L7F5A46A0_29:;
 	goto L7F5A46A0_26;
 L7F5A46A0_27:;
 	////////////////////////////
-_AE3845712_107:;
+_AECA8DE46_107:;
 	sSI	= (int)&_p_1_4;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000A;
@@ -87,8 +87,8 @@ _AE3845712_107:;
 	goto	L7F5A46A0_31;
 L7F5A46A0_32:;
 	////////////////////////////
-_AE3845712_108:;
-_AE3845712_109:;
+_AECA8DE46_108:;
+_AECA8DE46_109:;
 	sAX	= 0x0012;
 	PUSH(sAX);
 	sAX	= 0x0000;
@@ -100,7 +100,7 @@ _AE3845712_109:;
 	PUSH(sAX);
 	_memset5A9D755A(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2], STACK[sSP + 3]);
 	RESTORESP(4);
-_AE3845712_110:;
+_AECA8DE46_110:;
 	asm AX = #_adpdata32993E3B+0;
 	PUSH(sAX);
 	sSI	= (int)&_index_0_4;
@@ -111,7 +111,7 @@ _AE3845712_110:;
 	sAX	= sAX + sCX;
 	sSI	= (int)&_q_1_6;
 	*(__int16*)sSI	= sAX;
-_AE3845712_111:;
+_AECA8DE46_111:;
 	sSI	= (int)&_p_1_4;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000A;
@@ -124,7 +124,7 @@ _AE3845712_111:;
 	sDX	= *(__int16*)sDI--;
 	sSI	= POP();
 	sfx_STORSILONG();
-_AE3845712_112:;
+_AECA8DE46_112:;
 	sSI	= (int)&_p_1_4;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0011;
@@ -138,7 +138,7 @@ _AE3845712_112:;
 	sAX	= *(__int16*)sDI;
 	sSI	= POP();
 	*(__int16*)sSI	= sAX;
-_AE3845712_113:;
+_AECA8DE46_113:;
 	asm AX = _adpFLTG0FBE3CB5+0;
 	PUSH(sAX);
 	sSI	= (int)&_i_1_2;
@@ -155,41 +155,41 @@ _AE3845712_113:;
 	sAX	= *(__int16*)sDI;
 	sSI	= POP();
 	*(__int16*)sSI	= sAX;
-_AE3845712_114:;
+_AECA8DE46_114:;
 	sAX	= 0x0001;
 	goto L7F5A46A0_25;
 L7F5A46A0_31:;
-_AE3845712_115:;
-_AE3845712_116:;
+_AECA8DE46_115:;
+_AECA8DE46_116:;
 	sSI	= (int)&_p_1_4;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_p_1_4;
 	asm AR = 0x0012;
 	sCX	= *(__int16*)sSI;
 	asm rm[I1] = CX + AR;
-_AE3845712_117:;
+_AECA8DE46_117:;
 	goto L7F5A46A0_29;
 L7F5A46A0_28:;
-_AE3845712_118:;
+_AECA8DE46_118:;
 	sAX	= 0x0000;
 	goto L7F5A46A0_25;
 L7F5A46A0_25:;
-_AE3845712_119:;
+_AECA8DE46_119:;
 	return;
 _playADPCMBACD5AFD_end:;
-_AE3845712_120:;
+_AECA8DE46_120:;
 }
 
 rjmp void ADPCM_CHX_Init()
 {
-_AE3845712_121:;
+_AECA8DE46_121:;
 	////////////////////////////
-_AE3845712_122:;
+_AECA8DE46_122:;
 	sAX	= 0x0000;
 	asm I1 = _iADPCCACC469+0;
 	*(__int16*)sSI	= sAX
-_AE3845712_123:;
-_AE3845712_124:;
+_AECA8DE46_123:;
+_AECA8DE46_124:;
 	sAX	= 0x0024;
 	PUSH(sAX);
 	sAX	= 0x0000;
@@ -201,33 +201,33 @@ _AE3845712_124:;
 	_memset5A9D755A(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2], STACK[sSP + 3]);
 	RESTORESP(4);
 L7F5A46A0_33:;
-_AE3845712_125:;
+_AECA8DE46_125:;
 	return;
 ADPCM_CHX_Init_end:;
-_AE3845712_126:;
+_AECA8DE46_126:;
 }
 
 rjmp void ADPCM_CHXGetBts()
 {
-_AE3845712_127:;
-_AE3845712_128:;
+_AECA8DE46_127:;
+_AECA8DE46_128:;
 	asm	push AX
-_AE3845712_129:;
+_AECA8DE46_129:;
 	asm	push BX
-_AE3845712_130:;
+_AECA8DE46_130:;
 	asm	push CX
-_AE3845712_131:;
+_AECA8DE46_131:;
 	asm	push DX
-_AE3845712_132:;
+_AECA8DE46_132:;
 	asm	push I1
-_AE3845712_133:;
+_AECA8DE46_133:;
 	asm	push P0
-_AE3845712_134:;
+_AECA8DE46_134:;
 	asm	AR = P0.hh
-_AE3845712_135:;
+_AECA8DE46_135:;
 	asm	push AR
 	////////////////////////////
-_AE3845712_136:;
+_AECA8DE46_136:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000A;
@@ -243,66 +243,66 @@ _AE3845712_136:;
 	sfx_STORSILONG();
 	sDX	= POP();
 	sAX	= POP();
-_AE3845712_137:;
+_AECA8DE46_137:;
 	asm	AR = AX
-_AE3845712_138:;
+_AECA8DE46_138:;
 	asm	P0 = AR
-_AE3845712_139:;
+_AECA8DE46_139:;
 	asm	AR = DX
-_AE3845712_140:;
+_AECA8DE46_140:;
 	asm	P0.hh = AR
 	////////////////////////////
-_AE3845712_141:;
-_AE3845712_142:;
+_AECA8DE46_141:;
+_AECA8DE46_142:;
 	read_P0();
-_AE3845712_143:;
+_AECA8DE46_143:;
 	asm	pop AR
-_AE3845712_144:;
+_AECA8DE46_144:;
 	asm	P0.hh = AR
-_AE3845712_145:;
+_AECA8DE46_145:;
 	asm	pop P0
-_AE3845712_146:;
+_AECA8DE46_146:;
 	asm	pop I1
-_AE3845712_147:;
+_AECA8DE46_147:;
 	asm	pop DX
-_AE3845712_148:;
+_AECA8DE46_148:;
 	asm	pop CX
-_AE3845712_149:;
+_AECA8DE46_149:;
 	asm	pop BX
 	////////////////////////////
-_AE3845712_150:;
-_AE3845712_151:;
+_AECA8DE46_150:;
+_AECA8DE46_151:;
 	asintax();
-_AE3845712_152:;
+_AECA8DE46_152:;
 	asm	AR = AX
-_AE3845712_153:;
+_AECA8DE46_153:;
 	asm	pop AX
 L7F5A46A0_34:;
-_AE3845712_154:;
+_AECA8DE46_154:;
 	return;
 ADPCM_CHXGetBts_end:;
-_AE3845712_155:;
+_AECA8DE46_155:;
 }
 
 rjmp void L7F5A46A0_35()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_AE3845712_156:;
+_AECA8DE46_156:;
 	////////////////////////////
-_AE3845712_157:;
+_AECA8DE46_157:;
 	asm I1 = inbuf+0;
 	sAX	= *(__int16*)sSI;
-_AE3845712_158:;
+_AECA8DE46_158:;
 	asm	AR = AX
-_AE3845712_159:;
+_AECA8DE46_159:;
 	asm	I0 = AR
 	////////////////////////////
 	////////////////////////////
-_AE3845712_160:;
+_AECA8DE46_160:;
 	_i_1_2+0	= 0x40;
 L7F5A46A0_39:;
-_AE3845712_161:;
+_AECA8DE46_161:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sfx_CHECKZERO();
@@ -310,26 +310,26 @@ _AE3845712_161:;
 	goto	L7F5A46A0_38;
 L7F5A46A0_40:;
 	////////////////////////////
-_AE3845712_162:;
+_AECA8DE46_162:;
 	sAX	= 0x0000;
-_AE3845712_163:;
+_AECA8DE46_163:;
 	asm	rm[I0++] = AX
 	////////////////////////////
-_AE3845712_164:;
+_AECA8DE46_164:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
 	asm AR = 0x0001;
 	sCX	= *(__int16*)sSI;
 	asm rm[I1] = CX - AR;
-_AE3845712_165:;
+_AECA8DE46_165:;
 	goto L7F5A46A0_39;
 L7F5A46A0_38:;
 L7F5A46A0_37:;
-_AE3845712_166:;
+_AECA8DE46_166:;
 	return;
 L7F5A46A0_35_end:;
-_AE3845712_167:;
+_AECA8DE46_167:;
 }
 
 rjmp void L7F5A46A0_41(__int16 _vol_0_4)
@@ -337,9 +337,9 @@ rjmp void L7F5A46A0_41(__int16 _vol_0_4)
 	__int16 _p_1_2;
 	__int16 _i_1_4;
 	////////////////////////////
-_AE3845712_168:;
+_AECA8DE46_168:;
 	////////////////////////////
-_AE3845712_169:;
+_AECA8DE46_169:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000A;
@@ -352,56 +352,56 @@ _AE3845712_169:;
 	goto	L7F5A46A0_44;
 L7F5A46A0_45:;
 	////////////////////////////
-_AE3845712_170:;
+_AECA8DE46_170:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000C;
 	sAX	= sAX + sCX;
-_AE3845712_171:;
+_AECA8DE46_171:;
 	asm	AR = AX
-_AE3845712_172:;
+_AECA8DE46_172:;
 	asm	I0 = AR
 	////////////////////////////
 	////////////////////////////
-_AE3845712_173:;
-_AE3845712_174:;
+_AECA8DE46_173:;
+_AECA8DE46_174:;
 	read_I0P();
 	io[0x36]	= sAX;
-_AE3845712_175:;
-_AE3845712_176:;
+_AECA8DE46_175:;
+_AECA8DE46_176:;
 	read_I0P();
 	io[0x36]	= sAX;
-_AE3845712_177:;
-_AE3845712_178:;
+_AECA8DE46_177:;
+_AECA8DE46_178:;
 	read_I0P();
 	io[0x36]	= sAX;
-_AE3845712_179:;
-_AE3845712_180:;
+_AECA8DE46_179:;
+_AECA8DE46_180:;
 	read_I0P();
 	io[0x36]	= sAX;
-_AE3845712_181:;
-_AE3845712_182:;
+_AECA8DE46_181:;
+_AECA8DE46_182:;
 	read_I0P();
 	io[0x3D]	= sAX;
-_AE3845712_183:;
-_AE3845712_184:;
+_AECA8DE46_183:;
+_AECA8DE46_184:;
 	read_I0P();
 	io[0x3E]	= sAX;
-_AE3845712_185:;
+_AECA8DE46_185:;
 	sSI	= (int)&_vol_0_4;
 	sAX	= *(__int16*)sSI;
 	io[0x3C]	= sAX;
-_AE3845712_186:;
+_AECA8DE46_186:;
 	sAX	= io[0x3C];
-_AE3845712_187:;
+_AECA8DE46_187:;
 	asm I1 = inbuf+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_p_1_2;
 	*(__int16*)sSI	= sAX;
-_AE3845712_188:;
+_AECA8DE46_188:;
 	_i_1_4+0	= 0x20;
 L7F5A46A0_47:;
-_AE3845712_189:;
+_AECA8DE46_189:;
 	sSI	= (int)&_i_1_4;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_4;
@@ -413,7 +413,7 @@ _AE3845712_189:;
 	goto	L7F5A46A0_46;
 L7F5A46A0_48:;
 	////////////////////////////
-_AE3845712_190:;
+_AECA8DE46_190:;
 	sAX	= 0;
 	asm test io[0x00].b14;
 	if(__jz__) goto L7F5A46A0_49;
@@ -424,15 +424,15 @@ L7F5A46A0_49:;
 	goto	L7F5A46A0_50;
 L7F5A46A0_51:;
 	////////////////////////////
-_AE3845712_191:;
-_AE3845712_192:;
+_AECA8DE46_191:;
+_AECA8DE46_192:;
 	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E();
 	sfx_CHECKZERO();
 	if(__jz__)	goto L7F5A46A0_53;
 	goto	L7F5A46A0_52;
 L7F5A46A0_53:;
 	////////////////////////////
-_AE3845712_193:;
+_AECA8DE46_193:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000A;
@@ -442,19 +442,19 @@ _AE3845712_193:;
 	sDX	= 0x0000;
 	sSI	= POP();
 	sfx_STORSILONG();
-_AE3845712_194:;
+_AECA8DE46_194:;
 	goto L7F5A46A0_43;
 L7F5A46A0_52:;
-_AE3845712_195:;
-_AE3845712_196:;
+_AECA8DE46_195:;
+_AECA8DE46_196:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= sAX;
 	sAX	= *(__int16*)sSI;
 	io[0x36]	= sAX;
 L7F5A46A0_50:;
-_AE3845712_197:;
-_AE3845712_198:;
+_AECA8DE46_197:;
+_AECA8DE46_198:;
 	sSI	= (int)&_p_1_2;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
@@ -476,75 +476,75 @@ _AE3845712_198:;
 	asm AR = 0x0002;
 	sAX	= *(__int16*)sSI;
 	asm rm[I1] = AX + AR;
-_AE3845712_199:;
+_AECA8DE46_199:;
 	goto L7F5A46A0_47;
 L7F5A46A0_46:;
 	////////////////////////////
-_AE3845712_200:;
+_AECA8DE46_200:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000C;
 	sAX	= sAX + sCX;
-_AE3845712_201:;
+_AECA8DE46_201:;
 	asm	AR = AX
-_AE3845712_202:;
+_AECA8DE46_202:;
 	asm	I0 = AR
 	////////////////////////////
 	////////////////////////////
-_AE3845712_203:;
+_AECA8DE46_203:;
 	sAX	= io[0x36];
-_AE3845712_204:;
+_AECA8DE46_204:;
 	asm	rm[I0++] = AX
 	////////////////////////////
-_AE3845712_205:;
+_AECA8DE46_205:;
 	sAX	= io[0x36];
-_AE3845712_206:;
+_AECA8DE46_206:;
 	asm	rm[I0++] = AX
 	////////////////////////////
-_AE3845712_207:;
+_AECA8DE46_207:;
 	sAX	= io[0x36];
-_AE3845712_208:;
+_AECA8DE46_208:;
 	asm	rm[I0++] = AX
 	////////////////////////////
-_AE3845712_209:;
+_AECA8DE46_209:;
 	sAX	= io[0x36];
-_AE3845712_210:;
+_AECA8DE46_210:;
 	asm	rm[I0++] = AX
 	////////////////////////////
-_AE3845712_211:;
+_AECA8DE46_211:;
 	sAX	= io[0x3D];
-_AE3845712_212:;
+_AECA8DE46_212:;
 	asm	rm[I0++] = AX
 L7F5A46A0_44:;
-_AE3845712_213:;
+_AECA8DE46_213:;
 L7F5A46A0_43:;
-_AE3845712_214:;
+_AECA8DE46_214:;
 	return;
 L7F5A46A0_41_end:;
-_AE3845712_215:;
+_AECA8DE46_215:;
 }
 
 rjmp void L7F5A46A0_54()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_AE3845712_216:;
+_AECA8DE46_216:;
 	////////////////////////////
-_AE3845712_217:;
+_AECA8DE46_217:;
 	asm I1 = inbuf+0;
 	sAX	= *(__int16*)sSI;
-_AE3845712_218:;
+_AECA8DE46_218:;
 	asm	AR = AX
-_AE3845712_219:;
+_AECA8DE46_219:;
 	asm	I0 = AR
 	////////////////////////////
 	////////////////////////////
-_AE3845712_220:;
+_AECA8DE46_220:;
 	sAX	= io[0x33];
-_AE3845712_221:;
+_AECA8DE46_221:;
 	_i_1_2+0	= 0x20;
 L7F5A46A0_58:;
-_AE3845712_222:;
+_AECA8DE46_222:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -556,32 +556,32 @@ _AE3845712_222:;
 	goto	L7F5A46A0_57;
 L7F5A46A0_59:;
 	////////////////////////////
-_AE3845712_223:;
-_AE3845712_224:;
+_AECA8DE46_223:;
+_AECA8DE46_224:;
 	read_I0P();
 	io[0x33]	= sAX;
-_AE3845712_225:;
-_AE3845712_226:;
+_AECA8DE46_225:;
+_AECA8DE46_226:;
 	read_I0M();
 	io[0x33]	= sAX;
 	////////////////////////////
-_AE3845712_227:;
+_AECA8DE46_227:;
 	sAX	= io[0x33];
-_AE3845712_228:;
+_AECA8DE46_228:;
 	asm	rm[I0++2] = AX
-_AE3845712_229:;
+_AECA8DE46_229:;
 	goto L7F5A46A0_58;
 L7F5A46A0_57:;
-_AE3845712_230:;
+_AECA8DE46_230:;
 	asm I1 = inbuf+0;
 	asm AR = rm[I1];
 	asm not AR.b6;
 	asm rm[I1] = AR;
 L7F5A46A0_56:;
-_AE3845712_231:;
+_AECA8DE46_231:;
 	return;
 L7F5A46A0_54_end:;
-_AE3845712_232:;
+_AECA8DE46_232:;
 }
 
 rjmp void _DoADPCM9CD0E20D()
@@ -589,9 +589,9 @@ rjmp void _DoADPCM9CD0E20D()
 	__int16 _i_1_2;
 	__int16 _p_1_4;
 	////////////////////////////
-_AE3845712_233:;
+_AECA8DE46_233:;
 	////////////////////////////
-_AE3845712_234:;
+_AECA8DE46_234:;
 	asm I1 = inbuf+0;
 	sAX	= *(__int16*)sSI;
 	asm I1 = outbuf+0;
@@ -603,27 +603,27 @@ _AE3845712_234:;
 	if(__jz__)	goto L7F5A46A0_62;
 	goto	L7F5A46A0_61;
 L7F5A46A0_62:;
-_AE3845712_235:;
+_AECA8DE46_235:;
 	goto L7F5A46A0_60;
 L7F5A46A0_61:;
-_AE3845712_236:;
-_AE3845712_237:;
+_AECA8DE46_236:;
+_AECA8DE46_237:;
 	asm set io[0x09].b0;
-_AE3845712_238:;
-_AE3845712_239:;
+_AECA8DE46_238:;
+_AECA8DE46_239:;
 	L7F5A46A0_35();
-_AE3845712_240:;
+_AECA8DE46_240:;
 	asm AX = _adpFLTG0FBE3CB5+0;
 	sSI	= (int)&_p_1_4;
 	*(__int16*)sSI	= sAX;
-_AE3845712_241:;
+_AECA8DE46_241:;
 	asm AX = _adpch30670376+0;
 	asm I1 = ADPCM_Tmpi+0;
 	*(__int16*)sSI	= sAX
-_AE3845712_242:;
+_AECA8DE46_242:;
 	_i_1_2+0	= 0x02;
 L7F5A46A0_64:;
-_AE3845712_243:;
+_AECA8DE46_243:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -635,8 +635,8 @@ _AE3845712_243:;
 	goto	L7F5A46A0_63;
 L7F5A46A0_65:;
 	////////////////////////////
-_AE3845712_244:;
-_AE3845712_245:;
+_AECA8DE46_244:;
+_AECA8DE46_245:;
 	sSI	= (int)&_p_1_4;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_p_1_4;
@@ -648,26 +648,30 @@ _AE3845712_245:;
 	PUSH(sAX);
 	L7F5A46A0_41(STACK[sSP + 0]);
 	RESTORESP(1);
-_AE3845712_246:;
+_AECA8DE46_246:;
 	asm I1 = ADPCM_Tmpi+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&ADPCM_Tmpi;
 	sCX	= *(__int16*)sSI;
 	asm AR = 0x0012;
 	asm rm[I1] = CX + AR;
-_AE3845712_247:;
+_AECA8DE46_247:;
+	asm set io[0x09].b0;
+_AECA8DE46_248:;
 	goto L7F5A46A0_64;
 L7F5A46A0_63:;
-_AE3845712_248:;
-_AE3845712_249:;
+_AECA8DE46_249:;
+_AECA8DE46_250:;
 	L7F5A46A0_54();
-_AE3845712_250:;
+_AECA8DE46_251:;
+	asm clr io[0x09].b0;
+_AECA8DE46_252:;
 	asm clr io[0x09].b0;
 L7F5A46A0_60:;
-_AE3845712_251:;
+_AECA8DE46_253:;
 	return;
 _DoADPCM9CD0E20D_end:;
-_AE3845712_252:;
+_AECA8DE46_254:;
 }
 
 // .code ends _text

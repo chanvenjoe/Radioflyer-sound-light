@@ -37,11 +37,11 @@ _playADPCMBACD5AFD:
 	rm[BP_SAVE]	= AR
 	AR	 = -3
 	BP	+= AR
-; //_AE3845712_104:;				
-_AE3845712_104:
+; //_AECA8DE46_104:;				
+_AECA8DE46_104:
 ; //	
-; //_AE3845712_105:;				
-_AE3845712_105:
+; //_AECA8DE46_105:;				
+_AECA8DE46_105:
 ; //	asm AX = _adpch30670376+0;		
 	AX = _adpch30670376+0//
 ; //	sSI	= (int)&_p_1_4;			
@@ -50,8 +50,8 @@ _AE3845712_105:
 	I1	+= AR
 ; //	*(__int16*)sSI	= sAX;			
 	rm[I1]	= AX
-; //_AE3845712_106:;				
-_AE3845712_106:
+; //_AECA8DE46_106:;				
+_AECA8DE46_106:
 ; //	_i_1_2+0	= 0x00;			
 	I1	= rm[BP_SAVE]
 	AX	= 0x00
@@ -94,8 +94,8 @@ L7F5A46A0_29:
 ; //L7F5A46A0_27:;					
 L7F5A46A0_27:
 ; //	
-; //_AE3845712_107:;				
-_AE3845712_107:
+; //_AECA8DE46_107:;				
+_AECA8DE46_107:
 ; //	sSI	= (int)&_p_1_4;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -124,10 +124,10 @@ _AE3845712_107:
 ; //L7F5A46A0_32:;					
 L7F5A46A0_32:
 ; //	
-; //_AE3845712_108:;				
-_AE3845712_108:
-; //_AE3845712_109:;				
-_AE3845712_109:
+; //_AECA8DE46_108:;				
+_AECA8DE46_108:
+; //_AECA8DE46_109:;				
+_AECA8DE46_109:
 ; //	sAX	= 0x0012;			
 	AX	= 0x12
 ; //	PUSH(sAX);				
@@ -154,8 +154,8 @@ _AE3845712_109:
 ; //	RESTORESP(4);				
 	AR	= 4
 	BP	+= AR
-; //_AE3845712_110:;				
-_AE3845712_110:
+; //_AECA8DE46_110:;				
+_AECA8DE46_110:
 ; //	asm AX = #_adpdata32993E3B+0;		
 	AX = #_adpdata32993E3B+0//
 ; //	PUSH(sAX);				
@@ -182,8 +182,8 @@ _AE3845712_110:
 	I1	+= AR
 ; //	*(__int16*)sSI	= sAX;			
 	rm[I1]	= AX
-; //_AE3845712_111:;				
-_AE3845712_111:
+; //_AECA8DE46_111:;				
+_AECA8DE46_111:
 ; //	sSI	= (int)&_p_1_4;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -215,8 +215,8 @@ _AE3845712_111:
 ; //	sfx_STORSILONG();			
 	rm[I1++]	= AX
 	rm[I1--]	= DX
-; //_AE3845712_112:;				
-_AE3845712_112:
+; //_AECA8DE46_112:;				
+_AECA8DE46_112:
 ; //	sSI	= (int)&_p_1_4;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -250,8 +250,8 @@ _AE3845712_112:
 	pop	I1
 ; //	*(__int16*)sSI	= sAX;			
 	rm[I1]	= AX
-; //_AE3845712_113:;				
-_AE3845712_113:
+; //_AECA8DE46_113:;				
+_AECA8DE46_113:
 ; //	asm AX = _adpFLTG0FBE3CB5+0;		
 	AX = _adpFLTG0FBE3CB5+0//
 ; //	PUSH(sAX);				
@@ -288,18 +288,18 @@ _AE3845712_113:
 	pop	I1
 ; //	*(__int16*)sSI	= sAX;			
 	rm[I1]	= AX
-; //_AE3845712_114:;				
-_AE3845712_114:
+; //_AECA8DE46_114:;				
+_AECA8DE46_114:
 ; //	sAX	= 0x0001;			
 	AX	= 0x01
 ; //	goto L7F5A46A0_25;			
 	jmp	L7F5A46A0_25
 ; //L7F5A46A0_31:;					
 L7F5A46A0_31:
-; //_AE3845712_115:;				
-_AE3845712_115:
-; //_AE3845712_116:;				
-_AE3845712_116:
+; //_AECA8DE46_115:;				
+_AECA8DE46_115:
+; //_AECA8DE46_116:;				
+_AECA8DE46_116:
 ; //	sSI	= (int)&_p_1_4;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -316,22 +316,22 @@ _AE3845712_116:
 	CX	= rm[I1]
 ; //	asm rm[I1] = CX + AR;			
 	rm[I1] = CX + AR//
-; //_AE3845712_117:;				
-_AE3845712_117:
+; //_AECA8DE46_117:;				
+_AECA8DE46_117:
 ; //	goto L7F5A46A0_29;			
 	jmp	L7F5A46A0_29
 ; //L7F5A46A0_28:;					
 L7F5A46A0_28:
-; //_AE3845712_118:;				
-_AE3845712_118:
+; //_AECA8DE46_118:;				
+_AECA8DE46_118:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	goto L7F5A46A0_25;			
 	jmp	L7F5A46A0_25
 ; //L7F5A46A0_25:;					
 L7F5A46A0_25:
-; //_AE3845712_119:;				
-_AE3845712_119:
+; //_AECA8DE46_119:;				
+_AECA8DE46_119:
 ; //	return;					
 	AR	= 3
 	BP	+= AR
@@ -340,28 +340,28 @@ _AE3845712_119:
 	rets
 ; //_playADPCMBACD5AFD_end:;			
 _playADPCMBACD5AFD_end:
-; //_AE3845712_120:;				
-_AE3845712_120:
+; //_AECA8DE46_120:;				
+_AECA8DE46_120:
 ; //}
 ; //
 ; //rjmp void ADPCM_CHX_Init()			
 ADPCM_CHX_Init:
 ; //{
-; //_AE3845712_121:;				
-_AE3845712_121:
+; //_AECA8DE46_121:;				
+_AECA8DE46_121:
 ; //	
-; //_AE3845712_122:;				
-_AE3845712_122:
+; //_AECA8DE46_122:;				
+_AECA8DE46_122:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	asm I1 = _iADPCCACC469+0;		
 	I1 = _iADPCCACC469+0//
 ; //	*(__int16*)sSI	= sAX			
 	rm[I1]	= AX
-; //_AE3845712_123:;				
-_AE3845712_123:
-; //_AE3845712_124:;				
-_AE3845712_124:
+; //_AECA8DE46_123:;				
+_AECA8DE46_123:
+; //_AECA8DE46_124:;				
+_AECA8DE46_124:
 ; //	sAX	= 0x0024;			
 	AX	= 0x24
 ; //	PUSH(sAX);				
@@ -386,56 +386,56 @@ _AE3845712_124:
 	BP	+= AR
 ; //L7F5A46A0_33:;					
 L7F5A46A0_33:
-; //_AE3845712_125:;				
-_AE3845712_125:
+; //_AECA8DE46_125:;				
+_AECA8DE46_125:
 ; //	return;					
 	rets
 ; //ADPCM_CHX_Init_end:;				
 ADPCM_CHX_Init_end:
-; //_AE3845712_126:;				
-_AE3845712_126:
+; //_AECA8DE46_126:;				
+_AECA8DE46_126:
 ; //}
 ; //
 ; //rjmp void ADPCM_CHXGetBts()			
 ADPCM_CHXGetBts:
 ; //{
-; //_AE3845712_127:;				
-_AE3845712_127:
-; //_AE3845712_128:;				
-_AE3845712_128:
+; //_AECA8DE46_127:;				
+_AECA8DE46_127:
+; //_AECA8DE46_128:;				
+_AECA8DE46_128:
 ; //	asm	push AX				
 	push AX
-; //_AE3845712_129:;				
-_AE3845712_129:
+; //_AECA8DE46_129:;				
+_AECA8DE46_129:
 ; //	asm	push BX				
 	push BX
-; //_AE3845712_130:;				
-_AE3845712_130:
+; //_AECA8DE46_130:;				
+_AECA8DE46_130:
 ; //	asm	push CX				
 	push CX
-; //_AE3845712_131:;				
-_AE3845712_131:
+; //_AECA8DE46_131:;				
+_AECA8DE46_131:
 ; //	asm	push DX				
 	push DX
-; //_AE3845712_132:;				
-_AE3845712_132:
+; //_AECA8DE46_132:;				
+_AECA8DE46_132:
 ; //	asm	push I1				
 	push I1
-; //_AE3845712_133:;				
-_AE3845712_133:
+; //_AECA8DE46_133:;				
+_AECA8DE46_133:
 ; //	asm	push P0				
 	push P0
-; //_AE3845712_134:;				
-_AE3845712_134:
+; //_AECA8DE46_134:;				
+_AECA8DE46_134:
 ; //	asm	AR = P0.hh			
 	AR = P0.hh
-; //_AE3845712_135:;				
-_AE3845712_135:
+; //_AECA8DE46_135:;				
+_AECA8DE46_135:
 ; //	asm	push AR				
 	push AR
 ; //	
-; //_AE3845712_136:;				
-_AE3845712_136:
+; //_AECA8DE46_136:;				
+_AECA8DE46_136:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -472,81 +472,81 @@ _AE3845712_136:
 	pop	DX
 ; //	sAX	= POP();			
 	pop	AX
-; //_AE3845712_137:;				
-_AE3845712_137:
+; //_AECA8DE46_137:;				
+_AECA8DE46_137:
 ; //	asm	AR = AX				
 	AR = AX
-; //_AE3845712_138:;				
-_AE3845712_138:
+; //_AECA8DE46_138:;				
+_AECA8DE46_138:
 ; //	asm	P0 = AR				
 	P0 = AR
-; //_AE3845712_139:;				
-_AE3845712_139:
+; //_AECA8DE46_139:;				
+_AECA8DE46_139:
 ; //	asm	AR = DX				
 	AR = DX
-; //_AE3845712_140:;				
-_AE3845712_140:
+; //_AECA8DE46_140:;				
+_AECA8DE46_140:
 ; //	asm	P0.hh = AR			
 	P0.hh = AR
 ; //	
-; //_AE3845712_141:;				
-_AE3845712_141:
-; //_AE3845712_142:;				
-_AE3845712_142:
+; //_AECA8DE46_141:;				
+_AECA8DE46_141:
+; //_AECA8DE46_142:;				
+_AECA8DE46_142:
 ; //	read_P0();				
 	AX	= pm[P0]
-; //_AE3845712_143:;				
-_AE3845712_143:
+; //_AECA8DE46_143:;				
+_AECA8DE46_143:
 ; //	asm	pop AR				
 	pop AR
-; //_AE3845712_144:;				
-_AE3845712_144:
+; //_AECA8DE46_144:;				
+_AECA8DE46_144:
 ; //	asm	P0.hh = AR			
 	P0.hh = AR
-; //_AE3845712_145:;				
-_AE3845712_145:
+; //_AECA8DE46_145:;				
+_AECA8DE46_145:
 ; //	asm	pop P0				
 	pop P0
-; //_AE3845712_146:;				
-_AE3845712_146:
+; //_AECA8DE46_146:;				
+_AECA8DE46_146:
 ; //	asm	pop I1				
 	pop I1
-; //_AE3845712_147:;				
-_AE3845712_147:
+; //_AECA8DE46_147:;				
+_AECA8DE46_147:
 ; //	asm	pop DX				
 	pop DX
-; //_AE3845712_148:;				
-_AE3845712_148:
+; //_AECA8DE46_148:;				
+_AECA8DE46_148:
 ; //	asm	pop CX				
 	pop CX
-; //_AE3845712_149:;				
-_AE3845712_149:
+; //_AECA8DE46_149:;				
+_AECA8DE46_149:
 ; //	asm	pop BX				
 	pop BX
 ; //	
-; //_AE3845712_150:;				
-_AE3845712_150:
-; //_AE3845712_151:;				
-_AE3845712_151:
+; //_AECA8DE46_150:;				
+_AECA8DE46_150:
+; //_AECA8DE46_151:;				
+_AECA8DE46_151:
 ; //	asintax();				
-; //_AE3845712_152:;				
-_AE3845712_152:
+; //_AECA8DE46_152:;				
+_AECA8DE46_152:
 ; //	asm	AR = AX				
 	AR = AX
-; //_AE3845712_153:;				
-_AE3845712_153:
+; //_AECA8DE46_153:;				
+_AECA8DE46_153:
 ; //	asm	pop AX				
 	pop AX
 ; //L7F5A46A0_34:;					
 L7F5A46A0_34:
-; //_AE3845712_154:;				
-_AE3845712_154:
+; //_AECA8DE46_154:;				
+_AECA8DE46_154:
 ; //	return;					
 	rets
 ; //ADPCM_CHXGetBts_end:;				
 ADPCM_CHXGetBts_end:
-; //_AE3845712_155:;				
-_AE3845712_155:
+; //_AECA8DE46_155:;				
+_AECA8DE46_155:
 ; //}
 ; //
 ; //rjmp void L7F5A46A0_35()			
@@ -560,35 +560,35 @@ L7F5A46A0_35:
 	rm[BP_SAVE]	= AR
 	AR	 = -1
 	BP	+= AR
-; //_AE3845712_156:;				
-_AE3845712_156:
+; //_AECA8DE46_156:;				
+_AECA8DE46_156:
 ; //	
-; //_AE3845712_157:;				
-_AE3845712_157:
+; //_AECA8DE46_157:;				
+_AECA8DE46_157:
 ; //	asm I1 = inbuf+0;			
 	I1 = inbuf+0//
 ; //	sAX	= *(__int16*)sSI;		
 	AX	= rm[I1]
-; //_AE3845712_158:;				
-_AE3845712_158:
+; //_AECA8DE46_158:;				
+_AECA8DE46_158:
 ; //	asm	AR = AX				
 	AR = AX
-; //_AE3845712_159:;				
-_AE3845712_159:
+; //_AECA8DE46_159:;				
+_AECA8DE46_159:
 ; //	asm	I0 = AR				
 	I0 = AR
 ; //	
 ; //	
-; //_AE3845712_160:;				
-_AE3845712_160:
+; //_AECA8DE46_160:;				
+_AECA8DE46_160:
 ; //	_i_1_2+0	= 0x40;			
 	I1	= rm[BP_SAVE]
 	AX	= 0x40
 	rm[I1]	= AX
 ; //L7F5A46A0_39:;					
 L7F5A46A0_39:
-; //_AE3845712_161:;				
-_AE3845712_161:
+; //_AECA8DE46_161:;				
+_AECA8DE46_161:
 ; //	sSI	= (int)&_i_1_2;			
 	I1	= rm[BP_SAVE]
 ; //	sAX	= *(__int16*)sSI;		
@@ -602,17 +602,17 @@ _AE3845712_161:
 ; //L7F5A46A0_40:;					
 L7F5A46A0_40:
 ; //	
-; //_AE3845712_162:;				
-_AE3845712_162:
+; //_AECA8DE46_162:;				
+_AECA8DE46_162:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
-; //_AE3845712_163:;				
-_AE3845712_163:
+; //_AECA8DE46_163:;				
+_AECA8DE46_163:
 ; //	asm	rm[I0++] = AX			
 	rm[I0++] = AX
 ; //	
-; //_AE3845712_164:;				
-_AE3845712_164:
+; //_AECA8DE46_164:;				
+_AECA8DE46_164:
 ; //	sSI	= (int)&_i_1_2;			
 	I1	= rm[BP_SAVE]
 ; //	sAX	= *(__int16*)sSI;		
@@ -625,16 +625,16 @@ _AE3845712_164:
 	CX	= rm[I1]
 ; //	asm rm[I1] = CX - AR;			
 	rm[I1] = CX - AR//
-; //_AE3845712_165:;				
-_AE3845712_165:
+; //_AECA8DE46_165:;				
+_AECA8DE46_165:
 ; //	goto L7F5A46A0_39;			
 	jmp	L7F5A46A0_39
 ; //L7F5A46A0_38:;					
 L7F5A46A0_38:
 ; //L7F5A46A0_37:;					
 L7F5A46A0_37:
-; //_AE3845712_166:;				
-_AE3845712_166:
+; //_AECA8DE46_166:;				
+_AECA8DE46_166:
 ; //	return;					
 	AR	= 1
 	BP	+= AR
@@ -643,8 +643,8 @@ _AE3845712_166:
 	rets
 ; //L7F5A46A0_35_end:;				
 L7F5A46A0_35_end:
-; //_AE3845712_167:;				
-_AE3845712_167:
+; //_AECA8DE46_167:;				
+_AECA8DE46_167:
 ; //}
 ; //
 ; //rjmp void L7F5A46A0_41(__int16 _vol_0_4)	
@@ -659,11 +659,11 @@ L7F5A46A0_41:
 	rm[BP_SAVE]	= AR
 	AR	 = -2
 	BP	+= AR
-; //_AE3845712_168:;				
-_AE3845712_168:
+; //_AECA8DE46_168:;				
+_AECA8DE46_168:
 ; //	
-; //_AE3845712_169:;				
-_AE3845712_169:
+; //_AECA8DE46_169:;				
+_AECA8DE46_169:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -690,8 +690,8 @@ _AE3845712_169:
 ; //L7F5A46A0_45:;					
 L7F5A46A0_45:
 ; //	
-; //_AE3845712_170:;				
-_AE3845712_170:
+; //_AECA8DE46_170:;				
+_AECA8DE46_170:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -701,72 +701,72 @@ _AE3845712_170:
 ; //	sAX	= sAX + sCX;			
 	AR	= CX
 	AX	+= AR
-; //_AE3845712_171:;				
-_AE3845712_171:
+; //_AECA8DE46_171:;				
+_AECA8DE46_171:
 ; //	asm	AR = AX				
 	AR = AX
-; //_AE3845712_172:;				
-_AE3845712_172:
+; //_AECA8DE46_172:;				
+_AECA8DE46_172:
 ; //	asm	I0 = AR				
 	I0 = AR
 ; //	
 ; //	
-; //_AE3845712_173:;				
-_AE3845712_173:
-; //_AE3845712_174:;				
-_AE3845712_174:
+; //_AECA8DE46_173:;				
+_AECA8DE46_173:
+; //_AECA8DE46_174:;				
+_AECA8DE46_174:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x36]	= sAX;			
 	AR	= AX
 	io[0x36]	= AR
-; //_AE3845712_175:;				
-_AE3845712_175:
-; //_AE3845712_176:;				
-_AE3845712_176:
+; //_AECA8DE46_175:;				
+_AECA8DE46_175:
+; //_AECA8DE46_176:;				
+_AECA8DE46_176:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x36]	= sAX;			
 	AR	= AX
 	io[0x36]	= AR
-; //_AE3845712_177:;				
-_AE3845712_177:
-; //_AE3845712_178:;				
-_AE3845712_178:
+; //_AECA8DE46_177:;				
+_AECA8DE46_177:
+; //_AECA8DE46_178:;				
+_AECA8DE46_178:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x36]	= sAX;			
 	AR	= AX
 	io[0x36]	= AR
-; //_AE3845712_179:;				
-_AE3845712_179:
-; //_AE3845712_180:;				
-_AE3845712_180:
+; //_AECA8DE46_179:;				
+_AECA8DE46_179:
+; //_AECA8DE46_180:;				
+_AECA8DE46_180:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x36]	= sAX;			
 	AR	= AX
 	io[0x36]	= AR
-; //_AE3845712_181:;				
-_AE3845712_181:
-; //_AE3845712_182:;				
-_AE3845712_182:
+; //_AECA8DE46_181:;				
+_AECA8DE46_181:
+; //_AECA8DE46_182:;				
+_AECA8DE46_182:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x3D]	= sAX;			
 	AR	= AX
 	io[0x3D]	= AR
-; //_AE3845712_183:;				
-_AE3845712_183:
-; //_AE3845712_184:;				
-_AE3845712_184:
+; //_AECA8DE46_183:;				
+_AECA8DE46_183:
+; //_AECA8DE46_184:;				
+_AECA8DE46_184:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x3E]	= sAX;			
 	AR	= AX
 	io[0x3E]	= AR
-; //_AE3845712_185:;				
-_AE3845712_185:
+; //_AECA8DE46_185:;				
+_AECA8DE46_185:
 ; //	sSI	= (int)&_vol_0_4;		
 	AR	= 2
 	I1	= rm[BP_SAVE]
@@ -776,13 +776,13 @@ _AE3845712_185:
 ; //	io[0x3C]	= sAX;			
 	AR	= AX
 	io[0x3C]	= AR
-; //_AE3845712_186:;				
-_AE3845712_186:
+; //_AECA8DE46_186:;				
+_AECA8DE46_186:
 ; //	sAX	= io[0x3C];			
 	AR	= io[0x3C]
 	AX	= AR
-; //_AE3845712_187:;				
-_AE3845712_187:
+; //_AECA8DE46_187:;				
+_AECA8DE46_187:
 ; //	asm I1 = inbuf+0;			
 	I1 = inbuf+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -791,8 +791,8 @@ _AE3845712_187:
 	I1	= rm[BP_SAVE]
 ; //	*(__int16*)sSI	= sAX;			
 	rm[I1]	= AX
-; //_AE3845712_188:;				
-_AE3845712_188:
+; //_AECA8DE46_188:;				
+_AECA8DE46_188:
 ; //	_i_1_4+0	= 0x20;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -801,8 +801,8 @@ _AE3845712_188:
 	rm[I1]	= AX
 ; //L7F5A46A0_47:;					
 L7F5A46A0_47:
-; //_AE3845712_189:;				
-_AE3845712_189:
+; //_AECA8DE46_189:;				
+_AECA8DE46_189:
 ; //	sSI	= (int)&_i_1_4;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -828,8 +828,8 @@ _AE3845712_189:
 ; //L7F5A46A0_48:;					
 L7F5A46A0_48:
 ; //	
-; //_AE3845712_190:;				
-_AE3845712_190:
+; //_AECA8DE46_190:;				
+_AECA8DE46_190:
 ; //	sAX	= 0;				
 	AX	= 0x00
 ; //	asm test io[0x00].b14;			
@@ -849,10 +849,10 @@ L7F5A46A0_49:
 ; //L7F5A46A0_51:;					
 L7F5A46A0_51:
 ; //	
-; //_AE3845712_191:;				
-_AE3845712_191:
-; //_AE3845712_192:;				
-_AE3845712_192:
+; //_AECA8DE46_191:;				
+_AECA8DE46_191:
+; //_AECA8DE46_192:;				
+_AECA8DE46_192:
 ; //	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E();
 	pch	= _SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E
 	lcall	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E
@@ -865,8 +865,8 @@ _AE3845712_192:
 ; //L7F5A46A0_53:;					
 L7F5A46A0_53:
 ; //	
-; //_AE3845712_193:;				
-_AE3845712_193:
+; //_AECA8DE46_193:;				
+_AECA8DE46_193:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -887,16 +887,16 @@ _AE3845712_193:
 ; //	sfx_STORSILONG();			
 	rm[I1++]	= AX
 	rm[I1--]	= DX
-; //_AE3845712_194:;				
-_AE3845712_194:
+; //_AECA8DE46_194:;				
+_AECA8DE46_194:
 ; //	goto L7F5A46A0_43;			
 	jmp	L7F5A46A0_43
 ; //L7F5A46A0_52:;					
 L7F5A46A0_52:
-; //_AE3845712_195:;				
-_AE3845712_195:
-; //_AE3845712_196:;				
-_AE3845712_196:
+; //_AECA8DE46_195:;				
+_AECA8DE46_195:
+; //_AECA8DE46_196:;				
+_AECA8DE46_196:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -911,10 +911,10 @@ _AE3845712_196:
 	io[0x36]	= AR
 ; //L7F5A46A0_50:;					
 L7F5A46A0_50:
-; //_AE3845712_197:;				
-_AE3845712_197:
-; //_AE3845712_198:;				
-_AE3845712_198:
+; //_AECA8DE46_197:;				
+_AECA8DE46_197:
+; //_AECA8DE46_198:;				
+_AECA8DE46_198:
 ; //	sSI	= (int)&_p_1_2;			
 	I1	= rm[BP_SAVE]
 ; //	sAX	= *(__int16*)sSI;		
@@ -942,9 +942,9 @@ _AE3845712_198:
 ; //	sfx_INT2LONG_AX();			
 	DX	= 0
 	test	AX.b15
-	if ZR jmp LFE021D20_0
+	if ZR jmp L7E288010_0
 	DX = -1
-LFE021D20_0:
+L7E288010_0:
 ; //	sCX	= POP();			
 	pop	CX
 ; //	sBX	= POP();			
@@ -967,15 +967,15 @@ LFE021D20_0:
 	AX	= rm[I1]
 ; //	asm rm[I1] = AX + AR;			
 	rm[I1] = AX + AR//
-; //_AE3845712_199:;				
-_AE3845712_199:
+; //_AECA8DE46_199:;				
+_AECA8DE46_199:
 ; //	goto L7F5A46A0_47;			
 	jmp	L7F5A46A0_47
 ; //L7F5A46A0_46:;					
 L7F5A46A0_46:
 ; //	
-; //_AE3845712_200:;				
-_AE3845712_200:
+; //_AECA8DE46_200:;				
+_AECA8DE46_200:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -985,73 +985,73 @@ _AE3845712_200:
 ; //	sAX	= sAX + sCX;			
 	AR	= CX
 	AX	+= AR
-; //_AE3845712_201:;				
-_AE3845712_201:
+; //_AECA8DE46_201:;				
+_AECA8DE46_201:
 ; //	asm	AR = AX				
 	AR = AX
-; //_AE3845712_202:;				
-_AE3845712_202:
+; //_AECA8DE46_202:;				
+_AECA8DE46_202:
 ; //	asm	I0 = AR				
 	I0 = AR
 ; //	
 ; //	
-; //_AE3845712_203:;				
-_AE3845712_203:
+; //_AECA8DE46_203:;				
+_AECA8DE46_203:
 ; //	sAX	= io[0x36];			
 	AR	= io[0x36]
 	AX	= AR
-; //_AE3845712_204:;				
-_AE3845712_204:
+; //_AECA8DE46_204:;				
+_AECA8DE46_204:
 ; //	asm	rm[I0++] = AX			
 	rm[I0++] = AX
 ; //	
-; //_AE3845712_205:;				
-_AE3845712_205:
+; //_AECA8DE46_205:;				
+_AECA8DE46_205:
 ; //	sAX	= io[0x36];			
 	AR	= io[0x36]
 	AX	= AR
-; //_AE3845712_206:;				
-_AE3845712_206:
+; //_AECA8DE46_206:;				
+_AECA8DE46_206:
 ; //	asm	rm[I0++] = AX			
 	rm[I0++] = AX
 ; //	
-; //_AE3845712_207:;				
-_AE3845712_207:
+; //_AECA8DE46_207:;				
+_AECA8DE46_207:
 ; //	sAX	= io[0x36];			
 	AR	= io[0x36]
 	AX	= AR
-; //_AE3845712_208:;				
-_AE3845712_208:
+; //_AECA8DE46_208:;				
+_AECA8DE46_208:
 ; //	asm	rm[I0++] = AX			
 	rm[I0++] = AX
 ; //	
-; //_AE3845712_209:;				
-_AE3845712_209:
+; //_AECA8DE46_209:;				
+_AECA8DE46_209:
 ; //	sAX	= io[0x36];			
 	AR	= io[0x36]
 	AX	= AR
-; //_AE3845712_210:;				
-_AE3845712_210:
+; //_AECA8DE46_210:;				
+_AECA8DE46_210:
 ; //	asm	rm[I0++] = AX			
 	rm[I0++] = AX
 ; //	
-; //_AE3845712_211:;				
-_AE3845712_211:
+; //_AECA8DE46_211:;				
+_AECA8DE46_211:
 ; //	sAX	= io[0x3D];			
 	AR	= io[0x3D]
 	AX	= AR
-; //_AE3845712_212:;				
-_AE3845712_212:
+; //_AECA8DE46_212:;				
+_AECA8DE46_212:
 ; //	asm	rm[I0++] = AX			
 	rm[I0++] = AX
 ; //L7F5A46A0_44:;					
 L7F5A46A0_44:
-; //_AE3845712_213:;				
-_AE3845712_213:
+; //_AECA8DE46_213:;				
+_AECA8DE46_213:
 ; //L7F5A46A0_43:;					
 L7F5A46A0_43:
-; //_AE3845712_214:;				
-_AE3845712_214:
+; //_AECA8DE46_214:;				
+_AECA8DE46_214:
 ; //	return;					
 	AR	= 2
 	BP	+= AR
@@ -1060,8 +1060,8 @@ _AE3845712_214:
 	rets
 ; //L7F5A46A0_41_end:;				
 L7F5A46A0_41_end:
-; //_AE3845712_215:;				
-_AE3845712_215:
+; //_AECA8DE46_215:;				
+_AECA8DE46_215:
 ; //}
 ; //
 ; //rjmp void L7F5A46A0_54()			
@@ -1075,40 +1075,40 @@ L7F5A46A0_54:
 	rm[BP_SAVE]	= AR
 	AR	 = -1
 	BP	+= AR
-; //_AE3845712_216:;				
-_AE3845712_216:
+; //_AECA8DE46_216:;				
+_AECA8DE46_216:
 ; //	
-; //_AE3845712_217:;				
-_AE3845712_217:
+; //_AECA8DE46_217:;				
+_AECA8DE46_217:
 ; //	asm I1 = inbuf+0;			
 	I1 = inbuf+0//
 ; //	sAX	= *(__int16*)sSI;		
 	AX	= rm[I1]
-; //_AE3845712_218:;				
-_AE3845712_218:
+; //_AECA8DE46_218:;				
+_AECA8DE46_218:
 ; //	asm	AR = AX				
 	AR = AX
-; //_AE3845712_219:;				
-_AE3845712_219:
+; //_AECA8DE46_219:;				
+_AECA8DE46_219:
 ; //	asm	I0 = AR				
 	I0 = AR
 ; //	
 ; //	
-; //_AE3845712_220:;				
-_AE3845712_220:
+; //_AECA8DE46_220:;				
+_AECA8DE46_220:
 ; //	sAX	= io[0x33];			
 	AR	= io[0x33]
 	AX	= AR
-; //_AE3845712_221:;				
-_AE3845712_221:
+; //_AECA8DE46_221:;				
+_AECA8DE46_221:
 ; //	_i_1_2+0	= 0x20;			
 	I1	= rm[BP_SAVE]
 	AX	= 0x20
 	rm[I1]	= AX
 ; //L7F5A46A0_58:;					
 L7F5A46A0_58:
-; //_AE3845712_222:;				
-_AE3845712_222:
+; //_AECA8DE46_222:;				
+_AECA8DE46_222:
 ; //	sSI	= (int)&_i_1_2;			
 	I1	= rm[BP_SAVE]
 ; //	sAX	= *(__int16*)sSI;		
@@ -1130,42 +1130,42 @@ _AE3845712_222:
 ; //L7F5A46A0_59:;					
 L7F5A46A0_59:
 ; //	
-; //_AE3845712_223:;				
-_AE3845712_223:
-; //_AE3845712_224:;				
-_AE3845712_224:
+; //_AECA8DE46_223:;				
+_AECA8DE46_223:
+; //_AECA8DE46_224:;				
+_AECA8DE46_224:
 ; //	read_I0P();				
 	AX	= rm[I0++]
 ; //	io[0x33]	= sAX;			
 	AR	= AX
 	io[0x33]	= AR
-; //_AE3845712_225:;				
-_AE3845712_225:
-; //_AE3845712_226:;				
-_AE3845712_226:
+; //_AECA8DE46_225:;				
+_AECA8DE46_225:
+; //_AECA8DE46_226:;				
+_AECA8DE46_226:
 ; //	read_I0M();				
 	AX	= rm[I0--]
 ; //	io[0x33]	= sAX;			
 	AR	= AX
 	io[0x33]	= AR
 ; //	
-; //_AE3845712_227:;				
-_AE3845712_227:
+; //_AECA8DE46_227:;				
+_AECA8DE46_227:
 ; //	sAX	= io[0x33];			
 	AR	= io[0x33]
 	AX	= AR
-; //_AE3845712_228:;				
-_AE3845712_228:
+; //_AECA8DE46_228:;				
+_AECA8DE46_228:
 ; //	asm	rm[I0++2] = AX			
 	rm[I0++2] = AX
-; //_AE3845712_229:;				
-_AE3845712_229:
+; //_AECA8DE46_229:;				
+_AECA8DE46_229:
 ; //	goto L7F5A46A0_58;			
 	jmp	L7F5A46A0_58
 ; //L7F5A46A0_57:;					
 L7F5A46A0_57:
-; //_AE3845712_230:;				
-_AE3845712_230:
+; //_AECA8DE46_230:;				
+_AECA8DE46_230:
 ; //	asm I1 = inbuf+0;			
 	I1 = inbuf+0//
 ; //	asm AR = rm[I1];			
@@ -1176,8 +1176,8 @@ _AE3845712_230:
 	rm[I1] = AR//
 ; //L7F5A46A0_56:;					
 L7F5A46A0_56:
-; //_AE3845712_231:;				
-_AE3845712_231:
+; //_AECA8DE46_231:;				
+_AECA8DE46_231:
 ; //	return;					
 	AR	= 1
 	BP	+= AR
@@ -1186,8 +1186,8 @@ _AE3845712_231:
 	rets
 ; //L7F5A46A0_54_end:;				
 L7F5A46A0_54_end:
-; //_AE3845712_232:;				
-_AE3845712_232:
+; //_AECA8DE46_232:;				
+_AECA8DE46_232:
 ; //}
 ; //
 ; //rjmp void _DoADPCM9CD0E20D()			
@@ -1202,11 +1202,11 @@ _DoADPCM9CD0E20D:
 	rm[BP_SAVE]	= AR
 	AR	 = -2
 	BP	+= AR
-; //_AE3845712_233:;				
-_AE3845712_233:
+; //_AECA8DE46_233:;				
+_AECA8DE46_233:
 ; //	
-; //_AE3845712_234:;				
-_AE3845712_234:
+; //_AECA8DE46_234:;				
+_AECA8DE46_234:
 ; //	asm I1 = inbuf+0;			
 	I1 = inbuf+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -1229,27 +1229,27 @@ _AE3845712_234:
 	jmp	L7F5A46A0_61
 ; //L7F5A46A0_62:;					
 L7F5A46A0_62:
-; //_AE3845712_235:;				
-_AE3845712_235:
+; //_AECA8DE46_235:;				
+_AECA8DE46_235:
 ; //	goto L7F5A46A0_60;			
 	jmp	L7F5A46A0_60
 ; //L7F5A46A0_61:;					
 L7F5A46A0_61:
-; //_AE3845712_236:;				
-_AE3845712_236:
-; //_AE3845712_237:;				
-_AE3845712_237:
+; //_AECA8DE46_236:;				
+_AECA8DE46_236:
+; //_AECA8DE46_237:;				
+_AECA8DE46_237:
 ; //	asm set io[0x09].b0;			
 	set io[0x09].b0//
-; //_AE3845712_238:;				
-_AE3845712_238:
-; //_AE3845712_239:;				
-_AE3845712_239:
+; //_AECA8DE46_238:;				
+_AECA8DE46_238:
+; //_AECA8DE46_239:;				
+_AECA8DE46_239:
 ; //	L7F5A46A0_35();				
 	pch	= L7F5A46A0_35
 	lcall	L7F5A46A0_35
-; //_AE3845712_240:;				
-_AE3845712_240:
+; //_AECA8DE46_240:;				
+_AECA8DE46_240:
 ; //	asm AX = _adpFLTG0FBE3CB5+0;		
 	AX = _adpFLTG0FBE3CB5+0//
 ; //	sSI	= (int)&_p_1_4;			
@@ -1258,24 +1258,24 @@ _AE3845712_240:
 	I1	+= AR
 ; //	*(__int16*)sSI	= sAX;			
 	rm[I1]	= AX
-; //_AE3845712_241:;				
-_AE3845712_241:
+; //_AECA8DE46_241:;				
+_AECA8DE46_241:
 ; //	asm AX = _adpch30670376+0;		
 	AX = _adpch30670376+0//
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	*(__int16*)sSI	= sAX			
 	rm[I1]	= AX
-; //_AE3845712_242:;				
-_AE3845712_242:
+; //_AECA8DE46_242:;				
+_AECA8DE46_242:
 ; //	_i_1_2+0	= 0x02;			
 	I1	= rm[BP_SAVE]
 	AX	= 0x02
 	rm[I1]	= AX
 ; //L7F5A46A0_64:;					
 L7F5A46A0_64:
-; //_AE3845712_243:;				
-_AE3845712_243:
+; //_AECA8DE46_243:;				
+_AECA8DE46_243:
 ; //	sSI	= (int)&_i_1_2;			
 	I1	= rm[BP_SAVE]
 ; //	sAX	= *(__int16*)sSI;		
@@ -1297,10 +1297,10 @@ _AE3845712_243:
 ; //L7F5A46A0_65:;					
 L7F5A46A0_65:
 ; //	
-; //_AE3845712_244:;				
-_AE3845712_244:
-; //_AE3845712_245:;				
-_AE3845712_245:
+; //_AECA8DE46_244:;				
+_AECA8DE46_244:
+; //_AECA8DE46_245:;				
+_AECA8DE46_245:
 ; //	sSI	= (int)&_p_1_4;			
 	AR	= -1
 	I1	= rm[BP_SAVE]
@@ -1329,8 +1329,8 @@ _AE3845712_245:
 	lcall	L7F5A46A0_41
 ; //	RESTORESP(1);				
 	pop	AR
-; //_AE3845712_246:;				
-_AE3845712_246:
+; //_AECA8DE46_246:;				
+_AECA8DE46_246:
 ; //	asm I1 = ADPCM_Tmpi+0;			
 	I1 = ADPCM_Tmpi+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -1343,27 +1343,35 @@ _AE3845712_246:
 	AR = 0x0012//
 ; //	asm rm[I1] = CX + AR;			
 	rm[I1] = CX + AR//
-; //_AE3845712_247:;				
-_AE3845712_247:
+; //_AECA8DE46_247:;				
+_AECA8DE46_247:
+; //	asm set io[0x09].b0;			
+	set io[0x09].b0//
+; //_AECA8DE46_248:;				
+_AECA8DE46_248:
 ; //	goto L7F5A46A0_64;			
 	jmp	L7F5A46A0_64
 ; //L7F5A46A0_63:;					
 L7F5A46A0_63:
-; //_AE3845712_248:;				
-_AE3845712_248:
-; //_AE3845712_249:;				
-_AE3845712_249:
+; //_AECA8DE46_249:;				
+_AECA8DE46_249:
+; //_AECA8DE46_250:;				
+_AECA8DE46_250:
 ; //	L7F5A46A0_54();				
 	pch	= L7F5A46A0_54
 	lcall	L7F5A46A0_54
-; //_AE3845712_250:;				
-_AE3845712_250:
+; //_AECA8DE46_251:;				
+_AECA8DE46_251:
+; //	asm clr io[0x09].b0;			
+	clr io[0x09].b0//
+; //_AECA8DE46_252:;				
+_AECA8DE46_252:
 ; //	asm clr io[0x09].b0;			
 	clr io[0x09].b0//
 ; //L7F5A46A0_60:;					
 L7F5A46A0_60:
-; //_AE3845712_251:;				
-_AE3845712_251:
+; //_AECA8DE46_253:;				
+_AECA8DE46_253:
 ; //	return;					
 	AR	= 2
 	BP	+= AR
@@ -1372,8 +1380,8 @@ _AE3845712_251:
 	rets
 ; //_DoADPCM9CD0E20D_end:;				
 _DoADPCM9CD0E20D_end:
-; //_AE3845712_252:;				
-_AE3845712_252:
+; //_AECA8DE46_254:;				
+_AECA8DE46_254:
 ; //}
 ; //
 ; //

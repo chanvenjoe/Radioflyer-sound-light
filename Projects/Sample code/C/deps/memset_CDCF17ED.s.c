@@ -33,15 +33,15 @@ rcall rjmp void _memset_sC3E11DB1(__int16 _s_0_4, __int16 _c_0_6, __int16 _n_0_8
 {
 	__int16 _ret_1_2;
 	////////////////////////////
-_AE3845712_313:;
+_AECA8DE46_317:;
 	////////////////////////////
-_AE3845712_314:;
+_AECA8DE46_318:;
 	sSI	= (int)&_s_0_4;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_ret_1_2;
 	*(__int16*)sSI	= sAX;
 LF2D2B0F3_102:;
-_AE3845712_315:;
+_AECA8DE46_319:;
 	sSI	= (int)&_n_0_8;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_n_0_8;
@@ -52,7 +52,7 @@ _AE3845712_315:;
 	if(__jnz__)	goto LF2D2B0F3_103;
 	goto	LF2D2B0F3_101;
 LF2D2B0F3_103:;
-_AE3845712_316:;
+_AECA8DE46_320:;
 	sSI	= (int)&_ret_1_2;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
@@ -64,33 +64,33 @@ _AE3845712_316:;
 	asm AR = 0x0001;
 	sAX	= *(__int16*)sSI;
 	asm rm[I1] = AX + AR;
-_AE3845712_317:;
+_AECA8DE46_321:;
 	goto LF2D2B0F3_102;
 LF2D2B0F3_101:;
-_AE3845712_318:;
+_AECA8DE46_322:;
 	sSI	= (int)&_s_0_4;
 	sAX	= *(__int16*)sSI;
 	goto LF2D2B0F3_100;
 LF2D2B0F3_100:;
-_AE3845712_319:;
+_AECA8DE46_323:;
 	return;
 _memset_sC3E11DB1_end:;
-_AE3845712_320:;
+_AECA8DE46_324:;
 }
 
 rcall rjmp void _memset_rC7200006(__int16 _s_0_4, __int16 _c_0_6, __int16 _n_0_8)
 {
 	__int16 _ret_1_2;
 	////////////////////////////
-_AE3845712_321:;
+_AECA8DE46_325:;
 	////////////////////////////
-_AE3845712_322:;
+_AECA8DE46_326:;
 	sSI	= (int)&_s_0_4;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_ret_1_2;
 	*(__int16*)sSI	= sAX;
 LF2D2B0F3_106:;
-_AE3845712_323:;
+_AECA8DE46_327:;
 	sSI	= (int)&_n_0_8;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_n_0_8;
@@ -101,7 +101,7 @@ _AE3845712_323:;
 	if(__jnz__)	goto LF2D2B0F3_107;
 	goto	LF2D2B0F3_105;
 LF2D2B0F3_107:;
-_AE3845712_324:;
+_AECA8DE46_328:;
 	sSI	= (int)&_ret_1_2;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
@@ -113,25 +113,25 @@ _AE3845712_324:;
 	asm AR = 0x0001;
 	sAX	= *(__int16*)sSI;
 	asm rm[I1] = AX + AR;
-_AE3845712_325:;
+_AECA8DE46_329:;
 	goto LF2D2B0F3_106;
 LF2D2B0F3_105:;
-_AE3845712_326:;
+_AECA8DE46_330:;
 	sSI	= (int)&_s_0_4;
 	sAX	= *(__int16*)sSI;
 	goto LF2D2B0F3_104;
 LF2D2B0F3_104:;
-_AE3845712_327:;
+_AECA8DE46_331:;
 	return;
 _memset_rC7200006_end:;
-_AE3845712_328:;
+_AECA8DE46_332:;
 }
 
 rcall rjmp void _memset5A9D755A(__int16 _s_0_4_0, __int16 _s_0_4_1, __int16 _c_0_8, __int16 _n_0_10)
 {
-_AE3845712_329:;
+_AECA8DE46_333:;
 	////////////////////////////
-_AE3845712_330:;
+_AECA8DE46_334:;
 	sAX	= (int)&_s_0_4_0;
 	sCX	= 0x0001;
 	sAX	= sAX + sCX;
@@ -141,8 +141,8 @@ _AE3845712_330:;
 	if(__jnz__)	goto LF2D2B0F3_110;
 	goto	LF2D2B0F3_109;
 LF2D2B0F3_110:;
-_AE3845712_331:;
-_AE3845712_332:;
+_AECA8DE46_335:;
+_AECA8DE46_336:;
 	sSI	= (int)&_n_0_10;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
@@ -158,9 +158,9 @@ _AE3845712_332:;
 	sDX	= 0x0800;
 	goto LF2D2B0F3_108;
 LF2D2B0F3_109:;
-_AE3845712_333:;
-_AE3845712_334:;
-_AE3845712_335:;
+_AECA8DE46_337:;
+_AECA8DE46_338:;
+_AECA8DE46_339:;
 	sSI	= (int)&_n_0_10;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
@@ -176,10 +176,10 @@ _AE3845712_335:;
 	sDX	= 0;
 	goto LF2D2B0F3_108;
 LF2D2B0F3_108:;
-_AE3845712_336:;
+_AECA8DE46_340:;
 	return;
 _memset5A9D755A_end:;
-_AE3845712_337:;
+_AECA8DE46_341:;
 }
 
 // .code ends _text
