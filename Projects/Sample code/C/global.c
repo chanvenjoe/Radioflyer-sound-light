@@ -17,9 +17,9 @@ void PWM_Entry(void) naked interrupt(0)
 {
 	ClrIntFlag0();
 
-	PUSH_AX();
-	PUSH_I0();
-	PUSH_CBL();
+	PUSH_AX();//General Purpose Register
+	PUSH_I0();//Dat Add Gen:RM addressing only
+	PUSH_CBL();//Circular Buffer Length
 
 	R_CBL = 7;
 
