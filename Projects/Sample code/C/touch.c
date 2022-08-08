@@ -1,10 +1,34 @@
 #include "touch.h"
 #include <io.h>
+
+#include "global.h"
+#include "keypad.h"
 #include "config.h"
+#include "playadp.h"
 
 
 int * p;
 static char i=0;
+
+void touch_IRS()
+{
+	if(B_INTREQ5==1)
+	{	
+		ClrIntFlag5();
+	}
+
+	if(i==1)
+	{
+		R_PORTB = PortB_PU;//0x08 addr
+		i=0;
+	}
+	else
+	{
+		i++;
+		R_PORTB = PortB_PD;
+	}
+}
+
 void touch_init()
 {
 	R_MISC4 = 0x7C;//TOUCH INT EN/ PORTC 
@@ -27,27 +51,11 @@ void touch_init()
 	//Touch int En
 	EnableInt5();			// enable  interrupt5
 
-
-
-	
-
 }
 	
 void Touch_entry(void) interrupt(5)
 {
-	if(B_INTREQ5==1)
-	{	
-		ClrIntFlag5();
-	}
-
-	if(i==1){
-	R_PORTB = 0x0f;
-	i=0;
-	}//0x08 addr
-	else
-	{
-		i++;
-		R_PORTB = 0X00;
-	}
-
+	touch_IRS();
+	KeyPlayAdp();
+	//playADPCM(2);
 }

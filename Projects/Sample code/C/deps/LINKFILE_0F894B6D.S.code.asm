@@ -55,36 +55,36 @@ DW #ADPCM_CH4_Data,#ADPCM_CH4_Data.h|0x0800,0x3FFF,0x003F,0x0000,0x0000,0x0000,0
 ; //naked void ADPCM_CH0_Data()			
 ADPCM_CH0_Data:
 ; //{
-; //	asm	DW "adpcm\bird_8000_4-12.xam"	
-DW "adpcm\bird_8000_4-12.xam"
+; //	asm	DW "adpcm\Media1_8000_4-12.xam"	
+DW "adpcm\Media1_8000_4-12.xam"
 ; //}
 ; //
 ; //naked void ADPCM_CH1_Data()			
 ADPCM_CH1_Data:
 ; //{
-; //	asm	DW "adpcm\horse_16000_4-12.xam"	
-DW "adpcm\horse_16000_4-12.xam"
+; //	asm	DW "adpcm\Media1_16000_4-12.xam"
+DW "adpcm\Media1_16000_4-12.xam"
 ; //}
 ; //
 ; //naked void ADPCM_CH2_Data()			
 ADPCM_CH2_Data:
 ; //{
-; //	asm	DW "adpcm\2cat_16000_4-12.xam"	
-DW "adpcm\2cat_16000_4-12.xam"
+; //	asm	DW "adpcm\Media2_16000_4-12.xam"
+DW "adpcm\Media2_16000_4-12.xam"
 ; //}
 ; //
 ; //naked void ADPCM_CH3_Data()			
 ADPCM_CH3_Data:
 ; //{
-; //	asm	DW "adpcm\cat_16000_4-12.xam"	
-DW "adpcm\cat_16000_4-12.xam"
+; //	asm	DW "adpcm\Media3_16000_4-12.xam"
+DW "adpcm\Media3_16000_4-12.xam"
 ; //}
 ; //
 ; //naked void ADPCM_CH4_Data()			
 ADPCM_CH4_Data:
 ; //{
-; //	asm	DW "adpcm\Dog_Barking_002_16000_4-12.xam"
-DW "adpcm\Dog_Barking_002_16000_4-12.xam"
+; //	asm	DW "adpcm\Media4_16000_4-12.xam"
+DW "adpcm\Media4_16000_4-12.xam"
 ; //}
 ; //
 ; //

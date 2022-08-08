@@ -31,7 +31,6 @@ bool playADPCM(int index)
 	{
 		if(!p->adpadr)
 		{
-//			R_PORTB = 0X07;
 			memset((lptr_t)p, 0, sizeof(ADPSTRU));
 			q = &adpdata[index];
 			p->adpadr = q->adr;
@@ -41,7 +40,6 @@ bool playADPCM(int index)
 		}
 		p++;
 	}
-//	R_PORTB = 0x00;
 	return false;
 }
 

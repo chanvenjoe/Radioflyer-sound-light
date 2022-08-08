@@ -68,15 +68,15 @@ void InitKey(void)
 	B_IOC_PA0 = 0;		// PA0 input
 	B_IOC_PA1 = 0;		// PA1 input
 	B_IOC_PA2 = 0;		// PA2 input
-//	B_IOC_PA3 = 0;		// PA3 input
-	
-//	B_IOC_PB2 = 1;
-//	B_IOC_PB0 = 1;
 
-	//Turn on PortA 50K pull down for pa 0 1 2 3
+	
+	B_IOC_PB2 = 1;
+	B_IOC_PB0 = 1;
+
+	//Turn on PortA 50K pull down for pa 0 1 2 
 
 	R_IOP_IX = IOP_PA_PD50K;
-	R_IOP_DAT = R_IOP_DAT | (BIT(0) | BIT(1) | BIT(2) /*| BIT(3)*/);
+	R_IOP_DAT = R_IOP_DAT | (BIT(0) | BIT(1) | BIT(2));
 	
 
 #endif
