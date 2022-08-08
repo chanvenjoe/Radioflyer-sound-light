@@ -14,8 +14,9 @@ export align(MAX_PCM_BUF) int PCMY[MAX_PCM_BUF];
 
 
 void PWM_Entry(void) naked interrupt(0)
-{
-	ClrIntFlag0();
+{	
+	R_INTREQ = 0X00;
+//	ClrIntFlag0();
 
 	PUSH_AX();//General Purpose Register
 	PUSH_I0();//Dat Add Gen:RM addressing only
@@ -74,10 +75,10 @@ static void SetupIO(void) near
 {
 	// PortA 0, 1, 2, 3 as output
 
-	R_IOC_PA = BIT(3) | BIT(2) | BIT(1) | BIT(0);
+//	R_IOC_PA = BIT(3) | BIT(2) | BIT(1) | BIT(0);//bit(3)=1000 0000?
 	R_IOC_PB = (int)0xFFFF;
-	R_PORTA = 0;
-	R_PORTB = 0;
+//	R_PORTA = 0;//IO control
+	R_PORTB = 0x00;
 }
 
 

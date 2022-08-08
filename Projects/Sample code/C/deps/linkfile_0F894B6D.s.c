@@ -64,27 +64,27 @@ __int16 _adpdata32993E3B[24] = {
 // LINKFILE (RO) segment
 naked void ADPCM_CH0_Data()
 {
-	asm	DW "adpcm\Media1_8000_4-12.xam"
+	asm	DW "adpcm\bird_8000_4-12.xam"
 }
 
 naked void ADPCM_CH1_Data()
 {
-	asm	DW "adpcm\Media1_16000_4-12.xam"
+	asm	DW "adpcm\horse_16000_4-12.xam"
 }
 
 naked void ADPCM_CH2_Data()
 {
-	asm	DW "adpcm\Media2_16000_4-12.xam"
+	asm	DW "adpcm\2cat_16000_4-12.xam"
 }
 
 naked void ADPCM_CH3_Data()
 {
-	asm	DW "adpcm\Media3_16000_4-12.xam"
+	asm	DW "adpcm\cat_16000_4-12.xam"
 }
 
 naked void ADPCM_CH4_Data()
 {
-	asm	DW "adpcm\Media4_16000_4-12.xam"
+	asm	DW "adpcm\Dog_Barking_002_16000_4-12.xam"
 }
 
 

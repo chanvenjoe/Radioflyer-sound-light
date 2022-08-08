@@ -1,0 +1,2065 @@
+            ;-----------------------------------------------------------------------------
+            ;	SDSP Demo Code , TRITAN Technology Inc.
+            ;	@File		SDSP_SW_Touch_Sub3_V1.1
+            ;	@Brief		S/W Touch with subband3 player
+            ;	@Version	1.2.1
+            ;	@Date		09/26/20
+            ;	@Author		John
+            ;-----------------------------------------------------------------------------
+            ;	Remark:
+            ;	SDSP_SBB2_OBJ:‘ÀÀ„≤ø∑÷’º”√¡ÀBank7
+            ;	Bank7:	0~0x039B 	Has Used By Subband 3
+            ;
+            ;	∞¥º¸Àµ√˜£∫
+            ;	PC8:	≤•∑≈sub2µƒ…˘“Ù
+            ;	PC9:	πÿ±’sub2µƒ…˘“Ù
+            ;
+            ;	Touch Key: PB0 PB1 set in LIB\Trsp16Touch_20key.inc
+            ;
+            ;	LED: PC0 for touch key PB1
+            ;
+            ;	»ÙœÎ≤•∑≈Õ‚≤øSpi Flashµƒ…˘“Ù«Î»Áœ¬≈‰÷√
+            ;	#Define		Sub2_In_Spi
+            ;	;#Define		Sub2_In_Pm
+            ;	SPIµµ∞∏∑≈‘⁄\BIN_DATA\SPI_FLASH\ADPCM_SUB2.BIN
+            ;-----------------------------------------------------------------------------
+            ;	Change History :
+            ;	<Date>		<Version>	<Author>	<Description>
+            ;-----------------------------------------------------------------------------
+            ;	2019/08/27	1.0.0.0		Marky		Initial Version
+            ;	2020/02/06	1.1.0.0		John		Change Touch Library to 3.05
+            ;                                                       (Add TRSF16127 support)
+            ;	2020/06/09	1.2.0.0		John		Change Touch Library to 3.06
+            ;                                                       (Add TRSF16256/512 support)
+            ;	2020/09/26	1.2.1.0		John		Modify PC10 issue for TRSF16128
+            ;							(Touch Library to 3.07)
+            ;-----------------------------------------------------------------------------
+            ;=========================Include <COMMON.INC> Start=========================
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;;//      COMMON I/O
+            ;;******************************************************************************
+            ;;******************************************************************************
+            STATUS		EQU	00H	;R/W, BIT0:  Zero.
+            				;R/W, BIT1:  Carry.
+            				;R/W, BIT2:  Overflow.
+            				;R/W, BIT3:  Negative.
+            				;R/W, BIT7:  Global Interrupt Enable.
+            				;R/W, BIT8:  SPIM_EN.
+            				;R/W, BIT13: Interrupt Vector Table Access Enable.
+            				;R/W, BIT14: Filter Buffer Available.
+            				;R/W, BIT15: Parser Buffer Available.
+            
+            INTENA		EQU	01H	;R/W, Int Enable.
+            INTREQ		EQU	02H	;R/W, Int Request.
+            Intvect		EQU	03H	;R/W, Interrupt Table
+            IOC_PA		EQU	04H	;R/W, PortA IO control. ('0' = input,'1' = output)
+            IOC_PB		EQU	05H	;R/W, PortB IO control. ('0' = input,'1' = output)
+            IOC_PCI		EQU	06H	;R/W, PortCI IO control. ('0' = input,'1' = output)
+            PortA		EQU	07H	;R/W, General input/output port.
+            PortB		EQU	08H	;R/W, General input/output port.
+            PortCI		EQU	09H	;R/W, General input/output port.
+            INTMASK		EQU	0AH	;R/W, Int Mask.
+            ;//Reserved	EQU	0BH
+            ;//Reserved	EQU	0CH
+            ;//Reserved	EQU	0DH
+            ;//Reserved	EQU	0EH
+            ;//Reserved	EQU	0FH
+            ;//Reserved	EQU	10H
+            ;//Reserved	EQU	11H
+            ;//Reserved	EQU	12H
+            ;//Reserved	EQU	13H
+            ;//Reserved	EQU	14H
+            ;//Reserved	EQU	15H
+            ;// -----------------------------------
+            DACL		EQU	16H	;Audio L Channel
+            DACR		EQU	17H	;Audio R Channel
+            MISC5		EQU	18H	;R/W, Miscellanea register #5
+            MISC4		EQU	19H	;R/W, Miscellanea register #4
+            MISC3		EQU	1AH	;R/W, Miscellanea register #3
+            MISC2		EQU	1BH	;R/W, Miscellanea register #2
+            MISC		EQU	1CH	;R/W, Miscellanea register #1
+            ;// -----------------------------------
+            ClrWDT		EQU	1DH	;W, Clear Watch-dog reset.
+            Real_T		EQU	1DH	;R, System Real-Time Counter, base on 31.25us
+            IOP_IX		EQU	1EH	;W, Programming IO Port index .
+            IOP_DAT		EQU	1FH	;W, Programming IO Port Data .
+            ;// -----------------------------------
+            ;// Virtual Program IO Port
+            IOP_Timer1	EQU	00H	;
+            IOP_Timer2	EQU	01H	;
+            IOP_RTC32K	EQU	02H	;
+            IOP_FetchCNT	EQU	03H	;
+            ;//Reserved	EQU	04H	;
+            IOP_PA_PD50K	EQU	05H	;PortA Pull Down 50K Enable
+            IOP_PB_PD50K	EQU	06H	;
+            IOP_PCI_PD50K	EQU	07H	;
+            IOP_PA_PD220K	EQU	08H	;PortA Pull Down 220K Enable
+            IOP_PB_PD220K	EQU	09H	;
+            IOP_PCI_PD220K	EQU	0AH	;
+            IOP_PA_PD1M	EQU	0BH	;PortA Pull Down 1M Enable
+            IOP_PB_PD1M	EQU	0CH	;
+            IOP_PCI_PD1M	EQU	0DH	;
+            IOP_PA_4MA	EQU	0EH	;PortA Drive Current 4mA Enable
+            IOP_PB_4MA	EQU	0FH	;
+            IOP_PCI_4MA	EQU	10H	;
+            IOP_PA_WLOW	EQU	11H	;PortA WLOW Enable
+            IOP_PB_WLOW	EQU	12H	;
+            IOP_PCI_WLOW	EQU	13H	;
+            IOP_WAKEN_PA	EQU	14H	;PortA WAKE UP Enable
+            IOP_WAKEN_PB	EQU	15H	;
+            IOP_WAKEN_PC	EQU	16H	;
+            IOP_WAKELV_PA	EQU	17H	;PortA WAKE UP Edge°∞1°±= Pos-Edge, °∞0°± = Neg-Edge
+            IOP_WAKELV_PB	EQU	18H	;
+            IOP_WAKELV_PC	EQU	19H	;
+            IOP_WAKEDLV_PB	EQU	1AH	;PortB Double-Edge WAKE UP Enable
+            ;// -----------------------------------
+            ;// IO[0x40-0x7F]
+            ENC_DAT	EQU	54H	;
+            SPI_CTL		EQU	55H	;SPI Control Register
+            SPI_DAT		EQU	56H	;SPI Data Value
+            EP		EQU	5EH	;
+            SSC		EQU	63H	;
+            
+            ;;******************************************************************************
+            ;;#Define		Optimal_RM	;Optimal RAM function Enable
+            ;;******************************************************************************
+            ;;******************************************************************************
+            VarRM[0:127] = {
+            	RAM0
+            	RAM1
+            	;;-------------------------------;;For Scankey
+            	Key_Flag
+            	Key_Buf
+            	DebounceTime
+            	KeyFlagL
+            	KeyFlagM
+            	Play_KeyL
+            	;;-------------------------------;;For Time
+            	Time_Ms
+            }
+            VarRM[128:511] = {
+            
+            }
+            VarRM[512:4095] = {
+            ReAllocate#3008
+            	StackBuffer[64]			;;∂—’ªª∫¥Ê«¯
+            }
+            ShareVar = {
+            }
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;=========================Include <COMMON.INC> End=========================
+            
+            ;=========================Include <GENERAL.INC> Start=========================
+            ;===============================================================;
+            ;   Ver 1.0
+            ;===============================================================;
+            ;=========================Include <OPTION.INC> Start=========================
+            //--------------------------------------------------------------------------------------------------
+            // TRITAN FDSP-IDE Option define file.
+            // WARNING! All changes made in this file will be lost when recompiling.
+            //--------------------------------------------------------------------------------------------------
+            // Part number    : TRSF16127A
+            // Option version : 2.9
+            // Base Information--------------------------------------------------------------------------------
+            #define       _OPT_TRSF16127A_                
+            #define       _OPT_PROMSize_                0x20000   //PROM Size
+            #define       _OPT_SRAMSize_                3072      //SRAM Size
+            // I/O Configuration--------------------------------------------------------------------------------
+            #define       _OPT_EXTReset_EN_             0         //EXT Reset Enable,0:Disable,1:Enable
+            #define       _OPT_EXTINT1_EN_              0         //EXTINT1_EN,0:Disable,1:Enable
+            #define       _OPT_EXTINT0_EN_              0         //EXTINT0_EN,0:Disable,1:Enable
+            #define       _OPT_SpreadSpectrum_          0         //Spread Spectrum Enable,0:Disable,1:Enable
+            #define       _OPT_EXTResetPin_             0         //EXT Reset Pin Select,0:PB3,1:PC3
+            #define       _OPT_EXTINT1_INV_             0         //EXTINT1_INV,0:Disable,1:Enable
+            #define       _OPT_EXTINT0_INV_             0         //EXTINT0_INV,0:Disable,1:Enable
+            // Memory Configuration-----------------------------------------------------------------------------
+            #define       _OPT_PRAMBank_                0         //PRAM Bank
+            #define       _OPT_PRAMSize_                0         //PRAM Size(Words)
+            #define       _OPT_WriteSegmentProtection_  0x0FFFF   //Write Segment Protection(0000H~ )
+            // System Control Setup-----------------------------------------------------------------------------
+            #define       _OPT_Bank0Speed_              11        //Bank0 Speed(MHz)
+            #define       _OPT_RTCINT_                  1         //RTC interrupt,0:Disable,1:Enable
+            #define       _OPT_RTCinHalt_               0         //RTC LP32K in Halt Mode,0:Disable,1:Enable
+            #define       _OPT_LVR_                     2200      //LVR(mv)
+            #define       _OPT_WatchDog_                256       //Watch dog(ms)
+            #define       _OPT_ICEEnable_               1         //ICE Disable/Enable,0:Disable,1:Enable
+            // Audio Configuration------------------------------------------------------------------------------
+            #define       _OPT_AudioSamplingRate_       32        //Audio Sampling Rate(KHz)
+            #define       _OPT_PWMBit_                  16        //PWM Bit
+            #define       _OPT_DACFIFO_                 1         //DAC FIFO,0:Disable,1:Enable
+            //--------------------------------------------------------------------------------------------------
+            ;=========================Include <OPTION.INC> End=========================
+            
+            
+                #if     _OPT_PRAMBank_              != 0                    ; Ëá™ÂãïË™øÊï¥PRAMÁöÑ‰ΩøÁî®ËàáÂê¶
+                  #define        SBB3_UsePRAM                               ; ÊòØÂê¶È´òÊïàÈÅãË°å1kW SRAM Code
+                  #define        RAMBank            _OPT_PRAMBank_          ; 1kW PRAMÂú®Âì™ÂÄãBank
+                #endif
+            
+            ;===============================================================;
+                MACRO   Audio_Config_Adjust_FLTP                            ; Ëá™ÂãïÂà§Êñ∑Audio_ConfigÁöÑSampling_RateÂÆöÁæ©,Ë™øÊï¥FLTP
+                  #if   _OPT_AudioSamplingRate_     != 32
+                        AR          = FLTP
+                        CLR         C
+                    #if _OPT_AudioSamplingRate_     == 64
+                        SRC         AR, 1
+                    #endif
+                    #if _OPT_AudioSamplingRate_     == 128
+                        SRC         AR, 2
+                    #endif
+                        FLTP        = AR
+                  #endif
+                ENDM
+            
+            ;===============================================================;
+            ;   Multiplication                                              ; Ë™øÊï¥16128ÁöÑ‰πòÊ≥ïÊåá‰ª§, ‰ΩøÁî®MACROËΩâÊèõ
+            ;===============================================================;
+                MACRO   MULUU
+                    #ifdef          _MSPEECHDSP_
+                        MULUU
+                    #else
+                        PUSH        MACOP
+                        MACOP       = 0x0003
+                        MR          = MX * AR
+                        POP         MACOP
+                    #endif                                                  ; _MSPEECHDSP_
+                ENDM
+                ;-----------------------------------------------------------;
+                MACRO   MULUS
+                    #ifdef          _MSPEECHDSP_
+                        MULUS
+                    #else
+                        PUSH        MACOP
+                        MACOP       = 0x0002
+                        MR          = MX * AR
+                        POP         MACOP
+                    #endif                                                  ; _MSPEECHDSP_
+                ENDM
+                ;-----------------------------------------------------------;
+                MACRO   MULSU
+                    #ifdef          _MSPEECHDSP_
+                        MULSU
+                    #else
+                        PUSH        MACOP
+                        MACOP       = 0x0001
+                        MR          = MX * AR
+                        POP         MACOP
+                    #endif                                                  ; _MSPEECHDSP_
+                ENDM
+                ;-----------------------------------------------------------;
+                MACRO   MULSS
+                    #ifdef          _MSPEECHDSP_
+                        MULSS
+                    #else
+                        PUSH        MACOP
+                        MACOP       = 0x0000
+                        MR          = MX * AR
+                        POP         MACOP
+                    #endif                                                  ; _MSPEECHDSP_
+                ENDM
+            
+            ;===============================================================;
+            ;=========================Include <GENERAL.INC> End=========================
+            
+            ;=========================Include <.\LIB\TRSP16TOUCH_20KEY.INC> Start=========================
+            ;-----------------------------------------------------------------------------
+            ; TRITAN Technology inc.
+            ; S/W Touch include file
+            ;-----------------------------------------------------------------------------
+            ;i/o assign:
+            ;    you must configure as an input&floating state,and must use an external pull-down resistor(68k~500k).
+            
+            #define		TG0_ENABLE		0	; i/o assign to PA0,touch flag assigh to RM[TouchKeyFlagL].b0,active '1'.
+            #define		TG1_ENABLE		0	; i/o assign to PA1,touch flag assigh to RM[TouchKeyFlagL].b1,active '1'.
+            #define		TG2_ENABLE		0	; i/o assign to PA2,touch flag assigh to RM[TouchKeyFlagL].b2,active '1'.
+            #define		TG3_ENABLE		1	; i/o assign to PA3,touch flag assigh to RM[TouchKeyFlagL].b3,active '1'.
+            #define		TG4_ENABLE		0	; i/o assign to PB0,touch flag assigh to RM[TouchKeyFlagL].b4,active '1'.
+            #define		TG5_ENABLE		0	; i/o assign to PB1,touch flag assigh to RM[TouchKeyFlagL].b5,active '1'.
+            #define		TG6_ENABLE		0	; i/o assign to PB2,touch flag assigh to RM[TouchKeyFlagL].b6,active '1'.
+            #define		TG7_ENABLE		0	; i/o assign to PB3,touch flag assigh to RM[TouchKeyFlagL].b7,active '1'.
+            #define		TG8_ENABLE		0	; i/o assign to PB4,touch flag assigh to RM[TouchKeyFlagL].b8,active '1'.
+            #define		TG9_ENABLE		0	; i/o assign to PB5,touch flag assigh to RM[TouchKeyFlagL].b9,active '1'.
+            #define		TG10_ENABLE		0	; i/o assign to PC0,touch flag assigh to RM[TouchKeyFlagL].b10,active '1'.
+            #define		TG11_ENABLE		0	; i/o assign to PC1,touch flag assigh to RM[TouchKeyFlagL].b11,active '1'.
+            #define		TG12_ENABLE		0	; i/o assign to PC3/PC2,touch flag assigh to RM[TouchKeyFlagL].b12,active '1'.
+            #define		TG13_ENABLE		0	; i/o assign to PC4/PC3,touch flag assigh to RM[TouchKeyFlagL].b13,active '1'.
+            #define		TG14_ENABLE		0	; i/o assign to PC5/PC4,touch flag assigh to RM[TouchKeyFlagL].b14,active '1'.
+            #define		TG15_ENABLE		0	; i/o assign to PC6/PC5,touch flag assigh to RM[TouchKeyFlagL].b15,active '1'.
+            #define		TG16_ENABLE		0	; i/o assign to PC7/PC6,touch flag assigh to RM[TouchKeyFlagM].b0,active '1'.
+            #define		TG17_ENABLE		0	; i/o assign to PC8/PC7,touch flag assigh to RM[TouchKeyFlagM].b1,active '1'.
+            #define		TG18_ENABLE		0	; i/o assign to PC9/PI0,touch flag assigh to RM[TouchKeyFlagM].b2,active '1'.
+            #define		TG19_ENABLE		0	; i/o assign to PC10/PI1,touch flag assigh to RM[TouchKeyFlagM].b3,active '1'.
+            
+            ;touch key release capture,through your experience to assess the need to open it.
+            ;	warning:high sensitivity don't enable it.
+            #define		TOUCH_RELEASE_CAPTURE_ENABLED	0	;(enabled:set to '1')
+            
+            ;The number of samples per interrupt serve:2;
+            ;user don't change it.
+            #define		_TOTAL_PEAK_VALUE_	2
+            
+            ;reference sensitive range: 4~64 (-1 for disable)
+            #define		_TG0_SENSITIVE_LEVEL_	30
+            #define		_TG1_SENSITIVE_LEVEL_	30
+            #define		_TG2_SENSITIVE_LEVEL_	30
+            #define		_TG3_SENSITIVE_LEVEL_	30
+            #define		_TG4_SENSITIVE_LEVEL_	30
+            #define		_TG5_SENSITIVE_LEVEL_	30
+            #define		_TG6_SENSITIVE_LEVEL_	30
+            #define		_TG7_SENSITIVE_LEVEL_	30
+            #define		_TG8_SENSITIVE_LEVEL_	30
+            #define		_TG9_SENSITIVE_LEVEL_	30
+            #define		_TG10_SENSITIVE_LEVEL_	30
+            #define		_TG11_SENSITIVE_LEVEL_	30
+            #define		_TG12_SENSITIVE_LEVEL_	30
+            #define		_TG13_SENSITIVE_LEVEL_	30
+            #define		_TG14_SENSITIVE_LEVEL_	30
+            #define		_TG15_SENSITIVE_LEVEL_	30
+            #define		_TG16_SENSITIVE_LEVEL_	30
+            #define		_TG17_SENSITIVE_LEVEL_	30
+            #define		_TG18_SENSITIVE_LEVEL_	30
+            #define		_TG19_SENSITIVE_LEVEL_	30
+            
+            ;ram expend:TouchVarBuf[24]; "_KEY_NUMBER_" key*6=24
+            #define		_KEY_NUMBER_		(TG0_ENABLE + TG1_ENABLE + TG2_ENABLE + TG3_ENABLE + TG4_ENABLE + TG5_ENABLE + TG6_ENABLE + TG7_ENABLE + TG8_ENABLE + TG9_ENABLE + TG10_ENABLE + TG11_ENABLE + TG12_ENABLE + TG13_ENABLE + TG14_ENABLE + TG15_ENABLE + TG16_ENABLE + TG17_ENABLE + TG18_ENABLE + TG19_ENABLE)
+            
+            ;-----------------------------------------------------------------------------
+            ; Memory Usage
+            ;	[0:127] => 12
+            ;	[512:4095] => 17
+            ;	User assignment => 6*_KEY_NUMBER_ (TouchVarBuf)
+            ;-----------------------------------------------------------------------------
+            VarRM[128:511] = {
+            	TouchVarBuf[6*_KEY_NUMBER_]	; 20key * 6 = 120
+            }
+            VarRM[512:4095] = {
+            }
+            ;-----------------------------------------------------------------------------
+            
+            ;=========================Include <.\LIB\TRSP16TOUCH_20KEY.INC> End=========================
+            
+            #Define		_Using_Touch_Lib_
+            ;#Define		DAC_Output				; ◊¢ ÕŒ™PWM ‰≥ˆ
+            ;-----------------------------------------------------------------------------
+            .CODE
+            ;-----------------------------------------------------------------------------
+            		ORG			0000H
+            RSTB_ENTRY:							; System program entry
+00000:      		PCH			= SYS_PROG_ENTRY
+00001:      		LJMP			SYS_PROG_ENTRY
+            		ORG			0004H
+            WAKEUP_ENTRY:							; Wake up entry
+00004:      		PCH			= WAKEUP_PROC
+00005:      		LJMP			WAKEUP_PROC
+            		ORG			0100H
+            ;-----------------------------------------------------------------------------
+            ;		*Main Program Start*
+            ;-----------------------------------------------------------------------------
+            SYS_PROG_ENTRY:
+00100:      		Pch			= Power_On_Int
+00101:      		Lcall			Power_On_Int   		; IC…œµÁ≥ı ºªØ
+            
+00102:      		Pch			= Scan_Key_Init
+00103:      		Lcall			Scan_Key_Init		; ∞¥º¸IO…œµÁ≥ı ºªØ
+            
+00104:      		Pch			= Subband2_Init
+00105:      		Lcall			Subband2_Init		; Sub2…œµÁ≥ı ºªØ
+            
+            		;-------------------------------------------------------------
+            		; Touch I/O pull-low setup
+            		;-------------------------------------------------------------
+00106:      		Ar			= Iop_PA_Pd220K
+00107:      		Io[Iop_Ix]		= Ar
+00108:      		Ar			= 0x000F
+00109:      		Io[Iop_Dat]		= Ar
+0010A:      		Ar			= Iop_PB_Pd220K
+0010B:      		Io[Iop_Ix]		= Ar
+0010C:      		Ar			= 0x003F
+0010D:      		Io[Iop_Dat]		= Ar
+0010E:      		Ar			= Iop_PCI_Pd220K
+0010F:      		Io[Iop_Ix]		= Ar
+00110:      		Ar			= 0xCFFF
+00112:      		Io[Iop_Dat]		= Ar
+00113:      		Ar			= Iop_PCI_Pd50K		; Disable PI 50k pull-low resistor
+00114:      		Io[Iop_Ix]		= Ar
+00115:      		Ar			= 0x0000
+00116:      		Io[Iop_Dat]		= Ar
+            
+            		;-------------------------------------------------------------
+            		; LED Init
+            		;-------------------------------------------------------------
+            #ifdef _MSPEECHDSP_
+            		SET			IO[IOC_PCI].b0
+            		SET			IO[PortCI].b0
+            #else
+00117:      		SET			IO[IOC_PCI].b2
+00118:      		CLR			IO[PortCI].b2
+            #endif
+            
+            		;-------------------------------------------------------------
+            		; Note: Must to call initial function before using touch library
+            		;-------------------------------------------------------------
+00119:      		Pch			= Trsp16Stouchinit
+0011A:      		Lcall			Trsp16Stouchinit
+            		;-------------------------------------------------------------
+            
+0011B:      		ENA 			INT2
+0011C:      		ENA			INT0
+0011D:      		ENI
+0011E:      		Jmp			Main_Loop
+            WAKEUP_PROC:
+0011F:      		ENA 			INT2
+00120:      		ENA			INT0
+00121:      		ENI
+00122:      		Jmp			Main_Loop
+            
+            ;-----------------------------------------------------------------------------
+            Main_Loop:
+            		;Call			Scan_Key
+            
+            		;-------------------------------------------------------------
+            		; Touch key processing
+            		;-------------------------------------------------------------
+00123:      		Call			TouchTask
+            
+00124:      		Pch			= Subband2_Play
+00125:      		Lcall			Subband2_Play
+            
+00126:      		Call			SysReliabilityChk
+00127:      		Io[Clrwdt]		= Ar
+            
+            ;		Jmp			Sleep_Work
+00128:      		Jmp			Main_Loop
+            
+            ;-----------------------------------------------------------------------------
+            Sleep_Work:
+00129:      		Ar			= Rm[Play_Sub2_Flag]
+0012A:      		Jnz			Cler_Sleep_Time
+0012B:      		Ar			= Rm[Time_Ms]
+0012C:      		Ax			= 0x0100
+0012E:      		Sf			= Ar - Ax
+0012F:      		Jle			Sleep_Work_Exit
+00130:      		Ar			= 0
+00131:      		Rm[Time_Ms]		= Ar
+            
+            ;		Pch			= SpiFlash_Deep_Powerdown	;;”–flash ±£¨“™◊ˆ…Ó∂»ÀØ√ﬂ
+            ;		Lcall			SpiFlash_Deep_Powerdown
+            		;;-------------------------------------------------------------------
+            #ifdef		DAC_Output
+            		Clr 			IO[MISC].B4               	 ;DAC Mute On
+            Wait_Dac_Mute:
+            		Io[Clrwdt]		= Ar
+            		Ar			= Rm[Time_Ms]
+            		Ax			= 0x0040
+            		Sf			= Ar - Ax
+            		Jle			Wait_Dac_Mute
+            #else
+            #endif
+            ;;<<System message ======  Macro. Close_Dac_Output,791,794,,,,,,,,,,,,,,,,  strat ======
+00132:      Clr IO[MISC].B6 
+00133:      Clr IO[MISC].B9 
+            ;; System message>>====== Macro. Close_Dac_Output end ======
+00134:      		Ar			= 0
+00135:      		IO[DACL]		= Ar
+00136:      		IO[DACL]		= Ar
+00137:      		IO[DACL]		= Ar
+00138:      		IO[DACL]		= Ar
+00139:      		Ar			= 0
+0013A:      		Rm[Time_Ms]		= Ar
+            		;;-------------------------------------------------------------------
+0013B:      		DSI			Int2
+0013C:      		DSI			Int0
+0013D:      		DSI
+0013E:      		Nop
+0013F:      		Halt
+            Cler_Sleep_Time:
+00140:      		Ar			= 0
+00141:      		Rm[Time_Ms]		= Ar
+            Sleep_Work_Exit:
+00142:      		Jmp			Main_Loop
+            
+            ;-----------------------------------------------------------------------------
+            SysReliaBilityChk:
+00143:      		Ar			= Rm[RAM0]
+00144:      		Sf			= Ar - 0x0007
+00145:      		Jnz			SysReliaBilityChk	; Wait For Watch-Dog Reset
+00146:      		Ar			= Rm[RAM1]
+00147:      		Sf			= Ar - 0x0006
+00148:      		Jnz			SysReliaBilityChk	; Wait For Watch-Dog Reset
+00149:      		Rets
+            ;-----------------------------------------------------------------------------
+            ; Include files
+            ;-----------------------------------------------------------------------------
+            ;=========================Include <SDSP_HWCONFIG.ASM> Start=========================
+            ;;******************************************************************************
+            ;;******************************************************************************
+            #Define		_Sram_Size_	0X0C00			;;3K Sram To Rm,  1K Sram To Pm.
+            #Define		_Stack_Size_	0x0040			;;∂—’ªª∫¥Ê«¯¥Û–°
+            #Define		_BANK0_		0x0000			;;
+            #Define		_BANK7_              0x0007			;;
+            #Define		Stack_Size_Set	_Stack_Size_-1           	;;∂—’ª
+            #Define		Sram_Size_Set	_Sram_Size_-1       	;;SRAM
+            ;;******************************************************************************
+            ;;******************************************************************************
+            .CODE
+            ;;******************************************************************************
+            Power_On_Int:
+0014A:      		DSI
+0014B:      		NOP
+0014C:      		Call		SetUp_IO		;;…Ë÷√IO
+0014D:      		Io[Clrwdt]	= Ar
+0014E:      		Call		Ram_Clear		;;«ÂSRAM
+0014F:      		Call		Setup_Other		;;…Ë÷√∆‰À˚
+00150:      		Call		SetUp_Timer		;;…Ë÷√∂® ±∆˜
+00151:      		Call		Open_PwmOrDac		;;¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+            
+            ;		Ar		=_BANK7_		;;÷–∂œœÚ¡ø±Ì∂®“ÂµΩBANK7
+00152:      		Ar		=_BANK0_		;;÷–∂œœÚ¡ø±Ì∂®“ÂµΩBANK0
+00153:      		Call		VectorTableInit
+00154:      		Io[Clrwdt]	= Ar
+            
+00155:      		Call		PowerOnDelay		;;…œµÁ—” ±
+            
+00156:      		Rets
+            ;;******************************************************************************
+            ;∫Ø ˝√˚≥∆:SetUp_IO
+            ;π¶ƒ‹√Ë ˆ:…Ë÷√IOµƒ◊¥Ã¨
+            ;;******************************************************************************
+            SetUp_IO:
+            		;; PortA
+            		;;----------------------;;Io InPut/OutPut Set
+00157:      		Ar		= 0x000F		;;PortA[3:0] 1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+00158:      		Io[IOC_PA]	= Ar
+00159:      		Ar		= 0x0000
+0015A:      		Io[PORTA]	= Ar		;; ‰≥ˆ∏ﬂµÕ
+            
+0015B:      		Ar		= IOP_PA_PD50K	;;PortA[3:0] pull down 50k 1:enable 0:disable
+0015C:      		Io[IOP_IX]	= Ar
+0015D:      		Ar		= 0x0000
+0015E:      		Io[IOP_DAT]	= Ar
+            
+0015F:      		Ar		= IOP_PA_PD220K	;;PortA[3:0] pull down 220k 1:enable 0:disable
+00160:      		Io[IOP_IX]	= Ar
+00161:      		Ar		= 0X0000
+00162:      		Io[IOP_DAT]	= Ar
+            
+00163:      		Ar		= IOP_PA_PD1M	;;PortA[3:0] pull down 1M 1:enable 0:disable
+00164:      		Io[IOP_IX]	= Ar
+00165:      		Ar		= 0X0000
+00166:      		Io[IOP_DAT]	= Ar
+            
+00167:      		Ar		= IOP_PA_4MA	;;PortA[3:0] 1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+00168:      		Io[IOP_IX]	= Ar
+00169:      		Ar		= 0X0000
+0016A:      		Io[IOP_DAT]	= Ar
+            
+0016B:      		Ar		= IOP_PA_WLOW	;;PortA[3:0] 1=  0 =
+0016C:      		Io[IOP_IX]	= Ar
+0016D:      		Ar		= 0x0000
+0016E:      		Io[IOP_DAT]	= Ar
+            
+0016F:      		Ar		= IOP_WAKEN_PA	;;PortA[3:0] wake up enable   1:enable 0:disable
+00170:      		Io[IOP_IX]	= Ar		;;∂‘”¶œ‡”¶µƒbit
+00171:      		Ar		= 0X0000
+00172:      		Io[IOP_DAT]	= Ar
+            
+00173:      		Ar		= IOP_WAKELV_PA	;;PortA[3:0] 1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+00174:      		Io[IOP_IX]	= Ar
+00175:      		Ar		= 0X0000
+00176:      		Io[IOP_DAT]	= Ar
+            
+            		;; PortB
+            		;;----------------------;;Io InPut/OutPut Set
+00177:      		Ar		= 0X003F		;;PortB[5:0] 1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+00178:      		Io[IOC_PB]	= Ar
+00179:      		Ar		= 0X0000
+0017A:      		Io[PORTB]	= Ar		;; ‰≥ˆ∏ﬂµÕ
+            
+0017B:      		Ar		= IOP_PB_PD50K	;;PortB[5:0]pull down 50k 1:enable 0:disable
+0017C:      		Io[IOP_IX]	= Ar
+0017D:      		Ar		= 0X0000
+0017E:      		Io[IOP_DAT]	= Ar
+            
+0017F:      		Ar		= IOP_PB_PD220K	;;PortB[5:0]pull down 220k 1:enable 0:disable
+00180:      		Io[IOP_IX]	= Ar
+00181:      		Ar		= 0X0000
+00182:      		Io[IOP_DAT]	= Ar
+00183:      		Ar		= IOP_PB_PD1M	;;PortB[5:0]pull down 1M 1:enable 0:disable
+00184:      		Io[IOP_IX]	= Ar
+00185:      		Ar		= 0X0000
+00186:      		Io[IOP_DAT]	= Ar
+            
+00187:      		Ar		= IOP_PB_4MA	;;PortB[5:0] 1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+00188:      		Io[IOP_IX]	= Ar
+00189:      		Ar		= 0x0000
+0018A:      		Io[IOP_DAT]	= Ar
+            
+0018B:      		Ar		= IOP_PB_WLOW	;PortB[5:0]   1=  0 =
+0018C:      		Io[IOP_IX]	= Ar
+0018D:      		Ar		= 0X0000
+0018E:      		Io[IOP_DAT]	= Ar
+            
+0018F:      		Ar		= IOP_WAKEN_PB	;;PortB[5:0]  wake up enable   1:enable 0:disable
+00190:      		Io[IOP_IX]	= Ar		;;∂‘”¶œ‡”¶µƒbit
+00191:      		Ar		= 0X0000
+00192:      		Io[IOP_DAT]	= Ar
+            
+00193:      		Ar		= IOP_WAKELV_PB;;PortB[5:0]  1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+00194:      		Io[IOP_IX]	= Ar
+00195:      		Ar		= 0X0000
+00196:      		Io[IOP_DAT]	= Ar
+            
+00197:      		Ar		= IOP_WAKEDLV_PB	;;PortB[3:0]]  1= À´—ÿªΩ–—
+00198:      		Io[IOP_IX]	= Ar
+00199:      		Ar		= 0X0000
+0019A:      		Io[IOP_DAT]	= Ar
+            
+            		;; PortCI
+            		;;----------------------;;Io InPut/OutPut Set
+0019B:      		Ar		= 0XCFFF		;;PortCI[15:14] PortCI[11:0]
+0019D:      		Io[IOC_PCI]	= Ar			;;1£∫ ‰≥ˆƒ£ Ω 0£∫ ‰»Îƒ£ Ω
+0019E:      		Ar		= 0X0000
+0019F:      		Io[PORTCI]	= Ar			;; ‰≥ˆ∏ﬂµÕ
+            
+001A0:      		Ar		= IOP_PCI_PD50K		;;Pull Down 50K 1:Enable 0:Disable
+001A1:      		Io[IOP_IX]	= Ar			;;PortCI[15:14] PortCI
+001A2:      		Ar		= 0X0000
+001A3:      		Io[IOP_DAT]	= Ar
+            
+001A4:      		Ar		= IOP_PCI_PD220K	;;pull down 220k 1:enable 0:disable
+001A5:      		Io[IOP_IX]	= Ar			;;PortCI[15:14] Po0]
+001A6:      		Ar		= 0X0000
+001A7:      		Io[IOP_DAT]	= Ar
+            
+001A8:      		Ar		= IOP_PCI_PD1M		;;pull down 1M 1:enable 0:disable
+001A9:      		Io[IOP_IX]	= Ar			;;PortCI[15:14] PortCI[11:0]
+001AA:      		Ar		= 0X0000
+001AB:      		Io[IOP_DAT]	= Ar
+            
+001AC:      		Ar		= IOP_PCI_4MA		;;1= ‰≥ˆµÁ¡˜ «4mA  0 =  ‰≥ˆ16mA
+001AD:      		Io[IOP_IX]	= Ar			;;PortCI[15:14] PortCI[11:0]
+001AE:      		Ar		= 0X0000
+001AF:      		Io[IOP_DAT]	= Ar
+            
+001B0:      		Ar		= IOP_PCI_WLOW		;;1=  0 =
+001B1:      		Io[IOP_IX]	= Ar			;;PortCI[15:14] PortCI[11:0]
+001B2:      		Ar		= 0X0000
+001B3:      		Io[IOP_DAT]	= Ar
+            
+001B4:      		Ar		= IOP_WAKEN_PC		;;wake up enable   1:enable 0:disable
+001B5:      		Io[IOP_IX]	= Ar			;;∂‘”it
+001B6:      		Ar		= 0X0000		;;PortCI[11:0]
+001B7:      		Io[IOP_DAT]	= Ar
+            
+001B8:      		Ar		= IOP_WAKELV_PC	;;1=…œ…˝—ÿªΩ–—, 0 = œ¬Ωµ—ÿªΩ–—
+001B9:      		Io[IOP_IX]	= Ar			;;PortCI[11:0]
+001BA:      		Ar		= 0X0000
+001BB:      		Io[IOP_DAT]	= Ar
+            
+001BC:      		Rets
+            
+            ;;******************************************************************************
+            ;∫Ø ˝√˚≥∆:Ram_Clear
+            ;π¶ƒ‹√Ë ˆ:…œµÁ∫Û«Â≥˝RM,PM∫ÕÃÿ ‚ºƒ¥Ê∆˜°£Õ¨ ±…Ë÷√∂—’ªbpµΩ’ª∂•
+            ;;******************************************************************************
+            Ram_Clear:
+001BD:      		Ar		= Stack_Size_Set
+001BE:      		Ax		= StackBuffer
+001C0:      		Ar		= Ar+Ax
+001C1:      		Bp		= Ar
+            
+001C2:      		Ar		= Sram_Size_Set
+001C4:      		Ar		= Ar - 2
+001C5:      		Cx		= Ar
+001C6:      		Ar		= 0X0000
+001C7:      		I1		= 0X0002
+            CLR_RM:
+001C8:      		Rm[I1++]	= Ar
+001C9:      		Loop		Clr_Rm
+001CA:      		P1.Hh		= 0
+001CB:      		P0.Hh		= 0
+001CC:      		I0		= 0x0000
+001CD:      		I1		= 0x0000
+001CE:      		P0		= 0x0000
+001CF:      		P1		= 0x0000
+001D0:      		Ax		= 0x0000
+001D1:      		Bx		= 0x0000
+001D2:      		Cx		= 0x0000
+001D3:      		Dx		= 0x0000
+001D4:      		R0		= 0x0000
+001D5:      		R1		= 0x0000
+001D6:      		R2		= 0x0000
+001D7:      		R3		= 0x0000
+001D8:      		CBL		= 0x0000
+001D9:      		Ar		= 0x0000
+            
+001DA:      		Io[MISC3]	= Ar
+001DB:      		Io[MISC4]	= Ar
+001DC:      		Io[MISC5]	= Ar
+001DD:      		Ar		= 0x0000
+001DE:       		Io[DACL]	= Ar		;  // output DAC L FIFO 0
+001DF:       		Io[DACL]	= Ar		;  // output DAC L FIFO 1
+001E0:      		Io[DACL]	= Ar		;  // output DAC L FIFO 2
+001E1:       		Io[DACL]	= Ar		;  // output DAC L FIFO 3
+            
+001E2:      		Ar		= 0x0000
+001E3:      		FLTI		= Ar
+001E4:      		FLTI		= Ar
+001E5:      		FLTI		= Ar
+001E6:      		FLTI		= Ar
+001E7:      		FLTA		= Ar
+001E8:      		Ar		= 0x003F
+001E9:      		FLTG		= Ar
+001EA:      		Ar		= 0x1FFF
+001EC:      		FLTP		= Ar
+001ED:      		Ar		= FLTO		;// INitial Filter State
+001EE:      		Ar		= 0
+001EF:      		Rets
+            
+            ;;******************************************************************************
+            ;∫Ø ˝√˚≥∆:SetUp_Other
+            ;π¶ƒ‹√Ë ˆ:…Ë÷√∆‰À˚
+            ;;******************************************************************************
+            Setup_Other:
+001F0:      		Ar		= 0xDB3F
+001F2:      		Io[Enc_Dat]	= Ar
+001F3:      		Ar		= 0x8A17
+001F5:      		Io[Enc_Dat]	= Ar
+001F6:      		Rets
+            ;;******************************************************************************
+            ;∫Ø ˝√˚≥∆:SetUp_Timer
+            ;π¶ƒ‹√Ë ˆ:…Ë÷√∂® ±∆˜µƒ◊¥Ã¨
+            ;;******************************************************************************
+            SetUp_Timer:
+001F7:      		AR		= IOP_Timer1		;Timer1 Set
+001F8:      		IO[IOP_IX]	= AR
+001F9:      		AR		= 0X07FF		;16k 	32768k/ (16k) - 1=7FF
+001FB:      		IO[IOP_DAT]	= AR
+            		;;-------------------------------------------------------;Timer2 Set
+001FC:      		AR		= IOP_Timer2		;
+001FD:      		IO[IOP_IX]	= AR
+001FE:      		AR		= 0X7FFF		;1K 	32768k/ (8k) - 1 =7FFF
+00200:      		IO[IOP_DAT]	= AR
+            
+00201:      		Ar		= IOP_RTC32K		;…Ë÷√∂® ±∆˜RTC32K
+00202:      		Io[IOP_IX]	= Ar
+00203:      		Ar		= 0X0000
+00204:      		Io[IOP_DAT]	= Ar
+            
+00205:      		Ar		= IOP_FetchCNT		;…Ë÷√πÿ¡™CPµƒ∂® ±∆˜
+00206:      		Io[IOP_IX]	= Ar			;[1:0]=[Fetch_Timer2:Fetch_Timer1]
+00207:      		Ar		= 0X0000
+00208:      		Io[IOP_DAT]	= Ar
+00209:      		Rets
+            
+            ;;******************************************************************************
+            ;∫Ø ˝√˚≥∆:Open_PwmorDac
+            ;π¶ƒ‹√Ë ˆ:¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+            ;;******************************************************************************
+            Open_PwmorDac:
+            /*
+            #Ifdef		DAC_Output
+                            	Clr 		IO[MISC].B9                	;PWM Disable
+                            	Set 		IO[MISC].B6                	;DAC Enable
+                            	Set 		IO[MISC].B4                	;DAC Mute Off
+            		Set		IO[MISC4].B14
+            #Else
+                            	Clr 		IO[MISC].B6                	;DAC Disable
+            		Set 		IO[MISC].B9                	;PWM Enable
+            #Endif
+            		Rets*/
+            #ifdef	_MSPEECHDSP_
+            #ifdef	DAC_Output
+            		SET		IO[MISC].B6		;DAC Enable
+            		CLR		IO[MISC].B9		;PWM Disable
+            		SET		IO[MISC].B4		;DAC Mute off
+            		AR		= 0x4000		;DAC Gain
+            		IO[MISC4]	= AR			;MISC4 = 0X19
+            #else
+            		CLR		IO[MISC].B6		;DAC Disable
+            		SET		IO[MISC].B9		;PWM Enable
+            		CLR		IO[MISC].B5		;PWM Mute off
+            #endif	// DAC_Output
+            #endif	// _MSPEECHDSP_
+            #ifdef	_MSPEECHDSP2_
+            		; PWM Output
+            		; MISC |= PWMEN | MODX;
+0020A:      		SET		IO[MISC].b9
+0020B:      		SET		IO[MISC].b8
+            #endif	// _MSPEECHDSP2_
+0020C:      		RETS
+            
+            ;;******************************************************************************
+            Macro 		Close_Dac_Output
+            		Clr 		IO[MISC].B6
+            		Clr 		IO[MISC].B9                	;PWM Disable
+            Endm
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;Function	:VectorTableInit
+            ;Input	:AR=BANK, bank «÷∏÷–∂œ–Ë“™‘⁄ƒ«∏ˆbank÷¥––,
+            ;	=0:‘⁄bank0÷¥––
+            ;	=7:‘⁄bank7÷¥––
+            ;	≥ı ºªØ÷–∂œœÚ¡ø±Ì£¨ø…≈‰÷√À¸‘⁄ƒ«∏ˆbank÷¥––°°
+            ;;******************************************************************************
+            VectorTableInit:
+0020D:      		DSI
+0020E:      		Nop
+0020F:      		PCB		= Ar
+00210:      		SET		IO[STATUS].B13          	;Enabled Intvect Change
+00211:      		Cx		= 0X05
+00212:      		P1.HH		= 0
+00213:      		P1		= #T_Vector_Access_Addr
+            Init_Intvecttable_Lp:
+00216:      		Ar		= Pm[P1++]
+00217:      		Io[Intvect]	= Ar			;<---¥ÀÃı÷∏¡Óª·≤ŒøºPCBµƒ÷µ
+00218:      		Loop		Init_Intvecttable_Lp
+00219:      		CLR		IO[STATUS].B13
+0021A:      		PCB		= 0
+0021B:      		ENI
+0021C:      		Rets
+            
+            ;;******************************************************************************
+            T_Vector_Access_Addr:
+0021D:      DW		#L_INTVB5_ENTRY
+0021E:      DW		#L_INTVB4_ENTRY
+0021F:      DW		#L_INTVB3_ENTRY
+00220:      DW		#L_INTVB2_ENTRY
+00221:      DW		#L_INTVB1_ENTRY
+00222:      DW		#L_INTVB0_ENTRY
+            
+            
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;∫Ø ˝√˚≥∆:PowerOndelay
+            ;π¶ƒ‹√Ë ˆ:…œµÁ◊ˆ—” ±£¨ πICŒ»∂®∫Ûø™ ºπ§◊˜
+            ;Delay 100Ms
+            ;;******************************************************************************
+            PowerOnDelay:
+00223:      		Ar		= 0X0064		;;100
+00224:      		Call		Delay_Ms()
+00225:      		Rets
+            
+            ;;*******************************************************************************
+            ;;Delay Ms()
+            ;;*******************************************************************************
+            Delay_Ms():
+00226:      		Push		Cx
+00227:      		Cx		= Ar
+00228:      		Cx--
+            Delay_Ms()_Loop:
+00229:      		Ar		= 0X03E8		;;1000us
+0022B:      		Call		Delay_Us()
+0022C:      		Loop		Delay_Ms()_Loop
+            Delay_Ms()_Exit:
+0022D:      		Pop		Cx
+0022E:      		Rets
+            ;;*******************************************************************************
+            ;;Base 8M, Delay Us()
+            ;;*******************************************************************************
+            Delay_Us():
+0022F:      		Push		Cx
+00230:      		Cx		= Ar
+00231:      		Cx--
+            Delay_Us()_Loop:
+00232:      		Nop
+00233:      		Nop
+00234:      		Nop
+00235:      		Nop
+00236:      		Nop
+            
+00237:      		Nop
+00238:      		Io[Clrwdt]	= Ar
+00239:      		Loop		Delay_Us()_Loop
+0023A:      		Pop		Cx
+0023B:      		Rets
+            
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;;Copy_Bank0_To_Bank7
+            ;;Input	:	Ar	= #Bank0±ª∏¥÷∆¥˙¬Îµƒø™ ºµÿ÷∑
+            ;;¥”Bank7µƒ0µÿ÷∑ø™ º∏¥÷∆ 1Kƒ⁄»›
+            ;;******************************************************************************
+            Copy_Bank0_To_Bank7:
+0023C:      		P0		= Ar
+0023D:      		P0.HH		= 0
+0023E:      		P1		= 0
+0023F:      		P1.HH		= 7				;// Bank7 = 1K
+00240:      		Cbl		= 0
+00241:      		CX		= 0X03FF
+            Bank7_Copy_Lp:
+00243:      		Io[CLRWDT]	= Ar
+00244:      		Ar		= Pm[P0++]
+00245:      		Pm[P1++]	= Ar
+00246:      		Loop		Bank7_Copy_Lp
+00247:      		P1.HH		= 0
+00248:      		P1		= 0
+00249:      		Rets
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;;Copy_Bank0_To_Bank7
+            ;;Input	:	P0	= #Bank0±ª∏¥÷∆¥˙¬Îµƒø™ ºµÿ÷∑
+            ;;		Ar	= #Bank0±ª∏¥÷∆¥˙¬ÎµƒΩ· ¯µÿ÷∑
+            ;;		P1	= #Bank7 ’≥Ã˘µÿ÷∑
+            ;;¥”Bank7µƒP1µÿ÷∑ ∏¥÷∆ CxÃıƒ⁄»›
+            ;;******************************************************************************
+            MoveProgToBank2:
+0024A:      		Cbl		= 0
+0024B:      		P1.Hh		= 7				;// Bank7 = 1K
+0024C:      		P0.Hh		= 0
+0024D:      		Ar		= Ar - P0
+0024E:      		Cx		= Ar
+0024F:      		Cx--
+            MoveProgToBank2_Loop:
+00250:      		Ar		= Pm[P0++]
+00251:      		Pm[P1++]	= Ar
+00252:      		Loop		MoveProgToBank2_Loop
+00253:      		P1.Hh		= 0
+00254:      		P1		= 0
+00255:      		Rets
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;=========================Include <SDSP_HWCONFIG.ASM> End=========================
+            
+            ;=========================Include <ISR_PACK.ASM> Start=========================
+            ;;******************************************************************************
+            ;;******************************************************************************
+            .CODE
+            ;;******************************************************************************
+            L_INTVB5_ENTRY:
+00256:      		Clr 			Io[INTREQ].B5
+00257:      		Reti
+            ;;******************************************************************************
+            L_INTVB4_ENTRY:
+00258:      		Clr 			Io[INTREQ].B4
+00259:      		Reti
+            ;;******************************************************************************
+            L_INTVB3_ENTRY:
+0025A:      		Clr 			Io[INTREQ].B3
+0025B:      		Reti
+            ;;******************************************************************************
+            L_INTVB2_ENTRY:
+0025C:      		Clr 			Io[INTREQ].B2
+0025D:      		Ar			= Rm[Time_Ms]
+0025E:      		Ar++
+0025F:      		Clr			Ar.B15
+00260:      		Rm[Time_Ms]		= Ar
+            
+00261:      		Ar			= Rm[DebounceTime]
+00262:      		Ar++
+00263:      		Clr			Ar.B15
+00264:      		Rm[DebounceTime]	= Ar
+00265:      		Reti
+            ;;******************************************************************************
+            L_INTVB1_ENTRY:
+00266:      		Clr 			Io[INTREQ].B1
+00267:      		Reti
+            ;;******************************************************************************
+            L_INTVB0_ENTRY:
+00268:      		Clr 			Io[INTREQ].B0
+00269:      		Pch			= Play_Sub2_Isr
+0026A:      		Lcall			Play_Sub2_Isr
+            
+0026B:      		Pch			= Trsp16Stouchscan
+0026C:      		Lcall			Trsp16Stouchscan
+0026D:      		Reti
+            ;;*******************************************************************************
+            ;;*******************************************************************************
+            ;;*******************************************************************************
+            ;=========================Include <ISR_PACK.ASM> End=========================
+            
+            ;=========================Include <SCANKEY.ASM> Start=========================
+            ;;******************************************************************************
+            ;;******************************************************************************
+            .CODE
+            ;;******************************************************************************
+            ;;…œµÁ∞¥º¸IO≥ı ºªØ
+            Scan_Key_Init:
+0026E:      		Ar			= Io[IOC_PCI]
+0026F:      		Ax			= 0XF0F8
+00271:      		Ar			= Ar & Ax
+00272:      		Io[IOC_PCI]		= Ar
+            
+00273:      		Ar			= IOP_PCI_PD50K
+00274:      		Io[IOP_IX]		= Ar
+00275:      		Ar			= 0X0F07
+00277:      		Io[IOP_DAT]		= Ar
+            
+00278:      		Ar			= IOP_WAKEN_PC
+00279:      		Io[IOP_IX]		= Ar
+0027A:      		Ar			= 0X0F07
+0027C:      		Io[IOP_DAT]		= Ar
+            
+0027D:      		Ar			= IOP_WAKELV_PC
+0027E:      		Io[IOP_IX]		= Ar
+0027F:      		Ar			= 0X0F07
+00281:      		Io[IOP_DAT]		= Ar
+            Scan_Key_Init_Exit:
+00282:      		Rets
+            
+            ;;******************************************************************************
+            ;;******************************************************************************
+            Scan_Key:
+00283:      		Ar			= Io[PortCI]
+00284:      		BX			= 0X0F07
+00286:      		Ar			= Ar & BX
+00287:      		Ax			= Rm[Key_Flag]
+00288:      		Sf			= Ar - Ax
+00289:      		Jeq			Key_No_Change
+0028A:      		Ax			= Rm[Key_Buf]
+0028B:      		Sf			= Ar - Ax
+0028C:      		Jnz			Clr_Key_Debounce
+0028D:      		Ar			= Rm[Debouncetime]
+0028E:      		Ax			= 0x0020
+0028F:      		Sf			= Ar - Ax			;;//32Ms,Base On 1k
+00290:      		Jle			Scan_End
+00291:      		Ar			= Rm[Key_Flag]
+00292:      		Ax			= Rm[Key_Buf]
+00293:      		Ar			= Ar ^ Ax
+00294:      		Ar			= Ar & Ax
+00295:      		R0			= Ar			;;∞¥œ¬µƒ∞¥º¸
+00296:      		Ax			= Rm[Key_Flag]
+00297:      		Ar			= Rm[Key_Buf]
+00298:      		Ar			= Ar^Ax
+00299:      		Ar			= Ar&Ax
+0029A:      		R1			= Ar			;;À…ø™µƒ∞¥º¸
+0029B:      		Ar			= Rm[Key_Buf]
+0029C:      		Rm[Key_Flag]		= Ar
+            Key_Process:
+0029D:      		Ar			= R0
+0029E:      		Jzr			Key_Rel_Process
+0029F:      		Test			Ar.B0
+002A0:      		Jnz			Play_Key_1
+002A1:      		Test			Ar.B1
+002A2:      		Jnz			Play_Key_2
+002A3:      		Test			Ar.B2
+002A4:      		Jnz			Play_Key_3
+002A5:      		R0			= 0
+            Key_Rel_Process:
+002A6:      		Ar			= R1
+002A7:      		Jzr			Scan_End
+002A8:      		R1			= 0
+002A9:      		Jmp			Scan_End
+            Key_No_Change:
+002AA:      		Rm[Key_Buf]		= Ar
+002AB:      		Jmp			Scan_End
+            Clr_Key_Debounce:
+002AC:      		Rm[Key_Buf]		= Ar
+002AD:      		Ar			= 0
+002AE:      		Rm[Debouncetime]	= Ar
+            Scan_End:
+002AF:      		Rets
+            
+            ;;******************************************************************************
+            ;;******************************************************************************
+            Play_Key_1:
+002B0:      		Clr			R0.B0
+002B1:      		Pch=			Sub2_Play_End
+002B2:      		Lcall			Sub2_Play_End
+            
+002B3:      		Ar			= Rm[Sub2_Num]
+002B4:      		Ar++
+002B5:      		Rm[Sub2_Num]		= Ar
+002B6:      		Pch=			Play_Sub2_Int
+002B7:      		Lcall			Play_Sub2_Int
+002B8:      		Jmp			Key_Process
+            ;;******************************************************************************
+            ;;******************************************************************************
+            Play_Key_2:
+002B9:      		Clr			R0.B1
+002BA:      		Pch=			Sub2_Play_End
+002BB:      		Lcall			Sub2_Play_End
+002BC:      		Jmp			Key_Process
+            ;;******************************************************************************
+            ;;******************************************************************************
+            Play_Key_3:
+002BD:      		Clr			R0.B2
+002BE:      		Jmp			Key_Process
+            ;;******************************************************************************
+            ;;******************************************************************************
+            ;=========================Include <SCANKEY.ASM> End=========================
+            
+            ;=========================Include <TOUCH_KEY.ASM> Start=========================
+            ;;Touch_Key.asm
+            .CODE
+            ;-----------------------------------------------------------------------------
+            ; Memory Allocation
+            ;-----------------------------------------------------------------------------
+            VarRM[0:127] = {
+            ;;Touch_Obj_UseBuf[12]
+            }
+            
+            VarRM[128:511] = {
+            ;;Touch_Obj_UseBuf[0]
+            }
+            
+            VarRM[512:4095] = {
+            ;;Touch_Obj_UseBuf[41]
+            }
+            
+            ;-----------------------------------------------------------------------------
+            ;;//∂®“Âobj‘⁄VarRM[0:127]µƒø™ ºµÿ÷∑
+            ;#OBJReAllocate	Trsf16Touch_20key_v3.02, 26
+            ;;;;//obj‘⁄VarRM[128:511]µƒø™ ºµÿ÷∑
+            ;#OBJReAllocate	Trsf16Touch_20key_v3.02, 128
+            ;;;;//obj‘⁄VarRM[512:4095]µƒø™ ºµÿ÷∑
+            ;#OBJReAllocate	Trsf16Touch_20key_v3.02, 2944
+            ;-----------------------------------------------------------------------------
+            .CODE
+            
+            /*
+            		Pch			= Trsf16STouchInit
+            		Lcall			Trsf16STouchInit
+            
+            		Pch 			= Trsf16sTouchScan
+            		Lcall			Trsf16sTouchScan
+            */
+            
+            ;-----------------------------------------------------------------------------
+            TouchTask:
+002BF:      		Bx      		= 0			;Key1~Key16
+002C0:      		Cx			= Rm[TouchKeyFlagl]
+002C1:      		Ax			= Rm[Keyflagl]
+002C2:      		I1			= KeyFlagL
+002C3:      		I0			= Play_KeyL
+002C4:      		Ar			= Cx
+002C5:      		Ax			^= Ar			;≈–∂œ «∑Ò”–∞¥º¸±‰ªØ£ø
+002C6:      		Jne          		Find_Press_Key
+            
+002C7:      		Cx			= Rm[TouchKeyFlagM]
+002C8:      		Ax			= Rm[KeyflagM]
+002C9:      		I1++
+002CA:      		Ar			= Cx
+002CB:      		Ax			^= Ar
+002CC:      		Jne          		Find_Press_Key2
+002CD:      		Jmp			NoTouchPress
+            ;“‘œ¬—› æµ•∏ˆ∞¥º¸¥•∑¢
+            	Find_Press_Key:
+002CE:      		Ar			= Cx
+002CF:      		Rm[I1]			= Ar
+002D0:      		Ar			&= Ax      	    	;≈–∂œ±‰ªØµƒ∞¥º¸ «—πœ¬£ø
+002D1:      		JZR			Touchkeyrelease
+            
+002D2:      		Ax			= Ar
+002D3:      		Test			Ax.B0
+002D4:      		Jne			Touchkeypress1		;Sub2
+002D5:      		Test			Ax.B1
+002D6:      		Jne			Touchkeypress2
+002D7:      		Test			Ax.B2
+002D8:      		Jne			Touchkeypress3
+002D9:      		Test			Ax.B3
+002DA:      		Jne			Touchkeypress4
+002DB:      		Test			Ax.B4
+002DC:      		Jne			Touchkeypress5
+002DD:      		Test			Ax.B5
+002DE:      		Jne			Touchkeypress6
+002DF:      		Test			Ax.B6
+002E0:      		Jne			Touchkeypress7
+002E1:      		Test			Ax.B7
+002E2:      		Jne			Touchkeypress8
+002E3:      		Test			Ax.B8
+002E4:      		Jne			Touchkeypress9
+002E5:      		Test			Ax.B9
+002E6:      		Jne			Touchkeypress10
+002E7:      		Test			Ax.B10
+002E8:      		Jne			Touchkeypress11		;Sub2
+002E9:      		Test			Ax.B11
+002EA:      		Jne			Touchkeypress12
+002EB:      		Test			Ax.B12
+002EC:      		Jne			Touchkeypress13
+002ED:      		Test			Ax.B13
+002EE:      		Jne			Touchkeypress14
+002EF:      		Test			Ax.B14
+002F0:      		Jne			Touchkeypress15
+002F1:      		Test			Ax.B15
+002F2:      		Jne			Touchkeypress16
+002F3:      		Jmp			Notouchpress
+            
+            	Find_Press_Key2:
+002F4:      		Ar			= Cx
+002F5:      		Rm[I1]			= Ar
+002F6:      		Ar			&= Ax      	    	;≈–∂œ±‰ªØµƒ∞¥º¸ «—πœ¬£ø
+002F7:      		JZR			Touchkeyrelease
+            
+002F8:      		Ax			= Ar
+002F9:      		Test			Ax.B0
+002FA:      		Jne			Touchkeypress17		;Sub2
+002FB:      		Test			Ax.B1
+002FC:      		Jne			Touchkeypress18
+002FD:      		Test			Ax.B2
+002FE:      		Jne			Touchkeypress19
+002FF:      		Test			Ax.B3
+00300:      		Jne			Touchkeypress20
+00301:      		Jmp			Notouchpress
+            
+            	TouchKeyRelease:
+00302:      		Ar			= 0x7FFF
+00304:      		Rm[I0]			= Ar
+            ;;<<System message ======  Macro. LED_OFF,13786,13792,,,,,,,,,,,,,,,,  strat ======
+            
+            
+            
+00305:      CLR IO[PortCI].b2 
+            
+            ;; System message>>====== Macro. LED_OFF end ======
+00306:      		Jmp			Notouchpress
+            
+            	TouchKeyPress1:
+00307:      		Ax			= Rm[I0]
+00308:      		Sf			= Ar - Ax
+00309:      		Jeq			Notouchpress
+0030A:      		Rm[I0]			= Ar
+            
+0030B:      		Ar			= 0
+0030C:      		Rm[Sub2_Num]		= Ar
+0030D:      		JMP			TouchKeyPress
+            
+            	TouchKeyPress2:
+0030E:      		Ax			= Rm[I0]
+0030F:      		Sf			= Ar - Ax
+00310:      		Jeq			Notouchpress
+00311:      		Rm[I0]			= Ar
+            
+00312:      		Ar			= 1
+00313:      		Rm[Sub2_Num]		= Ar
+00314:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress3:
+00315:      		Ax			= Rm[I0]
+00316:      		Sf			= Ar - Ax
+00317:      		Jeq			Notouchpress
+00318:      		Rm[I0]			= Ar
+            
+00319:      		Ar			= 2
+0031A:      		Rm[Sub2_Num]		= Ar
+0031B:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress4:
+0031C:      		Ax			= Rm[I0]
+0031D:      		Sf			= Ar - Ax
+0031E:      		Jeq			Notouchpress
+0031F:      		Rm[I0]			= Ar
+            
+00320:      		Ar			= 3
+00321:      		Rm[Sub2_Num]		= Ar
+00322:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress5:
+00323:      		Ax			= Rm[I0]
+00324:      		Sf			= Ar - Ax
+00325:      		Jeq			Notouchpress
+00326:      		Rm[I0]			= Ar
+            
+00327:      		Ar			= 4
+00328:      		Rm[Sub2_Num]		= Ar
+00329:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress6:
+0032A:      		Ax			= Rm[I0]
+0032B:      		Sf			= Ar - Ax
+0032C:      		Jeq			Notouchpress
+0032D:      		Rm[I0]			= Ar
+            
+0032E:      		Ar			= 5
+0032F:      		Rm[Sub2_Num]		= Ar
+00330:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress7:
+00331:      		Ax			= Rm[I0]
+00332:      		Sf			= Ar - Ax
+00333:      		Jeq			Notouchpress
+00334:      		Rm[I0]			= Ar
+            
+00335:      		Ar			= 6
+00336:      		Rm[Sub2_Num]		= Ar
+00337:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress8:
+00338:      		Ax			= Rm[I0]
+00339:      		Sf			= Ar - Ax
+0033A:      		Jeq			Notouchpress
+0033B:      		Rm[I0]			= Ar
+            
+0033C:      		Ar			= 7
+0033D:      		Rm[Sub2_Num]		= Ar
+0033E:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress9:
+0033F:      		Ax			= Rm[I0]
+00340:      		Sf			= Ar - Ax
+00341:      		Jeq			Notouchpress
+00342:      		Rm[I0]			= Ar
+            
+00343:      		Ar			= 8
+00344:      		Rm[Sub2_Num]		= Ar
+00345:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress10:
+00346:      		Ax			= Rm[I0]
+00347:      		Sf			= Ar - Ax
+00348:      		Jeq			Notouchpress
+00349:      		Rm[I0]			= Ar
+            
+0034A:      		Ar			= 9
+0034B:      		Rm[Sub2_Num]		= Ar
+0034C:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress11:
+0034D:      		Ax			= Rm[I0]
+0034E:      		Sf			= Ar - Ax
+0034F:      		Jeq			Notouchpress
+00350:      		Rm[I0]			= Ar
+            
+00351:      		Ar			= 10
+00352:      		Rm[Sub2_Num]		= Ar
+00353:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress12:
+00354:      		Ax			= Rm[I0]
+00355:      		Sf			= Ar - Ax
+00356:      		Jeq			Notouchpress
+00357:      		Rm[I0]			= Ar
+            
+00358:      		Ar			= 11
+00359:      		Rm[Sub2_Num]		= Ar
+0035A:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress13:
+0035B:      		Ax			= Rm[I0]
+0035C:      		Sf			= Ar - Ax
+0035D:      		Jeq			Notouchpress
+0035E:      		Rm[I0]			= Ar
+            
+0035F:      		Ar			= 12
+00360:      		Rm[Sub2_Num]		= Ar
+00361:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress14:
+00362:      		Ax			= Rm[I0]
+00363:      		Sf			= Ar - Ax
+00364:      		Jeq			Notouchpress
+00365:      		Rm[I0]			= Ar
+            
+00366:      		Ar			= 13
+00367:      		Rm[Sub2_Num]		= Ar
+00368:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress15:
+00369:      		Ax			= Rm[I0]
+0036A:      		Sf			= Ar - Ax
+0036B:      		Jeq			Notouchpress
+0036C:      		Rm[I0]			= Ar
+            
+0036D:      		Ar			= 14
+0036E:      		Rm[Sub2_Num]		= Ar
+0036F:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress16:
+00370:      		Ax			= Rm[I0]
+00371:      		Sf			= Ar - Ax
+00372:      		Jeq			Notouchpress
+00373:      		Rm[I0]			= Ar
+            
+00374:      		Ar			= 15
+00375:      		Rm[Sub2_Num]		= Ar
+00376:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress17:
+00377:      		Ax			= Rm[I0]
+00378:      		Sf			= Ar - Ax
+00379:      		Jeq			Notouchpress
+0037A:      		Rm[I0]			= Ar
+            
+0037B:      		Ar			= 16
+0037C:      		Rm[Sub2_Num]		= Ar
+0037D:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress18:
+0037E:      		Ax			= Rm[I0]
+0037F:      		Sf			= Ar - Ax
+00380:      		Jeq			Notouchpress
+00381:      		Rm[I0]			= Ar
+            
+00382:      		Ar			= 17
+00383:      		Rm[Sub2_Num]		= Ar
+00384:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress19:
+00385:      		Ax			= Rm[I0]
+00386:      		Sf			= Ar - Ax
+00387:      		Jeq			Notouchpress
+00388:      		Rm[I0]			= Ar
+            
+00389:      		Ar			= 18
+0038A:      		Rm[Sub2_Num]		= Ar
+0038B:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress20:
+0038C:      		Ax			= Rm[I0]
+0038D:      		Sf			= Ar - Ax
+0038E:      		Jeq			Notouchpress
+0038F:      		Rm[I0]			= Ar
+            
+00390:      		Ar			= 19
+00391:      		Rm[Sub2_Num]		= Ar
+00392:      		Jmp			TouchKeyPress
+            
+            	TouchKeyPress:
+            ;;<<System message ======  Macro. LED_ON,13778,13784,,,,,,,,,,,,,,,,  strat ======
+            
+            
+            
+00393:      SET IO[PortCI].b2 
+            
+            ;; System message>>====== Macro. LED_ON end ======
+            
+00394:      		Pch			= Sub2_Play_End
+00395:      		Lcall			Sub2_Play_End
+            
+00396:      		Pch			= Play_Sub2_Int
+00397:      		Lcall			Play_Sub2_Int
+00398:      		Jmp			Process_End
+            	;---------------------------------------------------------------------
+            	Process_End:
+            	NoTouchPress:
+00399:      		Rets
+            ;-----------------------------------------------------------------------------
+            ;=========================Include <TOUCH_KEY.ASM> End=========================
+            
+            ;=========================Include <SDSP_PLAY_SUB2.ASM> Start=========================
+            .CODE
+            ;-----------------------------------------------------------------------------
+            ; Definition
+            ;-----------------------------------------------------------------------------
+            ;#Define		Sub2_In_Spi	;;∂®“Â…˘“Ù∑≈SPI, µµ∞∏∑≈‘⁄\BIN_DATA\SPI_FLASH\ADPCM_SUB2.BIN
+            #Define		Sub2_In_Pm	;;∂®“Â…˘“Ù∑≈PM
+            #define		SubBooster	; Enable volume booster for subband
+            
+            ; For TRSF16256
+            ;#define		Sbb3_UsePRAM		; use 32MHz bank,turn off if not need  
+            ;#define		RAMBANK		15 	; 32MHz bank at ...
+            
+            ;-----------------------------------------------------------------------------
+            ; Memory Allocation
+            ;-----------------------------------------------------------------------------
+            VarRM[0:127] = {
+            	PCMYIN_PTR
+            	PCMYOU_PTR
+            
+            	Play_Sub2_Flag
+            	Sub2_Num				;;//…˘“Ù ˝ƒø
+            	SampleCh0Rate				;;//…˘“Ù≤•∑≈¬ 
+            	Sub2_Adr_H				;;//SpiFlash Address H
+            	Sub2_Adr_L				;;//SpiFlash Address L
+            
+            #ifdef	SubBooster
+            	WaveGainValue				; Subband booster
+            	PCMY_Booster
+            #endif	// SubBooster
+            
+            	;;Sdsp_Sub2_Buf[42]
+            }
+            
+            VarRM[128:511] = {
+            	;;Sdsp_Sub2_Buf[75]
+            }
+            
+            VarRM[512:4095] = {
+            ReAllocate#512
+            	BaseOn512#PCMY[512]
+            ;;ReAllocate#1024
+            	;Sdsp_Sub2_Buf[1696]			;576+576+272+272
+            }
+            ;-----------------------------------------------------------------------------
+            ;;//∂®“Âobj‘⁄VarRM[0:127]µƒø™ ºµÿ÷∑
+            ;#OBJReAllocate	SDSP_Sbb3_Ch0decV02, 86
+            ;;;//obj‘⁄VarRM[128:511]µƒø™ ºµÿ÷∑
+            ;#OBJReAllocate	SDSP_Sbb3_Ch0decV02, 437
+            ;;;//obj‘⁄VarRM[512:4095]µƒø™ ºµÿ÷∑
+            ;#OBJReAllocate	SDSP_Sbb3_Ch0decV02, 1024
+            
+            #ifdef	_MSPEECHDSP_
+            	#OBJReAllocate SDSP_Sbb3_Ch0decV03, 1024	// TRSF16128
+            #else
+            	#OBJReAllocate Sbb3_Ch0decV03, 1024		// TRSF16127
+            #endif	// _MSPEECHDSP_
+            
+            ;-----------------------------------------------------------------------------
+            ;-----------------------------------------------------------------------------
+            ;…œµÁµ˜”√
+            Subband2_Init:
+            #Ifdef		Sub2_In_Spi
+            		Pch			= SpiFlash_PowerOn_Int
+            		Lcall			SpiFlash_PowerOn_Int
+            #Endif
+            
+            #ifdef	SubBooster
+            		/*WaveGain Value Default is 0			
+            	                   -10   ~   0      ~  10
+            	     	subtract volume    <- Default  -> add volume					
+            		*/						
+0039A:      		AR			= 2             //Volume gain
+0039B:      		RM[WaveGainValue]	= AR
+            
+0039C:      		Pch			= SFDSP_VolumeBooster_GainInitV02	//initial volume boost
+0039D:      		Lcall			SFDSP_VolumeBooster_GainInitV02
+            #endif	// SubBooster
+            
+0039E:      		Call			Sub_Clr_PCMY		;;CLR PCMY
+0039F:      		Ar			= 9
+003A0:      		Cbl			= Ar
+003A1:      		Ar			= PCMY
+003A3:      		Rm[PCMYIN_PTR]		= Ar
+003A4:      		Rm[PCMYOU_PTR]		= Ar
+            #ifdef	SubBooster
+003A5:      		Rm[PCMY_Booster]	= AR
+            #endif	// SubBooster
+003A6:      		Ar			= 0
+003A7:      		Rm[Play_Sub2_Flag]	= Ar
+            
+003A8:      		Ar			= 0
+003A9:      		FLTI			= Ar
+003AA:      		FLTI			= Ar
+003AB:      		FLTI			= Ar
+003AC:      		FLTI			= Ar
+003AD:      		FLTA			= Ar
+003AE:      		Ar			= 0x3F
+003AF:      		FLTG			= Ar
+003B0:      		Ar			= FLTO
+003B1:      		NOP
+003B2:      		ENA			INT0			;;ø™∆Ù÷–∂œ0
+003B3:      		ENI
+            Subband2_Init_Exit:
+003B4:      		Rets
+            
+            ;-----------------------------------------------------------------------------
+            ;÷˜—≠ª∑µ˜”√
+            Subband2_Play:
+003B5:      		Ar			= Rm[Play_Sub2_Flag]
+003B6:      		Jzr			Subband2_Play_Exit
+            	Subband2_Decode:
+003B7:      		Call			WaitPCMY_Empty_Size_Sub2
+003B8:      		Jan			Subband2_Decode_Exit
+            #ifdef	_MSPEECHDSP_
+            		PCH            		= SDSP_Sbb3_Ch0decV03
+            		LCALL           	SDSP_Sbb3_Ch0decV03
+            #else
+003B9:      		PCH	            	= Sbb3_Ch0decV03
+003BA:      		LCALL           	Sbb3_Ch0decV03
+            #endif	// _MSPEECHDSP_
+003BB:      		Jnz			Subband2_Decode_Ready	;;// AZ=1 Is End Of Decode
+            	Subband2_End:
+003BC:      		Call			Sdsp_Ramp_Down
+003BD:      		Ar			= 0
+003BE:      		Rm[Play_Sub2_Flag]	= Ar
+003BF:      		Ar			= 0
+003C0:      		Jmp			Subband2_Play_Exit
+            
+            	Subband2_Decode_Ready:
+            
+            #ifdef	SubBooster
+003C1:        		CBL			= 9
+            
+003C2:      		I0			= RM[PCMY_Booster]
+003C3:      		CX			= 0x011F		; 288
+            	volume_loop:
+003C5:      		AR      		= RM[I0]
+            
+003C6:      		PCH			= SFDSP_VolumeBooster_WaveGainV02
+003C7:      		LCALL			SFDSP_VolumeBooster_WaveGainV02 
+            
+003C8:      		RM[I0++]		= AR
+003C9:      		LOOP			volume_loop
+            
+003CA:      		RM[PCMY_Booster]	= I0
+            #endif	// SubBooster
+            
+            	Subband2_Decode_Exit:
+003CB:      		Ar			= 1
+            
+            Subband2_Play_Exit:
+003CC:      		Rets
+            ;-----------------------------------------------------------------------------
+            Play_Sub2_Int:
+003CD:      		Call			Sub_Clr_PCMY		;;CLR PCMY
+003CE:      		Ar			= 9
+003CF:      		Cbl			= Ar
+003D0:      		Ar			= PCMY
+003D2:      		Rm[PCMYIN_PTR]		= Ar
+003D3:      		Rm[PCMYOU_PTR]		= Ar
+            #ifdef	SubBooster
+003D4:      		Rm[PCMY_Booster]	= AR
+            #endif	// SubBooster
+            		;;------------------------------------------------------------
+003D5:      		Call			Play_Sub2_Adr_Int		;;≥ı ºªØµÿ÷∑
+            		;;------------------------------------------------------------
+003D6:      		Ar			= 1			;;ø™∆Ù≤•∑≈±Í÷¬
+003D7:      		Rm[Play_Sub2_Flag]	= Ar
+            
+003D8:      		Ar			= 0
+003D9:      		FLTI			= Ar
+003DA:      		FLTI			= Ar
+003DB:      		FLTI			= Ar
+003DC:      		FLTI			= Ar
+003DD:      		FLTA			= Ar
+003DE:      		Ar			= 0x3F
+003DF:      		FLTG			= Ar
+003E0:      		Ar			= FLTO
+003E1:      		NOP
+003E2:      		Pch			= Open_PwmOrDac
+003E3:      		Lcall			Open_PwmOrDac		;;¥Úø™…˘“Ù ‰≥ˆ∑Ω Ω
+            
+003E4:      		ENA			INT0			;;ø™∆Ù÷–∂œ0
+003E5:      		ENI
+            		;;------------------------------------------------------------
+            	Play_Sub2_Int_Again:
+            #ifdef	_MSPEECHDSP_
+            		PCH			= SDSP_Sbb3_Ch0InitV03
+            		LCALL			SDSP_Sbb3_Ch0InitV03
+            #else
+003E6:      		PCH			= Sbb3_Ch0InitV03
+003E7:      		LCALL			Sbb3_Ch0InitV03
+            #endif	// _MSPEECHDSP_
+            
+            #ifdef	SubBooster
+            		/*WaveGain Value Default is 0			
+            	                   -10   ~   0      ~  10
+            	     	subtract volume    <- Default  -> add volume					
+            		*/						
+003E8:      		AR			= 2             //Volume gain
+003E9:      		RM[WaveGainValue]	= AR
+            
+003EA:      		Pch			= SFDSP_VolumeBooster_GainInitV02	//initial volume boost
+003EB:      		Lcall			SFDSP_VolumeBooster_GainInitV02
+            #endif	// SubBooster
+            
+003EC:      		Jzr			Play_Sub2_Int_Again 		;;// Cant Find Header!! Initial Error!!
+            Play_Sub2_Int_Exit:
+003ED:      		Rets
+            ;-----------------------------------------------------------------------------
+            Sub2_Play_End:
+003EE:      		Ar			= Rm[Play_Sub2_Flag]
+003EF:      		Jzr			Sub2_Play_End_Exit
+            
+003F0:      		Call			Sdsp_Ramp_Down
+003F1:      		Ar			= 0
+003F2:      		Rm[Play_Sub2_Flag]	= Ar
+            Sub2_Play_End_Exit:
+003F3:      		Rets
+            ;-----------------------------------------------------------------------------
+            ;÷–∂œµ˜”√
+            Play_Sub2_Isr:
+003F4:      		Ar			= Rm[Play_Sub2_Flag]
+003F5:      		Jzr			Play_Sub2_Isr_Exit
+003F6:      		push			I0
+003F7:      		Push			Cbl
+003F8:      		Push			Cx
+003F9:      		I0			= rm[PCMYOU_PTR]
+003FA:      		Ar			= 9
+003FB:      		Cbl			= Ar
+003FC:      		Cx			= 3
+            	Sub2_Filter_Loop:
+003FD:      		Jfa			Sub2_Filter_Out
+003FE:      		Ar			= 0
+003FF:      		FLTI			= Rm[I0]
+00400:      		Rm[I0++]		= Ar
+            	Sub2_Filter_Out:
+00401:      		Ar			= FLTO
+00402:      		IO[DACL]		= Ar
+00403:      		Nop
+00404:      		Nop
+00405:      		Loop			Sub2_Filter_Loop
+00406:      		rm[PCMYOU_PTR] 		= I0
+00407:      		Pop			Cx
+00408:      		Pop			Cbl
+00409:      		Pop			I0
+            Play_Sub2_Isr_Exit:
+0040A:      		Rets
+            
+            ;-----------------------------------------------------------------------------
+            ;≤•∑≈”Ô“Ùµÿ÷∑≥ı ºªØ
+            ;∫Ø ˝ ‰»Î÷µŒ™ Rm[Sub2_Num]
+            Play_Sub2_Adr_Int:
+            	;---------------------------------------------------------------------
+            #Ifdef		Sub2_In_Spi
+            		Ar			= 4			;;Sub2‘⁄◊‹±Ì4Œª÷√
+            		Rm[Flash_Adr_L]		= Ar
+            		Ar			= 0
+            		Rm[Flash_Adr_H]		= Ar
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            		Ax			= Ar
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            		Rm[Flash_Adr_H]		= Ar
+            		Ar			= Ax
+            		Rm[Flash_Adr_L]		= Ar
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            
+            		Ax			= Ar			;;Ar:∏Ë«˙◊‹ ˝
+            		Ar			= Rm[Sub2_Num]
+            		Sf			= Ar - Ax
+            		Jan			Sub2_Num_OK
+            		Ar			= 0
+            Sub2_Num_OK:
+            		Rm[Sub2_Num]		= Ar
+            		Slz			Ar,2
+            		Slz			Ar,1
+            		Ax			= Ar
+            
+            		Ar			= Rm[Flash_Adr_L]
+            		Ar			= Ar + Ax
+            		Rm[Flash_Adr_L]		= Ar
+            
+            		Ar			= Rm[Flash_Adr_H]
+            		Ar			= Ar + 0 + C
+            		Rm[Flash_Adr_H]		= Ar
+            
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            		Ah			= 0
+            ;		Ar			= 0			;;∏Ò Ω
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            ;		Ar			= 0			;;≤•∑≈¬ 
+            
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            		Rm[Sub2_Adr_L]		= Ar			;;Adr_L
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            		Rm[Sub2_Adr_H]		= Ar			;;Adr_H
+            #Endif
+            ;-----------------------------------------------------------------------------
+            #Ifdef		Sub2_In_pm
+0040B:      		P1.Hh			= #Sub2_Adr_Tab.N2
+0040C:      		P1			= #Sub2_Adr_Tab
+0040F:      		Ax			= Pm[P1]
+00410:      		Ar			= Rm[Sub2_Num]
+00411:      		Sf			= Ar - Ax
+00412:      		Jan			Sub2_Num_OK
+00413:      		Ar			= 0
+            Sub2_Num_OK:
+00414:      		Rm[Sub2_Num]		= Ar
+00415:      		Slz			Ar, 2
+00416:      		Ar			= Ar + 1
+00417:      		P1			= P1 + Ar
+            
+00418:      		Ar			= Pm[P1++]		;;∏Ò Ω
+00419:      		Ah			= 0
+0041A:      		Ar			= Pm[P1++]		;;≤•∑≈¬ 
+0041B:      		Ar			= 0
+            
+0041C:      		Ar			= Pm[P1++]
+0041D:      		Rm[Sub2_Adr_L]		= Ar			;;Adr_L
+0041E:      		Ar			= Pm[P1++]
+0041F:      		rm[Sub2_Adr_H]		= Ar			;;Adr_H
+            #Endif
+            Play_Sub2_Adr_Int_Exit:
+00420:      		Rets
+            ;-----------------------------------------------------------------------------
+            Sub_Clr_PCMY:
+00421:      		Ar			= 0
+00422:      		Cx			= 511
+00424:      		I1			= PCMY
+            Sub_Clr_PCMY_LP:
+00426:      		Rm[I1++]		= Ar
+00427:      		Loop			Sub_Clr_Pcmy_Lp
+00428:      		Rets
+            ;-----------------------------------------------------------------------------
+            ;//   |----------|--------------------|---------------------|  size 512
+            ;//             PCMYIN_PTR       PCMYOU_PTR
+            ;// return AN=1 is less 288
+            Waitpcmy_Empty_Size_Sub2:
+00429:      		Ar			= rm[PCMYIN_PTR]
+0042A:      		Ax			= rm[PCMYOU_PTR]
+0042B:      		Ar			= Ax - Ar;
+0042C:      		Jan			Getpcmy_Empty_In_Gt_Sub2
+0042D:      		Jmp			Getpcmy_Empty_Next_Sub2
+            	Getpcmy_Empty_In_Gt_Sub2:
+            		;;// Length = 512 - Pcmyin_Ptr + Pcmyou_Ptr
+0042E:      		Ax			= 0X01Ff;
+00430:      		Ar			= Ar & Ax
+            	Getpcmy_Empty_Next_Sub2:
+            		;;// Check Empty Size > 288
+00431:      		Ax			= 0X0121;
+00433:      		Sf			= Ar - Ax
+00434:      		Rets
+            
+            ;-----------------------------------------------------------------------------
+            Sbb_Ch0GetBts:
+00435:      		Call			Sub2_Read_A_Word
+00436:      		Rets
+            
+            ;-----------------------------------------------------------------------------
+            Sub2_Read_A_Word:
+            	;---------------------------------------------------------------------
+            #Ifdef		Sub2_In_Spi
+            		Ar			= rm[Sub2_Adr_L]
+            		Rm[Flash_Adr_L]		= Ar
+            		Ar			= rm[Sub2_Adr_H]
+            		Rm[Flash_Adr_H]		= Ar
+            		Pch			= SpiFlash_Read_WordFlow
+            		Lcall			SpiFlash_Read_WordFlow
+            		Xchg			Ar
+            		Push			Ar
+            		;---------------------------------------------
+            		Ar			= Rm[Flash_Adr_L]
+            		rm[Sub2_Adr_L]		= Ar
+            		Ar			= Rm[Flash_Adr_H]
+            		rm[Sub2_Adr_H]		= Ar
+            		;---------------------------------------------
+            		Pop			Ar
+            #Endif
+            	;---------------------------------------------------------------------
+            #Ifdef		Sub2_In_Pm
+00437:      		Push			P1
+00438:      		Push			Ax
+00439:      		Ar			= P1.Hh
+0043A:      		Push			Ar
+            
+0043B:      		P1			= Rm[Sub2_Adr_L]
+0043C:      		Ar			= Rm[Sub2_Adr_H]
+0043D:      		P1.Hh			= Ar
+0043E:      		Ar			= Pm[P1++]
+0043F:      		Xchg			Ar
+00440:      		Ax			= Ar
+            		;---------------------------------------------
+00441:      		Rm[Sub2_Adr_L]		= P1
+00442:      		Ar			= P1.Hh
+00443:      		Rm[Sub2_Adr_H] 		= Ar
+            		;---------------------------------------------
+00444:      		Pop			Ar
+00445:      		P1.Hh			= Ar
+00446:      		Ar			= Ax
+00447:      		Pop			Ax
+00448:      		Pop			P1
+            #Endif
+00449:      		Rets
+            
+            ;-----------------------------------------------------------------------------
+            ;µ±…˘“Ù’˝‘⁄≤•∑≈µƒ ±∫Ú£¨Õª»ª¥Ú∂œ…˘“Ùª·”–bo“Ù£¨
+            ;–Ë“™Ω¯––ramp_down¥¶¿Ì£∫
+            ;-----------------------------------------------------------------------------
+            Sdsp_Ramp_Down:
+0044A:      		Push			Mx
+0044B:      		Push			Mr0
+0044C:      		Push			Mr1
+0044D:      		Push			Mr2
+            Ramp_Down_Cbl_9:
+0044E:      		Ar  			= 9
+0044F:      		Cbl  			= Ar
+00450:      		Cx    			= 0x01FF   			;;512 Word
+00452:      		Ar   			= Rm[PCMYOU_PTR]
+00453:      		I0   			= Ar
+00454:      		I1   			= Ar
+00455:      		Bx   			= 0x00FF
+            Ramp_Down_Lp1:
+00457:      		Ar			= Rm[I0]
+00458:      		Mx			= Ar
+00459:      		Ar			= Bx
+            ;;<<System message ======  Macro. _M_MULUS,13762,13769,,,,,,,,,,,,,,,,  strat ======
+            
+            
+            
+0045A:      MACOP = 0x0002 
+0045B:      MR = MX * AR 
+            
+            ;; System message>>====== Macro. _M_MULUS end ======
+0045C:      		Ar			= Mr0
+0045D:      		Xchg			Ar
+0045E:      		Ah			= Mr1
+0045F:      		Rm[I0++]		= Ar
+00460:      		Ar			= Bx
+00461:      		Jzr			Test1
+00462:      		Bx--
+            Test1:
+00463:      		Loop			Ramp_Down_Lp1
+            Test2:   ;;>8Ms
+00464:      	  	Io[Clrwdt]		= Ar			; Clear Watch Dog
+00465:      	  	Ar  			= Rm[PCMYOU_PTR]
+00466:      	  	Ar  			= Ar - I1
+00467:      	  	Ax  			= 0x01FF
+00469:      	  	Ar  			= Ar & Ax
+0046A:      	  	Dx  			= 0x0101
+0046C:      	  	Sf  			= Ar - Dx
+0046D:      		Jan	   		Test2
+0046E:      		Jmp  			Ramp_Down_Exit
+            ;-----------------------------------------------------------------------------
+            Ramp_Down_Cbl_8:
+0046F:      		Ar  			= 8
+00470:      	  	Cbl  			= Ar
+00471:      	  	Cx    			= 0x00FF   		;;256 Word
+00473:      	  	Ar   			= Rm[PCMYOU_PTR]
+00474:      	    	I0   			= Ar
+00475:      	    	I1   			= Ar
+00476:      	    	Bx  	 		= 0x00FF
+            Ramp_Down_Lp11:
+00478:      		Ar			= Rm[I0]
+00479:      		Mx			= Ar
+0047A:      		Ar			= Bx
+            ;;<<System message ======  Macro. _M_MULUS,13762,13769,,,,,,,,,,,,,,,,  strat ======
+            
+            
+            
+0047B:      MACOP = 0x0002 
+0047C:      MR = MX * AR 
+            
+            ;; System message>>====== Macro. _M_MULUS end ======
+0047D:      		Ar			= Mr0
+0047E:      		Xchg			Ar
+0047F:      		Ah			= Mr1
+00480:      		Rm[I0++]		= Ar
+00481:      		Ar			= Bx
+00482:      	  	Jzr			Test11
+00483:      	  	Bx--
+00484:      		Bx--
+            Test11:
+00485:      	  	Loop 			Ramp_Down_Lp11
+            Test21:   ;;>8Ms
+00486:      	  	Io[Clrwdt]		= Ar			; Clear Watch Dog
+00487:      	  	Ar  			= Rm[PCMYOU_PTR]
+00488:      	  	Ar  			= Ar - I1
+00489:      	  	Ax  			= 0x00FF
+0048B:      	  	Ar  			= Ar & Ax
+0048C:      	  	Dx  			= 0x0081
+0048E:      	  	Sf  			= Ar - Dx
+0048F:      	  	Jan   			Test21
+            Ramp_Down_Exit:
+00490:      		Pop			Mr2
+00491:      		Pop			Mr1
+00492:      		Pop			Mr0
+00493:      		Pop			Mx
+            
+00494:      		Rets
+            ;-----------------------------------------------------------------------------
+            ; Object Link
+            ;-----------------------------------------------------------------------------
+            #ifdef	SubBooster
+            ;
+            	#LINKOBJ "LIB\SFDSP_VOLUMEBOOSTERV02.OBJ"
+            ;
+            
+            #endif	// SubBooster
+            
+            #ifdef	_MSPEECHDSP_
+            ;
+            	#LINKOBJ "LIB\SDSP_SBB3_CH0DECV03.OBJ"		
+            ;
+            
+            #else
+            ;
+            	#LINKOBJ "LIB\SBB3_CH0DECV03.OBJ"
+            ;
+            
+            #endif	// _MSPEECHDSP_
+            ;-----------------------------------------------------------------------------
+            #Ifdef		Sub2_In_Pm
+            Sub2_Adr_Tab:
+028B0:      Dw		20					;;∏Ë«˙◊‹ ˝
+            ;		∏Ò Ω	,≤•∑≈¬ ,	µÕµÿ÷∑,		∏ﬂµÿ÷∑
+028B1:      Dw		0x0002,	0x0000,		#Sub2_Adr_01,	#Sub2_Adr_01.H
+028B5:      Dw		0x0002,	0x0000,		#Sub2_Adr_02,	#Sub2_Adr_02.H
+028B9:      Dw		0x0002,	0x0000,		#Sub2_Adr_03,	#Sub2_Adr_03.H
+028BD:      Dw		0x0002,	0x0000,		#Sub2_Adr_04,	#Sub2_Adr_04.H
+028C1:      Dw		0x0002,	0x0000,		#Sub2_Adr_05,	#Sub2_Adr_05.H
+028C5:      Dw		0x0002,	0x0000,		#Sub2_Adr_06,	#Sub2_Adr_06.H
+028C9:      Dw		0x0002,	0x0000,		#Sub2_Adr_07,	#Sub2_Adr_07.H
+028CD:      Dw		0x0002,	0x0000,		#Sub2_Adr_08,	#Sub2_Adr_08.H
+028D1:      Dw		0x0002,	0x0000,		#Sub2_Adr_09,	#Sub2_Adr_09.H
+028D5:      Dw		0x0002,	0x0000,		#Sub2_Adr_10,	#Sub2_Adr_10.H
+028D9:      Dw		0x0002,	0x0000,		#Sub2_Adr_11,	#Sub2_Adr_11.H
+028DD:      Dw		0x0002,	0x0000,		#Sub2_Adr_12,	#Sub2_Adr_12.H
+028E1:      Dw		0x0002,	0x0000,		#Sub2_Adr_13,	#Sub2_Adr_13.H
+028E5:      Dw		0x0002,	0x0000,		#Sub2_Adr_14,	#Sub2_Adr_14.H
+028E9:      Dw		0x0002,	0x0000,		#Sub2_Adr_15,	#Sub2_Adr_15.H
+028ED:      Dw		0x0002,	0x0000,		#Sub2_Adr_16,	#Sub2_Adr_16.H
+028F1:      Dw		0x0002,	0x0000,		#Sub2_Adr_17,	#Sub2_Adr_17.H
+028F5:      Dw		0x0002,	0x0000,		#Sub2_Adr_18,	#Sub2_Adr_18.H
+028F9:      Dw		0x0002,	0x0000,		#Sub2_Adr_19,	#Sub2_Adr_19.H
+028FD:      Dw		0x0002,	0x0000,		#Sub2_Adr_20,	#Sub2_Adr_20.H
+            .DATA
+            ;-----------------------------------------------------------------------------------------
+            Sub2_Adr_01:
+02AEE:      	Dw	"TZB/11.TZB"
+            Sub2_Adr_02:
+06034:      	Dw	"TZB/02.T3Z"
+            Sub2_Adr_03:
+066C9:      	Dw	"TZB/03.T3Z"
+            Sub2_Adr_04:
+06A7B:      	Dw	"TZB/04.T3Z"
+            Sub2_Adr_05:
+06BD1:      	Dw	"TZB/05.T3Z"
+            Sub2_Adr_06:
+07D58:      	Dw	"TZB/06.T3Z"
+            Sub2_Adr_07:
+07E5B:      	Dw	"TZB/07.T3Z"
+            Sub2_Adr_08:
+08A0B:      	Dw	"TZB/08.T3Z"
+            Sub2_Adr_09:
+0A422:      	Dw	"TZB/09.T3Z"
+            Sub2_Adr_10:
+0B885:      	Dw	"TZB/10.T3Z"
+            Sub2_Adr_11:
+0BB5D:      	Dw	"TZB/11.T3Z"
+            Sub2_Adr_12:
+1503B:      	Dw	"TZB/12.T3Z"
+            Sub2_Adr_13:
+16E0D:      	Dw	"TZB/A00@23Kbps.TZB"
+            Sub2_Adr_14:
+17CDB:      	Dw	"TZB/A01@23Kbps.TZB"
+            Sub2_Adr_15:
+18BA8:      	Dw	"TZB/a05@22K6bps.TZB"
+            Sub2_Adr_16:
+1933B:      	Dw	"TZB/a03@23K2bps.TZB"
+            Sub2_Adr_17:
+19CDB:      	Dw	"TZB/a04@22K9bps.TZB"
+            Sub2_Adr_18:
+1A31D:      	Dw	"TZB/15.T3Z"
+            Sub2_Adr_19:
+1B951:      	Dw	"TZB/16.T3Z"
+            Sub2_Adr_20:
+1D2B3:      	Dw	"TZB/a05@22K6bps.TZB"
+            ;Dw	"Tzb/10.TZB"
+            #Endif
+            ;-----------------------------------------------------------------------------
+            ; MAC Macro
+            ;-----------------------------------------------------------------------------
+            MACRO		_M_MULUS
+            #ifdef _MSPEECHDSP_
+            		MULUS
+            #else
+            		MACOP			= 0x0002
+            		MR			= MX * AR
+            #endif
+            		ENDM
+            ;-----------------------------------------------------------------------------
+            ;=========================Include <SDSP_PLAY_SUB2.ASM> End=========================
+            
+            ;-----------------------------------------------------------------------------
+            .Data
+            ;-----------------------------------------------------------------------------
+            ; Macro
+            ;-----------------------------------------------------------------------------
+            LED_ON		MACRO
+            #ifdef _MSPEECHDSP_
+            		CLR			IO[PortCI].b0
+            #else
+            		SET			IO[PortCI].b2
+            #endif
+            		ENDM
+            ;-----------------------------------------------------------------------------
+            LED_OFF		MACRO
+            #ifdef _MSPEECHDSP_
+            		SET			IO[PortCI].b0
+            #else
+            		CLR			IO[PortCI].b2
+            #endif
+            		ENDM
+            ;-----------------------------------------------------------------------------
+            ;;FDSP-IDE V2.64
+            _SYSTEM_MAIN_PROGRAM_END_ADDRESS: 

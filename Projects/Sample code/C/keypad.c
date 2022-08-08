@@ -36,7 +36,6 @@ void InitKey(void)
 #ifdef _MSPEECHDSP_
 
 	// all PortC are input
-
 	B_IOC_PC8 = 0;
 	B_IOC_PC9 = 0;
 	B_IOC_PC10 = 0;
@@ -64,29 +63,27 @@ void InitKey(void)
 
 #ifdef _MSPEECHDSP2_
 
-	// all PortC are input
+	// all PortA are input
 
 	B_IOC_PA0 = 0;		// PA0 input
 	B_IOC_PA1 = 0;		// PA1 input
 	B_IOC_PA2 = 0;		// PA2 input
-	B_IOC_PA3 = 0;		// PA3 input
+//	B_IOC_PA3 = 0;		// PA3 input
 	
-	B_IOC_PB2 = 1;
-	B_IOC_PB0 = 1;
+//	B_IOC_PB2 = 1;
+//	B_IOC_PB0 = 1;
 
-	// turn on PC8/PC9/PC10/PC11 pull-down 50K
+	//Turn on PortA 50K pull down for pa 0 1 2 3
 
 	R_IOP_IX = IOP_PA_PD50K;
-	R_IOP_DAT = R_IOP_DAT | (BIT(0) | BIT(1) | BIT(2) | BIT(3));
+	R_IOP_DAT = R_IOP_DAT | (BIT(0) | BIT(1) | BIT(2) /*| BIT(3)*/);
 	
-//	R_IOP_IX = IOP_PB_PD50K;
-//	R_IOP_DAT = R_IOP_DAT | (BIT(0) | BIT(1) | BIT(2) | BIT(3));
 
 #endif
 
 
 #ifdef _MFDSP2_
-
+	WHAT THE
 	B_IOC_PA4 = 0;		// PA4 input
 	B_IOC_PA5 = 0;		// PA5 input
 	B_IOC_PB7 = 0;		// PB7 input
@@ -128,7 +125,7 @@ static int GetKey(void) near
 	#endif
 
 	#ifdef _MSPEECHDSP2_
-		btn = R_PORTA & 0x0F;
+		btn = R_PORTA & 0x0F;//Cur status of PA[3:0]
 	#endif
 
 	#ifdef _MFDSP2_
@@ -151,14 +148,14 @@ void PollingKey(void)
 {
 	int keynow, i;
 	int bits, bitp;
-	code KEYTABLE *pkey;
+	code KEYTABLE  *pkey;// store at ROM
 
 	keynow = GetKey();
 
 	if(keynowd != keynow)
 	{
 		keynowd = keynow;
-		keycount = MAX_KEY_DEBOUNCE;
+		keycount = MAX_KEY_DEBOUNCE;//512
 		return;
 	}
 
@@ -168,14 +165,14 @@ void PollingKey(void)
 		return;
 	}
 
-	pkey = keyfunc;
+	pkey = keyfunc;//pkey is a keytable pointer->keytable keyfun[]
 	keycount = MAX_KEY_DEBOUNCE;
 
-	bits = keynowd ^ keyprev;
+	bits = keynowd ^ keyprev;// dif 1
 	bitp = keyprev;
 	keyprev = keynowd;
 
-	i = MAX_KEY;
+	i = MAX_KEY;//5
 
 	while(i--)
 	{

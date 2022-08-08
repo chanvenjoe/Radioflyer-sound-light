@@ -1,0 +1,12 @@
+======================================
+FDSP-IDE Information file
+======================================
+File Name   : MAIN.FLH
+Part Number : TRSF16127A
+Check sum   : FD8C
+
+62 % , RAM[__0:_127] = Used : 79 word(s) , Free : 49 word(s)
+21 % , RAM[128:_511] = Used : 81 word(s) , Free : 303 word(s) 
+00 % , RAM[512:3072] = Used : 2225 word(s) , Free : 335 word(s) 
+93 % , PROM          = Used : 118.57k word(s) , Free :  9.43k word(s) 
+======================================

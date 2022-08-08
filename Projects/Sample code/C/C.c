@@ -46,6 +46,7 @@
 #include "global.h"
 #include "keypad.h"
 #include "playadp.h"
+#include "touch.h"
 
 
 // C variables
@@ -58,12 +59,13 @@ void main(void)
 	InitKey();
 	ADPCM_CHX_Init();
 
-	B_IOC_PC0 = 1;
+//	B_IOC_PC0 = 1;
 	
 	CopyToBank = 1;
 
 	EnableInt0();
 	eni();
+	touch_init();
 
 	while(1)
 	{

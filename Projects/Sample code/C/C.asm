@@ -10,6 +10,7 @@
 #include "deps\playadp_65A00B9D.s.code.asm"
 #include "deps\keypad_0E0216C1.s.code.asm"
 #include "deps\linkfile_0F894B6D.s.code.asm"
+#include "deps\touch_AB036625.s.code.asm"
 #include "C:\TRITAN\FDSP-IDE\tools\CC\lib\libio\io.asm"
 #include "deps\memset_CDCF17ED.s.code.asm"
 #include "deps\adp12_EF8DA009.s.code.asm"
@@ -26,7 +27,7 @@ WAKEUP_PROC:
 	ljmp	SYS_PROG_ENTRY
 
 IntVectTable:
-	DW #EMPTY_INTENTRY
+	DW #_Touch_entry886E03ED
 	DW #EMPTY_INTENTRY
 	DW #EMPTY_INTENTRY
 	DW #EMPTY_INTENTRY

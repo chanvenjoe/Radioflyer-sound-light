@@ -49,13 +49,13 @@ rjmp void _playADPCMBACD5AFD(__int16 _index_0_4)=>>_playADPCMBACD5AFD:
 	__int16 _p_1_4;
 	__int16 _q_1_6;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -3;BP	+= AR
-_AECA8DE46_104:;				=>>_AECA8DE46_104:;
+_AA01D89BC_103:;				=>>_AA01D89BC_103:;
 	
-_AECA8DE46_105:;				=>>_AECA8DE46_105:;
+_AA01D89BC_104:;				=>>_AA01D89BC_104:;
 	asm AX = _adpch30670376+0;		=>>AX = _adpch30670376+0//
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-_AECA8DE46_106:;				=>>_AECA8DE46_106:;
+_AA01D89BC_105:;				=>>_AA01D89BC_105:;
 	_i_1_2+0	= 0x00;			=>>I1	= rm[BP_SAVE];AX	= 0x00;rm[I1]	= AX
 L7F5A46A0_26:;					=>>L7F5A46A0_26:;
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
@@ -76,7 +76,7 @@ L7F5A46A0_29:;					=>>L7F5A46A0_29:;
 	goto L7F5A46A0_26;			=>>jmp	L7F5A46A0_26
 L7F5A46A0_27:;					=>>L7F5A46A0_27:;
 	
-_AECA8DE46_107:;				=>>_AECA8DE46_107:;
+_AA01D89BC_106:;				=>>_AA01D89BC_106:;
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000A;			=>>CX	= 0x0A
@@ -89,8 +89,8 @@ _AECA8DE46_107:;				=>>_AECA8DE46_107:;
 	goto	L7F5A46A0_31;			=>>jmp	L7F5A46A0_31
 L7F5A46A0_32:;					=>>L7F5A46A0_32:;
 	
-_AECA8DE46_108:;				=>>_AECA8DE46_108:;
-_AECA8DE46_109:;				=>>_AECA8DE46_109:;
+_AA01D89BC_107:;				=>>_AA01D89BC_107:;
+_AA01D89BC_108:;				=>>_AA01D89BC_108:;
 	sAX	= 0x0012;			=>>AX	= 0x12
 	PUSH(sAX);				=>>push	AX
 	sAX	= 0x0000;			=>>AX	= 0x00
@@ -102,7 +102,7 @@ _AECA8DE46_109:;				=>>_AECA8DE46_109:;
 	PUSH(sAX);				=>>push	AX
 	_memset5A9D755A(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2], STACK[sSP + 3]);=>>pch	= _memset5A9D755A;lcall	_memset5A9D755A
 	RESTORESP(4);				=>>AR	= 4;BP	+= AR;
-_AECA8DE46_110:;				=>>_AECA8DE46_110:;
+_AA01D89BC_109:;				=>>_AA01D89BC_109:;
 	asm AX = #_adpdata32993E3B+0;		=>>AX = #_adpdata32993E3B+0//
 	PUSH(sAX);				=>>push	AX
 	sSI	= (int)&_index_0_4;		=>>AR	= 2;I1	= rm[BP_SAVE];I1	+= AR
@@ -113,7 +113,7 @@ _AECA8DE46_110:;				=>>_AECA8DE46_110:;
 	sAX	= sAX + sCX;			=>>AR	= CX;AX	+= AR
 	sSI	= (int)&_q_1_6;			=>>AR	= -2;I1	= rm[BP_SAVE];I1	+= AR
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-_AECA8DE46_111:;				=>>_AECA8DE46_111:;
+_AA01D89BC_110:;				=>>_AA01D89BC_110:;
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000A;			=>>CX	= 0x0A
@@ -126,7 +126,7 @@ _AECA8DE46_111:;				=>>_AECA8DE46_111:;
 	sDX	= *(__int16*)sDI--;		=>>DX	= pm[P1--]
 	sSI	= POP();			=>>pop	I1
 	sfx_STORSILONG();			=>>rm[I1++]	= AX;rm[I1--]	= DX;
-_AECA8DE46_112:;				=>>_AECA8DE46_112:;
+_AA01D89BC_111:;				=>>_AA01D89BC_111:;
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x0011;			=>>CX	= 0x11
@@ -140,7 +140,7 @@ _AECA8DE46_112:;				=>>_AECA8DE46_112:;
 	sAX	= *(__int16*)sDI;		=>>AX	= pm[P1]
 	sSI	= POP();			=>>pop	I1
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-_AECA8DE46_113:;				=>>_AECA8DE46_113:;
+_AA01D89BC_112:;				=>>_AA01D89BC_112:;
 	asm AX = _adpFLTG0FBE3CB5+0;		=>>AX = _adpFLTG0FBE3CB5+0//
 	PUSH(sAX);				=>>push	AX
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
@@ -157,41 +157,41 @@ _AECA8DE46_113:;				=>>_AECA8DE46_113:;
 	sAX	= *(__int16*)sDI;		=>>AX	= pm[P1]
 	sSI	= POP();			=>>pop	I1
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-_AECA8DE46_114:;				=>>_AECA8DE46_114:;
+_AA01D89BC_113:;				=>>_AA01D89BC_113:;
 	sAX	= 0x0001;			=>>AX	= 0x01
 	goto L7F5A46A0_25;			=>>jmp	L7F5A46A0_25
 L7F5A46A0_31:;					=>>L7F5A46A0_31:;
-_AECA8DE46_115:;				=>>_AECA8DE46_115:;
-_AECA8DE46_116:;				=>>_AECA8DE46_116:;
+_AA01D89BC_114:;				=>>_AA01D89BC_114:;
+_AA01D89BC_115:;				=>>_AA01D89BC_115:;
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	asm AR = 0x0012;			=>>AR = 0x0012//
 	sCX	= *(__int16*)sSI;		=>>CX	= rm[I1]
 	asm rm[I1] = CX + AR;			=>>rm[I1] = CX + AR//
-_AECA8DE46_117:;				=>>_AECA8DE46_117:;
+_AA01D89BC_116:;				=>>_AA01D89BC_116:;
 	goto L7F5A46A0_29;			=>>jmp	L7F5A46A0_29
 L7F5A46A0_28:;					=>>L7F5A46A0_28:;
-_AECA8DE46_118:;				=>>_AECA8DE46_118:;
+_AA01D89BC_117:;				=>>_AA01D89BC_117:;
 	sAX	= 0x0000;			=>>AX	= 0x00
 	goto L7F5A46A0_25;			=>>jmp	L7F5A46A0_25
 L7F5A46A0_25:;					=>>L7F5A46A0_25:;
-_AECA8DE46_119:;				=>>_AECA8DE46_119:;
+_AA01D89BC_118:;				=>>_AA01D89BC_118:;
 	return;					=>>AR	= 3;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 _playADPCMBACD5AFD_end:;			=>>_playADPCMBACD5AFD_end:;
-_AECA8DE46_120:;				=>>_AECA8DE46_120:;
+_AA01D89BC_119:;				=>>_AA01D89BC_119:;
 }
 
 rjmp void ADPCM_CHX_Init()			=>>ADPCM_CHX_Init:
 {
-_AECA8DE46_121:;				=>>_AECA8DE46_121:;
+_AA01D89BC_120:;				=>>_AA01D89BC_120:;
 	
-_AECA8DE46_122:;				=>>_AECA8DE46_122:;
+_AA01D89BC_121:;				=>>_AA01D89BC_121:;
 	sAX	= 0x0000;			=>>AX	= 0x00
 	asm I1 = _iADPCCACC469+0;		=>>I1 = _iADPCCACC469+0//
 	*(__int16*)sSI	= sAX			=>>rm[I1]	= AX
-_AECA8DE46_123:;				=>>_AECA8DE46_123:;
-_AECA8DE46_124:;				=>>_AECA8DE46_124:;
+_AA01D89BC_122:;				=>>_AA01D89BC_122:;
+_AA01D89BC_123:;				=>>_AA01D89BC_123:;
 	sAX	= 0x0024;			=>>AX	= 0x24
 	PUSH(sAX);				=>>push	AX
 	sAX	= 0x0000;			=>>AX	= 0x00
@@ -203,33 +203,33 @@ _AECA8DE46_124:;				=>>_AECA8DE46_124:;
 	_memset5A9D755A(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2], STACK[sSP + 3]);=>>pch	= _memset5A9D755A;lcall	_memset5A9D755A
 	RESTORESP(4);				=>>AR	= 4;BP	+= AR;
 L7F5A46A0_33:;					=>>L7F5A46A0_33:;
-_AECA8DE46_125:;				=>>_AECA8DE46_125:;
+_AA01D89BC_124:;				=>>_AA01D89BC_124:;
 	return;					=>>rets
 ADPCM_CHX_Init_end:;				=>>ADPCM_CHX_Init_end:;
-_AECA8DE46_126:;				=>>_AECA8DE46_126:;
+_AA01D89BC_125:;				=>>_AA01D89BC_125:;
 }
 
 rjmp void ADPCM_CHXGetBts()			=>>ADPCM_CHXGetBts:
 {
-_AECA8DE46_127:;				=>>_AECA8DE46_127:;
-_AECA8DE46_128:;				=>>_AECA8DE46_128:;
+_AA01D89BC_126:;				=>>_AA01D89BC_126:;
+_AA01D89BC_127:;				=>>_AA01D89BC_127:;
 	asm	push AX				=>>push AX
-_AECA8DE46_129:;				=>>_AECA8DE46_129:;
+_AA01D89BC_128:;				=>>_AA01D89BC_128:;
 	asm	push BX				=>>push BX
-_AECA8DE46_130:;				=>>_AECA8DE46_130:;
+_AA01D89BC_129:;				=>>_AA01D89BC_129:;
 	asm	push CX				=>>push CX
-_AECA8DE46_131:;				=>>_AECA8DE46_131:;
+_AA01D89BC_130:;				=>>_AA01D89BC_130:;
 	asm	push DX				=>>push DX
-_AECA8DE46_132:;				=>>_AECA8DE46_132:;
+_AA01D89BC_131:;				=>>_AA01D89BC_131:;
 	asm	push I1				=>>push I1
-_AECA8DE46_133:;				=>>_AECA8DE46_133:;
+_AA01D89BC_132:;				=>>_AA01D89BC_132:;
 	asm	push P0				=>>push P0
-_AECA8DE46_134:;				=>>_AECA8DE46_134:;
+_AA01D89BC_133:;				=>>_AA01D89BC_133:;
 	asm	AR = P0.hh			=>>AR = P0.hh
-_AECA8DE46_135:;				=>>_AECA8DE46_135:;
+_AA01D89BC_134:;				=>>_AA01D89BC_134:;
 	asm	push AR				=>>push AR
 	
-_AECA8DE46_136:;				=>>_AECA8DE46_136:;
+_AA01D89BC_135:;				=>>_AA01D89BC_135:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000A;			=>>CX	= 0x0A
@@ -245,65 +245,65 @@ _AECA8DE46_136:;				=>>_AECA8DE46_136:;
 	sfx_STORSILONG();			=>>rm[I1++]	= AX;rm[I1--]	= DX;
 	sDX	= POP();			=>>pop	DX
 	sAX	= POP();			=>>pop	AX
-_AECA8DE46_137:;				=>>_AECA8DE46_137:;
+_AA01D89BC_136:;				=>>_AA01D89BC_136:;
 	asm	AR = AX				=>>AR = AX
-_AECA8DE46_138:;				=>>_AECA8DE46_138:;
+_AA01D89BC_137:;				=>>_AA01D89BC_137:;
 	asm	P0 = AR				=>>P0 = AR
-_AECA8DE46_139:;				=>>_AECA8DE46_139:;
+_AA01D89BC_138:;				=>>_AA01D89BC_138:;
 	asm	AR = DX				=>>AR = DX
-_AECA8DE46_140:;				=>>_AECA8DE46_140:;
+_AA01D89BC_139:;				=>>_AA01D89BC_139:;
 	asm	P0.hh = AR			=>>P0.hh = AR
 	
-_AECA8DE46_141:;				=>>_AECA8DE46_141:;
-_AECA8DE46_142:;				=>>_AECA8DE46_142:;
+_AA01D89BC_140:;				=>>_AA01D89BC_140:;
+_AA01D89BC_141:;				=>>_AA01D89BC_141:;
 	read_P0();				=>>AX	= pm[P0];
-_AECA8DE46_143:;				=>>_AECA8DE46_143:;
+_AA01D89BC_142:;				=>>_AA01D89BC_142:;
 	asm	pop AR				=>>pop AR
-_AECA8DE46_144:;				=>>_AECA8DE46_144:;
+_AA01D89BC_143:;				=>>_AA01D89BC_143:;
 	asm	P0.hh = AR			=>>P0.hh = AR
-_AECA8DE46_145:;				=>>_AECA8DE46_145:;
+_AA01D89BC_144:;				=>>_AA01D89BC_144:;
 	asm	pop P0				=>>pop P0
-_AECA8DE46_146:;				=>>_AECA8DE46_146:;
+_AA01D89BC_145:;				=>>_AA01D89BC_145:;
 	asm	pop I1				=>>pop I1
-_AECA8DE46_147:;				=>>_AECA8DE46_147:;
+_AA01D89BC_146:;				=>>_AA01D89BC_146:;
 	asm	pop DX				=>>pop DX
-_AECA8DE46_148:;				=>>_AECA8DE46_148:;
+_AA01D89BC_147:;				=>>_AA01D89BC_147:;
 	asm	pop CX				=>>pop CX
-_AECA8DE46_149:;				=>>_AECA8DE46_149:;
+_AA01D89BC_148:;				=>>_AA01D89BC_148:;
 	asm	pop BX				=>>pop BX
 	
-_AECA8DE46_150:;				=>>_AECA8DE46_150:;
-_AECA8DE46_151:;				=>>_AECA8DE46_151:;
-	asintax();				=>>_AECA8DE46_152:;				=>>_AECA8DE46_152:;
+_AA01D89BC_149:;				=>>_AA01D89BC_149:;
+_AA01D89BC_150:;				=>>_AA01D89BC_150:;
+	asintax();				=>>_AA01D89BC_151:;				=>>_AA01D89BC_151:;
 	asm	AR = AX				=>>AR = AX
-_AECA8DE46_153:;				=>>_AECA8DE46_153:;
+_AA01D89BC_152:;				=>>_AA01D89BC_152:;
 	asm	pop AX				=>>pop AX
 L7F5A46A0_34:;					=>>L7F5A46A0_34:;
-_AECA8DE46_154:;				=>>_AECA8DE46_154:;
+_AA01D89BC_153:;				=>>_AA01D89BC_153:;
 	return;					=>>rets
 ADPCM_CHXGetBts_end:;				=>>ADPCM_CHXGetBts_end:;
-_AECA8DE46_155:;				=>>_AECA8DE46_155:;
+_AA01D89BC_154:;				=>>_AA01D89BC_154:;
 }
 
 rjmp void L7F5A46A0_35()			=>>L7F5A46A0_35:
 {
 	__int16 _i_1_2;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -1;BP	+= AR
-_AECA8DE46_156:;				=>>_AECA8DE46_156:;
+_AA01D89BC_155:;				=>>_AA01D89BC_155:;
 	
-_AECA8DE46_157:;				=>>_AECA8DE46_157:;
+_AA01D89BC_156:;				=>>_AA01D89BC_156:;
 	asm I1 = inbuf+0;			=>>I1 = inbuf+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-_AECA8DE46_158:;				=>>_AECA8DE46_158:;
+_AA01D89BC_157:;				=>>_AA01D89BC_157:;
 	asm	AR = AX				=>>AR = AX
-_AECA8DE46_159:;				=>>_AECA8DE46_159:;
+_AA01D89BC_158:;				=>>_AA01D89BC_158:;
 	asm	I0 = AR				=>>I0 = AR
 	
 	
-_AECA8DE46_160:;				=>>_AECA8DE46_160:;
+_AA01D89BC_159:;				=>>_AA01D89BC_159:;
 	_i_1_2+0	= 0x40;			=>>I1	= rm[BP_SAVE];AX	= 0x40;rm[I1]	= AX
 L7F5A46A0_39:;					=>>L7F5A46A0_39:;
-_AECA8DE46_161:;				=>>_AECA8DE46_161:;
+_AA01D89BC_160:;				=>>_AA01D89BC_160:;
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sfx_CHECKZERO();			=>>AR	= AX;
@@ -311,26 +311,26 @@ _AECA8DE46_161:;				=>>_AECA8DE46_161:;
 	goto	L7F5A46A0_38;			=>>jmp	L7F5A46A0_38
 L7F5A46A0_40:;					=>>L7F5A46A0_40:;
 	
-_AECA8DE46_162:;				=>>_AECA8DE46_162:;
+_AA01D89BC_161:;				=>>_AA01D89BC_161:;
 	sAX	= 0x0000;			=>>AX	= 0x00
-_AECA8DE46_163:;				=>>_AECA8DE46_163:;
+_AA01D89BC_162:;				=>>_AA01D89BC_162:;
 	asm	rm[I0++] = AX			=>>rm[I0++] = AX
 	
-_AECA8DE46_164:;				=>>_AECA8DE46_164:;
+_AA01D89BC_163:;				=>>_AA01D89BC_163:;
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
 	asm AR = 0x0001;			=>>AR = 0x0001//
 	sCX	= *(__int16*)sSI;		=>>CX	= rm[I1]
 	asm rm[I1] = CX - AR;			=>>rm[I1] = CX - AR//
-_AECA8DE46_165:;				=>>_AECA8DE46_165:;
+_AA01D89BC_164:;				=>>_AA01D89BC_164:;
 	goto L7F5A46A0_39;			=>>jmp	L7F5A46A0_39
 L7F5A46A0_38:;					=>>L7F5A46A0_38:;
 L7F5A46A0_37:;					=>>L7F5A46A0_37:;
-_AECA8DE46_166:;				=>>_AECA8DE46_166:;
+_AA01D89BC_165:;				=>>_AA01D89BC_165:;
 	return;					=>>AR	= 1;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 L7F5A46A0_35_end:;				=>>L7F5A46A0_35_end:;
-_AECA8DE46_167:;				=>>_AECA8DE46_167:;
+_AA01D89BC_166:;				=>>_AA01D89BC_166:;
 }
 
 rjmp void L7F5A46A0_41(__int16 _vol_0_4)	=>>L7F5A46A0_41:
@@ -338,9 +338,9 @@ rjmp void L7F5A46A0_41(__int16 _vol_0_4)	=>>L7F5A46A0_41:
 	__int16 _p_1_2;
 	__int16 _i_1_4;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -2;BP	+= AR
-_AECA8DE46_168:;				=>>_AECA8DE46_168:;
+_AA01D89BC_167:;				=>>_AA01D89BC_167:;
 	
-_AECA8DE46_169:;				=>>_AECA8DE46_169:;
+_AA01D89BC_168:;				=>>_AA01D89BC_168:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000A;			=>>CX	= 0x0A
@@ -353,56 +353,56 @@ _AECA8DE46_169:;				=>>_AECA8DE46_169:;
 	goto	L7F5A46A0_44;			=>>jmp	L7F5A46A0_44
 L7F5A46A0_45:;					=>>L7F5A46A0_45:;
 	
-_AECA8DE46_170:;				=>>_AECA8DE46_170:;
+_AA01D89BC_169:;				=>>_AA01D89BC_169:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000C;			=>>CX	= 0x0C
 	sAX	= sAX + sCX;			=>>AR	= CX;AX	+= AR
-_AECA8DE46_171:;				=>>_AECA8DE46_171:;
+_AA01D89BC_170:;				=>>_AA01D89BC_170:;
 	asm	AR = AX				=>>AR = AX
-_AECA8DE46_172:;				=>>_AECA8DE46_172:;
+_AA01D89BC_171:;				=>>_AA01D89BC_171:;
 	asm	I0 = AR				=>>I0 = AR
 	
 	
-_AECA8DE46_173:;				=>>_AECA8DE46_173:;
-_AECA8DE46_174:;				=>>_AECA8DE46_174:;
+_AA01D89BC_172:;				=>>_AA01D89BC_172:;
+_AA01D89BC_173:;				=>>_AA01D89BC_173:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x36]	= sAX;			=>>AR	= AX;io[0x36]	= AR
-_AECA8DE46_175:;				=>>_AECA8DE46_175:;
-_AECA8DE46_176:;				=>>_AECA8DE46_176:;
+_AA01D89BC_174:;				=>>_AA01D89BC_174:;
+_AA01D89BC_175:;				=>>_AA01D89BC_175:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x36]	= sAX;			=>>AR	= AX;io[0x36]	= AR
-_AECA8DE46_177:;				=>>_AECA8DE46_177:;
-_AECA8DE46_178:;				=>>_AECA8DE46_178:;
+_AA01D89BC_176:;				=>>_AA01D89BC_176:;
+_AA01D89BC_177:;				=>>_AA01D89BC_177:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x36]	= sAX;			=>>AR	= AX;io[0x36]	= AR
-_AECA8DE46_179:;				=>>_AECA8DE46_179:;
-_AECA8DE46_180:;				=>>_AECA8DE46_180:;
+_AA01D89BC_178:;				=>>_AA01D89BC_178:;
+_AA01D89BC_179:;				=>>_AA01D89BC_179:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x36]	= sAX;			=>>AR	= AX;io[0x36]	= AR
-_AECA8DE46_181:;				=>>_AECA8DE46_181:;
-_AECA8DE46_182:;				=>>_AECA8DE46_182:;
+_AA01D89BC_180:;				=>>_AA01D89BC_180:;
+_AA01D89BC_181:;				=>>_AA01D89BC_181:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x3D]	= sAX;			=>>AR	= AX;io[0x3D]	= AR
-_AECA8DE46_183:;				=>>_AECA8DE46_183:;
-_AECA8DE46_184:;				=>>_AECA8DE46_184:;
+_AA01D89BC_182:;				=>>_AA01D89BC_182:;
+_AA01D89BC_183:;				=>>_AA01D89BC_183:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x3E]	= sAX;			=>>AR	= AX;io[0x3E]	= AR
-_AECA8DE46_185:;				=>>_AECA8DE46_185:;
+_AA01D89BC_184:;				=>>_AA01D89BC_184:;
 	sSI	= (int)&_vol_0_4;		=>>AR	= 2;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	io[0x3C]	= sAX;			=>>AR	= AX;io[0x3C]	= AR
-_AECA8DE46_186:;				=>>_AECA8DE46_186:;
+_AA01D89BC_185:;				=>>_AA01D89BC_185:;
 	sAX	= io[0x3C];			=>>AR	= io[0x3C];AX	= AR
-_AECA8DE46_187:;				=>>_AECA8DE46_187:;
+_AA01D89BC_186:;				=>>_AA01D89BC_186:;
 	asm I1 = inbuf+0;			=>>I1 = inbuf+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_p_1_2;			=>>I1	= rm[BP_SAVE]
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-_AECA8DE46_188:;				=>>_AECA8DE46_188:;
+_AA01D89BC_187:;				=>>_AA01D89BC_187:;
 	_i_1_4+0	= 0x20;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR;AX	= 0x20;rm[I1]	= AX
 L7F5A46A0_47:;					=>>L7F5A46A0_47:;
-_AECA8DE46_189:;				=>>_AECA8DE46_189:;
+_AA01D89BC_188:;				=>>_AA01D89BC_188:;
 	sSI	= (int)&_i_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_i_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
@@ -414,7 +414,7 @@ _AECA8DE46_189:;				=>>_AECA8DE46_189:;
 	goto	L7F5A46A0_46;			=>>jmp	L7F5A46A0_46
 L7F5A46A0_48:;					=>>L7F5A46A0_48:;
 	
-_AECA8DE46_190:;				=>>_AECA8DE46_190:;
+_AA01D89BC_189:;				=>>_AA01D89BC_189:;
 	sAX	= 0;				=>>AX	= 0x00
 	asm test io[0x00].b14;			=>>test io[0x00].b14//
 	if(__jz__) goto L7F5A46A0_49;		=>>if ZR	jmp L7F5A46A0_49
@@ -425,15 +425,15 @@ L7F5A46A0_49:;					=>>L7F5A46A0_49:;
 	goto	L7F5A46A0_50;			=>>jmp	L7F5A46A0_50
 L7F5A46A0_51:;					=>>L7F5A46A0_51:;
 	
-_AECA8DE46_191:;				=>>_AECA8DE46_191:;
-_AECA8DE46_192:;				=>>_AECA8DE46_192:;
+_AA01D89BC_190:;				=>>_AA01D89BC_190:;
+_AA01D89BC_191:;				=>>_AA01D89BC_191:;
 	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E();=>>pch	= _SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E;lcall	_SDSP_ADPCM_4Bit_SingleCH_decoder94C4563E
 	sfx_CHECKZERO();			=>>AR	= AX;
 	if(__jz__)	goto L7F5A46A0_53;	=>>if ZR	jmp L7F5A46A0_53
 	goto	L7F5A46A0_52;			=>>jmp	L7F5A46A0_52
 L7F5A46A0_53:;					=>>L7F5A46A0_53:;
 	
-_AECA8DE46_193:;				=>>_AECA8DE46_193:;
+_AA01D89BC_192:;				=>>_AA01D89BC_192:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000A;			=>>CX	= 0x0A
@@ -443,19 +443,19 @@ _AECA8DE46_193:;				=>>_AECA8DE46_193:;
 	sDX	= 0x0000;			=>>DX	= 0x00
 	sSI	= POP();			=>>pop	I1
 	sfx_STORSILONG();			=>>rm[I1++]	= AX;rm[I1--]	= DX;
-_AECA8DE46_194:;				=>>_AECA8DE46_194:;
+_AA01D89BC_193:;				=>>_AA01D89BC_193:;
 	goto L7F5A46A0_43;			=>>jmp	L7F5A46A0_43
 L7F5A46A0_52:;					=>>L7F5A46A0_52:;
-_AECA8DE46_195:;				=>>_AECA8DE46_195:;
-_AECA8DE46_196:;				=>>_AECA8DE46_196:;
+_AA01D89BC_194:;				=>>_AA01D89BC_194:;
+_AA01D89BC_195:;				=>>_AA01D89BC_195:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= sAX;				=>>AR	= AX;I1	= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	io[0x36]	= sAX;			=>>AR	= AX;io[0x36]	= AR
 L7F5A46A0_50:;					=>>L7F5A46A0_50:;
-_AECA8DE46_197:;				=>>_AECA8DE46_197:;
-_AECA8DE46_198:;				=>>_AECA8DE46_198:;
+_AA01D89BC_196:;				=>>_AA01D89BC_196:;
+_AA01D89BC_197:;				=>>_AA01D89BC_197:;
 	sSI	= (int)&_p_1_2;			=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	PUSH(sAX);				=>>push	AX
@@ -467,7 +467,7 @@ _AECA8DE46_198:;				=>>_AECA8DE46_198:;
 	PUSH(sDX);				=>>push	DX
 	PUSH(sAX);				=>>push	AX
 	sAX	= io[0x3C];			=>>AR	= io[0x3C];AX	= AR
-	sfx_INT2LONG_AX();			=>>DX	= 0;test	AX.b15;if ZR jmp L7E288010_0;DX = -1;L7E288010_0:
+	sfx_INT2LONG_AX();			=>>DX	= 0;test	AX.b15;if ZR jmp L938F1786_0;DX = -1;L938F1786_0:
 	sCX	= POP();			=>>pop	CX
 	sBX	= POP();			=>>pop	BX
 	sfx_ADDLONG();				=>>AR	= CX;AX	= AX + AR;AR	= BX;DX	= DX + AR + C;
@@ -477,75 +477,75 @@ _AECA8DE46_198:;				=>>_AECA8DE46_198:;
 	asm AR = 0x0002;			=>>AR = 0x0002//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	asm rm[I1] = AX + AR;			=>>rm[I1] = AX + AR//
-_AECA8DE46_199:;				=>>_AECA8DE46_199:;
+_AA01D89BC_198:;				=>>_AA01D89BC_198:;
 	goto L7F5A46A0_47;			=>>jmp	L7F5A46A0_47
 L7F5A46A0_46:;					=>>L7F5A46A0_46:;
 	
-_AECA8DE46_200:;				=>>_AECA8DE46_200:;
+_AA01D89BC_199:;				=>>_AA01D89BC_199:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sCX	= 0x000C;			=>>CX	= 0x0C
 	sAX	= sAX + sCX;			=>>AR	= CX;AX	+= AR
-_AECA8DE46_201:;				=>>_AECA8DE46_201:;
+_AA01D89BC_200:;				=>>_AA01D89BC_200:;
 	asm	AR = AX				=>>AR = AX
-_AECA8DE46_202:;				=>>_AECA8DE46_202:;
+_AA01D89BC_201:;				=>>_AA01D89BC_201:;
 	asm	I0 = AR				=>>I0 = AR
 	
 	
-_AECA8DE46_203:;				=>>_AECA8DE46_203:;
+_AA01D89BC_202:;				=>>_AA01D89BC_202:;
 	sAX	= io[0x36];			=>>AR	= io[0x36];AX	= AR
-_AECA8DE46_204:;				=>>_AECA8DE46_204:;
+_AA01D89BC_203:;				=>>_AA01D89BC_203:;
 	asm	rm[I0++] = AX			=>>rm[I0++] = AX
 	
-_AECA8DE46_205:;				=>>_AECA8DE46_205:;
+_AA01D89BC_204:;				=>>_AA01D89BC_204:;
 	sAX	= io[0x36];			=>>AR	= io[0x36];AX	= AR
-_AECA8DE46_206:;				=>>_AECA8DE46_206:;
+_AA01D89BC_205:;				=>>_AA01D89BC_205:;
 	asm	rm[I0++] = AX			=>>rm[I0++] = AX
 	
-_AECA8DE46_207:;				=>>_AECA8DE46_207:;
+_AA01D89BC_206:;				=>>_AA01D89BC_206:;
 	sAX	= io[0x36];			=>>AR	= io[0x36];AX	= AR
-_AECA8DE46_208:;				=>>_AECA8DE46_208:;
+_AA01D89BC_207:;				=>>_AA01D89BC_207:;
 	asm	rm[I0++] = AX			=>>rm[I0++] = AX
 	
-_AECA8DE46_209:;				=>>_AECA8DE46_209:;
+_AA01D89BC_208:;				=>>_AA01D89BC_208:;
 	sAX	= io[0x36];			=>>AR	= io[0x36];AX	= AR
-_AECA8DE46_210:;				=>>_AECA8DE46_210:;
+_AA01D89BC_209:;				=>>_AA01D89BC_209:;
 	asm	rm[I0++] = AX			=>>rm[I0++] = AX
 	
-_AECA8DE46_211:;				=>>_AECA8DE46_211:;
+_AA01D89BC_210:;				=>>_AA01D89BC_210:;
 	sAX	= io[0x3D];			=>>AR	= io[0x3D];AX	= AR
-_AECA8DE46_212:;				=>>_AECA8DE46_212:;
+_AA01D89BC_211:;				=>>_AA01D89BC_211:;
 	asm	rm[I0++] = AX			=>>rm[I0++] = AX
 L7F5A46A0_44:;					=>>L7F5A46A0_44:;
-_AECA8DE46_213:;				=>>_AECA8DE46_213:;
+_AA01D89BC_212:;				=>>_AA01D89BC_212:;
 L7F5A46A0_43:;					=>>L7F5A46A0_43:;
-_AECA8DE46_214:;				=>>_AECA8DE46_214:;
+_AA01D89BC_213:;				=>>_AA01D89BC_213:;
 	return;					=>>AR	= 2;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 L7F5A46A0_41_end:;				=>>L7F5A46A0_41_end:;
-_AECA8DE46_215:;				=>>_AECA8DE46_215:;
+_AA01D89BC_214:;				=>>_AA01D89BC_214:;
 }
 
 rjmp void L7F5A46A0_54()			=>>L7F5A46A0_54:
 {
 	__int16 _i_1_2;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -1;BP	+= AR
-_AECA8DE46_216:;				=>>_AECA8DE46_216:;
+_AA01D89BC_215:;				=>>_AA01D89BC_215:;
 	
-_AECA8DE46_217:;				=>>_AECA8DE46_217:;
+_AA01D89BC_216:;				=>>_AA01D89BC_216:;
 	asm I1 = inbuf+0;			=>>I1 = inbuf+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-_AECA8DE46_218:;				=>>_AECA8DE46_218:;
+_AA01D89BC_217:;				=>>_AA01D89BC_217:;
 	asm	AR = AX				=>>AR = AX
-_AECA8DE46_219:;				=>>_AECA8DE46_219:;
+_AA01D89BC_218:;				=>>_AA01D89BC_218:;
 	asm	I0 = AR				=>>I0 = AR
 	
 	
-_AECA8DE46_220:;				=>>_AECA8DE46_220:;
+_AA01D89BC_219:;				=>>_AA01D89BC_219:;
 	sAX	= io[0x33];			=>>AR	= io[0x33];AX	= AR
-_AECA8DE46_221:;				=>>_AECA8DE46_221:;
+_AA01D89BC_220:;				=>>_AA01D89BC_220:;
 	_i_1_2+0	= 0x20;			=>>I1	= rm[BP_SAVE];AX	= 0x20;rm[I1]	= AX
 L7F5A46A0_58:;					=>>L7F5A46A0_58:;
-_AECA8DE46_222:;				=>>_AECA8DE46_222:;
+_AA01D89BC_221:;				=>>_AA01D89BC_221:;
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
@@ -557,32 +557,32 @@ _AECA8DE46_222:;				=>>_AECA8DE46_222:;
 	goto	L7F5A46A0_57;			=>>jmp	L7F5A46A0_57
 L7F5A46A0_59:;					=>>L7F5A46A0_59:;
 	
-_AECA8DE46_223:;				=>>_AECA8DE46_223:;
-_AECA8DE46_224:;				=>>_AECA8DE46_224:;
+_AA01D89BC_222:;				=>>_AA01D89BC_222:;
+_AA01D89BC_223:;				=>>_AA01D89BC_223:;
 	read_I0P();				=>>AX	= rm[I0++];
 	io[0x33]	= sAX;			=>>AR	= AX;io[0x33]	= AR
-_AECA8DE46_225:;				=>>_AECA8DE46_225:;
-_AECA8DE46_226:;				=>>_AECA8DE46_226:;
+_AA01D89BC_224:;				=>>_AA01D89BC_224:;
+_AA01D89BC_225:;				=>>_AA01D89BC_225:;
 	read_I0M();				=>>AX	= rm[I0--];
 	io[0x33]	= sAX;			=>>AR	= AX;io[0x33]	= AR
 	
-_AECA8DE46_227:;				=>>_AECA8DE46_227:;
+_AA01D89BC_226:;				=>>_AA01D89BC_226:;
 	sAX	= io[0x33];			=>>AR	= io[0x33];AX	= AR
-_AECA8DE46_228:;				=>>_AECA8DE46_228:;
+_AA01D89BC_227:;				=>>_AA01D89BC_227:;
 	asm	rm[I0++2] = AX			=>>rm[I0++2] = AX
-_AECA8DE46_229:;				=>>_AECA8DE46_229:;
+_AA01D89BC_228:;				=>>_AA01D89BC_228:;
 	goto L7F5A46A0_58;			=>>jmp	L7F5A46A0_58
 L7F5A46A0_57:;					=>>L7F5A46A0_57:;
-_AECA8DE46_230:;				=>>_AECA8DE46_230:;
+_AA01D89BC_229:;				=>>_AA01D89BC_229:;
 	asm I1 = inbuf+0;			=>>I1 = inbuf+0//
 	asm AR = rm[I1];			=>>AR = rm[I1]//
 	asm not AR.b6;				=>>not AR.b6//
 	asm rm[I1] = AR;			=>>rm[I1] = AR//
 L7F5A46A0_56:;					=>>L7F5A46A0_56:;
-_AECA8DE46_231:;				=>>_AECA8DE46_231:;
+_AA01D89BC_230:;				=>>_AA01D89BC_230:;
 	return;					=>>AR	= 1;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 L7F5A46A0_54_end:;				=>>L7F5A46A0_54_end:;
-_AECA8DE46_232:;				=>>_AECA8DE46_232:;
+_AA01D89BC_231:;				=>>_AA01D89BC_231:;
 }
 
 rjmp void _DoADPCM9CD0E20D()			=>>_DoADPCM9CD0E20D:
@@ -590,9 +590,9 @@ rjmp void _DoADPCM9CD0E20D()			=>>_DoADPCM9CD0E20D:
 	__int16 _i_1_2;
 	__int16 _p_1_4;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -2;BP	+= AR
-_AECA8DE46_233:;				=>>_AECA8DE46_233:;
+_AA01D89BC_232:;				=>>_AA01D89BC_232:;
 	
-_AECA8DE46_234:;				=>>_AECA8DE46_234:;
+_AA01D89BC_233:;				=>>_AA01D89BC_233:;
 	asm I1 = inbuf+0;			=>>I1 = inbuf+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	asm I1 = outbuf+0;			=>>I1 = outbuf+0//
@@ -604,27 +604,27 @@ _AECA8DE46_234:;				=>>_AECA8DE46_234:;
 	if(__jz__)	goto L7F5A46A0_62;	=>>if ZR	jmp L7F5A46A0_62
 	goto	L7F5A46A0_61;			=>>jmp	L7F5A46A0_61
 L7F5A46A0_62:;					=>>L7F5A46A0_62:;
-_AECA8DE46_235:;				=>>_AECA8DE46_235:;
+_AA01D89BC_234:;				=>>_AA01D89BC_234:;
 	goto L7F5A46A0_60;			=>>jmp	L7F5A46A0_60
 L7F5A46A0_61:;					=>>L7F5A46A0_61:;
-_AECA8DE46_236:;				=>>_AECA8DE46_236:;
-_AECA8DE46_237:;				=>>_AECA8DE46_237:;
+_AA01D89BC_235:;				=>>_AA01D89BC_235:;
+_AA01D89BC_236:;				=>>_AA01D89BC_236:;
 	asm set io[0x09].b0;			=>>set io[0x09].b0//
-_AECA8DE46_238:;				=>>_AECA8DE46_238:;
-_AECA8DE46_239:;				=>>_AECA8DE46_239:;
+_AA01D89BC_237:;				=>>_AA01D89BC_237:;
+_AA01D89BC_238:;				=>>_AA01D89BC_238:;
 	L7F5A46A0_35();				=>>pch	= L7F5A46A0_35;lcall	L7F5A46A0_35
-_AECA8DE46_240:;				=>>_AECA8DE46_240:;
+_AA01D89BC_239:;				=>>_AA01D89BC_239:;
 	asm AX = _adpFLTG0FBE3CB5+0;		=>>AX = _adpFLTG0FBE3CB5+0//
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-_AECA8DE46_241:;				=>>_AECA8DE46_241:;
+_AA01D89BC_240:;				=>>_AA01D89BC_240:;
 	asm AX = _adpch30670376+0;		=>>AX = _adpch30670376+0//
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	*(__int16*)sSI	= sAX			=>>rm[I1]	= AX
-_AECA8DE46_242:;				=>>_AECA8DE46_242:;
+_AA01D89BC_241:;				=>>_AA01D89BC_241:;
 	_i_1_2+0	= 0x02;			=>>I1	= rm[BP_SAVE];AX	= 0x02;rm[I1]	= AX
 L7F5A46A0_64:;					=>>L7F5A46A0_64:;
-_AECA8DE46_243:;				=>>_AECA8DE46_243:;
+_AA01D89BC_242:;				=>>_AA01D89BC_242:;
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
@@ -636,8 +636,8 @@ _AECA8DE46_243:;				=>>_AECA8DE46_243:;
 	goto	L7F5A46A0_63;			=>>jmp	L7F5A46A0_63
 L7F5A46A0_65:;					=>>L7F5A46A0_65:;
 	
-_AECA8DE46_244:;				=>>_AECA8DE46_244:;
-_AECA8DE46_245:;				=>>_AECA8DE46_245:;
+_AA01D89BC_243:;				=>>_AA01D89BC_243:;
+_AA01D89BC_244:;				=>>_AA01D89BC_244:;
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_p_1_4;			=>>AR	= -1;I1	= rm[BP_SAVE];I1	+= AR
@@ -649,30 +649,30 @@ _AECA8DE46_245:;				=>>_AECA8DE46_245:;
 	PUSH(sAX);				=>>push	AX
 	L7F5A46A0_41(STACK[sSP + 0]);		=>>pch	= L7F5A46A0_41;lcall	L7F5A46A0_41
 	RESTORESP(1);				=>>pop	AR;
-_AECA8DE46_246:;				=>>_AECA8DE46_246:;
+_AA01D89BC_245:;				=>>_AA01D89BC_245:;
 	asm I1 = ADPCM_Tmpi+0;			=>>I1 = ADPCM_Tmpi+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&ADPCM_Tmpi;		=>>I1	= ADPCM_Tmpi
 	sCX	= *(__int16*)sSI;		=>>CX	= rm[I1]
 	asm AR = 0x0012;			=>>AR = 0x0012//
 	asm rm[I1] = CX + AR;			=>>rm[I1] = CX + AR//
-_AECA8DE46_247:;				=>>_AECA8DE46_247:;
+_AA01D89BC_246:;				=>>_AA01D89BC_246:;
 	asm set io[0x09].b0;			=>>set io[0x09].b0//
-_AECA8DE46_248:;				=>>_AECA8DE46_248:;
+_AA01D89BC_247:;				=>>_AA01D89BC_247:;
 	goto L7F5A46A0_64;			=>>jmp	L7F5A46A0_64
 L7F5A46A0_63:;					=>>L7F5A46A0_63:;
-_AECA8DE46_249:;				=>>_AECA8DE46_249:;
-_AECA8DE46_250:;				=>>_AECA8DE46_250:;
+_AA01D89BC_248:;				=>>_AA01D89BC_248:;
+_AA01D89BC_249:;				=>>_AA01D89BC_249:;
 	L7F5A46A0_54();				=>>pch	= L7F5A46A0_54;lcall	L7F5A46A0_54
-_AECA8DE46_251:;				=>>_AECA8DE46_251:;
+_AA01D89BC_250:;				=>>_AA01D89BC_250:;
 	asm clr io[0x09].b0;			=>>clr io[0x09].b0//
-_AECA8DE46_252:;				=>>_AECA8DE46_252:;
+_AA01D89BC_251:;				=>>_AA01D89BC_251:;
 	asm clr io[0x09].b0;			=>>clr io[0x09].b0//
 L7F5A46A0_60:;					=>>L7F5A46A0_60:;
-_AECA8DE46_253:;				=>>_AECA8DE46_253:;
+_AA01D89BC_252:;				=>>_AA01D89BC_252:;
 	return;					=>>AR	= 2;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 _DoADPCM9CD0E20D_end:;				=>>_DoADPCM9CD0E20D_end:;
-_AECA8DE46_254:;				=>>_AECA8DE46_254:;
+_AA01D89BC_253:;				=>>_AA01D89BC_253:;
 }
 
 

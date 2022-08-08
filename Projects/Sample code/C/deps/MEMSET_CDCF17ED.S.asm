@@ -35,15 +35,15 @@ rcall rjmp void _memset_sC3E11DB1(__int16 _s_0_4, __int16 _c_0_6, __int16 _n_0_8
 {
 	__int16 _ret_1_2;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -1;BP	+= AR
-_AECA8DE46_317:;				=>>_AECA8DE46_317:;
+_AA01D89BC_340:;				=>>_AA01D89BC_340:;
 	
-_AECA8DE46_318:;				=>>_AECA8DE46_318:;
+_AA01D89BC_341:;				=>>_AA01D89BC_341:;
 	sSI	= (int)&_s_0_4;			=>>AR	= 2;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_ret_1_2;		=>>I1	= rm[BP_SAVE]
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-LF2D2B0F3_102:;					=>>LF2D2B0F3_102:;
-_AECA8DE46_319:;				=>>_AECA8DE46_319:;
+LF2D2B0F3_112:;					=>>LF2D2B0F3_112:;
+_AA01D89BC_342:;				=>>_AA01D89BC_342:;
 	sSI	= (int)&_n_0_8;			=>>AR	= 4;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_n_0_8;			=>>AR	= 4;I1	= rm[BP_SAVE];I1	+= AR
@@ -51,10 +51,10 @@ _AECA8DE46_319:;				=>>_AECA8DE46_319:;
 	sCX	= *(__int16*)sSI;		=>>CX	= rm[I1]
 	asm rm[I1] = CX - AR;			=>>rm[I1] = CX - AR//
 	sfx_CHECKZERO();			=>>AR	= AX;
-	if(__jnz__)	goto LF2D2B0F3_103;	=>>if NZ	jmp LF2D2B0F3_103
-	goto	LF2D2B0F3_101;			=>>jmp	LF2D2B0F3_101
-LF2D2B0F3_103:;					=>>LF2D2B0F3_103:;
-_AECA8DE46_320:;				=>>_AECA8DE46_320:;
+	if(__jnz__)	goto LF2D2B0F3_113;	=>>if NZ	jmp LF2D2B0F3_113
+	goto	LF2D2B0F3_111;			=>>jmp	LF2D2B0F3_111
+LF2D2B0F3_113:;					=>>LF2D2B0F3_113:;
+_AA01D89BC_343:;				=>>_AA01D89BC_343:;
 	sSI	= (int)&_ret_1_2;		=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	PUSH(sAX);				=>>push	AX
@@ -66,33 +66,33 @@ _AECA8DE46_320:;				=>>_AECA8DE46_320:;
 	asm AR = 0x0001;			=>>AR = 0x0001//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	asm rm[I1] = AX + AR;			=>>rm[I1] = AX + AR//
-_AECA8DE46_321:;				=>>_AECA8DE46_321:;
-	goto LF2D2B0F3_102;			=>>jmp	LF2D2B0F3_102
-LF2D2B0F3_101:;					=>>LF2D2B0F3_101:;
-_AECA8DE46_322:;				=>>_AECA8DE46_322:;
+_AA01D89BC_344:;				=>>_AA01D89BC_344:;
+	goto LF2D2B0F3_112;			=>>jmp	LF2D2B0F3_112
+LF2D2B0F3_111:;					=>>LF2D2B0F3_111:;
+_AA01D89BC_345:;				=>>_AA01D89BC_345:;
 	sSI	= (int)&_s_0_4;			=>>AR	= 2;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-	goto LF2D2B0F3_100;			=>>jmp	LF2D2B0F3_100
-LF2D2B0F3_100:;					=>>LF2D2B0F3_100:;
-_AECA8DE46_323:;				=>>_AECA8DE46_323:;
+	goto LF2D2B0F3_110;			=>>jmp	LF2D2B0F3_110
+LF2D2B0F3_110:;					=>>LF2D2B0F3_110:;
+_AA01D89BC_346:;				=>>_AA01D89BC_346:;
 	return;					=>>AR	= 1;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 _memset_sC3E11DB1_end:;				=>>_memset_sC3E11DB1_end:;
-_AECA8DE46_324:;				=>>_AECA8DE46_324:;
+_AA01D89BC_347:;				=>>_AA01D89BC_347:;
 }
 
 rcall rjmp void _memset_rC7200006(__int16 _s_0_4, __int16 _c_0_6, __int16 _n_0_8)=>>_memset_rC7200006:
 {
 	__int16 _ret_1_2;
 						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -1;BP	+= AR
-_AECA8DE46_325:;				=>>_AECA8DE46_325:;
+_AA01D89BC_348:;				=>>_AA01D89BC_348:;
 	
-_AECA8DE46_326:;				=>>_AECA8DE46_326:;
+_AA01D89BC_349:;				=>>_AA01D89BC_349:;
 	sSI	= (int)&_s_0_4;			=>>AR	= 2;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_ret_1_2;		=>>I1	= rm[BP_SAVE]
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
-LF2D2B0F3_106:;					=>>LF2D2B0F3_106:;
-_AECA8DE46_327:;				=>>_AECA8DE46_327:;
+LF2D2B0F3_116:;					=>>LF2D2B0F3_116:;
+_AA01D89BC_350:;				=>>_AA01D89BC_350:;
 	sSI	= (int)&_n_0_8;			=>>AR	= 4;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sSI	= (int)&_n_0_8;			=>>AR	= 4;I1	= rm[BP_SAVE];I1	+= AR
@@ -100,10 +100,10 @@ _AECA8DE46_327:;				=>>_AECA8DE46_327:;
 	sCX	= *(__int16*)sSI;		=>>CX	= rm[I1]
 	asm rm[I1] = CX - AR;			=>>rm[I1] = CX - AR//
 	sfx_CHECKZERO();			=>>AR	= AX;
-	if(__jnz__)	goto LF2D2B0F3_107;	=>>if NZ	jmp LF2D2B0F3_107
-	goto	LF2D2B0F3_105;			=>>jmp	LF2D2B0F3_105
-LF2D2B0F3_107:;					=>>LF2D2B0F3_107:;
-_AECA8DE46_328:;				=>>_AECA8DE46_328:;
+	if(__jnz__)	goto LF2D2B0F3_117;	=>>if NZ	jmp LF2D2B0F3_117
+	goto	LF2D2B0F3_115;			=>>jmp	LF2D2B0F3_115
+LF2D2B0F3_117:;					=>>LF2D2B0F3_117:;
+_AA01D89BC_351:;				=>>_AA01D89BC_351:;
 	sSI	= (int)&_ret_1_2;		=>>I1	= rm[BP_SAVE]
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	PUSH(sAX);				=>>push	AX
@@ -115,36 +115,36 @@ _AECA8DE46_328:;				=>>_AECA8DE46_328:;
 	asm AR = 0x0001;			=>>AR = 0x0001//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	asm rm[I1] = AX + AR;			=>>rm[I1] = AX + AR//
-_AECA8DE46_329:;				=>>_AECA8DE46_329:;
-	goto LF2D2B0F3_106;			=>>jmp	LF2D2B0F3_106
-LF2D2B0F3_105:;					=>>LF2D2B0F3_105:;
-_AECA8DE46_330:;				=>>_AECA8DE46_330:;
+_AA01D89BC_352:;				=>>_AA01D89BC_352:;
+	goto LF2D2B0F3_116;			=>>jmp	LF2D2B0F3_116
+LF2D2B0F3_115:;					=>>LF2D2B0F3_115:;
+_AA01D89BC_353:;				=>>_AA01D89BC_353:;
 	sSI	= (int)&_s_0_4;			=>>AR	= 2;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-	goto LF2D2B0F3_104;			=>>jmp	LF2D2B0F3_104
-LF2D2B0F3_104:;					=>>LF2D2B0F3_104:;
-_AECA8DE46_331:;				=>>_AECA8DE46_331:;
+	goto LF2D2B0F3_114;			=>>jmp	LF2D2B0F3_114
+LF2D2B0F3_114:;					=>>LF2D2B0F3_114:;
+_AA01D89BC_354:;				=>>_AA01D89BC_354:;
 	return;					=>>AR	= 1;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
 _memset_rC7200006_end:;				=>>_memset_rC7200006_end:;
-_AECA8DE46_332:;				=>>_AECA8DE46_332:;
+_AA01D89BC_355:;				=>>_AA01D89BC_355:;
 }
 
 rcall rjmp void _memset5A9D755A(__int16 _s_0_4_0, __int16 _s_0_4_1, __int16 _c_0_8, __int16 _n_0_10)=>>_memset5A9D755A:
 {						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR
-_AECA8DE46_333:;				=>>_AECA8DE46_333:;
+_AA01D89BC_356:;				=>>_AA01D89BC_356:;
 	
-_AECA8DE46_334:;				=>>_AECA8DE46_334:;
+_AA01D89BC_357:;				=>>_AA01D89BC_357:;
 	sAX	= (int)&_s_0_4_0;		=>>AR	= 2;AX	= rm[BP_SAVE];AX	+= AR
 	sCX	= 0x0001;			=>>CX	= 0x01
 	sAX	= sAX + sCX;			=>>AR	= CX;AX	+= AR
 	sSI	= sAX;				=>>AR	= AX;I1	= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sfx_CHECKZERO();			=>>AR	= AX;
-	if(__jnz__)	goto LF2D2B0F3_110;	=>>if NZ	jmp LF2D2B0F3_110
-	goto	LF2D2B0F3_109;			=>>jmp	LF2D2B0F3_109
-LF2D2B0F3_110:;					=>>LF2D2B0F3_110:;
-_AECA8DE46_335:;				=>>_AECA8DE46_335:;
-_AECA8DE46_336:;				=>>_AECA8DE46_336:;
+	if(__jnz__)	goto LF2D2B0F3_120;	=>>if NZ	jmp LF2D2B0F3_120
+	goto	LF2D2B0F3_119;			=>>jmp	LF2D2B0F3_119
+LF2D2B0F3_120:;					=>>LF2D2B0F3_120:;
+_AA01D89BC_358:;				=>>_AA01D89BC_358:;
+_AA01D89BC_359:;				=>>_AA01D89BC_359:;
 	sSI	= (int)&_n_0_10;		=>>AR	= 5;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	PUSH(sAX);				=>>push	AX
@@ -158,11 +158,11 @@ _AECA8DE46_336:;				=>>_AECA8DE46_336:;
 	_memset_rC7200006(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2]);=>>call	_memset_rC7200006
 	RESTORESP(3);				=>>AR	= 3;BP	+= AR;
 	sDX	= 0x0800;			=>>DX	= 0x0800
-	goto LF2D2B0F3_108;			=>>jmp	LF2D2B0F3_108
-LF2D2B0F3_109:;					=>>LF2D2B0F3_109:;
-_AECA8DE46_337:;				=>>_AECA8DE46_337:;
-_AECA8DE46_338:;				=>>_AECA8DE46_338:;
-_AECA8DE46_339:;				=>>_AECA8DE46_339:;
+	goto LF2D2B0F3_118;			=>>jmp	LF2D2B0F3_118
+LF2D2B0F3_119:;					=>>LF2D2B0F3_119:;
+_AA01D89BC_360:;				=>>_AA01D89BC_360:;
+_AA01D89BC_361:;				=>>_AA01D89BC_361:;
+_AA01D89BC_362:;				=>>_AA01D89BC_362:;
 	sSI	= (int)&_n_0_10;		=>>AR	= 5;I1	= rm[BP_SAVE];I1	+= AR
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	PUSH(sAX);				=>>push	AX
@@ -176,12 +176,12 @@ _AECA8DE46_339:;				=>>_AECA8DE46_339:;
 	_memset_sC3E11DB1(STACK[sSP + 0], STACK[sSP + 1], STACK[sSP + 2]);=>>call	_memset_sC3E11DB1
 	RESTORESP(3);				=>>AR	= 3;BP	+= AR;
 	sDX	= 0;				=>>DX	= 0x00
-	goto LF2D2B0F3_108;			=>>jmp	LF2D2B0F3_108
-LF2D2B0F3_108:;					=>>LF2D2B0F3_108:;
-_AECA8DE46_340:;				=>>_AECA8DE46_340:;
+	goto LF2D2B0F3_118;			=>>jmp	LF2D2B0F3_118
+LF2D2B0F3_118:;					=>>LF2D2B0F3_118:;
+_AA01D89BC_363:;				=>>_AA01D89BC_363:;
 	return;					=>>pop	AR;rm[BP_SAVE]	= AR;rets
 _memset5A9D755A_end:;				=>>_memset5A9D755A_end:;
-_AECA8DE46_341:;				=>>_AECA8DE46_341:;
+_AA01D89BC_364:;				=>>_AA01D89BC_364:;
 }
 
 

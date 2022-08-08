@@ -3,10 +3,10 @@ FDSP-IDE Information file
 ======================================
 File Name   : C.FLH
 Part Number : TRSF16127A
-Check sum   : F53D
+Check sum   : 0E88
 
-39 % , RAM[__0:_127] = Used : 50 word(s) , Free : 78 word(s)
+41 % , RAM[__0:_127] = Used : 52 word(s) , Free : 76 word(s)
 00 % , RAM[128:_511] = Used : 0 word(s) , Free : 384 word(s) 
 00 % , RAM[512:3072] = Used : 128 word(s) , Free : 2432 word(s) 
-89 % , PROM          = Used : 114.11k word(s) , Free : 13.89k word(s) 
+21 % , PROM          = Used : 27.49k word(s) , Free : 100.51k word(s) 
 ======================================

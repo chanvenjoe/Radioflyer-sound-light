@@ -1,0 +1,12 @@
+[_FDSP-IDE]
+FDSP-IDE Project Define:
+IM=MAIN.ASM
+INCLUDE=COMMON.inc
+SUBASM=LIB/Trsp16Touch_20key.inc
+SUBASM=ISR_Pack.Asm
+SUBASM=ScanKey.asm
+SUBASM=Sdsp_HwConFig.Asm
+SUBASM=SDSP_Play_Sub2.asm
+SUBASM=Touch_Key.asm
+OBJECT=Trsp16Touch_20key_v3.07.obj
+

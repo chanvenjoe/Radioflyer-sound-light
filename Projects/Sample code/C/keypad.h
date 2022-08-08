@@ -6,7 +6,7 @@
 #define MAX_KEY		5
 
 
-typedef void (*keycallback)(void);
+typedef void (*keycallback)(void);//long/short press callback funciton pointer
 
 
 typedef struct _KEYTABLE {
@@ -19,7 +19,7 @@ typedef struct _KEYTABLE {
 extern void InitKey(void);
 extern void PollingKey(void);
 
-extern const KEYTABLE keyfunc[MAX_KEY];
+extern const KEYTABLE keyfunc[MAX_KEY];// key table type array
 
 
 
