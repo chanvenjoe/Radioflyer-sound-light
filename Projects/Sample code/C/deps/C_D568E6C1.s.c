@@ -32,79 +32,79 @@ rjmp void _KeyPlayPrev8E98A35A();
 .code
 rjmp void _main()
 {
-_A1748455A_0:;
+_A569F39CC_0:;
 	////////////////////////////
-_A1748455A_1:;
-_A1748455A_2:;
+_A569F39CC_1:;
+_A569F39CC_2:;
 	_InitialDA4A7CC4();
-_A1748455A_3:;
-_A1748455A_4:;
+_A569F39CC_3:;
+_A569F39CC_4:;
 	_InitKey3C587B6D();
-_A1748455A_5:;
-_A1748455A_6:;
+_A569F39CC_5:;
+_A569F39CC_6:;
 	ADPCM_CHX_Init();
-_A1748455A_7:;
+_A569F39CC_7:;
 	sAX	= 0x0001;
 	asm I1 = CopyToBank+0;
 	*(__int16*)sSI	= sAX
-_A1748455A_8:;
+_A569F39CC_8:;
 	asm	set io[INTENA].b0
-_A1748455A_9:;
+_A569F39CC_9:;
 	asm	eni
-_A1748455A_10:;
-_A1748455A_11:;
+_A569F39CC_10:;
+_A569F39CC_11:;
 	_touch_init378E5983();
 LE6FF7BEA_5:;
-_A1748455A_12:;
-_A1748455A_13:;
+_A569F39CC_12:;
+_A569F39CC_13:;
 	asm	io[ClrWDT] = AR
 	////////////////////////////
-_A1748455A_14:;
-_A1748455A_15:;
+_A569F39CC_14:;
+_A569F39CC_15:;
 	_PollingKey3B90E3B1();
-_A1748455A_16:;
-_A1748455A_17:;
+_A569F39CC_16:;
+_A569F39CC_17:;
 	_DoADPCM9CD0E20D();
-_A1748455A_18:;
+_A569F39CC_18:;
 	goto LE6FF7BEA_5;
 LE6FF7BEA_4:;
 LE6FF7BEA_3:;
-_A1748455A_19:;
+_A569F39CC_19:;
 	return;
 _main_end:;
-_A1748455A_20:;
+_A569F39CC_20:;
 }
 
 rjmp void _KeyPlayAdpECABF1D0()
 {
-_A1748455A_21:;
+_A569F39CC_21:;
 	////////////////////////////
-_A1748455A_22:;
-_A1748455A_23:;
+_A569F39CC_22:;
+_A569F39CC_23:;
 	asm I1 = _iADPCCACC469+0;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
 	_playADPCMBACD5AFD(STACK[sSP + 0]);
 	RESTORESP(1);
 LE6FF7BEA_6:;
-_A1748455A_24:;
+_A569F39CC_24:;
 	return;
 _KeyPlayAdpECABF1D0_end:;
-_A1748455A_25:;
+_A569F39CC_25:;
 }
 
 rjmp void _KeyPlayNextAFBA8CED()
 {
-_A1748455A_26:;
+_A569F39CC_26:;
 	////////////////////////////
-_A1748455A_27:;
+_A569F39CC_27:;
 	asm I1 = _iADPCCACC469+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_iADPCCACC469;
 	sCX	= *(__int16*)sSI;
 	sCX++;
 	*(__int16*)sSI	= sCX;
-_A1748455A_28:;
+_A569F39CC_28:;
 	asm I1 = _iADPCCACC469+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0009;
@@ -112,34 +112,34 @@ _A1748455A_28:;
 	if(__je__)	goto LE6FF7BEA_9;
 	goto	LE6FF7BEA_8;
 LE6FF7BEA_9:;
-_A1748455A_29:;
+_A569F39CC_29:;
 	sAX	= 0x0000;
 	asm I1 = _iADPCCACC469+0;
 	*(__int16*)sSI	= sAX
 LE6FF7BEA_8:;
-_A1748455A_30:;
-_A1748455A_31:;
-_A1748455A_32:;
+_A569F39CC_30:;
+_A569F39CC_31:;
+_A569F39CC_32:;
 	_KeyPlayAdpECABF1D0();
 LE6FF7BEA_7:;
-_A1748455A_33:;
+_A569F39CC_33:;
 	return;
 _KeyPlayNextAFBA8CED_end:;
-_A1748455A_34:;
+_A569F39CC_34:;
 }
 
 rjmp void _KeyPlayPrev8E98A35A()
 {
-_A1748455A_35:;
+_A569F39CC_35:;
 	////////////////////////////
-_A1748455A_36:;
+_A569F39CC_36:;
 	asm I1 = _iADPCCACC469+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_iADPCCACC469;
 	sCX	= *(__int16*)sSI;
 	sCX--;
 	*(__int16*)sSI	= sCX;
-_A1748455A_37:;
+_A569F39CC_37:;
 	asm I1 = _iADPCCACC469+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0000;
@@ -147,20 +147,20 @@ _A1748455A_37:;
 	if(__je__)	goto LE6FF7BEA_12;
 	goto	LE6FF7BEA_11;
 LE6FF7BEA_12:;
-_A1748455A_38:;
+_A569F39CC_38:;
 	sAX	= 0x0005;
 	asm I1 = _iADPCCACC469+0;
 	*(__int16*)sSI	= sAX
 LE6FF7BEA_11:;
-_A1748455A_39:;
-_A1748455A_40:;
-_A1748455A_41:;
+_A569F39CC_39:;
+_A569F39CC_40:;
+_A569F39CC_41:;
 	_KeyPlayAdpECABF1D0();
 LE6FF7BEA_10:;
-_A1748455A_42:;
+_A569F39CC_42:;
 	return;
 _KeyPlayPrev8E98A35A_end:;
-_A1748455A_43:;
+_A569F39CC_43:;
 }
 
 // .code ends _text

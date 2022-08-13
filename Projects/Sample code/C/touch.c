@@ -9,6 +9,7 @@
 
 int * p;
 static char i=0;
+static char  Touch_cnt=0;
 
 void touch_IRS()
 {
@@ -37,15 +38,21 @@ void touch_init()
 	B_STMGWK_EN=0;
 	B_THEN	=1;		
 	B_SVT = 0;//1/4vcc	
-	B_TISB0	= 1;	
-	B_TISB1	= 0;//00: NA PA
+	B_TISB0	= 0;	
+	B_TISB1	= 1;//00: NA PA
 	B_TINT_EN = 1;	
 	B_TOUCH_REALT =1;	
 		
-
+	//Pin config
+	B_IOC_PC0=0;
+	B_IOC_PA3=0;
+	
+	
 	//Turn on cap touch
-	R_IOP_IX = IOP_PA_4MA;//Port A touch enable
-	R_IOP_DAT = BIT(0)|(BIT(1)|BIT(2)|BIT(3));
+	R_IOP_IX = IOP_PB_4MA;//Port C touch enable
+	R_IOP_DAT = BIT(0);
+	
+	
 	
 	
 	//Touch int En
@@ -55,7 +62,13 @@ void touch_init()
 	
 void Touch_entry(void) interrupt(5)
 {
-	touch_IRS();
-	KeyPlayAdp();
+	Touch_cnt++;
+	if(Touch_cnt>Sensitivity)
+	{
+		touch_IRS();
+		clr_Tcnt
+	}
+
+//	KeyPlayAdp();
 	//playADPCM(2);
 }

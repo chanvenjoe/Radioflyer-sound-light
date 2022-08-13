@@ -68,10 +68,14 @@ void InitKey(void)
 	B_IOC_PA0 = 0;		// PA0 input
 	B_IOC_PA1 = 0;		// PA1 input
 	B_IOC_PA2 = 0;		// PA2 input
-
 	
+	B_IOC_PA3 = 0;
+	B_IOC_PB0 = 0;		// As touch port
+	B_IOC_PC0 = 0;
+	
+
 	B_IOC_PB2 = 1;
-	B_IOC_PB0 = 1;
+
 
 	//Turn on PortA 50K pull down for pa 0 1 2 
 
