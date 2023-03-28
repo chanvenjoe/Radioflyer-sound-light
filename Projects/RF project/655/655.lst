@@ -1,0 +1,6599 @@
+            ;=========================Include <OPTION.INC> Start=========================
+            //--------------------------------------------------------------------------------------------------
+            // TRITAN FDSP-IDE Option define file.
+            // WARNING! All changes made in this file will be lost when recompiling.
+            //--------------------------------------------------------------------------------------------------
+            // Part number    : TRSF16127A
+            // Option version : 2.2
+            // Base Information--------------------------------------------------------------------------------
+            #define       _OPT_TRSF16127A_                
+            #define       _OPT_PROMSize_                0x20000   //PROM Size
+            #define       _OPT_SRAMSize_                3072      //SRAM Size
+            // I/O Configuration--------------------------------------------------------------------------------
+            #define       _OPT_EXTReset_EN_             0         //EXT Reset Enable,0:Disable,1:Enable
+            #define       _OPT_EXTINT1_EN_              0         //EXTINT1_EN,0:Disable,1:Enable
+            #define       _OPT_EXTINT0_EN_              0         //EXTINT0_EN,0:Disable,1:Enable
+            #define       _OPT_SpreadSpectrum_          0         //Spread Spectrum Enable,0:Disable,1:Enable
+            #define       _OPT_EXTResetPin_             0         //EXT Reset Pin Select,0:PB3,1:PC3
+            #define       _OPT_EXTINT1_INV_             0         //EXTINT1_INV,0:Disable,1:Enable
+            #define       _OPT_EXTINT0_INV_             0         //EXTINT0_INV,0:Disable,1:Enable
+            // Memory Configuration-----------------------------------------------------------------------------
+            #define       _OPT_PRAMBank_                0         //PRAM Bank
+            #define       _OPT_PRAMSize_                0         //PRAM Size(Words)
+            #define       _OPT_WriteSegmentProtection_  0x0FFFF   //Write Segment Protection(0000H~ )
+            // System Control Setup-----------------------------------------------------------------------------
+            #define       _OPT_Bank0Speed_              11        //Bank0 Speed(MHz)
+            #define       _OPT_RTCINT_                  1         //RTC interrupt,0:Disable,1:Enable
+            #define       _OPT_RTCinHalt_               0         //RTC LP32K in Halt Mode,0:Disable,1:Enable
+            #define       _OPT_LVR_                     2200      //LVR(mv)
+            #define       _OPT_WatchDog_                256       //Watch dog(ms)
+            #define       _OPT_ICEEnable_               1         //ICE Disable/Enable,0:Disable,1:Enable
+            // Audio Configuration------------------------------------------------------------------------------
+            #define       _OPT_AudioSamplingRate_       32        //Audio Sampling Rate(KHz)
+            #define       _OPT_PWMBit_                  16        //PWM Bit
+            #define       _OPT_DACFIFO_                 1         //DAC FIFO,0:Disable,1:Enable
+            //--------------------------------------------------------------------------------------------------
+            ;=========================Include <OPTION.INC> End=========================
+            
+            #define DSP_SRAM_SIZE		3072
+            #define DSP_VECT_SUPPORT		6
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\CRT0.INC> Start=========================
+            
+            ; =====================
+            ;      COMMON I/O
+            ; =====================
+            
+            #ifdef _MFDSP_
+            
+            ; {
+            	STATUS          EQU             00H             ;R/W, BIT0: Zero.
+            							;R/W, BIT1: Carry.
+            							;R/W, BIT2: Overflow.
+            							;R/W, BIT3: Negative.
+            							;R/W, BIT7: Global Interrupt Enable.
+            							;R/W, BIT[12:8]: SD_EN, TRA_EN, ADH_EN, SPIS_EN, SPIM_EN.
+            							;R/W, BIT13: Interrupt Vector Table Access Enable.
+            							;R/W, BIT14: Filter Buffer Available.
+            							;R/W, BIT15: Parser Buffer Available.
+            
+            	INTENA          EQU             01H             ;R/W, Int Enable.
+            	INTREQ          EQU             02H             ;R/W, Int Request.
+            	IntVect         EQU             03H             ;R/W, Interrupt Table
+            	IOC_PA          EQU             04H             ;R/W, PortA IO control. ('0' = input,'1' = output)
+            	IOC_PB          EQU             05H             ;R/W, PortB IO control. ('0' = input,'1' = output)
+            	IOC_PCI         EQU             06H             ;R/W, PortCI IO control. ('0' = input,'1' = output)
+            	IOC_PC          EQU             06H             ;R/W, PortCI IO control. ('0' = input,'1' = output)
+            	PortA           EQU             07H             ;R/W, General input/output port.
+            	PortB           EQU             08H             ;R/W, General input/output port.
+            	PortCI          EQU             09H             ;R/W, General input/output port.
+            	PortC           EQU             09H             ;R/W, General input/output port.
+            	INTMASK         EQU             0AH             ;R/W, Int Mask.
+            	SPIS_CTL        EQU             0BH             ;R/W, SPI slaver control register.
+            	SPIS_DAT        EQU             0CH             ;R/W, SPI slaver data    register.
+            	SPI_CTL         EQU             0DH             ;R/W, SPI master control register.
+            	SPI_DAT         EQU             0EH             ;R/W, SPI master data    register.
+            	SD_CTL          EQU             0FH             ;R/W, SD card interface control register.
+            	SD_DAT          EQU             10H             ;R/W, SD card interface data.
+            	SD_RSP          EQU             11H             ;R/W, SD card interface response register.
+            	UART_CTL        EQU             12H
+            	UART_DAT        EQU             13H
+            	DPPWM           EQU             14H
+            	//------------------------------------
+            	PUPD_PA         EQU             15H             ;R/W, PortA  Pull-Up(b15~b8)/Pull-Down(b7~b0)
+            	DACL            EQU             16H
+            	DACR            EQU             17H
+            	USB_CTL         EQU             18H
+            	USB_DAT         EQU             19H
+            	PUPD_PB         EQU             1AH             ;R/W, PortB  Pull-Up(b15~b8)/Pull-Down(b7~b0)
+            	PUPD_PC         EQU             1BH             ;R/W, PortC  Pull-Up(b15~b8)/Pull-Down(b7~b0)
+            	MISC            EQU             1CH
+            	ClrWDT          EQU             1DH             ;W, Clear Watch-dog reset.
+            	Real_T          EQU             1DH             ;R, System Real-Time Counter, base on 31.25us
+            	IOP_IX          EQU             1EH             ;W, Programming IO Port index .
+            	IOP_DAT         EQU             1FH             ;W, Programming IO Port Data .
+            
+            	//------------------------------------
+            	// Virtual         Program IO Port
+            	IOP_Timer1      EQU             00H
+            	IOP_Timer2      EQU             01H
+            	IOP_RTC32K      EQU             02H
+            	IOP_PreScale    EQU             03H
+            	IOP_FGREEN32K   EQU             04H
+            	IOP_ODEN_PA     EQU             05H
+            	IOP_ODEN_PB     EQU             06H
+            	IOP_ODEN_PC     EQU             07H
+            
+            	IOP_TOUCH_CFG   EQU             08H
+            	IOP_TOUCH_DAT   EQU             09H
+            
+            	IOP_CLK_CFG     EQU             0AH
+            	IOP_CLK_DAT1    EQU             0BH
+            	IOP_CLK_DAT2    EQU             0CH
+            	IOP_CUR_PA      EQU             0DH
+            	IOP_CUR_PB      EQU             0EH
+            	IOP_CUR_PC      EQU             0FH
+            
+            	//------------------------------------
+            	// IO[0x40-0x7F]
+            	ADH_CFG0        EQU             40H
+            	ADH_CFG1        EQU             41H
+            	ADH_CFG2        EQU             42H
+            	ADH_CFG3        EQU             43H
+            	ADH_DO          EQU             44H
+            
+            	ADL_CFG         EQU             45H
+            
+            	TRA_CFG         EQU             46H
+            	TRA_DAT         EQU             47H
+            
+            	I2C_CTL         EQU             48H
+            	I2C_DAT         EQU             49H
+            	I2C_CMD         EQU             4AH
+            	I2C_SR          EQU             4AH             ; same as I2C_CMD
+            
+            	I80_CTL         EQU             4BH
+            	I80_INX         EQU             4CH
+            	I80_DAT         EQU             4DH
+            	I80_RADR        EQU             4EH
+            	I80_DMANUM      EQU             4FH
+            
+            	SD_DMA_CTL      EQU             50H
+            	SD_DMA_RADR     EQU             51H
+            	SD_DMA_DMANUM   EQU             52H
+            
+            	SPI_DMA_CTL     EQU             53H
+            	SPI_DMA_RADR    EQU             54H
+            	SPI_DMA_DMANUM  EQU             55H
+            
+            	USB_DMA_CTL     EQU             56H
+            	USB_DMA_RADR    EQU             57H
+            	USB_DMA_DMANUM  EQU             58H
+            
+            	SSC             EQU             63H
+            	MIC             EQU             64H
+            	GREEN           EQU             65H
+            	SLEEP           EQU             66H
+            	SPEED           EQU             67H
+            	PR              EQU             68H
+            
+            	//------------------------------------
+            	IOP_WAKEN_PA    EQU             10H
+            	IOP_WAKEN_PB    EQU             11H
+            	IOP_WAKEN_PC    EQU             12H
+            ; }
+            
+            #endif
+            
+            
+            
+            
+            #ifdef _MSPEECHDSP_
+            
+            	STATUS		EQU    00H	 ; R/W, BIT0:  Zero.
+            					 ; R/W, BIT1:  Carry.
+            					 ; R/W, BIT2:  Overflow.
+            					 ; R/W, BIT3:  Negative.
+            					 ; R/W, BIT7:  Global Interrupt Enable.
+            					 ; R/W, BIT8:  SPIM_EN.
+            					 ; R/W, BIT13: Interrupt Vector Table Access Enable.
+            					 ; R/W, BIT14: Filter Buffer Available.
+            					 ; R/W, BIT15: Parser Buffer Available.
+            
+            	INTENA		EQU    01H	 ; R/W, Int Enable.
+            	INTREQ		EQU    02H	 ; R/W, Int Request.
+            	IntVect		EQU    03H	 ; R/W, Interrupt Table
+            	IOC_PA		EQU    04H	 ; R/W, PortA IO control. ('0' = input,'1' = output)
+            	IOC_PB		EQU    05H	 ; R/W, PortB IO control. ('0' = input,'1' = output)
+            	IOC_PC		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	IOC_PCI		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	PortA		EQU    07H	 ; R/W, General input/output port.
+            	PortB		EQU    08H	 ; R/W, General input/output port.
+            	PortC		EQU    09H	 ; R/W, General input/output port.
+            	PortCI		EQU    09H	 ; R/W, General input/output port.
+            	INTMASK		EQU    0AH	 ; R/W, Int Mask.
+            	DACL		EQU    16H
+            	MISC5		EQU    18H	 ; R/W, Miscellanea register #5
+            	MISC4		EQU    19H	 ; R/W, Miscellanea register #4
+            	MISC3		EQU    1AH	 ; R/W, Miscellanea register #3
+            	MISC2		EQU    1BH	 ; R/W, Miscellanea register #2
+            	MISC		EQU    1CH	 ; R/W, Miscellanea register #1
+            	ClrWDT		EQU    1DH	 ; W, Clear Watch-dog reset.
+            	Real_T		EQU    1DH	 ; R, System Real-Time Counter, base on 31.25us
+            	IOP_IX		EQU    1EH	 ; W, Programming IO Port index .
+            	IOP_DAT		EQU    1FH	 ; W, Programming IO Port Data .
+            
+            	; Virtual Program IO Port
+            	IOP_Timer1	EQU    00H
+            	IOP_Timer2	EQU    01H
+            	IOP_RTC32K	EQU    02H
+            	IOP_FetchCNT	EQU    03H
+            
+            	IOP_PA_PD50K	EQU    05H
+            	IOP_PB_PD50K	EQU    06H
+            	IOP_PCI_PD50K	EQU    07H
+            	IOP_PA_PD220K	EQU    08H
+            	IOP_PB_PD220K	EQU    09H
+            	IOP_PCI_PD220K	EQU    0AH
+            	IOP_PA_PD1M	EQU    0BH
+            	IOP_PB_PD1M	EQU    0CH
+            	IOP_PCI_PD1M	EQU    0DH
+            	IOP_PA_4MA	EQU    0EH
+            	IOP_PB_4MA	EQU    0FH
+            	IOP_PCI_4MA	EQU    10H
+            	IOP_PA_WLOW	EQU    11H
+            	IOP_PB_WLOW	EQU    12H
+            	IOP_PCI_WLOW	EQU    13H
+            	IOP_WAKEN_PA	EQU    14H
+            	IOP_WAKEN_PB	EQU    15H
+            	IOP_WAKEN_PC	EQU    16H
+            	IOP_WAKELV_PA	EQU    17H
+            	IOP_WAKELV_PB	EQU    18H
+            	IOP_WAKELV_PC	EQU    19H
+            	IOP_WAKEDLV_PB	EQU    1AH
+            
+            	; IO[0x40-0x7F]
+            	ENC_DAT		EQU    54H
+            	SPI_CTL		EQU    55H
+            	SPI_DAT		EQU    56H
+            	EP		EQU    5EH
+            	SSC		EQU    63H
+            	SPEED		EQU    67H
+            #endif
+            
+            
+            
+            #ifdef _MSPEECHDSP2_
+            
+            	STATUS		EQU    00H	 ; R/W, BIT0:  Zero.
+            					 ; R/W, BIT1:  Carry.
+            					 ; R/W, BIT2:  Overflow.
+            					 ; R/W, BIT3:  Negative.
+            					 ; R/W, BIT7:  Global Interrupt Enable.
+            					 ; R/W, BIT8:  SPIM_EN.
+            					 ; R/W, BIT13: Interrupt Vector Table Access Enable.
+            					 ; R/W, BIT14: Filter Buffer Available.
+            					 ; R/W, BIT15: Parser Buffer Available.
+            
+            	INTENA		EQU    01H	 ; R/W, Int Enable.
+            	INTREQ		EQU    02H	 ; R/W, Int Request.
+            	IntVect		EQU    03H	 ; R/W, Interrupt Table
+            	IOC_PA		EQU    04H	 ; R/W, PortA IO control. ('0' = input,'1' = output)
+            	IOC_PB		EQU    05H	 ; R/W, PortB IO control. ('0' = input,'1' = output)
+            	IOC_PC		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	IOC_PCI		EQU    06H	 ; R/W, PortCI IO control. ('0' = input,'1' = output)
+            	PortA		EQU    07H	 ; R/W, General input/output port.
+            	PortB		EQU    08H	 ; R/W, General input/output port.
+            	PortC		EQU    09H	 ; R/W, General input/output port.
+            	PortCI		EQU    09H	 ; R/W, General input/output port.
+            	INTMASK		EQU    0AH	 ; R/W, Int Mask.
+            	DACL		EQU    16H
+            	MISC5		EQU    18H	 ; R/W, Miscellanea register #5
+            	MISC4		EQU    19H	 ; R/W, Miscellanea register #4
+            	MISC3		EQU    1AH	 ; R/W, Miscellanea register #3
+            	MISC2		EQU    1BH	 ; R/W, Miscellanea register #2
+            	MISC		EQU    1CH	 ; R/W, Miscellanea register #1
+            	ClrWDT		EQU    1DH	 ; W, Clear Watch-dog reset.
+            	Real_T		EQU    1DH	 ; R, System Real-Time Counter, base on 31.25us
+            	IOP_IX		EQU    1EH	 ; W, Programming IO Port index .
+            	IOP_DAT		EQU    1FH	 ; W, Programming IO Port Data .
+            
+            	; Virtual Program IO Port
+            	IOP_Timer1	EQU    00H
+            	IOP_Timer2	EQU    01H
+            	IOP_RTC32K	EQU    02H
+            	IOP_FetchCNT	EQU    03H
+            
+            	IOP_PA_PD50K	EQU    05H
+            	IOP_PB_PD50K	EQU    06H
+            	IOP_PCI_PD50K	EQU    07H
+            	IOP_PA_PD220K	EQU    08H
+            	IOP_PB_PD220K	EQU    09H
+            	IOP_PCI_PD220K	EQU    0AH
+            	IOP_PA_PD1M	EQU    0BH
+            	IOP_PB_PD1M	EQU    0CH
+            	IOP_PCI_PD1M	EQU    0DH
+            	IOP_PA_4MA	EQU    0EH
+            	IOP_PB_4MA	EQU    0FH
+            	IOP_PCI_4MA	EQU    10H
+            	IOP_PA_WLOW	EQU    11H
+            	IOP_PB_WLOW	EQU    12H
+            	IOP_PCI_WLOW	EQU    13H
+            	IOP_WAKEN_PA	EQU    14H
+            	IOP_WAKEN_PB	EQU    15H
+            	IOP_WAKEN_PC	EQU    16H
+            	IOP_WAKELV_PA	EQU    17H
+            	IOP_WAKELV_PB	EQU    18H
+            	IOP_WAKELV_PC	EQU    19H
+            	IOP_WAKEDLV_PB	EQU    1AH
+            
+            	; IO[0x40-0x7F]
+            	ENC_DAT		EQU    54H
+            	SPI_CTL		EQU    55H
+            	SPI_DAT		EQU    56H
+            	EP		EQU    5EH
+            	SSC		EQU    63H
+            	SPEED		EQU    67H
+            #endif
+            
+            
+            
+            
+            ;-----------------------------------------------------------
+            
+            #ifdef NO_OPTIMAL_RM
+            
+            
+            #else
+            
+            #define Optimal_RM	; Optimal RAM function Enable
+            
+            #endif
+            
+            
+            VarRM[0:127] = {
+            BP_SAVE,
+            
+            }
+            
+            VarRM[128:511] = {
+            
+            }
+            
+            VarRM[512:4095] = {
+            
+            }
+            
+            ShareVar = {
+            
+            }
+            
+            ;--------------------------------------------------------------------
+            
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\CRT0.INC> End=========================
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\CRT0.ASM> Start=========================
+            
+            	org	0000h
+            RSTB_ENTRY:
+00000:      	PCH=		SYS_PROG_ENTRY
+00001:      	ljmp		SYS_PROG_ENTRY
+            
+            
+            	org	0004h
+            WAKEUP_ENTRY:
+00004:      	PCH=		WAKEUP_PROC
+00005:      	ljmp		WAKEUP_PROC
+            
+            
+            	org	0100h
+            
+            
+            
+            SYS_PROG_ENTRY:
+            	; ~~ DSP initial
+            
+00100:      	dsi
+00101:      	nop
+00102:      	AR=		@STACKBOTTOM
+00104:      	BP=		AR
+00105:      	AR=		DSP_SRAM_SIZE
+00107:      	AR--
+00108:      	CX=		AR
+00109:      	I1=		AR
+0010A:      	AR=		0
+            @clearram_loop_1705:
+0010B:      	rm[I1--]=	AR
+0010C:      	loop		@clearram_loop_1705
+            
+0010D:      	io[ClrWDT]=	AR
+            
+0010E:      	set		io[STATUS].b13
+0010F:      	CX=		DSP_VECT_SUPPORT
+00110:      	P1=		#IntVectTable
+00113:      	jmp		@setintvect_label_1548
+            @setintvect_loop_1548:
+00114:      	AR=		pm[P1++]
+00115:      	io[IntVect]=	AR
+            @setintvect_label_1548:
+00116:      	loop		@setintvect_loop_1548
+            
+00117:      	clr		io[STATUS].b13
+            
+            	; ~~ C code
+            
+            #ifdef PRAM_BANK
+            	PCH=		sfx_DynFastCallInit
+            	lcall		sfx_DynFastCallInit
+            #endif
+            
+00118:      	PCH=		ginit_code
+00119:      	lcall		ginit_code
+            
+0011A:      	PCH=		_main
+0011B:      	lcall		_main
+0011C:      	jmp		SYS_PROG_ENTRY
+            
+            
+            /* ================================================================= */
+            // ------------- Interrupt Service Routine--------------------------
+            /* ================================================================= */
+            
+            EMPTY_INTENTRY:
+0011D:      	reti
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\CRT0.ASM> End=========================
+            
+            ;=========================Include <DEPS\655_99B6FC89.S.CODE.ASM> Start=========================
+            ; 655.C Code Start!!;
+            VarRM[0:4095]={
+              
+            };
+            
+            ; //
+            .code
+            ; //
+            ; //
+            ; //interrupt naked void _PWM99B23D7D();
+            ; //void _WakeupProc94A410F9();
+            ; //void _main();
+            ; //void _InitialDA4A7CC4();
+            ; //
+            ; //
+            ; //
+            ; //
+            .code
+            ; //interrupt naked void _PWM99B23D7D()		
+            _PWM99B23D7D:
+            ; //{
+            ; //_ADDF15A34_0:;					
+            _ADDF15A34_0:
+            ; //_ADDF15A34_1:;					
+            _ADDF15A34_1:
+            ; //	asm	clr io[INTREQ].b0		
+0011E:      	clr io[INTREQ].b0
+            ; //_ADDF15A34_2:;					
+            _ADDF15A34_2:
+            ; //	asm	push AX				
+0011F:      	push AX
+            ; //_ADDF15A34_3:;					
+            _ADDF15A34_3:
+            ; //	asm	push I0				
+00120:      	push I0
+            ; //_ADDF15A34_4:;					
+            _ADDF15A34_4:
+            ; //	asm	push I1				
+00121:      	push I1
+            ; //_ADDF15A34_5:;					
+            _ADDF15A34_5:
+            ; //	asm	pop I1				
+00122:      	pop I1
+            ; //_ADDF15A34_6:;					
+            _ADDF15A34_6:
+            ; //	asm	pop I0				
+00123:      	pop I0
+            ; //_ADDF15A34_7:;					
+            _ADDF15A34_7:
+            ; //	asm	pop AX				
+00124:      	pop AX
+            ; //	
+            ; //LD1B663E8_2:;					
+            LD1B663E8_2:
+            ; //_ADDF15A34_8:;					
+            _ADDF15A34_8:
+            ; //	return;					
+00125:      	reti
+            ; //_PWM99B23D7D_end:;				
+            _PWM99B23D7D_end:
+            ; //_ADDF15A34_9:;					
+            _ADDF15A34_9:
+            ; //}
+            ; //
+            ; //void _WakeupProc94A410F9()			
+            _WakeupProc94A410F9:
+            ; //{
+            ; //_ADDF15A34_10:;					
+            _ADDF15A34_10:
+            ; //_ADDF15A34_11:;					
+            _ADDF15A34_11:
+            ; //	asm	io[ClrWDT] = AR			
+00126:      	io[ClrWDT] = AR
+            ; //	
+            ; //LD1B663E8_3:;					
+            LD1B663E8_3:
+            ; //_ADDF15A34_12:;					
+            _ADDF15A34_12:
+            ; //	return;					
+00127:      	rets
+            ; //_WakeupProc94A410F9_end:;			
+            _WakeupProc94A410F9_end:
+            ; //_ADDF15A34_13:;					
+            _ADDF15A34_13:
+            ; //}
+            ; //
+            ; //void _main()					
+            _main:
+            ; //{
+            ; //	__int16 _i_1_2;
+            ; //						
+00128:      	AR	= rm[BP_SAVE]
+00129:      	push	AR
+0012A:      	AR	= BP
+0012B:      	rm[BP_SAVE]	= AR
+0012C:      	AR	 = -1
+0012D:      	BP	+= AR
+            ; //_ADDF15A34_14:;					
+            _ADDF15A34_14:
+            ; //_ADDF15A34_15:;					
+            _ADDF15A34_15:
+            ; //	_i_1_2+0	= 0x00;			
+0012E:      	I1	= rm[BP_SAVE]
+0012F:      	AR	= 0x00
+00130:      	rm[I1]	= AR
+            ; //_ADDF15A34_16:;					
+            _ADDF15A34_16:
+            ; //_ADDF15A34_17:;					
+            _ADDF15A34_17:
+            ; //	_InitialDA4A7CC4();			
+00131:      	pch	= _InitialDA4A7CC4
+00132:      	lcall	_InitialDA4A7CC4
+            ; //LD1B663E8_6:;					
+            LD1B663E8_6:
+            ; //_ADDF15A34_18:;					
+            _ADDF15A34_18:
+            ; //_ADDF15A34_19:;					
+            _ADDF15A34_19:
+            ; //	asm	io[ClrWDT] = AR			
+00133:      	io[ClrWDT] = AR
+            ; //	
+            ; //_ADDF15A34_20:;					
+            _ADDF15A34_20:
+            ; //_ADDF15A34_21:;					
+            _ADDF15A34_21:
+            ; //	sAX	= 0x0064;			
+00134:      	AX	= 0x64
+            ; //	PUSH(sAX);				
+00135:      	push	AX
+            ; //	_delay6F9F34ED(STACK[sSP + 0]);		
+00136:      	pch	= _delay6F9F34ED
+00137:      	lcall	_delay6F9F34ED
+            ; //	RESTORESP(1);				
+00138:      	pop	AR
+            ; //_ADDF15A34_22:;					
+            _ADDF15A34_22:
+            ; //_ADDF15A34_23:;					
+            _ADDF15A34_23:
+            ; //	sSI	= (int)&_i_1_2;			
+00139:      	I1	= rm[BP_SAVE]
+            ; //	sAX	= *(__int16*)sSI;		
+0013A:      	AX	= rm[I1]
+            ; //	PUSH(sAX);				
+0013B:      	push	AX
+            ; //	sAX	= 0x0007;			
+0013C:      	AX	= 0x07
+            ; //	PUSH(sAX);				
+0013D:      	push	AX
+            ; //	outp(STACK[sSP + 0], STACK[sSP + 1]);	
+0013E:      	pch	= outp
+0013F:      	lcall	outp
+            ; //	RESTORESP(2);				
+00140:      	pop	AR
+00141:      	pop	AR
+            ; //_ADDF15A34_24:;					
+            _ADDF15A34_24:
+            ; //	sSI	= (int)&_i_1_2;			
+00142:      	I1	= rm[BP_SAVE]
+            ; //	sAX	= *(__int16*)sSI;		
+00143:      	AX	= rm[I1]
+            ; //	sCX	= 0x000F;			
+00144:      	CX	= 0x0F
+            ; //	sfx_CMP_AX_CX_JL();			
+00145:      	pch	= sfx_CMP_AX_CX_JL
+00146:      	lcall	sfx_CMP_AX_CX_JL
+            ; //	if(__je__)	goto LD1B663E8_8;	
+00147:      	if ZR	jmp LD1B663E8_8
+            ; //	goto	LD1B663E8_7;			
+00148:      	pch =	LD1B663E8_7
+00149:      	ljmp	LD1B663E8_7
+            ; //LD1B663E8_8:;					
+            LD1B663E8_8:
+            ; //_ADDF15A34_25:;					
+            _ADDF15A34_25:
+            ; //	sSI	= (int)&_i_1_2;			
+0014A:      	I1	= rm[BP_SAVE]
+            ; //	sAX	= *(__int16*)sSI;		
+0014B:      	AX	= rm[I1]
+            ; //	sSI	= (int)&_i_1_2;			
+0014C:      	I1	= rm[BP_SAVE]
+            ; //	asm AR = 0x0001;			
+0014D:      	AR = 0x0001//
+            ; //	sCX	= *(__int16*)sSI;		
+0014E:      	CX	= rm[I1]
+            ; //	asm rm[I1] = CX + AR;			
+0014F:      	rm[I1] = CX + AR//
+            ; //	goto LD1B663E8_9;			
+00150:      	pch =	LD1B663E8_9
+00151:      	ljmp	LD1B663E8_9
+            ; //LD1B663E8_7:;					
+            LD1B663E8_7:
+            ; //_ADDF15A34_26:;					
+            _ADDF15A34_26:
+            ; //	_i_1_2+0	= 0x00;			
+00152:      	I1	= rm[BP_SAVE]
+00153:      	AR	= 0x00
+00154:      	rm[I1]	= AR
+            ; //LD1B663E8_9:;					
+            LD1B663E8_9:
+            ; //_ADDF15A34_27:;					
+            _ADDF15A34_27:
+            ; //	goto LD1B663E8_6;			
+00155:      	pch =	LD1B663E8_6
+00156:      	ljmp	LD1B663E8_6
+            ; //LD1B663E8_5:;					
+            LD1B663E8_5:
+            ; //LD1B663E8_4:;					
+            LD1B663E8_4:
+            ; //_ADDF15A34_28:;					
+            _ADDF15A34_28:
+            ; //	return;					
+00157:      	AR	= 1
+00158:      	BP	+= AR
+00159:      	pop	AR
+0015A:      	rm[BP_SAVE]	= AR
+0015B:      	rets
+            ; //_main_end:;					
+            _main_end:
+            ; //_ADDF15A34_29:;					
+            _ADDF15A34_29:
+            ; //}
+            ; //
+            ; //void _InitialDA4A7CC4()				
+            _InitialDA4A7CC4:
+            ; //{
+            ; //_ADDF15A34_30:;					
+            _ADDF15A34_30:
+            ; //	
+            ; //_ADDF15A34_31:;					
+            _ADDF15A34_31:
+            ; //	sAX	= 0x003F;			
+0015C:      	AX	= 0x3F
+            ; //_ADDF15A34_32:;					
+            _ADDF15A34_32:
+            ; //	asm	AR = AX				
+0015D:      	AR = AX
+            ; //_ADDF15A34_33:;					
+            _ADDF15A34_33:
+            ; //	asm	FLTG = AR			
+0015E:      	FLTG = AR
+            ; //	
+            ; //_ADDF15A34_34:;					
+            _ADDF15A34_34:
+            ; //	sAX	= 0x1FFF;			
+0015F:      	AX	= 0x1FFF
+            ; //_ADDF15A34_35:;					
+            _ADDF15A34_35:
+            ; //	asm	AR = AX				
+00161:      	AR = AX
+            ; //_ADDF15A34_36:;					
+            _ADDF15A34_36:
+            ; //	asm	FLTP = AR			
+00162:      	FLTP = AR
+            ; //	
+            ; //_ADDF15A34_37:;					
+            _ADDF15A34_37:
+            ; //	sAX	= 0x0008;			
+00163:      	AX	= 0x08
+            ; //_ADDF15A34_38:;					
+            _ADDF15A34_38:
+            ; //	asm	AR = AX				
+00164:      	AR = AX
+            ; //_ADDF15A34_39:;					
+            _ADDF15A34_39:
+            ; //	asm	CBL = AR			
+00165:      	CBL = AR
+            ; //_ADDF15A34_40:;					
+            _ADDF15A34_40:
+            ; //	asm	set io[INTENA].b0		
+00166:      	set io[INTENA].b0
+            ; //_ADDF15A34_41:;					
+            _ADDF15A34_41:
+            ; //	asm	eni				
+00167:      	eni
+            ; //	
+            ; //_ADDF15A34_42:;					
+            _ADDF15A34_42:
+            ; //	sAX	= 0x000F;			
+00168:      	AX	= 0x0F
+            ; //_ADDF15A34_43:;					
+            _ADDF15A34_43:
+            ; //	asm	AR = AX				
+00169:      	AR = AX
+            ; //_ADDF15A34_44:;					
+            _ADDF15A34_44:
+            ; //	asm	io[IOC_PA] = AR			
+0016A:      	io[IOC_PA] = AR
+            ; //_ADDF15A34_45:;					
+            _ADDF15A34_45:
+            ; //_ADDF15A34_46:;					
+            _ADDF15A34_46:
+            ; //	_ClearTickCount5DDE4003();		
+0016B:      	pch	= _ClearTickCount5DDE4003
+0016C:      	lcall	_ClearTickCount5DDE4003
+            ; //LD1B663E8_10:;					
+            LD1B663E8_10:
+            ; //_ADDF15A34_47:;					
+            _ADDF15A34_47:
+            ; //	return;					
+0016D:      	rets
+            ; //_InitialDA4A7CC4_end:;				
+            _InitialDA4A7CC4_end:
+            ; //_ADDF15A34_48:;					
+            _ADDF15A34_48:
+            ; //}
+            ; //
+            ; //
+            ; //
+            ; //
+            .code
+            ; //
+            ; //
+            ; //naked void ginit_code_655_99B6FC89_s(void)	
+            ginit_code_655_99B6FC89_s:
+            ; //{
+            ; //	return;					
+0016E:      	rets
+            ; //}
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            .code
+            ; //
+            ; //
+            ; //
+            .code
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            .data
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            .code
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ;=========================Include <DEPS\655_99B6FC89.S.CODE.ASM> End=========================
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\LIB\LIBIO\OUTP.ASM> Start=========================
+            
+            ; ~~ --------------------------
+            ; int outp(unsigned int port, unsigned int value)
+            outp:
+0016F:      	AR=		BP
+00170:      	AR=		AR + 1		; ~~ port
+00171:      	I1=		AR
+00172:      	AR=		rm[I1++]
+00173:      	AR=		AR & 0x1F
+            
+            #ifdef _MSPEECHDSP_	
+            	P1=		#outp_00
+            #else	
+00174:      	P1=		#outp_00
+00177:      	P1.hh=		0
+            #endif
+            
+00178:      	slz		AR, 1
+00179:      	P1=		P1 + AR
+0017A:      	AR=		rm[I1]
+0017B:      	fjmp		pm[P1]
+            outp_00:
+0017C:      	io[0x00]=	AR
+0017D:      	rets
+            outp_01:
+0017E:      	io[0x01]=	AR
+0017F:      	rets
+            outp_02:
+00180:      	io[0x02]=	AR
+00181:      	rets
+            outp_03:
+00182:      	io[0x03]=	AR
+00183:      	rets
+            outp_04:
+00184:      	io[0x04]=	AR
+00185:      	rets
+            outp_05:
+00186:      	io[0x05]=	AR
+00187:      	rets
+            outp_06:
+00188:      	io[0x06]=	AR
+00189:      	rets
+            outp_07:
+0018A:      	io[0x07]=	AR
+0018B:      	rets
+            outp_08:
+0018C:      	io[0x08]=	AR
+0018D:      	rets
+            outp_09:
+0018E:      	io[0x09]=	AR
+0018F:      	rets
+            outp_0A:
+00190:      	io[0x0A]=	AR
+00191:      	rets
+            outp_0B:
+00192:      	io[0x0B]=	AR
+00193:      	rets
+            outp_0C:
+00194:      	io[0x0C]=	AR
+00195:      	rets
+            outp_0D:
+00196:      	io[0x0D]=	AR
+00197:      	rets
+            outp_0E:
+00198:      	io[0x0E]=	AR
+00199:      	rets
+            outp_0F:
+0019A:      	io[0x0F]=	AR
+0019B:      	rets
+            outp_10:
+0019C:      	io[0x10]=	AR
+0019D:      	rets
+            outp_11:
+0019E:      	io[0x11]=	AR
+0019F:      	rets
+            outp_12:
+001A0:      	io[0x12]=	AR
+001A1:      	rets
+            outp_13:
+001A2:      	io[0x13]=	AR
+001A3:      	rets
+            outp_14:
+001A4:      	io[0x14]=	AR
+001A5:      	rets
+            outp_15:
+001A6:      	io[0x15]=	AR
+001A7:      	rets
+            outp_16:
+001A8:      	io[0x16]=	AR
+001A9:      	rets
+            outp_17:
+001AA:      	io[0x17]=	AR
+001AB:      	rets
+            outp_18:
+001AC:      	io[0x18]=	AR
+001AD:      	rets
+            outp_19:
+001AE:      	io[0x19]=	AR
+001AF:      	rets
+            outp_1A:
+001B0:      	io[0x1A]=	AR
+001B1:      	rets
+            outp_1B:
+            #ifndef _MSPEECHDSP2_
+            	io[0x1B]=	AR
+            #endif
+001B2:      	rets
+            outp_1C:
+            	;~ io[0x1C]=	AR
+001B3:      	nop
+001B4:      	rets
+            outp_1D:
+001B5:      	io[0x1D]=	AR
+001B6:      	rets
+            outp_1E:
+001B7:      	io[0x1E]=	AR
+001B8:      	rets
+            outp_1F:
+001B9:      	io[0x1F]=	AR
+001BA:      	rets
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\LIB\LIBIO\OUTP.ASM> End=========================
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\LIB\LIBIO\TICK.ASM> Start=========================
+            
+            
+            _ClearTickCount5DDE4003:
+            #ifdef _MFDSP_
+            	set		io[MISC].b8
+            #else
+001BB:      	set		io[MISC].b7
+            #endif
+001BC:      	set		io[MISC].b15
+            	
+001BD:      	io[REAL_T]=	AR
+001BE:      	AR=		io[REAL_T]
+001BF:      	AR=		io[REAL_T]
+001C0:      	io[REAL_T]=	AR
+001C1:      	rets
+            
+            ; -----------------------------------------------
+            
+            _GetTickCount18DC070C:
+001C2:      	AX=		0xFFF0
+            @gettickcount_loop_1000:
+001C4:      	io[ClrWDT]=	AR
+001C5:      	AR=		io[REAL_T]
+001C6:      	AR=		AR & AX
+001C7:      	SF=		AR - AX
+001C8:      	if ZR jmp	@gettickcount_loop_1000
+001C9:      	AX=		AR
+001CA:      	AR=		io[REAL_T]
+001CB:      	DX=		AR
+001CC:      	rets
+            
+            	
+            ; -----------------------------------------------
+            ; void delay(int ms)
+            ;
+            ; in:
+            ;     BP + 1 - int ms
+            ;
+            ; -----------------------------------------------
+            _delay6F9F34ED:
+            ; {
+001CD:      	AR=		BP
+001CE:      	AR=		AR + 1		; ~~ port
+001CF:      	I1=		AR
+            
+            	; unsigned long tick;
+            	; unsigned long msr;
+            
+            	; ~~ 1ms = 32768 ticks
+            
+            	; msr = (unsigned long)ms << 15;
+001D0:      		R0=		0
+001D1:      		R1=		rm[I1]
+001D2:      		clr		C
+001D3:      		src		R1, 1
+001D4:      		src		R0, 1
+            	
+            	; tick = GetTickCount();
+001D5:      		call		_GetTickCount18DC070C
+001D6:      		AR=		AX
+001D7:      		CX=		AR
+001D8:      		AR=		DX
+001D9:      		BX=		AR
+            	
+            	; while((GetTickCount() - tick) < msr);
+            	@delay_loop_1024:
+001DA:      		call		_GetTickCount18DC070C
+001DB:      		AR=		CX
+001DC:      		AX=		AX - AR
+001DD:      		AR=		BX
+001DE:      		DX=		DX - AR + C - 1
+001DF:      		AR=		R0
+001E0:      		AX=		AX - AR
+001E1:      		AR=		R1
+001E2:      		DX=		DX - AR + C - 1
+001E3:      		AR=		0
+001E4:      		AR=		AR - 0 + C - 1
+001E5:      		if AN jmp	@delay_loop_1024
+            
+001E6:      	rets
+            ; }
+            
+            
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\LIB\LIBIO\TICK.ASM> End=========================
+            
+            ;=========================Include <DEPS\D58805FB_GINIT.S.CODE.ASM> Start=========================
+            ; D58805FB_ginit.s.c Code Start!!;
+            VarRM[0:4095]={
+              
+            };
+            
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            ; //
+            .code
+            ; //
+            ; //
+            ; //naked void ginit_code(void)			
+            ginit_code:
+            ; //{
+            ; //	ginit_code_655_99B6FC89_s();		
+001E7:      	pch	= ginit_code_655_99B6FC89_s
+001E8:      	lcall	ginit_code_655_99B6FC89_s
+            ; //	return;					
+001E9:      	rets
+            ; //}
+            ; //
+            ; //
+            ; //
+            ;=========================Include <DEPS\D58805FB_GINIT.S.CODE.ASM> End=========================
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\RUNTIME.ASM> Start=========================
+            
+            
+            ; ~~ CRT0 support functions
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_GLOBALINIT(void)
+            ; void sfx_LOCALINIT(void)
+            ;
+            ; in:
+            ;     I1	- pointer to SRAM initial value
+            ;     P1	- pointer to PROM initial data
+            ;     CX	- total count (word)
+            ;
+            ; out:
+            ;     none
+            ;
+            ; --------------------------------------------
+            sfx_GLOBALINIT:
+            sfx_LOCALINIT:
+001EA:      	P1.hh=		0
+001EB:      	jmp		@glinit_label_1409
+            @glinit_loop_1409:
+001EC:      	AR=		pm[P1++]
+001ED:      	rm[I1++]=	AR
+            @glinit_label_1409:
+001EE:      	loop		@glinit_loop_1409
+001EF:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_MUL_AX_CX(void)
+            ;
+            ; note:
+            ;     unsigned multiply
+            ;
+            ; in:
+            ;     AX	- operator 1
+            ;     CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result (unsigned)
+            ;
+            ; --------------------------------------------
+            sfx_MUL_AX_CX:
+            
+001F0:      	AR=		AX
+001F1:      	MX=		AR
+001F2:      	AR=		CX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUU
+            #else
+001F3:      	MACOP=		3
+001F4:      	MR=		MX * AR
+            #endif
+            
+001F5:      	AR=		MR0
+001F6:      	AX=		AR
+001F7:      	AR=		MR1
+001F8:      	DX=		AR
+001F9:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_IMUL_AX_CX(void)
+            ;
+            ; note:
+            ;     signed multiply
+            ;
+            ; in:
+            ;     AX	- operator 1
+            ;     CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result (signed)
+            ;
+            ; --------------------------------------------
+            sfx_IMUL_AX_CX:
+            
+001FA:      	AR=		AX
+001FB:      	MX=		AR
+001FC:      	AR=		CX
+            
+            #ifdef _MSPEECHDSP_
+            	MULSS
+            #else
+001FD:      	MACOP=		0
+001FE:      	MR=		MX * AR
+            #endif
+            
+001FF:      	AR=		MR0
+00200:      	AX=		AR
+00201:      	AR=		MR1
+00202:      	DX=		AR
+00203:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_IMULLONG(void)
+            ;
+            ; note:
+            ;     signed multiply
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     CX:DX:AX	- result (signed)
+            ;
+            ; --------------------------------------------
+            sfx_IMULLONG:
+00204:      	AR=		rm[BP_SAVE]
+00205:      	push		AR
+00206:      	AR=		BP
+00207:      	rm[BP_SAVE]=	AR
+00208:      	AR=		AR - 3
+00209:      	BP=		AR
+            
+            	; ~~ low 16-bit
+            	; ~~ |   ---- oooo
+            	; ~~ | x ---- oooo
+            
+0020A:      	AR=		CX
+0020B:      	MX=		AR
+0020C:      	AR=		AX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUU
+            #else
+0020D:      	MACOP=		3		; unsigned
+0020E:      	MR=		MX * AR
+            #endif
+            
+0020F:      	I1=		rm[BP_SAVE]
+00210:      	AR=		2
+00211:      	I1=		I1 - AR
+00212:      	rm[I1++]=	MR0
+00213:      	rm[I1++]=	MR1
+00214:      	rm[I1--]=	MR2
+            
+            	; ~~ |   oooo ----
+            	; ~~ | x ---- oooo
+            
+00215:      	AR=		DX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUS
+            #else
+00216:      	MACOP=		1		; mx:unsigned / my:signed
+00217:      	MR=		MX * AR
+            #endif
+            
+00218:      	AR=		rm[I1]
+00219:      	AR=		AR + MR0
+0021A:      	rm[I1++]=	AR
+0021B:      	AR=		rm[I1]
+0021C:      	AR=		AR + MR1 + C
+0021D:      	rm[I1--]=	AR
+            
+            
+            	; ~~ |   ---- oooo
+            	; ~~ | x oooo ----
+            
+0021E:      	AR=		BX
+0021F:      	MX=		AR
+00220:      	AR=		AX
+            
+            #ifdef _MSPEECHDSP_
+            	MULSU
+            #else
+00221:      	MACOP=		2		; mx:signed / my:unsigned
+00222:      	MR=		MX * AR
+            #endif
+            
+00223:      	AR=		rm[I1]
+00224:      	AR=		AR + MR0
+00225:      	rm[I1++]=	AR
+00226:      	AR=		rm[I1]
+00227:      	AR=		AR + MR1 + C
+00228:      	rm[I1]=		AR
+            
+            	; ~~ |   oooo ----
+            	; ~~ | x oooo ----
+            
+00229:      	AR=		DX
+            
+            #ifdef _MSPEECHDSP_
+            	MULSS
+            #else
+0022A:      	MACOP=		0		; mx:signed / my:signed
+0022B:      	MR=		MX * AR
+            #endif
+            
+0022C:      	AR=		rm[I1]
+0022D:      	AR=		AR + MR0
+0022E:      	rm[I1]=		AR
+            
+0022F:      	I1=		rm[BP_SAVE]
+00230:      	CX=		rm[I1--]
+00231:      	DX=		rm[I1--]
+00232:      	AX=		rm[I1]
+            
+00233:      	AR=		3
+00234:      	BP=		BP + AR
+00235:      	pop		AR
+00236:      	rm[BP_SAVE]=	AR
+            
+00237:      	rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_MULLONG(void)
+            ;
+            ; note:
+            ;     unsigned multiply
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     CX:DX:AX	- result (unsigned)
+            ;
+            ; --------------------------------------------
+            sfx_MULLONG:
+00238:      	AR=		rm[BP_SAVE]
+00239:      	push		AR
+0023A:      	AR=		BP
+0023B:      	rm[BP_SAVE]=	AR
+0023C:      	AR=		AR - 3
+0023D:      	BP=		AR
+            
+            	; ~~ low 16-bit
+            	; ~~ |   ---- oooo
+            	; ~~ | x ---- oooo
+            
+0023E:      	AR=		CX
+0023F:      	MX=		AR
+00240:      	AR=		AX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUU
+            #else
+00241:      	MACOP=		3		; unsigned
+00242:      	MR=		MX * AR
+            #endif
+            
+00243:      	I1=		rm[BP_SAVE]
+00244:      	AR=		2
+00245:      	I1=		I1 - AR
+00246:      	rm[I1++]=	MR0
+00247:      	rm[I1++]=	MR1
+00248:      	rm[I1--]=	MR2
+            
+            	; ~~ |   oooo ----
+            	; ~~ | x ---- oooo
+            
+00249:      	AR=		DX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUU
+            #else
+0024A:      	MR=		MX * AR
+            #endif
+            
+0024B:      	AR=		rm[I1]
+0024C:      	AR=		AR + MR0
+0024D:      	rm[I1++]=	AR
+0024E:      	AR=		rm[I1]
+0024F:      	AR=		AR + MR1 + C
+00250:      	rm[I1--]=	AR
+            
+            
+            	; ~~ |   ---- oooo
+            	; ~~ | x oooo ----
+            
+00251:      	AR=		BX
+00252:      	MX=		AR
+00253:      	AR=		AX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUU
+            #else
+00254:      	MR=		MX * AR
+            #endif
+            
+00255:      	AR=		rm[I1]
+00256:      	AR=		AR + MR0
+00257:      	rm[I1++]=	AR
+00258:      	AR=		rm[I1]
+00259:      	AR=		AR + MR1 + C
+0025A:      	rm[I1]=		AR
+            
+            	; ~~ |   oooo ----
+            	; ~~ | x oooo ----
+            
+0025B:      	AR=		DX
+            
+            #ifdef _MSPEECHDSP_
+            	MULUU
+            #else
+0025C:      	MR=		MX * AR
+            #endif
+            
+0025D:      	AR=		rm[I1]
+0025E:      	AR=		AR + MR0
+0025F:      	rm[I1]=		AR
+            
+00260:      	I1=		rm[BP_SAVE]
+00261:      	CX=		rm[I1--]
+00262:      	DX=		rm[I1--]
+00263:      	AX=		rm[I1]
+            
+00264:      	AR=		3
+00265:      	BP=		BP + AR
+00266:      	pop		AR
+00267:      	rm[BP_SAVE]=	AR
+            
+00268:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_DIV_AX_CX(void)
+            ;
+            ; note:
+            ;     unsigned divide
+            ;
+            ; in:
+            ;     AX	- Numerator   (x)
+            ;     CX	- Denominator (y)
+            ;
+            ; out:
+            ;     AX	- Quotient
+            ;     DX	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_DIV_AX_CX:
+            	; unsigned int reste = 0;
+00269:      		DX=		0
+            	; unsigned char count = 16;
+0026A:      		R0=		16
+            	; BOOL c;
+            
+            	; do
+            	@divword_loop_1824:
+            	; {
+            		; // reste: x <- 0;
+            		; c = MSB_SET(x);
+            
+            		; x <<= 1;
+0026B:      			slz		AX, 1
+            		; reste <<= 1;
+0026C:      			slc		DX, 1
+            
+            		; if (c)
+            		; {
+            			; reste |= 1;
+            		; }
+            		@divword_label_1822:
+            
+            		; if (reste >= y)
+0026D:      			AR=		DX
+0026E:      			AR-=		CX
+0026F:      			AR=		0
+00270:      			AR=		AR - 0 + C - 1
+00271:      			if AN jmp	@divword_label_1823
+            		; {
+            			; reste -= y;
+00272:      				AR=		CX
+00273:      				DX=		DX - AR
+            			; ~~ x <- (result = 1)
+            			; x |= 1;
+00274:      				set		AX.b0
+            		; }
+            		@divword_label_1823:
+            
+00275:      		R0--
+00276:      		if NZ jmp	@divword_loop_1824
+            	; }while (--count);
+            
+            	; return x;
+00277:      		rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_IDIV_AX_CX(void)
+            ;
+            ; note:
+            ;     signed divide
+            ;
+            ; in:
+            ;     AX	- Numerator   (x)
+            ;     CX	- Denominator (y)
+            ;
+            ; out:
+            ;     AX	- Quotient
+            ;     DX	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_IDIV_AX_CX:
+            
+            	; register int r;
+            
+            	; r = sfx_DIV_AX_CX((x < 0 ? -x : x), (y < 0 ? -y : y));
+00278:      		R1=		0
+00279:      		AR=		0
+0027A:      		test		AX.b15
+0027B:      		if ZR jmp	@divsword_label_1833
+0027C:      			AX=		AR - AX
+0027D:      			set		R1.b0
+            		@divsword_label_1833:
+0027E:      		test		CX.b15
+0027F:      		if ZR jmp	@divsword_label_1834
+00280:      			CX=		AR - CX
+00281:      			set		R1.b1
+            		@divsword_label_1834:
+00282:      		call		sfx_DIV_AX_CX
+            
+            	; if ((x < 0) ^ (y < 0))
+00283:      		AR=		R1
+00284:      		slz		AR, 1
+00285:      		AR^=		R1
+00286:      		test		AR.b1
+00287:      		if ZR jmp	@divsword_label_1835
+            	; {
+            		; return (0 - r);
+00288:      			AR=		0
+00289:      			AX=		AR - AX
+0028A:      			DX=		AR - DX
+            
+            	; }
+            	@divsword_label_1835:
+            
+            	; return r;
+0028B:      		rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_DIVLONG(void)
+            ;
+            ; note:
+            ;     unsigned divide
+            ;
+            ; in:
+            ;     DX:AX	- Numerator   (x)
+            ;     BX:CX	- Denominator (y)
+            ;
+            ; out:
+            ;     DX:AX	- Quotient
+            ;     R1:R0	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_DIVLONG:
+            	; unsigned long reste = 0L;
+0028C:      		R0=		0	; L
+0028D:      		R1=		0	; H
+            	; unsigned char count = 32;
+0028E:      		R2=		32
+            	; BOOL c;
+            
+            	; do
+            	@divulong_loop_1723:
+            	; {
+            		; // reste: x <- 0;
+            		; c = MSB_SET(x);
+            
+            		; x <<= 1;
+0028F:      			slz		AX, 1
+00290:      			slc		DX, 1
+            		; reste <<= 1;
+00291:      			slc		R0, 1
+00292:      			slc		R1, 1
+            
+            		; if (c)
+            		; {
+            			; reste |= 1L;
+            		; }
+            		@divulong_label_1726:
+            
+            		; if (reste >= y)
+00293:      			AR=		R0
+00294:      			AR-=		CX
+00295:      			AR=		R1
+00296:      			AR=		AR - BX + C - 1
+00297:      			if AN jmp	@divulong_label_1734
+            		; {
+            			; reste -= y;
+00298:      				AR=		CX
+00299:      				R0=		R0 - AR
+0029A:      				AR=		BX
+0029B:      				R1=		R1 - AR + C - 1
+            			; ~~ x <- (result = 1)
+            			; x |= 1L;
+0029C:      				set		AX.b0
+            		; }
+            		@divulong_label_1734:
+            
+0029D:      		R2--
+0029E:      		if NZ jmp	@divulong_loop_1723
+            	; }while (--count);
+            
+            	; return x;
+0029F:      		rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_IDIVLONG(void)
+            ;
+            ; note:
+            ;     signed divide
+            ;
+            ; in:
+            ;     DX:AX	- Numerator   (x)
+            ;     BX:CX	- Denominator (y)
+            ;
+            ; out:
+            ;     DX:AX	- Quotient
+            ;     BX:DX	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_IDIVLONG:
+            	; long r;
+            
+            	; r = divulong((x < 0 ? -x : x), (y < 0 ? -y : y));
+002A0:      		R3=		0
+002A1:      		AR=		0
+002A2:      		test		DX.b15
+002A3:      		if ZR jmp	@divslong_label_1759
+002A4:      			AX=		AR - AX
+002A5:      			DX=		AR - DX + C - 1
+002A6:      			set		R3.b0
+            		@divslong_label_1759:
+002A7:      		test		BX.b15
+002A8:      		if ZR jmp	@divslong_label_1800
+002A9:      			CX=		AR - CX
+002AA:      			BX=		AR - BX + C - 1
+002AB:      			set		R3.b1
+            		@divslong_label_1800:
+002AC:      		call		sfx_DIVLONG
+            
+            	; if ((x < 0) ^ (y < 0))
+002AD:      		AR=		R3
+002AE:      		slz		AR, 1
+002AF:      		AR^=		R3
+002B0:      		test		AR.b1
+002B1:      		if ZR jmp	@divslong_label_1807
+            	; {
+            		; return -r;
+002B2:      			AR=		0
+002B3:      			AX=		AR - AX
+002B4:      			DX=		AR - DX + C - 1
+002B5:      			R0=		AR - R0
+002B6:      			R1=		AR - R1 + C - 1
+            
+            	; }
+            	@divslong_label_1807:
+            
+            	; return r;
+002B7:      		rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_MOD_AX_CX(void)
+            ;
+            ; note:
+            ;     unsigned remainder
+            ;
+            ; in:
+            ;     AX	- Numerator   (x)
+            ;     CX	- Denominator (y)
+            ;
+            ; out:
+            ;     AX	- Remainder
+            ;     DX	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_MOD_AX_CX:
+002B8:      	call		sfx_DIV_AX_CX
+002B9:      	AR=		DX
+002BA:      	AX=		AR
+002BB:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_IMOD_AX_CX(void)
+            ;
+            ; note:
+            ;     signed remainder
+            ;
+            ; in:
+            ;     AX	- Numerator   (x)
+            ;     CX	- Denominator (y)
+            ;
+            ; out:
+            ;     AX	- Remainder
+            ;     DX	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_IMOD_AX_CX:
+002BC:      	call		sfx_IDIV_AX_CX
+002BD:      	AR=		DX
+002BE:      	AX=		AR
+002BF:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_MODLONG(void)
+            ;
+            ; note:
+            ;     unsigned remainder
+            ;
+            ; in:
+            ;     AX	- Numerator   (x)
+            ;     CX	- Denominator (y)
+            ;
+            ; out:
+            ;     DX:AX	- Remainder
+            ;     R1:R0	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_MODLONG:
+002C0:      	call		sfx_DIVLONG
+002C1:      	AR=		R0
+002C2:      	AX=		AR
+002C3:      	AR=		R1
+002C4:      	DX=		AR
+002C5:      	rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_IMODLONG(void)
+            ;
+            ; note:
+            ;     signed remainder
+            ;
+            ; in:
+            ;     AX	- Numerator   (x)
+            ;     CX	- Denominator (y)
+            ;
+            ; out:
+            ;     DX:AX	- Remainder
+            ;     R1:R0	- Remainder
+            ;
+            ; --------------------------------------------
+            sfx_IMODLONG:
+002C6:      	call		sfx_IDIVLONG
+002C7:      	AR=		R0
+002C8:      	AX=		AR
+002C9:      	AR=		R1
+002CA:      	DX=		AR
+002CB:      	rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ADDLONG(void)
+            ;
+            ; note:
+            ;     signed add
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_ADDLONG:
+            	; AR=		CX
+            	; AX=		AX + AR
+            	; AR=		BX
+            	; DX=		DX + AR + C
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ADDLONG_BXCX_DXAX(void)
+            ;
+            ; note:
+            ;     signed add
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_ADDLONG_BXCX_DXAX:
+            	; AR=		AX
+            	; CX=		CX + AR
+            	; AR=		DX
+            	; BX=		BX + AR + C
+            	; rets
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SUBLONG(void)
+            ;
+            ; note:
+            ;     signed sub
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SUBLONG:
+            	; AR=		CX
+            	; AX=		AX - AR
+            	; AR=		BX
+            	; DX=		DX - AR + C - 1
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ADDDIOFS(void)
+            ;
+            ; note:
+            ;     add P1 by AX
+            ;
+            ; in:
+            ;     P1	- PROM pointer
+            ;     AX	- offset
+            ;
+            ; out:
+            ;     P1	- offset
+            ;
+            ; --------------------------------------------
+            sfx_ADDDIOFS:
+002CC:      	AR=		AX
+002CD:      	P1=		P1 + AR
+002CE:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ADDSIOFS(void)
+            ;
+            ; note:
+            ;     add I1 by AX
+            ;
+            ; in:
+            ;     I1	- SRAM pointer
+            ;     AX	- offset
+            ;
+            ; out:
+            ;     I1	- offset
+            ;
+            ; --------------------------------------------
+            sfx_ADDSIOFS:
+002CF:      	AR=		AX
+002D0:      	I1=		I1 + AR
+002D1:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ADDAXOFS(void)
+            ;
+            ; note:
+            ;     add AX by CX
+            ;
+            ; in:
+            ;     AX	- PROM or SRAM pointer
+            ;     CX	- offset
+            ;
+            ; out:
+            ;     AX	- offset
+            ;
+            ; --------------------------------------------
+            sfx_ADDAXOFS:
+002D2:      	AR=		CX
+002D3:      	AX=		AX + AR
+002D4:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SUBDIOFS(void)
+            ;
+            ; note:
+            ;     sub P1 by AX
+            ;
+            ; in:
+            ;     P1	- PROM pointer
+            ;     AX	- offset
+            ;
+            ; out:
+            ;     P1	- offset
+            ;
+            ; --------------------------------------------
+            sfx_SUBDIOFS:
+002D5:      	AR=		AX
+002D6:      	P1=		P1 - AR
+002D7:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SUBSIOFS(void)
+            ;
+            ; note:
+            ;     sub I1 by AX
+            ;
+            ; in:
+            ;     I1	- SRAM pointer
+            ;     AX	- offset
+            ;
+            ; out:
+            ;     I1	- offset
+            ;
+            ; --------------------------------------------
+            sfx_SUBSIOFS:
+002D8:      	AR=		AX
+002D9:      	I1=		I1 - AR
+002DA:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SUBAXOFS(void)
+            ;
+            ; note:
+            ;     sub AX by CX
+            ;
+            ; in:
+            ;     AX	- PROM or SRAM pointer
+            ;     CX	- offset
+            ;
+            ; out:
+            ;     AX	- offset
+            ;
+            ; --------------------------------------------
+            sfx_SUBAXOFS:
+002DB:      	AR=		CX
+002DC:      	AX=		AX + AR
+002DD:      	rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_GETDILONG_DXAX(void)
+            ;
+            ; note:
+            ;     load long data from PROM to DX:AX
+            ;
+            ; in:
+            ;     P1	- PROM pointer
+            ;
+            ; out:
+            ;     DX:AX	- long data
+            ;
+            ; --------------------------------------------
+            ; sfx_GETDILONG:
+            ; sfx_GETDILONG_DXAX:
+            	; AX=		pm[P1++]
+            	; DX=		pm[P1--]
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_GETDILONG_BXCX(void)
+            ;
+            ; note:
+            ;     load long data from PROM to BX:CX
+            ;
+            ; in:
+            ;     P1	- PROM pointer
+            ;
+            ; out:
+            ;     BX:CX	- long data
+            ;
+            ; --------------------------------------------
+            ; sfx_GETDILONG_BXCX:
+            	; CX=		pm[P1++]
+            	; BX=		pm[P1--]
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_GETSILONG_DXAX(void)
+            ; void sfx_GETSILONG_DXAX_D(void)		; for function's parameter
+            ;
+            ; note:
+            ;     load long data from SRAM to DX:AX
+            ;
+            ; in:
+            ;     I1	- SRAM pointer
+            ;
+            ; out:
+            ;     DX:AX	- long data
+            ;
+            ; --------------------------------------------
+            ; sfx_GETSILONG:
+            ; sfx_GETSILONG_D:
+            ; sfx_GETSILONG_DXAX:
+            ; sfx_GETSILONG_DXAX_D:
+            	; AX=		rm[I1++]
+            	; DX=		rm[I1--]
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_GETSILONG_BXCX(void)
+            ; void sfx_GETSILONG_BXCX_D(void)		; for function's parameter
+            ;
+            ; note:
+            ;     load long data from SRAM to BX:CX
+            ;
+            ; in:
+            ;     I1	- SRAM pointer
+            ;
+            ; out:
+            ;     BX:CX	- long data
+            ;
+            ; --------------------------------------------
+            ; sfx_GETSILONG_BXCX:
+            ; sfx_GETSILONG_BXCX_D:
+            	; CX=		rm[I1++]
+            	; BX=		rm[I1--]
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ANDLONG(void)
+            ;
+            ; note:
+            ;     AND two 32-bit data and store result in DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_ANDLONG:
+            	; AR=		CX
+            	; AX=		AX & AR
+            	; AR=		BX
+            	; DX=		DX & AR
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_ORLONG(void)
+            ;
+            ; note:
+            ;     OR two 32-bit data and store result in DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_ORLONG:
+            	; AR=		CX
+            	; AX=		AX | AR
+            	; AR=		BX
+            	; DX=		DX | AR
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_XORLONG(void)
+            ;
+            ; note:
+            ;     XOR two 32-bit data and store result in DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_XORLONG:
+            	; AR=		CX
+            	; AX=		AX ^ AR
+            	; AR=		BX
+            	; DX=		DX ^ AR
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SHL_AX_CX(void)
+            ;
+            ; note:
+            ;     left shift AX data by CX and store result in AX
+            ;
+            ; in:
+            ;     AX	- short data
+            ;     CX	- shift count
+            ;
+            ; out:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SHL_AX_CX:
+            	; jmp		@shlac_label_1653
+            ; @shlac_loop_1653:
+            	; slz		AX, 1
+            ; @shlac_label_1653:
+            	; loop		@shlac_loop_1653
+            	; rets
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SHLLONG(void)
+            ;
+            ; note:
+            ;     left shift DX:AX data by CX and store result in DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- long data
+            ;     CX	- shift count
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SHLLONG:
+            	; jmp		@shllong_label_1653
+            ; @shllong_loop_1653:
+            	; slz		AX, 1
+            	; slc		DX, 1
+            ; @shllong_label_1653:
+            	; loop		@shllong_loop_1653
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SHR_AX_CX(void)
+            ;
+            ; note:
+            ;     unsigned right shift AX data by CX and store result in AX
+            ;
+            ; in:
+            ;     AX	- unsigned short data
+            ;     CX	- shift count
+            ;
+            ; out:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SHR_AX_CX:
+            	; jmp		@shrac_label_1657
+            ; @shrac_loop_1657:
+            	; clr		C
+            	; src		AX, 1
+            ; @shrac_label_1657:
+            	; loop		@shrac_loop_1657
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SAR_AX_CX(void)
+            ;
+            ; note:
+            ;     signed right shift AX data by CX and store result in AX
+            ;
+            ; in:
+            ;     AX	- signed short data
+            ;     CX	- shift count
+            ;
+            ; out:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SAR_AX_CX:
+            	; jmp		@sarac_label_1657
+            ; @sarac_loop_1657:
+            	; sra		AX, 1
+            ; @sarac_label_1657:
+            	; loop		@sarac_loop_1657
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SARLONG(void)
+            ;
+            ; note:
+            ;     signed right shift DX:AX data by CX and store result in DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- long data
+            ;     CX	- shift count
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SARLONG:
+            	; jmp		@sarlong_label_1657
+            ; @sarlong_loop_1657:
+            	; sra		DX, 1
+            	; src		AX, 1
+            ; @sarlong_label_1657:
+            	; loop		@sarlong_loop_1657
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SHRLONG(void)
+            ;
+            ; note:
+            ;     unsigned right shift DX:AX data by CX and store result in DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- ulong data
+            ;     CX	- shift count
+            ;
+            ; out:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SHRLONG:
+            	; jmp		@shrlong_label_1657
+            ; @shrlong_loop_1657:
+            	; clr		C
+            	; src		DX, 1
+            	; src		AX, 1
+            ; @shrlong_label_1657:
+            	; loop		@shrlong_loop_1657
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SHR_AX(void)
+            ;
+            ; note:
+            ;     unsigned right shift AX data and store result in AX
+            ;
+            ; in:
+            ;     AX	- unsigned short data
+            ;
+            ; out:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SHR_AX:
+            	; clr		C
+            	; src		AX, 1
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_SAR_AX(void)
+            ;
+            ; note:
+            ;     signed right shift AX data and store result in AX
+            ;
+            ; in:
+            ;     AX	- signed short data
+            ;
+            ; out:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_SAR_AX:
+            	; sra		AX, 1
+            	; rets
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_STORSILONG(void)
+            ; void sfx_STORSILONG_D(void)		; for function's parameter
+            ;
+            ; note:
+            ;     store DX:AX data to SRAM (I1)
+            ;
+            ; in:
+            ;     DX:AX	- long data
+            ;     I1	- pointer
+            ;
+            ; result:
+            ;     none
+            ;
+            ; --------------------------------------------
+            ; sfx_STORSILONG:
+            ; sfx_STORSILONG_D:
+            	; rm[I1++]=	AX
+            	; rm[I1--]=	DX
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_STORSILONG_BXCX(void)
+            ;
+            ; note:
+            ;     store DX:AX data to SRAM (I1)
+            ;
+            ; in:
+            ;     DX:AX	- long data
+            ;     I1	- pointer
+            ;
+            ; result:
+            ;     none
+            ;
+            ; --------------------------------------------
+            ; sfx_STORSILONG_BXCX:
+            	; rm[I1++]=	CX
+            	; rm[I1--]=	BX
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_STORDILONG(void)
+            ;
+            ; note:
+            ;     store DX:AX data to PROM (P1)
+            ;
+            ; in:
+            ;     DX:AX	- long data
+            ;     P1	- pointer
+            ;
+            ; result:
+            ;     none
+            ;
+            ; --------------------------------------------
+            sfx_STORDILONG:
+002DE:      	pm[P1++]=	AX
+002DF:      	pm[P1--]=	DX
+002E0:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_STORDILONG(void)
+            ;
+            ; note:
+            ;     store DX:AX data to PROM (P1)
+            ;
+            ; in:
+            ;     DX:AX	- long data
+            ;     P1	- pointer
+            ;
+            ; result:
+            ;     none
+            ;
+            ; --------------------------------------------
+            sfx_STORDILONG_BXCX:
+002E1:      	pm[P1++]=	CX
+002E2:      	pm[P1--]=	BX
+002E3:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_INT2LONG_CX(void)
+            ;
+            ; note:
+            ;     extend sign bit of CX to BX
+            ;
+            ; in:
+            ;     CX	- signed short data
+            ;
+            ; result:
+            ;     BX:CX	- signed long data
+            ;
+            ; --------------------------------------------
+            ; sfx_INT2LONG_CX:
+            ; sfx_INT2ULONG_CX:
+            	; BX=		0
+            	; test		CX.b15
+            	; if ZR jmp	@i2lcx_label_1756
+            	; BX=		-1
+            ; @i2lcx_label_1756:
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_UINT2LONG_CX(void)
+            ;
+            ; note:
+            ;     convert short unsigned value CX to long (BX:CX)
+            ;
+            ; in:
+            ;     CX	- unsigned short data
+            ;
+            ; result:
+            ;     BX:CX	- signed long data
+            ;
+            ; --------------------------------------------
+            ; sfx_UINT2LONG_CX:
+            ; sfx_UINT2ULONG_CX:
+            	; BX=		0
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_CHAR2LONG_CX(void)
+            ;
+            ; note:
+            ;     extend sign bit of CL to BX:CH
+            ;
+            ; in:
+            ;     CX	- signed char data
+            ;
+            ; result:
+            ;     BX:CX	- signed long data
+            ;
+            ; --------------------------------------------
+            sfx_CHAR2LONG_CX:
+002E4:      	BX=		0
+002E5:      	CX.h=		0
+002E6:      	test		CX.b7
+002E7:      	if ZR jmp	@c2lcx_label_1800
+002E8:      	CX.h=		0xFF
+002E9:      	BX=		-1
+            @c2lcx_label_1800:
+002EA:      	rets
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_UCHAR2LONG_CX(void)
+            ;
+            ; note:
+            ;     convert unsigned char value CL to long (BX:CX)
+            ;
+            ; in:
+            ;     CL	- unsigned char data
+            ;
+            ; result:
+            ;     BX:CX	- signed long data
+            ;
+            ; --------------------------------------------
+            ; sfx_UCHAR2LONG_CX:
+            	; CX.h=		0
+            	; BX=		0
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_INT2LONG_AX(void)
+            ;
+            ; note:
+            ;     extend sign bit of AX to DX
+            ;
+            ; in:
+            ;     AX	- signed short data
+            ;
+            ; result:
+            ;     DX:AX	- signed long data
+            ;
+            ; --------------------------------------------
+            ; sfx_INT2LONG_AX:
+            ; sfx_INT2ULONG_AX:
+            	; DX=		0
+            	; test		AX.b15
+            	; if ZR jmp	@i2lax_label_1756
+            	; DX=		-1
+            ; @i2lax_label_1756:
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_UINT2LONG_AX(void)
+            ;
+            ; note:
+            ;     convert short unsigned value AX to long (DX:AX)
+            ;
+            ; in:
+            ;     AX	- unsigned short data
+            ;
+            ; result:
+            ;     DX:AX	- signed long data
+            ;
+            ; --------------------------------------------
+            ; sfx_UINT2LONG_AX:
+            ; sfx_UINT2ULONG_AX:
+            	; DX=		0
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_CHAR2LONG_AX(void)
+            ;
+            ; note:
+            ;     extend sign bit of AL to DX:AH
+            ;
+            ; in:
+            ;     AX	- signed char data
+            ;
+            ; result:
+            ;     DX:AX	- signed long data
+            ;
+            ; --------------------------------------------
+            sfx_CHAR2LONG_AX:
+002EB:      	DX=		0
+002EC:      	AX.h=		0
+002ED:      	test		AX.b7
+002EE:      	if ZR jmp	@c2lax_label_1800
+002EF:      	AX.h=		0xFF
+002F0:      	DX=		-1
+            @c2lax_label_1800:
+002F1:      	rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_UCHAR2LONG_AX(void)
+            ;
+            ; note:
+            ;     convert unsigned char value AL to long (DX:AX)
+            ;
+            ; in:
+            ;     AL	- unsigned char data
+            ;
+            ; result:
+            ;     DX:AX	- signed long data
+            ;
+            ; --------------------------------------------
+            ; sfx_UCHAR2LONG_AX:
+            	; AX.h=		0
+            	; DX=		0
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_CALL_BY_AX(void)
+            ;
+            ; note:
+            ;     call sub routine in AX (address)
+            ;
+            ; in:
+            ;     AX	- sub routine address
+            ;
+            ; result:
+            ;     none
+            ;
+            ; --------------------------------------------
+            ; sfx_CALL_BY_AX:
+            	; AR=		AX
+            	; P1=		AR
+            	; P1.hh=		0
+            	; fjmp		pm[P1]
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_XCHG_AX_CX(void)
+            ;
+            ; note:
+            ;     exchange AX CX value
+            ;
+            ; in:
+            ;     AX	- operator 1
+            ;     CX	- operator 2
+            ;
+            ; result:
+            ;     AX <-> CX
+            ;
+            ; --------------------------------------------
+            ; sfx_XCHG_AX_CX:
+            	; push		AX
+            	; push		CX
+            	; pop		AX
+            	; pop		CX
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_XCHGLONG(void)
+            ;
+            ; note:
+            ;     exchange DX:AX BX:CX value
+            ;
+            ; in:
+            ;     DX:AX	- operator 1
+            ;     BX:CX	- operator 2
+            ;
+            ; result:
+            ;     DX:AX <-> BX:CX
+            ;
+            ; --------------------------------------------
+            sfx_XCHGLONG:
+002F2:      	push		AX
+002F3:      	push		CX
+002F4:      	pop		AX
+002F5:      	pop		CX
+002F6:      	push		DX
+002F7:      	push		BX
+002F8:      	pop		DX
+002F9:      	pop		BX
+002FA:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_NEG_AX(void)
+            ;
+            ; note:
+            ;     negative AX
+            ;
+            ; in:
+            ;     AX	- operator 1
+            ;
+            ; result:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_NEG_AX:
+            	; AR=		0
+            	; AX=		AR - AX
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_NEGLONG(void)
+            ;
+            ; note:
+            ;     negative DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- operator
+            ;
+            ; result:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_NEGLONG:
+            	; AR=		0
+            	; AX=		AR - AX
+            	; DX=		AR - DX + C - 1
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_NOT_AX(void)
+            ;
+            ; note:
+            ;     not AX
+            ;
+            ; in:
+            ;     AX	- operator
+            ;
+            ; result:
+            ;     AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_NOT_AX:
+            	; AR=		-1
+            	; AX=		AX ^ AR
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_NOTLONG(void)
+            ;
+            ; note:
+            ;     not DX:AX
+            ;
+            ; in:
+            ;     DX:AX	- operator
+            ;
+            ; result:
+            ;     DX:AX	- result
+            ;
+            ; --------------------------------------------
+            ; sfx_NOTLONG:
+            	; AR=		-1
+            	; AX=		AX ^ AR
+            	; DX=		DX ^ AR
+            	; rets
+            
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_LOGNOT_AX(void)
+            ;
+            ; note:
+            ;     logical NOT
+            ;
+            ; in:
+            ;     AX	- value
+            ;
+            ; result:
+            ;     AX	- result (0 or 1)
+            ;
+            ; --------------------------------------------
+            ; sfx_LOGNOT_AX:
+            	;; x86 code
+            	;;   neg AX
+            	;;   sbb AX,AX
+            	;;   inc AX
+            	; AR=		0
+            	; AR=		AR - AX
+            	; AX=		AR
+            	; AX=		AR - AX + C - 1
+            	; AX++
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_LOGNOTLONG(void)
+            ;
+            ; note:
+            ;     logical NOT (long)
+            ;
+            ; in:
+            ;     DX:AX	- value
+            ;
+            ; result:
+            ;     DX:AX	- result (0 or 1)
+            ;
+            ; --------------------------------------------
+            sfx_LOGNOTLONG:
+            	; x86 code
+            	;   neg AX
+            	;   sbb AX,AX
+            	;   inc AX
+002FB:      	AR=		DX
+002FC:      	DX=		0
+002FD:      	AR=		AR | AX
+002FE:      	AX=		1
+002FF:      	if ZR jmp	@longnotl_label_1120
+00300:      	AX=		0
+            @longnotl_label_1120:
+00301:      	rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_BOOL_AX(void)
+            ;
+            ; note:
+            ;     logical BOOL
+            ;
+            ; in:
+            ;     AX	- value
+            ;
+            ; result:
+            ;     AX	- result (0 or 1)
+            ;
+            ; --------------------------------------------
+            ; sfx_BOOL_AX:
+            	;; x86 code
+            	;;   neg ax
+            	;;   sbb ax,ax
+            	;;   neg ax
+            	; AR=		AX
+            	; AX=		0
+            	; if ZR jmp	@boolax_label_1758
+            	; AX=		1
+            ; @boolax_label_1758:
+            	; rets
+            	
+            	; AR=		-1
+            	; AR=		AR + AX
+            	; AX=		0
+            	; AX += C
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_BOOLLONG(void)
+            ;
+            ; note:
+            ;     logical BOOL (long)
+            ;
+            ; in:
+            ;     DX:AX	- value
+            ;
+            ; result:
+            ;     DX:AX	- result (0 or 1)
+            ;
+            ; --------------------------------------------
+            ; sfx_BOOLLONG:
+            	; AR=		DX
+            	; DX=		0
+            	; AR=		AR | AX
+            	; AX=		0
+            	; if ZR jmp	@boollong_label_1801
+            	; AX=		1
+            ; @boollong_label_1801:
+            	; rets
+            
+            
+            ; ~.~-----------------------------------------
+            ; void sfx_INITSISTOR(void)
+            ;
+            ; note:
+            ;     for used in global/local variable initial
+            ;
+            ; in:
+            ;     AX	- value
+            ;
+            ; result:
+            ;     I1 + 1
+            ;
+            ; --------------------------------------------
+            ; sfx_INITSISTOR:
+            	; rm[I1++]=	AX
+            	; rets
+            
+            ; --------------------------------------------
+            
+            ; sfx_INITSISTORLONG:
+            	; rm[I1++]=	AX
+            	; rm[I1++]=	DX
+            	; rets
+            
+            
+            ; ~~ condition assistant functions ~~
+            
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            ; JNE group
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            
+            sfx_CMP_AX_CX_U_JNE:
+00302:      	DX=		0
+00303:      	BX=		0
+            sfx_CMPLONG_JNE:
+00304:      	AR=		CX
+00305:      	AX=		AX - AR
+00306:      	AR=		BX
+00307:      	AR=		DX - AR + C - 1
+00308:      	AR=		AR | AX
+00309:      	if EQ jmp	@sfx_cl_jne_f
+0030A:      	set		Z		; true
+0030B:      	rets
+            @sfx_cl_jne_f:
+0030C:      	clr		Z		; false
+0030D:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_U_JNE:
+0030E:      	DX=		0
+0030F:      	BX=		0
+            sfx_CMPLONG_BCDA_JNE:
+00310:      	AR=		AX
+00311:      	CX=		CX - AR
+00312:      	AR=		DX
+00313:      	AR=		BX - AR + C - 1
+00314:      	AR=		AR | CX
+00315:      	if EQ jmp	@sfx_clbcda_jne_f
+00316:      	set		Z		; true
+00317:      	rets
+            @sfx_clbcda_jne_f:
+00318:      	clr		Z		; false
+00319:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_AX_CX_JNE:
+0031A:      	AR=		CX
+0031B:      	SF=		AX - AR
+0031C:      	if EQ jmp	@sfx_ac_jne_f
+0031D:      	set		Z
+0031E:      	rets
+            @sfx_ac_jne_f:
+0031F:      	clr		Z
+00320:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_JNE:
+00321:      	AR=		AX
+00322:      	SF=		CX - AR
+00323:      	if EQ jmp	@sfx_ca_jne_f
+00324:      	set		Z
+00325:      	rets
+            @sfx_ca_jne_f:
+00326:      	clr		Z
+00327:      	rets
+            
+            
+            
+            ; JE group
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            
+            
+            sfx_CMP_AX_CX_U_JE:
+00328:      	DX=		0
+00329:      	BX=		0
+            sfx_CMPLONG_JE:
+0032A:      	AR=		CX
+0032B:      	AX=		AX - AR
+0032C:      	AR=		BX
+0032D:      	AR=		DX - AR + C - 1
+0032E:      	AR=		AR | AX
+0032F:      	if NE jmp	@sfx_cl_jz_f
+00330:      	set		Z		; true
+00331:      	rets
+            @sfx_cl_jz_f:
+00332:      	clr		Z		; false
+00333:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_U_JE:
+00334:      	DX=		0
+00335:      	BX=		0
+            sfx_CMPLONG_BCDA_JE:
+00336:      	AR=		AX
+00337:      	CX=		CX - AR
+00338:      	AR=		DX
+00339:      	AR=		BX - AR + C - 1
+0033A:      	AR=		AR | CX
+0033B:      	if NE jmp	@sfx_clbcda_jz_f
+0033C:      	set		Z		; true
+0033D:      	rets
+            @sfx_clbcda_jz_f:
+0033E:      	clr		Z		; false
+0033F:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_AX_CX_JE:
+00340:      	AR=		CX
+00341:      	SF=		AX - AR
+00342:      	if NE jmp	@sfx_ac_je_f
+00343:      	set		Z
+00344:      	rets
+            @sfx_ac_je_f:
+00345:      	clr		Z
+00346:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_JE:
+00347:      	AR=		AX
+00348:      	SF=		CX - AR
+00349:      	if NE jmp	@sfx_ca_je_f
+0034A:      	set		Z
+0034B:      	rets
+            @sfx_ca_je_f:
+0034C:      	clr		Z
+0034D:      	rets
+            
+            
+            
+            ; JG group
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            ; A - above (unsigned)
+            ; G - greater (signed)
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_AX_CX_U_JA:
+            sfx_CMP_AX_CX_JA:
+0034E:      	DX=		0
+0034F:      	BX=		0
+            sfx_CMPLONG_JG:
+00350:      	AR=		CX
+00351:      	AX=		AX - AR
+00352:      	AR=		BX
+00353:      	AR=		DX - AR + C - 1
+00354:      	if AN jmp	@sfx_cl_jg_f
+            
+            	; exclude EQU condition
+00355:      	AR=		AR | AX
+00356:      	if ZR jmp	@sfx_cl_jg_f
+            
+00357:      	set		Z		; true
+00358:      	rets
+            @sfx_cl_jg_f:
+00359:      	clr		Z		; false
+0035A:      	rets
+            
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_JA:
+0035B:      	AR=		CX
+0035C:      	AX=		AX - AR
+0035D:      	AR=		BX
+0035E:      	DX=		DX - AR + C - 1
+0035F:      	AR=		0
+00360:      	AR=		AR - 0 + C - 1
+00361:      	if AN jmp	@sfx_cl_jg_f
+            
+00362:      	AR=		AR | DX		; exclude EQU condition
+00363:      	AR=		AR | AX
+00364:      	if ZR jmp	@sfx_cl_jg_f
+            
+00365:      	set		Z		; true
+00366:      	rets
+            
+            ; ---------
+            
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_CX_AX_U_JA:
+            sfx_CMP_CX_AX_JA:
+00367:      	DX=		0
+00368:      	BX=		0
+            sfx_CMPLONG_BCDA_JG:
+00369:      	AR=		AX
+0036A:      	CX=		CX - AR
+0036B:      	AR=		DX
+0036C:      	AR=		BX - AR + C - 1
+0036D:      	if AN jmp	@sfx_clbcda_jg_f
+            
+0036E:      	AR=		AR | CX		; exclude EQU condition
+0036F:      	if ZR jmp	@sfx_clbcda_jg_f
+            
+00370:      	set		Z		; true
+00371:      	rets
+            @sfx_clbcda_jg_f:
+00372:      	clr		Z		; false
+00373:      	rets
+            
+            ; ~~---------
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_BCDA_JA:
+00374:      	AR=		AX
+00375:      	CX=		CX - AR
+00376:      	AR=		DX
+00377:      	BX=		BX - AR + C - 1
+00378:      	AR=		0
+00379:      	AR=		AR - 0 + C - 1
+0037A:      	if AN jmp	@sfx_clbcda_jg_f
+            
+0037B:      	AR=		AR | BX		; exclude EQU condition
+0037C:      	AR=		AR | CX
+0037D:      	if ZR jmp	@sfx_clbcda_jg_f
+            
+0037E:      	set		Z		; true
+0037F:      	rets
+            
+            
+            ; ---------
+            
+            sfx_CMP_AX_CX_JG:
+00380:      	AR=		CX
+00381:      	SF=		AX - AR
+00382:      	if LE jmp	@sfx_cmp_ac_jg_f
+00383:      	set		Z
+00384:      	rets
+            @sfx_cmp_ac_jg_f:
+00385:      	clr		Z
+00386:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_JG:
+00387:      	AR=		AX
+00388:      	SF=		CX - AR
+00389:      	if LE jmp	@sfx_cmp_ca_jg_f
+0038A:      	set		Z
+0038B:      	rets
+            @sfx_cmp_ca_jg_f:
+0038C:      	clr		Z
+0038D:      	rets
+            
+            
+            ; JGE group
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_AX_CX_U_JAE:
+            sfx_CMP_AX_CX_JAE:
+0038E:      	DX=		0
+0038F:      	BX=		0
+            sfx_CMPLONG_JGE:
+00390:      	AR=		CX
+00391:      	AX=		AX - AR
+00392:      	AR=		BX
+00393:      	DX=		DX - AR + C - 1
+00394:      	if AN jmp	@sfx_cl_jge_f
+            
+            	; ~~ ignore equ condition
+            
+00395:      	set		Z		; true
+00396:      	rets
+            @sfx_cl_jge_f:
+00397:      	clr		Z		; false
+00398:      	rets
+            
+            ; ~~-----------
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_JAE:
+00399:      	AR=		CX
+0039A:      	AX=		AX - AR
+0039B:      	AR=		BX
+0039C:      	DX=		DX - AR + C - 1
+0039D:      	AR=		0
+0039E:      	AR=		AR - 0 + C - 1
+0039F:      	if AN jmp	@sfx_cl_jge_f
+            
+            	; ~~ ignore equ condition
+003A0:      	set		Z		; true
+003A1:      	rets
+            
+            ; ---------
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_CX_AX_U_JAE:
+            sfx_CMP_CX_AX_JAE:
+003A2:      	DX=		0
+003A3:      	BX=		0
+            sfx_CMPLONG_BCDA_JGE:
+003A4:      	AR=		AX
+003A5:      	CX=		CX - AR
+003A6:      	AR=		DX
+003A7:      	BX=		BX - AR + C - 1
+003A8:      	if AN jmp	@sfx_clbcda_jge_f
+            
+            	; ~~ ignore equ condition
+            
+003A9:      	set		Z		; true
+003AA:      	rets
+            @sfx_clbcda_jge_f:
+003AB:      	clr		Z		; false
+003AC:      	rets
+            
+            ; ---------
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_BCDA_JAE:
+003AD:      	AR=		AX
+003AE:      	CX=		CX - AR
+003AF:      	AR=		DX
+003B0:      	BX=		BX - AR + C - 1
+003B1:      	AR=		0
+003B2:      	AR=		AR - 0 + C - 1
+003B3:      	if AN jmp	@sfx_clbcda_jge_f
+            
+            	; ~~ ignore equ condition
+003B4:      	set		Z		; true
+003B5:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_AX_CX_JGE:
+003B6:      	AR=		CX
+003B7:      	SF=		AX - AR
+003B8:      	if AN jmp	@sfx_cmp_ac_jge_f
+003B9:      	set		Z
+003BA:      	rets
+            @sfx_cmp_ac_jge_f:
+003BB:      	clr		Z
+003BC:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_JGE:
+003BD:      	AR=		AX
+003BE:      	SF=		CX - AR
+003BF:      	if AN jmp	@sfx_cmp_ca_jge_f
+003C0:      	set		Z
+003C1:      	rets
+            @sfx_cmp_ca_jge_f:
+003C2:      	clr		Z
+003C3:      	rets
+            
+            
+            ; JL group
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            ; B - below (unsigned)
+            ; L - less (signed)
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_AX_CX_U_JB:
+            sfx_CMP_AX_CX_JB:
+003C4:      	DX=		0
+003C5:      	BX=		0
+            sfx_CMPLONG_JL:
+003C6:      	AR=		CX
+003C7:      	AX=		AX - AR
+003C8:      	AR=		BX
+003C9:      	AR=		DX - AR + C - 1
+003CA:      	if AN jmp	@sfx_cl_jl_chk
+            
+            @sfx_cl_jl_f:
+003CB:      	clr		Z		; false
+003CC:      	rets
+            
+            @sfx_cl_jl_chk:
+003CD:      	AR=		AR | AX		; exclude EQU condition
+003CE:      	if ZR jmp	@sfx_cl_jl_f
+003CF:      	set		Z
+003D0:      	rets
+            
+            
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_JB:
+003D1:      	AR=		CX
+003D2:      	AX=		AX - AR
+003D3:      	AR=		BX
+003D4:      	DX=		DX - AR + C - 1
+003D5:      	AR=		0
+003D6:      	AR=		AR - 0 + C - 1
+003D7:      	if AN jmp	@sfx_cl_jb_chk
+            
+            @sfx_cl_jb_f:
+003D8:      	clr		Z		; false
+003D9:      	rets
+            
+            @sfx_cl_jb_chk:
+003DA:      	AR=		AR | DX
+003DB:      	AR=		AR | AX		; exclude EQU condition
+003DC:      	if ZR jmp	@sfx_cl_jb_f
+003DD:      	set		Z
+003DE:      	rets
+            
+            
+            ; ---------
+            
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_CX_AX_U_JB:
+            sfx_CMP_CX_AX_JB:
+003DF:      	DX=		0
+003E0:      	BX=		0
+            sfx_CMPLONG_BCDA_JL:
+003E1:      	AR=		AX
+003E2:      	CX=		CX - AR
+003E3:      	AR=		DX
+003E4:      	AR=		BX - AR + C - 1
+003E5:      	if AN jmp	@sfx_clbcda_jl_chk
+            
+            @sfx_clbcda_jl_f:
+003E6:      	clr		Z		; false
+003E7:      	rets
+            
+            @sfx_clbcda_jl_chk:
+003E8:      	AR=		AR | CX		; exclude EQU condition
+003E9:      	if ZR jmp	@sfx_clbcda_jl_f
+003EA:      	set		Z		; true
+003EB:      	rets
+            
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_BCDA_JB:
+003EC:      	AR=		AX
+003ED:      	CX=		CX - AR
+003EE:      	AR=		DX
+003EF:      	BX=		BX - AR + C - 1
+003F0:      	AR=		0
+003F1:      	AR=		AR - 0 + C - 1
+003F2:      	if AN jmp	@sfx_clbcda_jb_chk
+            
+            @sfx_clbcda_jb_f:
+003F3:      	clr		Z		; false
+003F4:      	rets
+            
+            @sfx_clbcda_jb_chk:
+003F5:      	AR=		AR | CX
+003F6:      	AR=		AR | BX
+003F7:      	if ZR jmp	@sfx_clbcda_jb_f
+003F8:      	set		Z		; true
+003F9:      	rets
+            
+            
+            ; ---------
+            
+            sfx_CMP_AX_CX_JL:
+003FA:      	AR=		CX
+003FB:      	SF=		AX - AR
+003FC:      	if GE jmp	@sfx_cmp_ac_jl_f
+003FD:      	set		Z
+003FE:      	rets
+            @sfx_cmp_ac_jl_f:
+003FF:      	clr		Z
+00400:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_JL:
+00401:      	AR=		AX
+00402:      	SF=		CX - AR
+00403:      	if GE jmp	@sfx_cmp_ca_jl_f
+00404:      	set		Z
+00405:      	rets
+            @sfx_cmp_ca_jl_f:
+00406:      	clr		Z
+00407:      	rets
+            
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_AX_CX_U_JBE:
+            sfx_CMP_AX_CX_JBE:
+00408:      	DX=		0
+00409:      	BX=		0
+            sfx_CMPLONG_JLE:
+0040A:      	AR=		CX
+0040B:      	AX=		AX - AR
+0040C:      	AR=		BX
+0040D:      	AR=		DX - AR + C - 1
+0040E:      	if AN jmp	@sfx_cl_jle_t
+            
+0040F:      	AR=		AR | AX		; include EQU condition
+00410:      	if ZR jmp	@sfx_cl_jle_t
+            
+00411:      	clr		Z		; false
+00412:      	rets
+            @sfx_cl_jle_t:
+00413:      	set		Z		; true
+00414:      	rets
+            
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_JBE:
+00415:      	AR=		CX
+00416:      	AX=		AX - AR
+00417:      	AR=		BX
+00418:      	DX=		DX - AR + C - 1
+00419:      	AR=		0
+0041A:      	AR=		AR - 0 + C - 1
+0041B:      	if AN jmp	@sfx_cl_jle_t
+            
+0041C:      	AR=		AR | DX
+0041D:      	AR=		AR | AX
+0041E:      	if ZR jmp	@sfx_cl_jle_t
+            
+0041F:      	clr		Z		; false
+00420:      	rets
+            
+            ; ---------
+            
+            ; ~~ using 32-bit to correct flag
+            
+            sfx_CMP_CX_AX_U_JBE:
+            sfx_CMP_CX_AX_JBE:
+00421:      	DX=		0
+00422:      	BX=		0
+            sfx_CMPLONG_BCDA_JLE:
+00423:      	AR=		AX
+00424:      	CX=		CX - AR
+00425:      	AR=		DX
+00426:      	AR=		BX - AR + C - 1
+00427:      	if AN jmp	@sfx_clbcda_jle_t
+            
+00428:      	AR=		AR | CX		; include EQU condition
+00429:      	if ZR jmp	@sfx_clbcda_jle_t
+            
+0042A:      	clr		Z		; false
+0042B:      	rets
+            @sfx_clbcda_jle_t:
+0042C:      	set		Z		; true
+0042D:      	rets
+            
+            ; ~~ using 48-bit to correct flag
+            
+            sfx_CMPLONG_BCDA_JBE:
+0042E:      	AR=		AX
+0042F:      	CX=		CX - AR
+00430:      	AR=		DX
+00431:      	BX=		BX - AR + C - 1
+00432:      	AR=		0
+00433:      	AR=		AR - 0 + C - 1
+00434:      	if AN jmp	@sfx_clbcda_jle_t
+            
+00435:      	AR=		AR | BX
+00436:      	AR=		AR | CX
+00437:      	if ZR jmp	@sfx_clbcda_jle_t
+            
+00438:      	clr		Z		; false
+00439:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_AX_CX_JLE:
+0043A:      	AR=		CX
+0043B:      	SF=		AX - AR
+0043C:      	if LE jmp	@sfx_cmp_ac_jl_t
+0043D:      	clr		Z
+0043E:      	rets
+            @sfx_cmp_ac_jl_t:
+0043F:      	set		Z
+00440:      	rets
+            
+            ; ---------
+            
+            sfx_CMP_CX_AX_JLE:
+00441:      	AR=		AX
+00442:      	SF=		CX - AR
+00443:      	if LE jmp	@sfx_cmp_ca_jl_t
+00444:      	clr		Z
+00445:      	rets
+            @sfx_cmp_ca_jl_t:
+00446:      	set		Z
+00447:      	rets
+            
+            
+            ; ~!~ bit-field support
+            
+            @sfx_ortable_0:
+00448:      	DW 0xFFFE
+            @sfx_ortable_1:
+00449:      	DW 0xFFFC
+            @sfx_ortable_2:
+0044A:      	DW 0xFFF8
+            @sfx_ortable_3:
+0044B:      	DW 0xFFF0
+            @sfx_ortable_4:
+0044C:      	DW 0xFFE0
+            @sfx_ortable_5:
+0044D:      	DW 0xFFC0
+            @sfx_ortable_6:
+0044E:      	DW 0xFF80
+            @sfx_ortable_7:
+0044F:      	DW 0xFF00
+            @sfx_ortable_8:
+00450:      	DW 0xFE00
+            @sfx_ortable_9:
+00451:      	DW 0xFC00
+            @sfx_ortable_10:
+00452:      	DW 0xF800
+            @sfx_ortable_11:
+00453:      	DW 0xF000
+            @sfx_ortable_12:
+00454:      	DW 0xE000
+            @sfx_ortable_13:
+00455:      	DW 0xC000
+            @sfx_ortable_14:
+00456:      	DW 0x8000
+            
+            ; ~!~
+            
+            @sfx_orhigh:
+00457:      	AR=		pm[P1]
+00458:      	DX=		DX | AR
+00459:      	rets
+            
+            @sfx_orhigh_dx:
+0045A:      	DX=		-1
+            @sfx_orlow:
+0045B:      	AR=		pm[P1]
+0045C:      	AX=		AX | AR
+            @sfx_sextw_rets:
+0045D:      	rets
+            
+            ; ~!~ signed short
+            
+            sfx_SignExtW0:
+0045E:      	P1=		#@sfx_ortable_0
+00461:      	test		AX.b0
+00462:      	if ZR jmp	@sfx_sextw_rets
+00463:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW1:
+00464:      	P1=		#@sfx_ortable_1
+00467:      	test		AX.b1
+00468:      	if ZR jmp	@sfx_sextw_rets
+00469:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW2:
+0046A:      	P1=		#@sfx_ortable_2
+0046D:      	test		AX.b2
+0046E:      	if ZR jmp	@sfx_sextw_rets
+0046F:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW3:
+00470:      	P1=		#@sfx_ortable_3
+00473:      	test		AX.b3
+00474:      	if ZR jmp	@sfx_sextw_rets
+00475:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW4:
+00476:      	P1=		#@sfx_ortable_4
+00479:      	test		AX.b4
+0047A:      	if ZR jmp	@sfx_sextw_rets
+0047B:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW5:
+0047C:      	P1=		#@sfx_ortable_5
+0047F:      	test		AX.b5
+00480:      	if ZR jmp	@sfx_sextw_rets
+00481:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW6:
+00482:      	P1=		#@sfx_ortable_6
+00485:      	test		AX.b6
+00486:      	if ZR jmp	@sfx_sextw_rets
+00487:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW7:
+00488:      	P1=		#@sfx_ortable_7
+0048B:      	test		AX.b7
+0048C:      	if ZR jmp	@sfx_sextw_rets
+0048D:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW8:
+0048E:      	P1=		#@sfx_ortable_8
+00491:      	test		AX.b8
+00492:      	if ZR jmp	@sfx_sextw_rets
+00493:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW9:
+00494:      	P1=		#@sfx_ortable_9
+00497:      	test		AX.b9
+00498:      	if ZR jmp	@sfx_sextw_rets
+00499:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW10:
+0049A:      	P1=		#@sfx_ortable_10
+0049D:      	test		AX.b10
+0049E:      	if ZR jmp	@sfx_sextw_rets
+0049F:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW11:
+004A0:      	P1=		#@sfx_ortable_11
+004A3:      	test		AX.b11
+004A4:      	if ZR jmp	@sfx_sextw_rets
+004A5:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW12:
+004A6:      	P1=		#@sfx_ortable_12
+004A9:      	test		AX.b12
+004AA:      	if ZR jmp	@sfx_sextw_rets
+004AB:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW13:
+004AC:      	P1=		#@sfx_ortable_13
+004AF:      	test		AX.b13
+004B0:      	if ZR jmp	@sfx_sextw_rets
+004B1:      	jmp		@sfx_orlow
+            
+            sfx_SignExtW14:
+004B2:      	P1=		#@sfx_ortable_14
+004B5:      	test		AX.b14
+004B6:      	if ZR jmp	@sfx_sextw_rets
+004B7:      	jmp		@sfx_orlow
+            
+            ; ~!~ signed long
+            
+            sfx_SignExtL0:
+004B8:      	P1=		#@sfx_ortable_0
+004BB:      	test		AX.b0
+004BC:      	if ZR jmp	@sfx_sextw_rets
+004BD:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL1:
+004BE:      	P1=		#@sfx_ortable_1
+004C1:      	test		AX.b1
+004C2:      	if ZR jmp	@sfx_sextw_rets
+004C3:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL2:
+004C4:      	P1=		#@sfx_ortable_2
+004C7:      	test		AX.b2
+004C8:      	if ZR jmp	@sfx_sextw_rets
+004C9:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL3:
+004CA:      	P1=		#@sfx_ortable_3
+004CD:      	test		AX.b3
+004CE:      	if ZR jmp	@sfx_sextw_rets
+004CF:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL4:
+004D0:      	P1=		#@sfx_ortable_4
+004D3:      	test		AX.b4
+004D4:      	if ZR jmp	@sfx_sextw_rets
+004D5:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL5:
+004D6:      	P1=		#@sfx_ortable_5
+004D9:      	test		AX.b5
+004DA:      	if ZR jmp	@sfx_sextw_rets
+004DB:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL6:
+004DC:      	P1=		#@sfx_ortable_6
+004DF:      	test		AX.b6
+004E0:      	if ZR jmp	@sfx_sextw_rets
+004E1:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL7:
+004E2:      	P1=		#@sfx_ortable_7
+004E5:      	test		AX.b7
+004E6:      	if ZR jmp	@sfx_sextw_rets
+004E7:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL8:
+004E8:      	P1=		#@sfx_ortable_8
+004EB:      	test		AX.b8
+004EC:      	if ZR jmp	@sfx_sextw_rets
+004ED:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL9:
+004EE:      	P1=		#@sfx_ortable_9
+004F1:      	test		AX.b9
+004F2:      	if ZR jmp	@sfx_sextw_rets
+004F3:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL10:
+004F4:      	P1=		#@sfx_ortable_10
+004F7:      	test		AX.b10
+004F8:      	if ZR jmp	@sfx_sextw_rets
+004F9:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL11:
+004FA:      	P1=		#@sfx_ortable_11
+004FD:      	test		AX.b11
+004FE:      	if ZR jmp	@sfx_sextw_rets
+004FF:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL12:
+00500:      	P1=		#@sfx_ortable_12
+00503:      	test		AX.b12
+00504:      	if ZR jmp	@sfx_sextw_rets
+00505:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL13:
+00506:      	P1=		#@sfx_ortable_13
+00509:      	test		AX.b13
+0050A:      	if ZR jmp	@sfx_sextw_rets
+0050B:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL14:
+0050C:      	P1=		#@sfx_ortable_14
+0050F:      	test		AX.b14
+00510:      	if ZR jmp	@sfx_sextw_rets
+00511:      	jmp		@sfx_orhigh_dx
+            
+            sfx_SignExtL15:
+00512:      	test		AX.b15
+00513:      	if ZR jmp	@sfx_sextw_rets
+00514:      	DX=		-1
+00515:      	rets
+            
+            sfx_SignExtL16:
+00516:      	P1=		#@sfx_ortable_0
+00519:      	test		DX.b0
+0051A:      	if ZR jmp	@sfx_sextw_rets
+0051B:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL17:
+0051C:      	P1=		#@sfx_ortable_1
+0051F:      	test		DX.b1
+00520:      	if ZR jmp	@sfx_sextw_rets
+00521:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL18:
+00522:      	P1=		#@sfx_ortable_2
+00525:      	test		DX.b2
+00526:      	if ZR jmp	@sfx_sextw_rets
+00527:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL19:
+00528:      	P1=		#@sfx_ortable_3
+0052B:      	test		DX.b3
+0052C:      	if ZR jmp	@sfx_sextw_rets
+0052D:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL20:
+0052E:      	P1=		#@sfx_ortable_4
+00531:      	test		DX.b4
+00532:      	if ZR jmp	@sfx_sextw_rets
+00533:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL21:
+00534:      	P1=		#@sfx_ortable_5
+00537:      	test		DX.b5
+00538:      	if ZR jmp	@sfx_sextw_rets
+00539:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL22:
+0053A:      	P1=		#@sfx_ortable_6
+0053D:      	test		DX.b6
+0053E:      	if ZR jmp	@sfx_sextw_rets
+0053F:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL23:
+00540:      	P1=		#@sfx_ortable_7
+00543:      	test		DX.b7
+00544:      	if ZR jmp	@sfx_sextw_rets
+00545:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL24:
+00546:      	P1=		#@sfx_ortable_8
+00549:      	test		DX.b8
+0054A:      	if ZR jmp	@sfx_sextw_rets
+0054B:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL25:
+0054C:      	P1=		#@sfx_ortable_9
+0054F:      	test		DX.b9
+00550:      	if ZR jmp	@sfx_sextw_rets
+00551:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL26:
+00552:      	P1=		#@sfx_ortable_10
+00555:      	test		DX.b10
+00556:      	if ZR jmp	@sfx_sextw_rets
+00557:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL27:
+00558:      	P1=		#@sfx_ortable_11
+0055B:      	test		DX.b11
+0055C:      	if ZR jmp	@sfx_sextw_rets
+0055D:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL28:
+0055E:      	P1=		#@sfx_ortable_12
+00561:      	test		DX.b12
+00562:      	if ZR jmp	@sfx_sextw_rets
+00563:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL29:
+00564:      	P1=		#@sfx_ortable_13
+00567:      	test		DX.b13
+00568:      	if ZR jmp	@sfx_sextw_rets
+00569:      	jmp		@sfx_orhigh
+            
+            sfx_SignExtL30:
+0056A:      	P1=		#@sfx_ortable_14
+0056D:      	test		DX.b14
+0056E:      	if ZR jmp	@sfx_sextw_rets
+0056F:      	jmp		@sfx_orhigh
+            
+            
+            ; ~.~--------------------
+            ; I1, AX
+            
+            sfx_REPMOV_SS:
+            @sfx_repmov_ss_loop_1804:
+00570:      	push		I1
+00571:      	AR=		AX
+00572:      	I1=		AR
+00573:      	AR=		rm[I1]
+00574:      	pop		I1
+00575:      	rm[I1++]=	AR
+00576:      	AX++
+00577:      	loop		@sfx_repmov_ss_loop_1804
+00578:      	rets
+            
+            ; ~~
+            
+            sfx_REPMOV_SR:
+00579:      	AR=		AX
+0057A:      	P1=		AR
+            @sfx_repmov_sr_loop_1804:
+0057B:      	rm[I1++]=	pm[P1++]
+0057C:      	loop		@sfx_repmov_sr_loop_1804
+0057D:      	rets
+            
+            
+            ; ~~
+            
+            sfx_REPMOV_RS:
+0057E:      	AR=		AX
+0057F:      	I1=		AR
+            @sfx_repmov_rs_loop_1804:
+00580:      	AR=		rm[I1++]
+00581:      	pm[P1++]=	AR
+00582:      	loop		@sfx_repmov_rs_loop_1804
+00583:      	rets
+            
+            ; ~~
+            
+            sfx_REPMOV_RR:
+            @sfx_repmov_rr_loop_1804:
+00584:      	push		P1
+00585:      	AR=		AX
+00586:      	P1=		AR
+00587:      	AR=		pm[P1]
+00588:      	pop		P1
+00589:      	pm[P1++]=	AR
+0058A:      	AX++
+0058B:      	loop		@sfx_repmov_rr_loop_1804
+0058C:      	rets
+            
+            ; ~~
+            
+            ; sfx_CHECKZERO:
+            	; AR=		AX
+            	; rets
+            
+            ; ~~
+            
+            ; sfx_CHECKZEROLONG:
+            	; AR=		AX
+            	; AR=		AR | DX
+            	; rets
+            
+            ; ~~
+            
+            
+            #ifdef PRAM_BANK
+            
+            ;  ~~ simple link list for PRAM allocate
+            
+            ;  +---------+---------+
+            ;  | field 0 | field 1 |
+            ;  +---------+---------+
+            ;  |   PROM  |  next   |
+            ;  +---------+---------+
+            
+            sfx_DynFastCallInit:
+            ; {
+            	P1.hh=		PRAM_BANK
+            	P1=		PRAM_OFFSET
+            	AR=		0
+            	pm[P1++]=	AR
+            	pm[P1]=		AR
+            	P1.hh=		0
+            	rets
+            ; }
+            
+            
+            ; ~~ for C / ASM progam compatible used
+            
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            ; bool sfx_DynFindPrg(PRGADR)
+            ;
+            ; in:
+            ;    P1		- function start address
+            ;
+            ; out:
+            ;     Z		- found, P0 = program entry address at PRAM
+            ;     NZ	- not found, P0 = free space (list) start at PRAM
+            ; ----------------------------------------------------------------
+            
+            sfx_DynFindPrg:
+            ; {
+            	P0.hh=		PRAM_BANK
+            	P0=		PRAM_OFFSET
+            @sfxdfp_loop_1320:
+            	AR=		pm[P0++]	; program address
+            	if ZR jmp	@sfxdfp_label_1321
+            	SF=		AR - P1
+            	if NE jmp	@sfxdfp_label_1323
+            	
+            	P0++
+            	set		Z
+            	rets
+            
+            @sfxdfp_label_1323:
+            	AR=		pm[P0]		; next
+            	P0=		0xFC00
+            	P0=		P0 & AR
+            	if NZ jmp	@sfxdfp_label_1655
+            	P0=		AR
+            	jmp		@sfxdfp_loop_1320
+            
+            @sfxdfp_label_1321:
+            	P0--				; list
+            	clr		Z
+            	rets
+            	
+            @sfxdfp_label_1655:
+            ; ~~ list broken...
+            	P0=		PRAM_OFFSET
+            	clr		Z
+            	rets
+            ; }
+            
+            ; --------------------------------------------------------
+            
+            ; P1 = function start address
+            ; P0 = free link start
+            ; AX = function end address
+            
+            
+            sfx_DynBooking:
+            ; {
+            	; check if PRG to big to fit in PRAM
+            
+            	AR=		AX
+            	AR=		AR - P1		; PRG length
+            	AR=		AR + 5		; 2 list space + 1 inst (P0.hh = 0)
+            	CX=		AR
+            
+            	; ~~ can not cache PRG (total PRAM_SIZE) ??
+            
+            	AR=		PRAM_SIZE
+            	SF=		AR - CX
+            	if AN jmp	@sfxdb_label_1345
+            
+            	; ~~ look up remain free space
+            
+            	AR=		PRAM_OFFSET
+            	AR=		P0 - AR
+            	DX=		PRAM_SIZE
+            	AR=		DX - AR
+            
+            	SF=		AR - CX
+            	if GE jmp	@sfxdb_label_1349
+            
+            	; ~~ reset link list
+            
+            	P0=		PRAM_OFFSET
+            
+            @sfxdb_label_1349:
+            	; create link list
+            
+            	AR=		P1
+            	pm[P0++]=	AR		; PRG
+            	AR=		P0
+            	AR=		AR - 3		; remove 1 list and 1 next
+            	CX=		CX + AR
+            	pm[P0++]=	CX		; next
+            
+            	push		P1
+            	P1=		#@sfxdfc_label_1840
+            	AR=		pm[P1]		; inst -> P1.hh = 0
+            	pm[P0++]=	AR
+            	AR=		CX
+            	P1=		AR
+            	P1.hh=		PRAM_BANK
+            	AR=		0
+            	pm[P1++]=	AR
+            	pm[P1]=		AR
+            	P1.hh=		0
+            	pop		P1
+            	
+            	set		Z
+            	rets
+            
+            @sfxdb_label_1345:
+            	P0.hh=		0
+            	clr		Z
+            	rets
+            ; }
+            
+            
+            ; --------------------------------------------------------
+            
+            ; P1 = function start address
+            ; P0 = free PRG entry
+            ; AX = function end address
+            
+            sfx_DynCache:
+            	push		P0
+            	AR=		AX
+            	AR=		AR - P1
+            	CX=		AR
+            	jmp		@sfxdynch_label_1650
+            @sfxdynch_loop_1650:
+            	AR=		pm[P1++]
+            	pm[P0++]=	AR
+            @sfxdynch_label_1650:
+            	loop		@sfxdynch_loop_1650
+            	pop		P0
+            	P0--
+            	rets
+            
+            ; --------------------------------------------------------
+            
+            
+            ; ~~ for C
+            
+            ; P1 = function start address
+            ; AX = function end address
+            
+            sfx_DynFastCall:
+            ; {
+            	; look up function entry by prom address (P1)
+            
+            	P0.hh=		PRAM_BANK
+            	P0=		PRAM_OFFSET
+            @sfxdfc_label_1759:
+            	AR=		pm[P0++]		; next
+            	if ZR jmp	@sfxdfc_label_1758
+            	SF=		AR - P1
+            	if EQ jmp	@sfxdfc_label_1722
+            	AR=		pm[P0]
+            	P0=		0xFC00
+            	P0=		P0 & AR
+            	if NZ jmp	@sfxdfc_label_2035
+            	P0=		AR
+            	jmp		@sfxdfc_label_1759
+            
+            @sfxdfc_label_2035:
+            	P0=		PRAM_OFFSET + 1
+            
+            ; -----
+            
+            @sfxdfc_label_1758:
+            
+            	; look for remain free space
+            	AR=		AX
+            	AR=		AR - P1		; PRG length
+            	AR=		AR + 5		; 2 list space + 1 inst (P0.hh = 0)
+            	CX=		AR
+            
+            	P0--
+            
+            	AR=		PRAM_SIZE
+            	SF=		AR - CX
+            	if AN jmp	@sfxdfc_label_1840
+            	
+            	; ~~ look up remain free space
+            
+            	AR=		PRAM_OFFSET
+            	AR=		P0 - AR
+            	DX=		PRAM_SIZE
+            	AR=		DX - AR
+            
+            	SF=		AR - CX
+            	if GE jmp	@sfxdfc_label_1817
+            
+            	; ~~ reset link list
+            
+            	P0=		PRAM_OFFSET
+            
+            @sfxdfc_label_1817:
+            
+            	; copy program to pram
+            
+            	; ~~ PROM field
+            		AR=		P1
+            		pm[P0++]=	AR
+            	; ~~ next field
+            		AR=		P0
+            		AR=		AR - 3		; remove 1 list and 1 next
+            		CX=		CX + AR
+            		pm[P0++]=	CX		; next
+            
+            	; ~~ booking
+            		push		P1
+            		P1=		#@sfxdfc_label_1840
+            		AR=		pm[P1]		; inst -> P1.hh = 0
+            		pm[P0++]=	AR
+            		AR=		CX
+            		P1=		AR
+            		P1.hh=		PRAM_BANK
+            		AR=		0
+            		pm[P1++]=	AR
+            		pm[P1]=		AR
+            		P1.hh=		0
+            		pop		P1
+            
+            	; copy instruction  "P0.hh = 0"
+            		push		P0		; save exec address
+            	@sfxdfc_loop_1829:
+            		AR=		pm[P1++]
+            		pm[P0++]=	AR
+            		AR=		P0
+            		SF=		AR - CX
+            		if AN jmp	@sfxdfc_loop_1829
+            		pop		P0
+            		P0--
+            		fjmp		pm[P0]
+            
+            @sfxdfc_label_1722:
+            	P0++			; program entry
+            	fjmp		pm[P0]
+            
+            @sfxdfc_label_1840:
+            	P0.hh=		0
+            
+            @sfxdfc_label_1733:
+            	; free space too small, direct run
+            	fjmp		pm[P1]
+            ; }
+            
+            
+            
+            
+            #endif
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\RUNTIME.ASM> End=========================
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\FP32RT.ASM> Start=========================
+            
+            ; ~~-----------------------------------------------------
+            ; single precision number (32-bit) float point support for DSP
+            ; -------------------------------------------------------
+            
+            ; -------------------------------------------------------
+            ; ~~ porting from SDCC
+            ; -------------------------------------------------------
+            
+            ; +-----------------------------------------------------+-------------------------------------------------+
+            ; | DX (BX)                                             | AX (CX)                                         |
+            ; +------+------------------------+---------------------+-------------------------------------------------+
+            ; |  0   | 7  6  5  4  3  2  1  0 |22 21 20 19 18 17 16 | 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0 |
+            ; +------+------------------------+---------------------+-------------------------------------------------+
+            ; | sign | e  e  e  e  e  e  e  e | m  m  m  m  m  m  m |  m  m  m  m  m  m  m  m  m  m  m  m  m  m  m  m |
+            ; +------+------------------------+---------------------+-------------------------------------------------+
+            ;    15   14 13 12 11 10  9  8  7   6  5  4  3  2  1  0   15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+            
+            
+            ; ~~ float -> sign / exp / mantissa
+            
+            ; ~~ DX:AX / BX:CX - mantissa [31:8]
+            
+            ; +-------------------------------------------------+--------------------------------------------------+
+            ; | DX (BX)                                         | AX (CX)                                          |
+            ; +---+---------------------------------------------+-------------------------+------------------------+
+            ; | 1 | m  m  m  m  m  m  m  m  m  m  m  m  m  m  m | m  m  m  m  m  m  m  m  | 0  0  0  0  0  0  0  0 |
+            ; +---+---------------------------------------------+-------------------------+------------------------+
+            ;   H   22 21 20 19 18 17 16 15 14 13 12 11 10 9  8   7  6  5  4  3  2  1  0    -  -  -  -  -  -  -  -
+            ;
+            
+            ; ~~ R0    / R1    - sign and exp
+            ; +------------------------+------------------------+
+            ; | S  -  -  -  -  -  -  - | e  e  e  e  e  e  e  e |
+            ; +------------------------+------------------------+
+            ;  15 14 13 12 11 10  9  8   7  6  5  4  3  2  1  0
+            
+            
+            ; ~~ no shift
+            
+            sfx_GETARG_DANS_FS:
+0058D:      	AR=		DX
+0058E:      	slz		AR, 1		; ~~ C = sign
+0058F:      	xchg		AR
+00590:      	AH=		0
+00591:      	R0=		AR
+00592:      	if NC jmp	@sfx_getarg_dafs_label_1736
+00593:      	set		R0.b15
+            @sfx_getarg_dafs_label_1736:
+00594:      	AR=		0x7F
+00595:      	DX=		DX & AR
+00596:      	set		DX.b7		; ~~ HIDDEN 1
+00597:      	rets
+            
+            ; ~~ ----
+            
+            sfx_GETARG_DA_FS:
+00598:      	call		sfx_GETARG_DANS_FS
+00599:      	slz		AX, 2
+0059A:      	slc		DX, 2
+0059B:      	slz		AX, 2
+0059C:      	slc		DX, 2
+0059D:      	slz		AX, 2
+0059E:      	slc		DX, 2
+0059F:      	slz		AX, 2
+005A0:      	slc		DX, 2
+005A1:      	rets
+            
+            ; ~~ ----
+            
+            ; ~~ no shift
+            
+            sfx_GETARG_BCNS_FS:
+005A2:      	AR=		BX
+005A3:      	slz		AR, 1		; ~~ C = sign
+005A4:      	xchg		AR
+005A5:      	AH=		0
+005A6:      	R1=		AR
+005A7:      	if NC jmp	@sfx_getarg_bcfs_label_1736
+005A8:      	set		R1.b15
+            @sfx_getarg_bcfs_label_1736:
+005A9:      	AR=		0x7F
+005AA:      	BX=		BX & AR
+005AB:      	set		BX.b7		; ~~ HIDDEN 1
+005AC:      	rets
+            
+            ; ~~ ----
+            
+            sfx_GETARG_BC_FS:
+005AD:      	call		sfx_GETARG_BCNS_FS
+005AE:      	slz		CX, 2
+005AF:      	slc		BX, 2
+005B0:      	slz		CX, 2
+005B1:      	slc		BX, 2
+005B2:      	slz		CX, 2
+005B3:      	slc		BX, 2
+005B4:      	slz		CX, 2
+005B5:      	slc		BX, 2
+005B6:      	rets
+            
+            
+            ; ~~ ----
+            
+            sfx_Normalize_DA_FS:
+            ; {
+005B7:      	push		CX
+005B8:      	CX=		31
+            @sfx_normalize_dafs_loop_1609:
+005B9:      	test		DX.b15
+005BA:      	if NZ jmp	@sfx_normalize_dafs_label_1609
+005BB:      	slz		AX, 1
+005BC:      	slc		DX, 1
+005BD:      	R0--
+005BE:      	AR=		R0
+005BF:      	clr		AR.b15
+005C0:      	if ZR jmp	@sfx_normalize_dafs_label_1609
+005C1:      	loop		@sfx_normalize_dafs_loop_1609
+            @sfx_normalize_dafs_label_1609:
+005C2:      	pop		CX
+005C3:      	rets
+            ; }
+            
+            
+            
+            ; ~~ DX:AX - mantissa
+            ; ~~ R0    - sign and exp
+            
+            sfx_RoundRet_DA_FS:
+            ; {
+            	; ~~ for register save
+            
+            	; ~~ round lowest 8-bit to increase accuracy ??
+            
+            	; AR=		AX
+            	; AH=		0
+            	; AR=		AR + 0x80		; 0xFF80
+            	; if LE jmp	@sfx_roundret_dafs_label_1033
+            
+            	; test		AX.b8
+            	; if ZR jmp	@sfx_roundret_dafs_label_1033
+            
+            	; ~~ +1
+            
+005C4:      	AR=		0x0080
+005C6:      	AX=		AX + AR
+005C7:      	AR=		0
+005C8:      	DX=		DX + AR + C
+005C9:      	if NC jmp	@sfx_roundret_dafs_label_1033
+            	; ~~ overflow
+005CA:      	DX.h=		0x80
+005CB:      	R0++
+            @sfx_roundret_dafs_label_1033:
+005CC:      	AR=		AX
+005CD:      	AL=		0
+005CE:      	AR=		AR | DX
+005CF:      	if NZ jmp	sfx_DirectRet_DA_FS
+            
+            sfx_RetZero_DA_FS:
+            	; ~~ float 0.0
+005D0:      	AX=		0
+005D1:      	DX=		0
+005D2:      	rets
+            
+            
+            sfx_DirectRet_DA_FS:
+            	; ~~ drop 1-bit  (1.xxx)
+005D3:      	slz		AX, 1
+005D4:      	slc		DX, 1
+            
+            	; ~~ 8-bit exp
+            
+005D5:      	AR=		R0
+005D6:      	sra		AR, 2
+005D7:      	src		DX, 2
+005D8:      	src		AX, 2
+005D9:      	sra		AR, 2
+005DA:      	src		DX, 2
+005DB:      	src		AX, 2
+005DC:      	sra		AR, 2
+005DD:      	src		DX, 2
+005DE:      	src		AX, 2
+005DF:      	sra		AR, 2
+005E0:      	src		DX, 2
+005E1:      	src		AX, 2
+            
+005E2:      	slz		AR, 1		; ~~ sign bit (sra duplicate)
+005E3:      	src		DX, 1
+005E4:      	src		AX, 1
+005E5:      	rets
+            
+            sfx_ReturnINF_DA_FS:
+005E6:      	AX=		0
+005E7:      	DX=		0xFF00
+005E9:      	AR=		R0
+005EA:      	slz		AR, 1
+005EB:      	src		DX, 1
+005EC:      	rets
+            
+            sfx_ReturnNaN_DA_FS:
+005ED:      	AX=		0
+005EE:      	DX=		0x7FC0
+005F0:      	rets
+            
+            ; }
+            
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            
+            ; --------------------------
+            ; ~~ int type -> float point
+            ; --------------------------
+            
+            
+            ; --------------------------
+            ; DX:AX		- in  (long)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_LONGTOFP32:
+005F1:      	R0=		0x009E		; ~~ E+31
+            
+            sfx_LONG2FS_CORE:			; ~~ without exp
+005F3:      	test		DX.b15
+005F4:      	if ZR jmp	@sfx_long2fs_label_1004
+            
+            	; ~~ make it positive if value is negative
+            
+005F5:      	set		R0.b15		; ~~ sign
+005F6:      	AR=		0
+005F7:      	AX=		AR - AX
+005F8:      	DX=		AR - DX + C - 1
+            @sfx_long2fs_label_1004:
+005F9:      	call		sfx_Normalize_DA_FS
+005FA:      	jmp		sfx_RoundRet_DA_FS
+            
+            
+            
+            sfx_LONGTOFP32_BXCX:
+005FB:      	call		sfx_FP32SWAP
+005FC:      	call		sfx_LONGTOFP32
+005FD:      	call		sfx_FP32SWAP
+005FE:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in  (unsigned long)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_ULONGTOFP32:
+            ; {
+005FF:      	R0=		0x009E		; ~~ E+31
+            sfx_ULONG2FS_CORE:
+00601:      	call		sfx_Normalize_DA_FS
+00602:      	jmp		sfx_RoundRet_DA_FS
+            ; }
+            
+            
+            ; --------------------------
+            
+            
+            sfx_ULONGTOFP32_BXCX:
+00603:      	call		sfx_FP32SWAP
+00604:      	call		sfx_ULONGTOFP32
+00605:      	call		sfx_FP32SWAP
+00606:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in  (int)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_INTTOFP32:
+00607:      	AR=		AX
+00608:      	DX=		AR
+00609:      	AX=		0
+0060A:      	R0=		0x008E
+0060C:      	jmp		sfx_LONG2FS_CORE
+            
+            
+            ; --------------------------
+            
+            
+            sfx_INTTOFP32_BXCX:
+0060D:      	call		sfx_FP32SWAP
+0060E:      	call		sfx_INTTOFP32
+0060F:      	call		sfx_FP32SWAP
+00610:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in  (unsigned int)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_UINTTOFP32:
+00611:      	AR=		AX
+00612:      	DX=		AR
+00613:      	AX=		0
+00614:      	R0=		0x008E
+00616:      	jmp		sfx_ULONG2FS_CORE
+            
+            ; --------------------------
+            
+            sfx_UINTTOFP32_BXCX:
+00617:      	call		sfx_FP32SWAP
+00618:      	call		sfx_UINTTOFP32
+00619:      	call		sfx_FP32SWAP
+0061A:      	rets
+            
+            ; -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            
+            
+            
+            ; --------------------------
+            ; DX:AX - mantissa
+            ; R0    - sign & exp
+            ; AR    - shift count
+            ; --------------------------
+            sfx_RSHIFT_DA:
+            	; ~~ check if 0 shift count
+            
+0061B:      	if ZR jmp	@sfx_rshift_label_1132
+            
+            	; ~~ adjust exp
+0061C:      	push		CX
+0061D:      	CX=		AR
+0061E:      	AR=		AR + R0
+0061F:      	test		AR.b8
+00620:      	if ZR jmp	@sfx_rshift_label_1333
+            
+00621:      	AR=		R0
+00622:      	AL=		0xFF
+            
+            @sfx_rshift_label_1333:
+00623:      	R0=		AR
+00624:      	jmp		@sfx_rshift_label_1335
+            @sfx_rshift_loop_1335:
+00625:      	clr		C
+00626:      	src		DX, 1
+00627:      	src		AX, 1
+            @sfx_rshift_label_1335:
+00628:      	loop		@sfx_rshift_loop_1335
+00629:      	pop		CX
+            @sfx_rshift_label_1132:
+0062A:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; DX:AX		- out (long)
+            ; --------------------------
+            sfx_FP32TOLONG:
+0062B:      	call		sfx_GETARG_DA_FS
+0062C:      	AR=		0x009E
+0062E:      	AR=		AR - R0
+0062F:      	test		AR.b8
+00630:      	if NZ jmp	@sfx_fs2long_label_1709		; ~~ |X| >= 2^32
+            
+            	; ~~ lowest 8-bit already zero
+            
+00631:      	AH=		0
+00632:      	call		sfx_RSHIFT_DA
+            
+00633:      	test		R0.b15
+00634:      	if ZR jmp	@sfx_fs2long_label_1339
+            	
+            	; ~~ check zero
+            
+00635:      	AR=		AX
+00636:      	AR=		AR | DX
+00637:      	if NZ jmp	@sfx_fs2long_label_1116
+00638:      	rets
+            @sfx_fs2long_label_1116:
+            
+            	; ~~ negative
+            
+00639:      	AR=		0
+0063A:      	AX=		AR - AX
+0063B:      	DX=		AR - DX + C - 1
+0063C:      	AR=		AR - 0 + C - 1
+            
+            	; ~~ x < -0x80000000
+0063D:      	if AN jmp	@sfx_fs2long_label_1420
+0063E:      	rets
+            
+            @sfx_fs2long_label_1339:
+            	; ~~ postive
+0063F:      	test		DX.b15
+00640:      	if NZ jmp	@sfx_fs2long_label_1421
+00641:      	rets
+            
+            @sfx_fs2long_label_1709:
+            	; ~~ fs2slong_maxval
+00642:      	test		R0.b15
+00643:      	if ZR jmp	@sfx_fs2long_label_1421
+            
+            @sfx_fs2long_label_1420:
+            	; ~~ check sign bit
+00644:      	test		DX.b15
+00645:      	if ZR jmp	@sfx_fs2long_label_1118
+00646:      	rets
+            @sfx_fs2long_label_1118:
+            	; ~~ fs2slong_maxval_neg
+00647:      	AX=		0
+00648:      	DX=		0x8000
+0064A:      	rets
+            
+            @sfx_fs2long_label_1421:
+            	; ~~ fs2long_maxval_pos
+0064B:      	AX=		0xFFFF
+0064D:      	DX=		0x7FFF
+0064F:      	rets
+            
+            ; --------------------------
+            
+            sfx_FP32TOLONG_BXCX:
+00650:      	call		sfx_FP32SWAP
+00651:      	call		sfx_FP32TOLONG
+00652:      	call		sfx_FP32SWAP
+00653:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; DX:AX		- out (ulong)
+            ; --------------------------
+            sfx_FP32TOULONG:
+00654:      	call		sfx_GETARG_DA_FS
+00655:      	test		R0.b15
+00656:      	if ZR jmp	@sfx_fs2ulong_label_1536
+            
+            	; ~~ return 0
+            
+00657:      	AX=		0
+00658:      	DX=		0
+00659:      	rets
+            
+            @sfx_fs2ulong_label_1536:
+            	; ~~ fs2ulong_int
+            
+0065A:      	AR=		0x009E
+0065C:      	AR=		AR - R0
+0065D:      	test		AR.b8
+0065E:      	if ZR jmp	@sfx_fs2ulong_label_1541
+            
+            	; ~~ x >= 2^32
+            
+0065F:      	AX=		0xFF		; ~~ 0xFFFF
+00660:      	DX=		0xFF		; ~~ 0xFFFF
+00661:      	rets
+            
+            @sfx_fs2ulong_label_1541:
+00662:      	AH=		0
+00663:      	call		sfx_RSHIFT_DA
+00664:      	rets
+            
+            	
+            ; --------------------------
+            
+            sfx_FP32TOULONG_BXCX:
+00665:      	call		sfx_FP32SWAP
+00666:      	call		sfx_FP32TOULONG
+00667:      	call		sfx_FP32SWAP
+00668:      	rets
+            	
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; AX		- out (short)
+            ; --------------------------
+            sfx_FP32TOINT:
+00669:      	call		sfx_FP32TOLONG
+0066A:      	AR=		AX
+0066B:      	AR=		AR | DX
+0066C:      	if NZ jmp	@sfx_fs2int_label_1138
+0066D:      	rets
+            @sfx_fs2int_label_1138:
+0066E:      	test		R0.b15
+0066F:      	if ZR jmp	@sfx_fs2int_label_1553
+            
+            	; ~~ negative
+            
+00670:      	AR=		-1
+00671:      	SF=		AR - DX
+00672:      	if NE jmp	@sfx_fs2int_label_1609
+00673:      	test		AX.b15
+00674:      	if ZR jmp	@sfx_fs2int_label_1609
+00675:      	rets
+            @sfx_fs2int_label_1609:
+00676:      	AX=		0x8000
+00678:      	rets
+            
+            
+            @sfx_fs2int_label_1553:
+            
+            	; ~~ positive check
+            
+00679:      	AR=		DX
+0067A:      	if NZ jmp	@sfx_fs2int_label_1603_2
+0067B:      	test		AX.b15
+0067C:      	if NZ jmp	@sfx_fs2int_label_1603_2
+0067D:      	rets
+            @sfx_fs2int_label_1603_2:
+0067E:      	AX=		0x7FFF
+00680:      	rets
+            
+            
+            ; --------------------------
+            
+            sfx_FP32TOINT_BXCX:
+00681:      	call		sfx_FP32SWAP
+00682:      	call		sfx_FP32TOINT
+00683:      	call		sfx_FP32SWAP
+00684:      	rets
+            	
+            
+            	
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; AX		- out (ushort)
+            ; --------------------------
+            sfx_FP32TOUINT:
+00685:      	call		sfx_FP32TOULONG
+00686:      	AR=		DX
+00687:      	if NZ jmp	@sfx_fs2uint_label_1644
+00688:      	rets
+            @sfx_fs2uint_label_1644:
+00689:      	AX=		0xFFFF
+0068B:      	rets
+            
+            
+            ; --------------------------
+            
+            sfx_FP32TOUINT_BXCX:
+0068C:      	call		sfx_FP32SWAP
+0068D:      	call		sfx_FP32TOUINT
+0068E:      	call		sfx_FP32SWAP
+0068F:      	rets
+            	
+            
+            ; ~~-------------------------------
+            ; DX:AX		- in (fp32)
+            ; AX		- out (fp16)
+            ; ~~-------------------------------
+            sfx_FP32TOFP16:
+00690:      	call		sfx_GETARG_DA_FS
+            
+00691:      	AR=		0x70
+00692:      	R0=		R0 - AR
+00693:      	test		R0.b5
+00694:      	if NZ jmp	@sfx_fs2f16_label_1647
+00695:      	AR=		R0
+00696:      	AH=		0
+00697:      	if ZR jmp	@sfx_fs2f16_label_1647
+00698:      	SF=		AR - 0x1F
+00699:      	if GE jmp	@sfx_fs2f16_label_1647
+            
+            	; ~~ no round
+            
+            	; ~~ drop hidden 1
+0069A:      	slz		AX, 1
+0069B:      	slc		DX, 1
+            
+0069C:      	AR=		DX
+0069D:      	AX=		0xE0		; ~~ FFE0
+0069E:      	AX=		AR & AX
+            
+0069F:      	AR=		R0
+006A0:      	sra		AR, 2
+006A1:      	src		AX, 2
+006A2:      	sra		AR, 2
+006A3:      	src		AX, 2
+006A4:      	sra		AR, 1
+006A5:      	src		AX, 1
+006A6:      	slz		AR, 1
+006A7:      	src		AX, 1
+006A8:      	rets
+            
+            @sfx_fs2f16_label_1647:
+            	; ~~ FP16 INF
+006A9:      	AX=		0xF800
+006AB:      	AR=		R0
+006AC:      	slz		AR, 1
+006AD:      	src		AX, 1
+006AE:      	rets
+            
+            
+            ; --------------------------
+            
+            sfx_FP32TOFP16_BXCX:
+006AF:      	call		sfx_FP32SWAP
+006B0:      	call		sfx_FP32TOFP16
+006B1:      	call		sfx_FP32SWAP
+006B2:      	rets
+            
+            ; -------------------------------------------
+            ; ~~ swap two fp32 value
+            ; R0:DX:AX  <-> R1:BX:CX
+            ; -------------------------------------------
+            
+            
+            sfx_FP32SWAP_AB:
+006B3:      	push		R0
+006B4:      	push		R1
+006B5:      	pop		R0
+006B6:      	pop		R1
+006B7:      	push		AX
+006B8:      	push		CX
+006B9:      	pop		AX
+006BA:      	pop		CX
+006BB:      	push		DX
+006BC:      	push		BX
+006BD:      	pop		DX
+006BE:      	pop		BX
+006BF:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            
+            sfx_FP32ADD:
+006C0:      	call		sfx_GETARG_DA_FS
+006C1:      	call		sfx_GETARG_BC_FS
+            
+            	; ~~ which exponent is greater ?
+            
+006C2:      	AR=		R1
+006C3:      	push		R0
+006C4:      	pop		R2
+006C5:      	clr		AR.b15
+006C6:      	clr		R2.b15
+006C7:      	SF=		AR - R2
+006C8:      	if GE jmp	@sfx_fp32add_label_1043
+            
+006C9:      	call		sfx_FP32SWAP_AB
+            
+            @sfx_fp32add_label_1043:
+006CA:      	AR=		R1
+006CB:      	push		R0
+006CC:      	pop		R2
+006CD:      	clr		AR.b15
+006CE:      	clr		R2.b15
+006CF:      	AR=		AR - R2
+006D0:      	call		sfx_RSHIFT_DA
+            
+            	; ~~ decide if we need to add or subtract
+            
+006D1:      	AR=		R0
+006D2:      	AR=		AR ^ R1
+006D3:      	slz		AR, 1
+006D4:      	if AC jmp	@sfx_fp32add_label_1714
+            
+            	; ~~ add the mantissa (both positive or both negative)
+            
+006D5:      	AR=		CX
+006D6:      	AX=		AX + AR
+006D7:      	AR=		BX
+006D8:      	DX=		DX + AR + C
+006D9:      	if NC jmp	@sfx_fp32add_label_1718
+006DA:      	AR=		1
+006DB:      	call		sfx_RSHIFT_DA
+006DC:      	set		DX.b15			; ~~ hidden 1
+            @sfx_fp32add_label_1718:
+006DD:      	jmp		@sfx_fp32add_label_1720
+            
+            @sfx_fp32add_label_1714:
+            
+            	; ~~ subtract the mantissa (one of them is negative)
+            
+006DE:      	AR=		CX
+006DF:      	AX=		AX - AR
+006E0:      	AR=		BX
+006E1:      	DX=		DX - AR + C - 1
+006E2:      	if AC jmp	@sfx_fp32add_label_1720
+            
+006E3:      	AR=		0
+006E4:      	AX=		AR - AX
+006E5:      	DX=		AR - DX + C - 1
+006E6:      	not		R0.b15
+            @sfx_fp32add_label_1720:
+006E7:      	call		sfx_Normalize_DA_FS
+006E8:      	jmp		sfx_RoundRet_DA_FS
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_FP32SUB:
+006E9:      	not		BX.b15
+006EA:      	jmp		sfx_FP32ADD
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_FP32MUL:
+            	; ~~ first check if either input is zero
+            
+006EB:      	AR=		DX
+006EC:      	if ZR jmp	sfx_RetZero_DA_FS
+006ED:      	AR=		BX
+006EE:      	if ZR jmp	sfx_RetZero_DA_FS
+            
+006EF:      	call		sfx_GETARG_DANS_FS
+006F0:      	call		sfx_GETARG_BCNS_FS
+            
+            	; ~~ compare final sign bit
+            
+006F1:      	test		R1.b15
+006F2:      	if ZR jmp	@sfx_fp32mul_label_1026
+            
+006F3:      	not		R0.b15
+            @sfx_fp32mul_label_1026:
+            
+            	; ~~ check if either input is infinity
+            
+006F4:      	AR=		R1
+006F5:      	AH=		0xFF
+006F6:      	SF=		AR - 0xFF		; ~~ 0xFFFF
+006F7:      	if EQ jmp	sfx_ReturnINF_DA_FS
+            
+006F8:      	AR=		R0
+006F9:      	AH=		0xFF
+006FA:      	SF=		AR - 0xFF		; ~~ 0xFFFF
+006FB:      	if EQ jmp	sfx_ReturnINF_DA_FS
+            
+            
+            	; ~~ add the exponents
+            
+006FC:      	AR=		R1
+006FD:      	clr		AR.b15
+006FE:      	AR=		AR + R0
+006FF:      	test		AR.b8
+00700:      	if NZ jmp	@sfx_fp32mul_label_1322
+            
+            	; ~~ minus exponents
+            
+00701:      	AR=		AR - 126
+00702:      	test		AR.b8
+00703:      	if ZR jmp	@sfx_fp32mul_label_1103
+            
+00704:      	jmp		sfx_RetZero_DA_FS
+            @sfx_fp32mul_label_1322:
+            
+00705:      	AR=		AR - 126
+00706:      	test		AR.b8
+00707:      	if ZR jmp	@sfx_fp32mul_label_1103
+            
+00708:      	jmp		sfx_ReturnINF_DA_FS
+            
+            @sfx_fp32mul_label_1103:
+00709:      	R0=		AR
+            
+            	; ~~ unsigned multiplay
+0070A:      	PCH=		sfx_MULLONG
+0070B:      	lcall		sfx_MULLONG
+            
+            	; ~~ 48-bit result in CX:DX:AX
+            
+            	; ~~ drop low 16-bit
+            
+0070C:      	push		DX
+0070D:      	pop		AX
+0070E:      	push		CX
+0070F:      	pop		DX
+00710:      	test		DX.b15
+00711:      	if NZ jmp	@sfx_fs32mul_label_1326
+            
+00712:      	call		sfx_Normalize_DA_FS
+            @sfx_fs32mul_label_1326:
+00713:      	jmp		sfx_RoundRet_DA_FS
+            
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; DX:AX		- out (fp32)
+            ; --------------------------
+            sfx_FP32DIV:
+            	; ~~ compute final sign bit
+00714:      	test		BX.b15
+00715:      	if ZR jmp	@sfx_fp32div_label_1629
+            
+00716:      	not		DX.b15
+            @sfx_fp32div_label_1629:
+            
+            	; ~~ if divisor is zero, ...
+00717:      	AR=		BX
+00718:      	if NZ jmp	@sfx_fp32div_label_1639
+            	; ~~ if dividend is also zero, return NaN
+00719:      	AR=		DX
+0071A:      	if NZ jmp	@sfx_fp32div_label_1641
+0071B:      	jmp		sfx_ReturnNaN_DA_FS
+            @sfx_fp32div_label_1641:
+            	; ~~ but dividend is non-zero, return infinity
+0071C:      	jmp		sfx_ReturnINF_DA_FS
+            @sfx_fp32div_label_1639:
+            	; ~~ if dividend is zero, return zero
+0071D:      	AR=		DX
+0071E:      	if NZ jmp	@sfx_fp32div_label_1644
+0071F:      	jmp		sfx_RetZero_DA_FS
+            @sfx_fp32div_label_1644:
+00720:      	call		sfx_GETARG_DANS_FS
+00721:      	call		sfx_GETARG_BCNS_FS
+            
+            	; ~~ if divisor is infinity, ...
+00722:      	AR=		R1
+00723:      	AH=		0xFF
+00724:      	SF=		AR - 0xFF	; ~~ 0xFFFF
+00725:      	if NE jmp	@sfx_fp32div_label_1646
+00726:      	AR=		R0
+00727:      	AH=		0xFF
+00728:      	SF=		AR - 0xFF	; ~~ 0xFFFF
+00729:      	if NE jmp	@sfx_fp32div_label_1647
+0072A:      	jmp		sfx_ReturnNaN_DA_FS
+            @sfx_fp32div_label_1647:
+0072B:      	jmp		sfx_RetZero_DA_FS
+            
+            @sfx_fp32div_label_1646:
+            	; ~~ subtract exponents
+            
+0072C:      	AR=		R1
+0072D:      	clr		AR.b15
+0072E:      	AR=		R0 - AR
+0072F:      	test		AR.b8
+00730:      	if ZR jmp	@sfx_fp32div_label_1649
+            
+00731:      	AR=		AR + 127
+00732:      	test		AR.b8
+00733:      	if ZR jmp	@sfx_fp32div_label_1753
+00734:      	jmp		sfx_RetZero_DA_FS
+            @sfx_fp32div_label_1649:
+            
+00735:      	AR=		AR + 127
+00736:      	test		AR.b8
+00737:      	if ZR jmp	@sfx_fp32div_label_1753
+00738:      	jmp		sfx_ReturnINF_DA_FS
+            @sfx_fp32div_label_1753:
+00739:      	R0=		AR
+            
+0073A:      	AR=		AX
+0073B:      	AR=		AR - CX
+0073C:      	AR=		DX
+0073D:      	AR=		AR - BX + C - 1
+0073E:      	test		AR.b15
+0073F:      	if ZR jmp	@sfx_fp32div_label_1638
+            
+            	; ~~ need extra bits on a's mantissa
+            
+00740:      	slz		AX, 1
+00741:      	slc		DX, 1
+00742:      	R0--				; ~~ exponent
+            @sfx_fp32div_label_1638:
+            
+            	; ~~ now we perform repeated substraction of float2 from float1
+            
+            	; ~~ result - DX:AX
+            	; ~~ using 25-bit to make float more accuracy
+            
+00743:      	push		AX
+00744:      	pop		R2
+00745:      	push		DX
+00746:      	pop		R3
+00747:      	DX=		0
+00748:      	AX=		0
+00749:      	P1=		25
+0074A:      	push		R0
+            @sfx_fp32div_loop_1642:
+0074B:      	slz		AX, 1
+0074C:      	slc		DX, 1
+            
+            	; ~~ mant1 < mant2
+0074D:      		AR=		R2
+0074E:      		R0=		AR
+0074F:      		AR=		R3
+00750:      		R1=		AR
+00751:      		AR=		CX
+00752:      		R0=		R0 - AR
+00753:      		AR=		BX
+00754:      		R1=		R1 - AR + C - 1
+00755:      		test		R1.b15
+00756:      		if NZ jmp	@sfx_fp32div_label_1651
+            
+            	; result |= mask
+00757:      		set		AX.b7
+            
+            	; mant1 -= mant2
+00758:      		AR=		CX
+00759:      		R2=		R2 - AR
+0075A:      		AR=		BX
+0075B:      		R3=		R3 - AR + C - 1
+            @sfx_fp32div_label_1651:
+            
+            	; mantl <<= 1;
+0075C:      		slz		R2, 1
+0075D:      		slc		R3, 1
+            
+0075E:      	P1--
+0075F:      	if NZ jmp	@sfx_fp32div_loop_1642
+00760:      	pop		R0
+            
+            @sfx_fp32div_label_0921:
+            
+00761:      	call		sfx_Normalize_DA_FS
+00762:      	jmp		sfx_RoundRet_DA_FS
+            
+            ; ~~ -- compare support functions -- ~~ ;
+            ; ~~    internal                     ~~ ;
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; Z		- EQU
+            ; NZ		- not EQU
+            ; --------------------------
+            
+            sfx_FP32CMPU32:
+00763:      	clr		DX.b15
+00764:      	clr		BX.b15
+00765:      	AR=		AX
+00766:      	SF=		AR - CX
+00767:      	if NE jmp	@sfx_fp32cmpu32_label_1615
+00768:      	AR=		DX
+00769:      	SF=		AR - BX
+0076A:      	if NE jmp	@sfx_fp32cmpu32_label_1615
+            
+0076B:      	set		Z
+0076C:      	rets
+            @sfx_fp32cmpu32_label_1615:
+0076D:      	clr		Z
+0076E:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; Z		- EQU
+            ; NZ		- not EQU
+            ; --------------------------
+            sfx_FP32CHKZERO:
+0076F:      	AR=		AX
+00770:      	AR=		AR | CX
+00771:      	if NZ jmp	@sfx_fp32chkzero_label_1620
+00772:      	AR=		DX
+00773:      	AR=		AR | BX
+00774:      	clr		AR.b15
+00775:      	if NZ jmp	@sfx_fp32chkzero_label_1620
+00776:      	set		Z
+00777:      	rets
+            @sfx_fp32chkzero_label_1620:
+00778:      	clr		Z
+00779:      	rets
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; DX:AX  <-->   BX:CX
+            
+            sfx_FP32SWAP:
+0077A:      	push		AX
+0077B:      	push		DX
+0077C:      	push		CX
+0077D:      	push		BX
+0077E:      	pop		DX
+0077F:      	pop		AX
+00780:      	pop		BX
+00781:      	pop		CX
+00782:      	rets
+            
+            ; ~~ -- compare support functions -- ~~ ;
+            ; ~~    subcc                        ~~ ;
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : EQU
+            ;                 0 : not EQU
+            ; --------------------------
+            
+            sfx_CMPFP32_BCDA_JE:
+00783:      	call		sfx_FP32SWAP
+            sfx_CMPFP32_JE:
+00784:      	call		sfx_FP32CHKZERO
+00785:      	if ZR jmp	@sfx_fp32equ_label_1622
+00786:      	call		sfx_FP32CMPU32
+00787:      	if ZR jmp	@sfx_fp32equ_label_1622
+00788:      	clr		Z
+00789:      	rets
+            @sfx_fp32equ_label_1622:
+0078A:      	set		Z
+0078B:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : >
+            ;                 0 : <=
+            ; --------------------------
+            
+            sfx_CMPFP32_BCDA_JG:
+            sfx_CMPFP32_BCDA_JA:
+0078C:      	call		sfx_FP32SWAP
+            sfx_CMPFP32_JG:
+            sfx_CMPFP32_JA:
+            	; ~~ backup sign bit
+0078D:      	R0=		0
+0078E:      	AR=		DX
+0078F:      	slz		AR, 1
+00790:      	slc		R0, 1
+00791:      	AR=		BX
+00792:      	slz		AR, 1
+00793:      	slc		R0, 1
+            
+            	; ~~ check zero and equ (sign bit gone)
+            
+00794:      	call		sfx_FP32CHKZERO
+00795:      	if ZR jmp	@sfx_cmpfp32_jg_label_1641
+00796:      	call		sfx_FP32CMPU32
+00797:      	if ZR jmp	@sfx_cmpfp32_jg_label_1641
+            
+            	; ~~ check sign bit
+            	; ~~ ---------------------
+            	;          A      B
+            	; ~~ ---------------------
+            	; ~~ 0  =  +  vs  +
+            	; ~~ 1  =  +  vs  -
+            	; ~~ 2  =  -  vs  +
+            	; ~~ 3  =  -  vs  -
+            
+00798:      	AR=		R0
+00799:      	if EQ jmp	@sfx_comfp32_jg_label_1645
+0079A:      	SF=		AR - 3
+0079B:      	if EQ jmp	@sfx_comfp32_jg_label_1645
+            
+            	; ~~ sign bit different
+            	; ~~ 1  =  +  vs  -   = >
+0079C:      	SF=		AR - 1
+0079D:      	if EQ jmp	@sfx_comfp32_jg_label_1657
+            	; ~~ 2  =  -  vs  +   = <
+0079E:      	jmp		@sfx_cmpfp32_jg_label_1641
+            @sfx_comfp32_jg_label_1645:
+            	; ~~ sign bit the same
+            
+0079F:      	AR=		CX
+007A0:      	AX=		AX - AR
+007A1:      	AR=		BX
+007A2:      	DX=		DX - AR + C - 1
+            
+007A3:      	AR=		R0
+007A4:      	SF=		AR - 3
+007A5:      	if NE jmp	@sfx_cmpfp32_jg_label_1558
+007A6:      	not		DX.b15
+            @sfx_cmpfp32_jg_label_1558:
+007A7:      	test		DX.b15
+007A8:      	if ZR jmp	@sfx_comfp32_jg_label_1657
+            
+            @sfx_cmpfp32_jg_label_1641:
+007A9:      	clr		Z		; ~~ false
+007AA:      	rets
+            
+            @sfx_comfp32_jg_label_1657:
+007AB:      	set		Z		; ~~ true
+007AC:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : <
+            ;                 0 : >=
+            ; --------------------------
+            
+            sfx_CMPFP32_BCDA_JL:
+            sfx_CMPFP32_BCDA_JB:
+007AD:      	call		sfx_FP32SWAP
+            sfx_CMPFP32_JL:
+            sfx_CMPFP32_JB:
+            	; ~~ backup sign bit
+007AE:      	R0=		0
+007AF:      	AR=		DX
+007B0:      	slz		AR, 1
+007B1:      	slc		R0, 1
+007B2:      	AR=		BX
+007B3:      	slz		AR, 1
+007B4:      	slc		R0, 1
+            
+            	; ~~ check zero and equ (sign bit gone)
+            
+007B5:      	call		sfx_FP32CHKZERO
+007B6:      	if ZR jmp	@sfx_cmpfp32_jl_label_1641
+007B7:      	call		sfx_FP32CMPU32
+007B8:      	if ZR jmp	@sfx_cmpfp32_jl_label_1641
+            
+            	; ~~ check sign bit
+            	; ~~ ---------------------
+            	;          A      B
+            	; ~~ ---------------------
+            	; ~~ 0  =  +  vs  +
+            	; ~~ 1  =  +  vs  -
+            	; ~~ 2  =  -  vs  +
+            	; ~~ 3  =  -  vs  -
+            
+007B9:      	AR=		R0
+007BA:      	if EQ jmp	@sfx_comfp32_jl_label_1645
+007BB:      	SF=		AR - 3
+007BC:      	if EQ jmp	@sfx_comfp32_jl_label_1645
+            
+            	; ~~ sign bit different
+            	; ~~ 1  =  +  vs  -   = >
+007BD:      	SF=		AR - 1
+007BE:      	if EQ jmp	@sfx_cmpfp32_jl_label_1641
+            	; ~~ 2  =  -  vs  +   = <
+007BF:      	jmp		@sfx_comfp32_jl_label_1657
+            
+            @sfx_comfp32_jl_label_1645:
+            	; ~~ sign bit the same
+            
+007C0:      	AR=		CX
+007C1:      	AX=		AX - AR
+007C2:      	AR=		BX
+007C3:      	DX=		DX - AR + C - 1
+            
+007C4:      	AR=		R0
+007C5:      	SF=		AR - 3
+007C6:      	if NE jmp	@sfx_cmpfp32_jl_label_1558
+007C7:      	not		DX.b15
+            @sfx_cmpfp32_jl_label_1558:
+007C8:      	test		DX.b15
+007C9:      	if NZ jmp	@sfx_comfp32_jl_label_1657
+            
+            @sfx_cmpfp32_jl_label_1641:
+007CA:      	clr		Z		; ~~ false
+007CB:      	rets
+            
+            @sfx_comfp32_jl_label_1657:
+007CC:      	set		Z		; ~~ true
+007CD:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : not EQU
+            ;                 0 : EQU
+            ; --------------------------
+            
+            sfx_CMPFP32_JNE:
+007CE:      	call		sfx_CMPFP32_JE
+007CF:      	if ZR jmp	@sfx_cmpfp32_jne_label_false
+007D0:      	set		Z
+007D1:      	rets
+            @sfx_cmpfp32_jne_label_false:
+007D2:      	clr		Z
+007D3:      	rets
+            
+            
+            ; --------------------------
+            ; BX:CX		- in (fp32)
+            ; DX:AX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : not EQU
+            ;                 0 : EQU
+            ; --------------------------
+            
+            sfx_CMPFP32_BCDA_JNE:
+007D4:      	call		sfx_CMPFP32_BCDA_JE
+007D5:      	if ZR jmp	@sfx_cmpfp32_bcda_jne_label_false
+007D6:      	set		Z
+007D7:      	rets
+            @sfx_cmpfp32_bcda_jne_label_false:
+007D8:      	clr		Z
+007D9:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : <=
+            ;                 0 : >
+            ; --------------------------
+            
+            sfx_CMPFP32_JLE:
+            sfx_CMPFP32_JBE:
+007DA:      	call		sfx_CMPFP32_JG
+007DB:      	if ZR jmp	@sfx_cmpfp32_jle_label_false
+007DC:      	set		Z
+007DD:      	rets
+            @sfx_cmpfp32_jle_label_false:
+007DE:      	clr		Z
+007DF:      	rets
+            
+            
+            sfx_CMPFP32_BCDA_JLE:
+            sfx_CMPFP32_BCDA_JBE:
+007E0:      	call		sfx_CMPFP32_BCDA_JG
+007E1:      	if ZR jmp	@sfx_cmpfp32_bcda_jle_label_false
+007E2:      	set		Z
+007E3:      	rets
+            @sfx_cmpfp32_bcda_jle_label_false:
+007E4:      	clr		Z
+007E5:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; BX:CX		- in (fp32)
+            ; --------------------------
+            ; AX		- 1 : >=
+            ;                 0 : <
+            ; --------------------------
+            
+            sfx_CMPFP32_JGE:
+            sfx_CMPFP32_JAE:
+007E6:      	call		sfx_CMPFP32_JL
+007E7:      	if ZR jmp	@sfx_cmpfp32_jge_label_false
+007E8:      	set		Z
+007E9:      	rets
+            @sfx_cmpfp32_jge_label_false:
+007EA:      	clr		Z
+007EB:      	rets
+            
+            
+            sfx_CMPFP32_BCDA_JGE:
+            sfx_CMPFP32_BCDA_JAE:
+007EC:      	call		sfx_CMPFP32_BCDA_JL
+007ED:      	if ZR jmp	@sfx_cmpfp32_bcda_jge_label_false
+007EE:      	set		Z
+007EF:      	rets
+            @sfx_cmpfp32_bcda_jge_label_false:
+007F0:      	clr		Z
+007F1:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; --------------------------
+            sfx_FP32NEG:
+007F2:      	not		DX.b15
+007F3:      	rets
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\FP32RT.ASM> End=========================
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\FP16RT.ASM> Start=========================
+            
+            ; ~~-----------------------------------------------------
+            ; half precision number (16-bit) float point support for DSP
+            ; -------------------------------------------------------
+            
+            ; -------------------------------------------------------
+            ; -------------------------------------------------------
+            
+            ; +-----------------------------------------------------+
+            ; | AX (CX)                                             |
+            ; +------+---------------+------------------------------+
+            ; |  0   | 4  3  2  1  0 | 9  8  7  6  5  4  3  2  1  0 |
+            ; +------+---------------+------------------------------+
+            ; | sign | e  e  e  e  e | m  m  m  m  m  m  m  m  m  m |
+            ; +------+----------------------------------------------+
+            ;    15   14 13 12 11 10   9  8  7  6  5  4  3  2  1  0
+            
+            
+            
+            ; ~~ float -> sign / exp / mantissa
+            
+            ; ~~ AX / CX - mantissa
+            
+            ; +-------------------------------------------------+
+            ; | AX (CX)                                         |
+            ; +---+---------------------------------------------+
+            ; | 1 | m  m  m  m  m  m  m  m  m  m  0  0  0  0  0 |
+            ; +---+---------------------------------------------+
+            ;   H   9  8  7  6  5  4  3  2  1  0  -  -  -  -  -
+            ;
+            
+            ; ~~ R0    / R1    - sign and exp
+            ; +------------------------+---------+---------------+
+            ; | S  -  -  -  -  -  -  - | 0  0  0 | e  e  e  e  e |
+            ; +------------------------+---------+---------------+
+            ;  15 14 13 12 11 10  9  8   7  6  5   4  3  2  1  0
+            
+            ; ~~ --
+            
+            sfx_GETARG_ANS_FP16:
+007F4:      	AR=		AX
+007F5:      	xchg		AR
+007F6:      	sra		AR, 2
+007F7:      	AR=		AR & 0x1F
+007F8:      	R0=		AR
+007F9:      	test		AX.b15
+007FA:      	if ZR jmp	@sfx_getarg_aFP16_label_1736
+007FB:      	set		R0.b15
+            @sfx_getarg_aFP16_label_1736:
+007FC:      	AR=		0x03FF
+007FE:      	AX=		AX & AR
+007FF:      	set		AX.b10		; ~~ HIDDEN 1
+00800:      	rets
+            
+            
+            sfx_GETARG_A_FP16:
+00801:      	call		sfx_GETARG_ANS_FP16
+00802:      	slz		AX, 2
+00803:      	slz		AX, 2
+00804:      	slz		AX, 1
+00805:      	rets
+            
+            ; ~~ -----------
+            
+            ; ~~ --
+            
+            sfx_GETARG_CNS_FP16:
+00806:      	AR=		CX
+00807:      	xchg		AR
+00808:      	sra		AR, 2
+00809:      	AR=		AR & 0x1F
+0080A:      	R1=		AR
+0080B:      	test		CX.b15
+0080C:      	if ZR jmp	@sfx_getarg_cFP16_label_1736
+0080D:      	set		R1.b15
+            @sfx_getarg_cFP16_label_1736:
+0080E:      	AR=		0x03FF
+00810:      	CX=		CX & AR
+00811:      	set		CX.b10		; ~~ HIDDEN 1
+00812:      	rets
+            
+            
+            sfx_GETARG_C_FP16:
+00813:      	call		sfx_GETARG_CNS_FP16
+00814:      	slz		CX, 2
+00815:      	slz		CX, 2
+00816:      	slz		CX, 1
+00817:      	rets
+            
+            ; ~~ -----------
+            ; ~~ AX    - mantissa
+            ; ~~ R0    - sign and exp
+            
+            sfx_Normalize_A_FP16:
+            ; {
+00818:      	push		CX
+00819:      	CX=		15
+            @sfx_normalize_aFP16_loop_1609:
+0081A:      	test		AX.b15
+0081B:      	if NZ jmp	@sfx_normalize_aFP16_label_1609
+0081C:      	slz		AX, 1
+0081D:      	R0--
+0081E:      	AR=		R0
+0081F:      	clr		AR.b15
+00820:      	if ZR jmp	@sfx_normalize_aFP16_label_1609
+00821:      	loop		@sfx_normalize_aFP16_loop_1609
+            @sfx_normalize_aFP16_label_1609:
+00822:      	pop		CX
+00823:      	rets
+            ; }
+            
+            
+            ; ~~ AX    - mantissa
+            ; ~~ R0    - sign and exp
+            
+            sfx_RoundRet_A_FP16:
+            ; {
+            	; ~~ for register save
+            
+            	; ~~ round lowest 5-bit to increase accuracy ??
+            
+            	; AR=		AX
+            	; AR=		AR & 0x1F
+            	; AR=		AR - 0x0F
+            	; if LE jmp	@sfx_roundret_aFP16_label_1033
+            
+            	; test		AX.b5
+            	; if ZR jmp	@sfx_roundret_aFP16_label_1033
+            
+            	; ~~ +1
+            
+00824:      	AR=		0x10
+00825:      	AX=		AX + AR
+00826:      	if NC jmp	@sfx_roundret_aFP16_label_1033
+            	; ~~ overflow
+00827:      	AX.h=		0x80
+00828:      	R0++
+            @sfx_roundret_aFP16_label_1033:
+00829:      	AR=		0xFFE0
+0082B:      	AR=		AR & AX
+0082C:      	if NZ jmp	sfx_DirectRet_A_FP16
+            
+            sfx_RetZero_A_FP16:
+            	; ~~ float 0.0
+0082D:      	AX=		0
+0082E:      	rets
+            
+            
+            sfx_DirectRet_A_FP16:
+            	; ~~ drop 1-bit  (1.xxx)
+0082F:      	slz		AX, 1
+            
+            	; 5-bit exp
+            
+00830:      	AR=		R0
+00831:      	sra		AR, 2
+00832:      	src		AX, 2
+00833:      	sra		AR, 2
+00834:      	src		AX, 2
+00835:      	sra		AR, 1
+00836:      	src		AX, 1
+            
+            	; ~~ sign bit (sra duplicate)
+            
+00837:      	slz		AR, 1
+00838:      	src		AX, 1
+00839:      	rets
+            
+            sfx_ReturnINF_A_FP16:
+0083A:      	AX=		0xF800
+0083C:      	AR=		R0
+0083D:      	slz		AR, 1
+0083E:      	src		AX, 1
+0083F:      	rets
+            
+            sfx_ReturnNaN_A_FP16:
+00840:      	AX=		0x7E00
+00842:      	rets
+            ; }
+            
+            
+            
+            ; --------------------------
+            ; ~~ int type -> float point
+            ; --------------------------
+            
+            
+            ; --------------------------
+            ; DX:AX		- in  (long)
+            ; AX		- out (fp16)
+            ; --------------------------
+            sfx_LONGTOFP16:
+00843:      	R0=		0x001E		; ~~ E+15
+            
+            ; sfx_LONG2FP16_CORE:
+00844:      	test		DX.b15
+00845:      	if ZR jmp	@sfx_long2FP16_label_1416
+            
+            	; ~~ make it positive if value is negative
+            
+00846:      	set		R0.b15		; ~~ sign
+00847:      	AR=		0
+00848:      	AX=		AR - AX
+00849:      	DX=		AR - DX + C - 1
+            
+            @sfx_long2FP16_label_1416:
+            	; ~~ check INF
+0084A:      	AR=		DX
+0084B:      	if NZ jmp	sfx_ReturnINF_A_FP16
+0084C:      	call		sfx_Normalize_A_FP16
+0084D:      	jmp		sfx_RoundRet_A_FP16
+            
+            ; --------------------------
+            
+            sfx_LONGTOFP16_CX:
+0084E:      	call		sfx_FP16SWAP
+0084F:      	call		sfx_LONGTOFP16
+00850:      	call		sfx_FP16SWAP
+00851:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in  (unsigned long)
+            ; AX		- out (fp16)
+            ; --------------------------
+            sfx_ULONGTOFP16:
+            ; {
+00852:      	R0=		0x001E		; ~~ E+31
+            ; sfx_ULONG2FP16_CORE:
+00853:      	AR=		DX
+00854:      	if NZ jmp	sfx_ReturnINF_A_FP16
+00855:      	call		sfx_Normalize_A_FP16
+00856:      	jmp		sfx_RoundRet_A_FP16
+            ; }
+            
+            ; --------------------------
+            
+            sfx_ULONGTOFP16_CX:
+00857:      	call		sfx_FP16SWAP
+00858:      	call		sfx_ULONGTOFP16
+00859:      	call		sfx_FP16SWAP
+0085A:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in  (int)
+            ; AX		- out (fp16)
+            ; --------------------------
+            sfx_INTTOFP16:
+0085B:      	R0=		0x001E		; ~~ E+15
+            
+            ; sfx_INT2FS_CORE:
+0085C:      	test		AX.b15
+0085D:      	if ZR jmp	@sfx_int2FP16_label_1004
+            
+0085E:      	set		R0.b15
+0085F:      	AR=		0
+00860:      	AX=		AR - AX
+            @sfx_int2FP16_label_1004:
+00861:      	call		sfx_Normalize_A_FP16
+00862:      	jmp		sfx_RoundRet_A_FP16
+            
+            ; --------------------------
+            
+            sfx_INTTOFP16_CX:
+00863:      	call		sfx_FP16SWAP
+00864:      	call		sfx_INTTOFP16
+00865:      	call		sfx_FP16SWAP
+00866:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in  (int)
+            ; AX		- out (fp32)
+            ; --------------------------
+            sfx_UINTTOFP16:
+00867:      	R0=		0x001E		; ~~ E+15
+00868:      	call		sfx_Normalize_A_FP16
+00869:      	jmp		sfx_RoundRet_A_FP16
+            
+            ; --------------------------
+            
+            sfx_UINTTOFP16_CX:
+0086A:      	call		sfx_FP16SWAP
+0086B:      	call		sfx_UINTTOFP16
+0086C:      	call		sfx_FP16SWAP
+0086D:      	rets
+            
+            ; ~~--------------------------------------------------------------------
+            
+            ; --------------------------
+            ; AX    - mantissa
+            ; R0    - sign & exp
+            ; CX    - shift count
+            ; --------------------------
+            sfx_RSHIFT_A:
+            	; ~~ check if 0 shift count
+            
+0086E:      	if ZR jmp	@sfx_rshifta_label_1132
+            
+            	; ~~ adjust exp
+0086F:      	push		CX
+00870:      	CX=		AR
+00871:      	AR=		AR + R0
+00872:      	test		AR.b5
+00873:      	if ZR jmp	@sfx_rshifta_label_1333
+            
+00874:      	AR=		R0
+00875:      	AL=		0x1F
+            
+            @sfx_rshifta_label_1333:
+00876:      	R0=		AR
+00877:      	jmp		@sfx_rshifta_label_1335
+            @sfx_rshifta_loop_1335:
+00878:      	clr		C
+00879:      	src		AX, 1
+            @sfx_rshifta_label_1335:
+0087A:      	loop		@sfx_rshifta_loop_1335
+0087B:      	pop		CX
+            @sfx_rshifta_label_1132:
+0087C:      	rets
+            
+            
+            ; ~~--
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; DX:AX		- out (long)
+            ; --------------------------
+            sfx_FP16TOLONG:
+0087D:      	call		sfx_GETARG_A_FP16
+0087E:      	AR=		0x001E
+0087F:      	AR=		AR - R0
+00880:      	test		AR.b5
+00881:      	if NZ jmp	@sfx_FP162long_label_1709		; ~~ |X| >= 2^16
+            
+            	; ~~ lowest 5-bit already zero
+            
+00882:      	AH=		0
+00883:      	CX=		AR
+00884:      	call		sfx_RSHIFT_A
+            
+00885:      	DX=		0
+            
+00886:      	test		R0.b15
+00887:      	if ZR jmp	@sfx_FP162long_label_1339
+            
+            	; ~~ negative
+            
+00888:      	AR=		0
+00889:      	AX=		AR - AX
+0088A:      	AR=		AR - 0 + C - 1
+            
+            	; ~~ x < -0x80000000
+0088B:      	if AN jmp	@sfx_FP162long_label_1420
+0088C:      	rets
+            
+            @sfx_FP162long_label_1339:
+            	; ~~ postive
+0088D:      	test		DX.b15
+0088E:      	if NZ jmp	@sfx_FP162long_label_1421
+0088F:      	rets
+            
+            @sfx_FP162long_label_1709:
+            	; ~~ fs2slong_maxval
+00890:      	test		R0.b15
+00891:      	if ZR jmp	@sfx_FP162long_label_1421
+            
+            @sfx_FP162long_label_1420:
+            	; ~~ check sign bit
+00892:      	test		DX.b15
+00893:      	if ZR jmp	@sfx_FP162long_label_1118
+00894:      	rets
+            @sfx_FP162long_label_1118:
+            	; ~~ fs2slong_maxval_neg
+00895:      	AX=		0
+00896:      	DX=		0x8000
+00898:      	rets
+            
+            @sfx_FP162long_label_1421:
+            	; ~~ fs2long_maxval_pos
+00899:      	AX=		0xFFFF
+0089B:      	DX=		0x7FFF
+0089D:      	rets
+            
+            
+            ; --------------------------
+            
+            sfx_FP16TOLONG_CX:
+0089E:      	call		sfx_FP16SWAP
+0089F:      	call		sfx_FP16TOLONG
+008A0:      	call		sfx_FP16SWAP
+008A1:      	rets
+            
+            ; ~~--
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; DX:AX		- out (ulong)
+            ; --------------------------
+            sfx_FP16TOULONG:
+008A2:      	call		sfx_GETARG_A_FP16
+008A3:      	DX=		0
+008A4:      	test		R0.b15
+008A5:      	if ZR jmp	@sfx_FP162ulong_label_1536
+            
+            	; ~~ return 0
+008A6:      	AX=		0
+008A7:      	rets
+            
+            @sfx_FP162ulong_label_1536:
+            	; ~~ fs2ulong_int
+            
+008A8:      	AR=		0x001E
+008A9:      	AR=		AR - R0
+008AA:      	test		AR.b5
+008AB:      	if ZR jmp	@sfx_FP162ulong_label_1541
+            
+            	; ~~ x >= 2^16
+            
+008AC:      	AX=		0xFF		; ~~ 0xFFFF
+008AD:      	DX=		0xFF		; ~~ 0xFFFF
+008AE:      	rets
+            
+            @sfx_FP162ulong_label_1541:
+008AF:      	AH=		0
+008B0:      	CX=		AR
+008B1:      	call		sfx_RSHIFT_A
+008B2:      	rets
+            
+            ; --------------------------
+            
+            sfx_FP16TOULONG_CX:
+008B3:      	call		sfx_FP16SWAP
+008B4:      	call		sfx_FP16TOULONG
+008B5:      	call		sfx_FP16SWAP
+008B6:      	rets
+            
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; AX		- out (short)
+            ; --------------------------
+            sfx_FP16TOINT:
+008B7:      	call		sfx_GETARG_A_FP16
+008B8:      	AR=		0x001E
+008B9:      	AR=		AR - R0
+008BA:      	test		AR.b5
+008BB:      	if NZ jmp	@sfx_FP162int_label_1709		; ~~ |X| >= 2^16
+            
+            	; ~~ lowest 5-bit already zero
+            
+008BC:      	AH=		0
+008BD:      	CX=		AR
+008BE:      	call		sfx_RSHIFT_A
+            
+008BF:      	test		R0.b15
+008C0:      	if ZR jmp	@sfx_FP162int_label_1339
+            
+            	; ~~ negative
+            
+008C1:      	AR=		0
+008C2:      	AX=		AR - AX
+008C3:      	if NZ jmp	@sfx_FP162int_label_1406
+008C4:      	rets
+            @sfx_FP162int_label_1406:
+008C5:      	test		AX.b15
+008C6:      	if ZR jmp	@sfx_FP162int_label_1420
+008C7:      	rets
+            
+            @sfx_FP162int_label_1339:
+            	; ~~ postive
+008C8:      	test		AX.b15
+008C9:      	if NZ jmp	@sfx_FP162int_label_1421
+008CA:      	rets
+            
+            
+            @sfx_FP162int_label_1709:
+            	; ~~ fs2slong_maxval
+008CB:      	test		R0.b15
+008CC:      	if ZR jmp	@sfx_FP162int_label_1421
+            
+            @sfx_FP162int_label_1420:
+            	; ~~ FP162int_maxval_neg
+008CD:      	AX=		0x8000
+008CF:      	rets
+            
+            @sfx_FP162int_label_1421:
+            	; ~~ FP162int_maxval_pos
+008D0:      	AX=		0x7FFF
+008D2:      	rets
+            
+            ; --------------------------
+            
+            sfx_FP16TOINT_CX:
+008D3:      	call		sfx_FP16SWAP
+008D4:      	call		sfx_FP16TOINT
+008D5:      	call		sfx_FP16SWAP
+008D6:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; DX:AX		- out (ulong)
+            ; --------------------------
+            sfx_FP16TOUINT:
+008D7:      	call		sfx_GETARG_A_FP16
+008D8:      	test		R0.b15
+008D9:      	if ZR jmp	@sfx_FP162uint_label_1536
+            
+            	; ~~ return 0
+008DA:      	AX=		0
+008DB:      	rets
+            
+            @sfx_FP162uint_label_1536:
+            	; ~~ fs2ulong_int
+            
+008DC:      	AR=		0x001E
+008DD:      	AR=		AR - R0
+008DE:      	test		AR.b5
+008DF:      	if ZR jmp	@sfx_FP162uint_label_1541
+            
+            	; ~~ x >= 2^16
+            
+008E0:      	AX=		0xFF		; ~~ 0xFFFF
+008E1:      	rets
+            
+            @sfx_FP162uint_label_1541:
+008E2:      	AH=		0
+008E3:      	CX=		AR
+008E4:      	call		sfx_RSHIFT_A
+008E5:      	rets
+            
+            
+            ; --------------------------
+            
+            sfx_FP16TOUINT_CX:
+008E6:      	call		sfx_FP16SWAP
+008E7:      	call		sfx_FP16TOUINT
+008E8:      	call		sfx_FP16SWAP
+008E9:      	rets
+            
+            
+            ; ~~-------------------------------
+            ; AX		- in (fp16)
+            ; DX:AX		- out (fp32)
+            ; ~~-------------------------------
+            sfx_FP16TOFP32:
+            	; ~~ wait code .....  NaN / INF check
+            
+008EA:      	call		sfx_GETARG_A_FP16
+008EB:      	AR=		0x70
+008EC:      	R0=		R0 + AR
+            
+            	; ~~ drop hidden 1
+008ED:      	slz		AX, 1
+            
+008EE:      	AR=		AX
+008EF:      	DX=		AR
+008F0:      	AX=		0
+            
+            	; ~~ generate fp32 format
+            
+008F1:      	AR=		R0
+008F2:      	sra		AR, 2
+008F3:      	src		DX, 2
+008F4:      	src		AX, 2
+008F5:      	sra		AR, 2
+008F6:      	src		DX, 2
+008F7:      	src		AX, 2
+008F8:      	sra		AR, 2
+008F9:      	src		DX, 2
+008FA:      	src		AX, 2
+008FB:      	sra		AR, 2
+008FC:      	src		DX, 2
+008FD:      	src		AX, 2
+            	; ~~ sign bit (sra duplicate)
+008FE:      	slz		AR, 1
+008FF:      	src		DX, 1
+00900:      	src		AX, 1
+00901:      	rets
+            
+            
+            ; --------------------------
+            
+            sfx_FP16TOFP32_CX:
+00902:      	call		sfx_FP16SWAP
+00903:      	call		sfx_FP16TOFP32
+00904:      	call		sfx_FP16SWAP
+00905:      	rets
+            
+            
+            ; -------------------------------------------
+            ; ~~ swap two fp16 value
+            ; R0:AX  <-> R1:CX
+            ; -------------------------------------------
+            
+            sfx_FP16SWAP_AB:
+00906:      	push		R0
+00907:      	push		R1
+00908:      	pop		R0
+00909:      	pop		R1
+0090A:      	push		AX
+0090B:      	push		CX
+0090C:      	pop		AX
+0090D:      	pop		CX
+0090E:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; AX		- out (fp16)
+            ; --------------------------
+            
+            sfx_FP16ADD:
+0090F:      	call		sfx_GETARG_A_FP16
+00910:      	call		sfx_GETARG_C_FP16
+            
+            	; ~~ which exponent is greater ?
+            
+00911:      	AR=		R1
+00912:      	push		R0
+00913:      	pop		R2
+00914:      	clr		AR.b15
+00915:      	clr		R2.b15
+00916:      	SF=		AR - R2
+00917:      	if GE jmp	@sfx_fp16add_label_1043
+            
+00918:      	call		sfx_FP16SWAP_AB
+            
+            @sfx_fp16add_label_1043:
+00919:      	AR=		R1
+0091A:      	push		R0
+0091B:      	pop		R2
+0091C:      	clr		AR.b15
+0091D:      	clr		R2.b15
+0091E:      	AR=		AR - R2
+0091F:      	call		sfx_RSHIFT_A
+            
+            	; ~~ decide if we need to add or subtract
+            
+00920:      	AR=		R0
+00921:      	AR=		AR ^ R1
+00922:      	slz		AR, 1
+00923:      	if AC jmp	@sfx_fp16add_label_1714
+            
+            	; ~~ add the mantissa (both positive or both negative)
+            
+00924:      	AR=		CX
+00925:      	AX=		AX + AR
+00926:      	if NC jmp	@sfx_fp16add_label_1718
+00927:      	AR=		1
+00928:      	call		sfx_RSHIFT_A
+00929:      	set		AX.b15			; ~~ hidden 1
+            @sfx_fp16add_label_1718:
+0092A:      	jmp		@sfx_fp16add_label_1720
+            
+            @sfx_fp16add_label_1714:
+            
+            	; ~~ subtract the mantissa (one of them is negative)
+            
+0092B:      	AR=		CX
+0092C:      	AX=		AX - AR
+0092D:      	AR=		0
+0092E:      	AR=		AR - 0 + C - 1
+0092F:      	if AC jmp	@sfx_fp16add_label_1720
+            
+00930:      	AR=		0
+00931:      	AX=		AR - AX
+00932:      	not		R0.b15
+            @sfx_fp16add_label_1720:
+00933:      	call		sfx_Normalize_A_FP16
+00934:      	jmp		sfx_RoundRet_A_FP16
+            
+            ; ~~ --
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; AX		- out (fp16)
+            ; --------------------------
+            
+            sfx_FP16SUB:
+00935:      	not		CX.b15
+00936:      	jmp		sfx_FP16ADD
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; AX		- out (fp16)
+            ; --------------------------
+            sfx_FP16MUL:
+            	; ~~ first check if either input is zero
+            
+00937:      	AR=		AX
+00938:      	if ZR jmp	sfx_RetZero_A_FP16
+00939:      	AR=		CX
+0093A:      	if ZR jmp	sfx_RetZero_A_FP16
+            
+0093B:      	call		sfx_GETARG_A_FP16
+0093C:      	call		sfx_GETARG_C_FP16
+            
+            	; ~~ compare final sign bit
+            
+0093D:      	test		R1.b15
+0093E:      	if ZR jmp	@sfx_fp16mul_label_1410
+            
+0093F:      	not		R0.b15
+            @sfx_fp16mul_label_1410:
+            
+            	; ~~ check if either input is infinity
+            
+00940:      	AR=		R1
+00941:      	clr		AR.b15
+00942:      	SF=		AR - 0x1F
+00943:      	if EQ jmp	sfx_ReturnINF_A_FP16
+            
+00944:      	AR=		R0
+00945:      	clr		AR.b15
+00946:      	SF=		AR - 0x1F
+00947:      	if EQ jmp	sfx_ReturnINF_A_FP16
+            
+            	; ~~ add the exponent
+            
+00948:      	AR=		R1
+00949:      	clr		AR.b15
+0094A:      	AR=		AR + R0
+0094B:      	test		AR.b5
+0094C:      	if NZ jmp	@sfx_fp16mul_label_1413
+            
+            	; ~~ + 17 ??
+            
+0094D:      	AR=		AR - 14
+0094E:      	test		AR.b5
+0094F:      	if ZR jmp	@sfx_fp16mul_label_1501
+            
+00950:      	jmp		sfx_RetZero_A_FP16
+            @sfx_fp16mul_label_1413:
+            
+00951:      	AR=		AR - 14
+00952:      	test		AR.b5
+00953:      	if ZR jmp	@sfx_fp16mul_label_1501
+            
+00954:      	jmp		sfx_ReturnINF_A_FP16
+            @sfx_fp16mul_label_1501:
+00955:      	R0=		AR
+            
+            	; ~~ unsigned multiplay (32-bit)
+00956:      	PCH=		sfx_MUL_AX_CX
+00957:      	lcall		sfx_MUL_AX_CX
+            
+            	; ~~ drop 16-bit
+00958:      	AR=		DX
+00959:      	AX=		AR
+            
+0095A:      	test		AX.b15
+0095B:      	if NZ jmp	@sfx_fs16mul_label_1531
+            
+0095C:      	call		sfx_Normalize_A_FP16
+            @sfx_fs16mul_label_1531:
+0095D:      	jmp		sfx_RoundRet_A_FP16
+            
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; AX		- out (fp16)
+            ; --------------------------
+            sfx_FP16DIV:
+            	; ~~ compare final sign bit
+            
+0095E:      	test		CX.b15
+0095F:      	if ZR jmp	@sfx_fp16div_label_1629
+            
+00960:      	not		AX.b15
+            @sfx_fp16div_label_1629:
+            
+            	; ~~ if divisor is zero, ...
+00961:      	AR=		CX
+00962:      	if NZ jmp	@sfx_fp16div_label_1639
+            	; ~~ if dividend is also zero, return NaN
+00963:      	AR=		AX
+00964:      	if NZ jmp	@sfx_fp16div_label_1641
+00965:      	jmp		sfx_ReturnNaN_A_FP16
+            @sfx_fp16div_label_1641:
+            	; ~~ but dividend is non-zero, return infinity
+00966:      	jmp		sfx_ReturnINF_A_FP16
+            @sfx_fp16div_label_1639:
+            	; ~~ if dividend is zero, return zero
+00967:      	AR=		AX
+00968:      	if NZ jmp	@sfx_fp16div_label_1644
+00969:      	jmp		sfx_RetZero_A_FP16
+            @sfx_fp16div_label_1644:
+0096A:      	call		sfx_GETARG_ANS_FP16
+0096B:      	call		sfx_GETARG_CNS_FP16
+            
+            	; ~~ if divisor is infinity, ...
+0096C:      	AR=		R1
+0096D:      	AH=		0
+0096E:      	SF=		AR - 0x1F
+0096F:      	if NE jmp	@sfx_fp16div_label_1646
+00970:      	AR=		R0
+00971:      	AH=		0
+00972:      	SF=		AR - 0x1F
+00973:      	if NE jmp	@sfx_fp16div_label_1647
+00974:      	jmp		sfx_ReturnNaN_A_FP16
+            @sfx_fp16div_label_1647:
+00975:      	jmp		sfx_RetZero_A_FP16
+            
+            @sfx_fp16div_label_1646:
+            	; ~~ subtract exponents
+            
+00976:      	AR=		R1
+00977:      	clr		AR.b15
+00978:      	AR=		R0 - AR
+00979:      	test		AR.b5
+0097A:      	if ZR jmp	@sfx_fp16div_label_1649
+            
+0097B:      	AR=		AR + 15
+0097C:      	test		AR.b5
+0097D:      	if ZR jmp	@sfx_fp16div_label_1753
+0097E:      	jmp		sfx_RetZero_A_FP16
+            @sfx_fp16div_label_1649:
+            
+0097F:      	AR=		AR + 15
+00980:      	test		AR.b5
+00981:      	if ZR jmp	@sfx_fp16div_label_1753
+00982:      	jmp		sfx_ReturnINF_A_FP16
+            @sfx_fp16div_label_1753:
+00983:      	R0=		AR
+            
+            	; ~~ unsigned check !!
+            
+00984:      	AR=		AX
+00985:      	AR=		AR - CX
+00986:      	test		AR.b15
+00987:      	if ZR jmp	@sfx_fp16div_label_1638
+            
+00988:      	slz		AX, 1
+00989:      	R0--				; ~~ exponent
+            
+            @sfx_fp16div_label_1638:
+            
+            	; ~~ now we perform repeated substraction of float2 from float1
+            
+            	; ~~ result - AX
+            	; ~~ using 12-bit to make float more accuracy
+            
+0098A:      	push		AX
+0098B:      	pop		DX
+0098C:      	AX=		0
+0098D:      	P1=		12
+            @sfx_fp16div_loop_1642:
+0098E:      	slz		AX, 1
+            
+            	; ~~ mant1 < mant2
+0098F:      		AR=		DX
+00990:      		R2=		AR
+00991:      		AR=		CX
+00992:      		R2=		R2 - AR
+00993:      		test		R2.b15
+00994:      		if NZ jmp	@sfx_fp16div_label_1651
+            
+            	; result |= mask;
+00995:      		set		AX.b4
+            
+            	; mant1 -= mant2
+00996:      		AR=		CX
+00997:      		DX=		DX - AR
+            @sfx_fp16div_label_1651:
+            
+            	; mant1 <<= 1;
+00998:      		slz		DX, 1
+            
+00999:      	P1--
+0099A:      	if NZ jmp	@sfx_fp16div_loop_1642
+            
+0099B:      	call		sfx_Normalize_A_FP16
+0099C:      	jmp		sfx_RoundRet_A_FP16
+            
+            
+            ; ~~ -- compare support functions -- ~~ ;
+            ; ~~    internal                     ~~ ;
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; Z		- EQU
+            ; NZ		- not EQU
+            ; --------------------------
+            
+            sfx_FP16CMPU16:
+0099D:      	clr		AX.b15
+0099E:      	clr		CX.b15
+0099F:      	AR=		AX
+009A0:      	SF=		AR - CX
+009A1:      	if NE jmp	@sfx_fp16cmpu16_label_1615
+            
+009A2:      	set		Z
+009A3:      	rets
+            @sfx_fp16cmpu16_label_1615:
+009A4:      	clr		Z
+009A5:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; Z		- EQU
+            ; NZ		- not EQU
+            ; --------------------------
+            sfx_FP16CHKZERO:
+009A6:      	AR=		AX
+009A7:      	AR=		AR | CX
+009A8:      	clr		AR.b15
+009A9:      	AR=		AR + 0
+009AA:      	if NZ jmp	@sfx_fp16chkzero_label_1620
+009AB:      	set		Z
+009AC:      	rets
+            @sfx_fp16chkzero_label_1620:
+009AD:      	clr		Z
+009AE:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX  <-->   CX
+            
+            sfx_FP16SWAP:
+009AF:      	push		AX
+009B0:      	push		CX
+009B1:      	pop		AX
+009B2:      	pop		CX
+009B3:      	rets
+            
+            
+            ; ~~ -- compare support functions -- ~~ ;
+            ; ~~    subcc                        ~~ ;
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : EQU
+            ;                 0 : not EQU
+            ; --------------------------
+            
+            sfx_CMPFP16_CX_AX_JE:
+009B4:      	call		sfx_FP16SWAP
+            sfx_CMPFP16_JE:
+009B5:      	call		sfx_FP16CHKZERO
+009B6:      	if ZR jmp	@sfx_fp16equ_label_1622
+009B7:      	call		sfx_FP16CMPU16
+009B8:      	if ZR jmp	@sfx_fp16equ_label_1622
+009B9:      	clr		Z
+009BA:      	rets
+            @sfx_fp16equ_label_1622:
+009BB:      	set		Z
+009BC:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : >
+            ;                 0 : <=
+            ; --------------------------
+            sfx_CMPFP16_CX_AX_JG:
+            sfx_CMPFP16_CX_AX_JA:
+009BD:      	call		sfx_FP16SWAP
+            sfx_CMPFP16_JG:
+            sfx_CMPFP16_JA:
+            	; ~~ backup sign bit
+009BE:      	R0=		0
+009BF:      	AR=		AX
+009C0:      	slz		AR, 1
+009C1:      	slc		R0, 1
+009C2:      	AR=		CX
+009C3:      	slz		AR, 1
+009C4:      	slc		R0, 1
+            
+            	; ~~ check zero and equ (sign bit gone)
+            
+009C5:      	call		sfx_FP16CHKZERO
+009C6:      	if ZR jmp	@sfx_cmpfp16_jg_label_1641
+009C7:      	call		sfx_FP16CMPU16
+009C8:      	if ZR jmp	@sfx_cmpfp16_jg_label_1641
+            
+            	; ~~ check sign bit
+            	; ~~ ---------------------
+            	;          A      B
+            	; ~~ ---------------------
+            	; ~~ 0  =  +  vs  +
+            	; ~~ 1  =  +  vs  -
+            	; ~~ 2  =  -  vs  +
+            	; ~~ 3  =  -  vs  -
+            
+009C9:      	AR=		R0
+009CA:      	if EQ jmp	@sfx_comfp16_jg_label_1645
+009CB:      	SF=		AR - 3
+009CC:      	if EQ jmp	@sfx_comfp16_jg_label_1645
+            
+            	; ~~ sign bit different
+            	; ~~ 1  =  +  vs  -   = >
+009CD:      	SF=		AR - 1
+009CE:      	if EQ jmp	@sfx_comfp16_jg_label_1657
+            	; ~~ 2  =  -  vs  +   = <
+009CF:      	jmp		@sfx_cmpfp16_jg_label_1641
+            @sfx_comfp16_jg_label_1645:
+            	; ~~ sign bit the same
+            
+009D0:      	AR=		CX
+009D1:      	AX=		AX - AR
+            
+009D2:      	AR=		R0
+009D3:      	SF=		AR - 3
+009D4:      	if NE jmp	@sfx_cmpfp16_jg_label_1558
+009D5:      	not		AX.b15
+            @sfx_cmpfp16_jg_label_1558:
+009D6:      	test		AX.b15
+009D7:      	if ZR jmp	@sfx_comfp16_jg_label_1657
+            
+            @sfx_cmpfp16_jg_label_1641:
+009D8:      	clr		Z		; ~~ false
+009D9:      	rets
+            
+            @sfx_comfp16_jg_label_1657:
+009DA:      	set		Z		; ~~ true
+009DB:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : <
+            ;                 0 : >=
+            ; --------------------------
+            
+            sfx_CMPFP16_CX_AX_JL:
+            sfx_CMPFP16_CX_AX_JB:
+009DC:      	call		sfx_FP16SWAP
+            sfx_CMPFP16_JL:
+            sfx_CMPFP16_JB:
+            	; ~~ backup sign bit
+009DD:      	R0=		0
+009DE:      	AR=		AX
+009DF:      	slz		AR, 1
+009E0:      	slc		R0, 1
+009E1:      	AR=		CX
+009E2:      	slz		AR, 1
+009E3:      	slc		R0, 1
+            
+            	; ~~ check zero and equ (sign bit gone)
+            
+009E4:      	call		sfx_FP16CHKZERO
+009E5:      	if ZR jmp	@sfx_cmpfp16_jl_label_1641
+009E6:      	call		sfx_FP16CMPU16
+009E7:      	if ZR jmp	@sfx_cmpfp16_jl_label_1641
+            
+            	; ~~ check sign bit
+            	; ~~ ---------------------
+            	;          A      B
+            	; ~~ ---------------------
+            	; ~~ 0  =  +  vs  +
+            	; ~~ 1  =  +  vs  -
+            	; ~~ 2  =  -  vs  +
+            	; ~~ 3  =  -  vs  -
+            
+009E8:      	AR=		R0
+009E9:      	if EQ jmp	@sfx_comfp16_jl_label_1645
+009EA:      	SF=		AR - 3
+009EB:      	if EQ jmp	@sfx_comfp16_jl_label_1645
+            
+            	; ~~ sign bit different
+            	; ~~ 1  =  +  vs  -   = >
+009EC:      	SF=		AR - 1
+009ED:      	if EQ jmp	@sfx_cmpfp16_jl_label_1641
+            	; ~~ 2  =  -  vs  +   = <
+009EE:      	jmp		@sfx_comfp16_jl_label_1657
+            
+            @sfx_comfp16_jl_label_1645:
+            	; ~~ sign bit the same
+            
+009EF:      	AR=		CX
+009F0:      	AX=		AX - AR
+            
+009F1:      	AR=		R0
+009F2:      	SF=		AR - 3
+009F3:      	if NE jmp	@sfx_cmpfp16_jl_label_1558
+009F4:      	not		AX.b15
+            @sfx_cmpfp16_jl_label_1558:
+009F5:      	test		AX.b15
+009F6:      	if NZ jmp	@sfx_comfp16_jl_label_1657
+            
+            @sfx_cmpfp16_jl_label_1641:
+009F7:      	clr		Z		; ~~ false
+009F8:      	rets
+            
+            @sfx_comfp16_jl_label_1657:
+009F9:      	set		Z		; ~~ true
+009FA:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : not EQU
+            ;                 0 : EQU
+            ; --------------------------
+            
+            sfx_CMPFP16_JNE:
+009FB:      	call		sfx_CMPFP16_JE
+009FC:      	if ZR jmp	@sfx_cmpfp16_jne_label_false
+009FD:      	set		Z
+009FE:      	rets
+            @sfx_cmpfp16_jne_label_false:
+009FF:      	clr		Z
+00A00:      	rets
+            
+            ; --------------------------
+            ; CX		- in (fp16)
+            ; AX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : not EQU
+            ;                 0 : EQU
+            ; --------------------------
+            
+            sfx_CMPFP16_CX_AX_JNE:
+00A01:      	call		sfx_CMPFP16_CX_AX_JE
+00A02:      	if ZR jmp	@sfx_cmpfp16_ca_jne_label_false
+00A03:      	set		Z
+00A04:      	rets
+            @sfx_cmpfp16_ca_jne_label_false:
+00A05:      	clr		Z
+00A06:      	rets
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : <=
+            ;                 0 : >
+            ; --------------------------
+            
+            sfx_CMPFP16_JLE:
+            sfx_CMPFP16_JBE:
+00A07:      	call		sfx_CMPFP16_JG
+00A08:      	if ZR jmp	@sfx_cmpfp16_jle_label_false
+00A09:      	set		Z
+00A0A:      	rets
+            @sfx_cmpfp16_jle_label_false:
+00A0B:      	clr		Z
+00A0C:      	rets
+            
+            
+            sfx_CMPFP16_CX_AX_JLE:
+            sfx_CMPFP16_CX_AX_JBE:
+00A0D:      	call		sfx_CMPFP16_CX_AX_JG
+00A0E:      	if ZR jmp	@sfx_cmpfp16_ca_jle_label_false
+00A0F:      	set		Z
+00A10:      	rets
+            @sfx_cmpfp16_ca_jle_label_false:
+00A11:      	clr		Z
+00A12:      	rets
+            
+            
+            ; --------------------------
+            ; AX		- in (fp16)
+            ; CX		- in (fp16)
+            ; --------------------------
+            ; AX		- 1 : >=
+            ;                 0 : <
+            ; --------------------------
+            
+            sfx_CMPFP16_JGE:
+            sfx_CMPFP16_JAE:
+00A13:      	call		sfx_CMPFP16_JL
+00A14:      	if ZR jmp	@sfx_cmpfp16_jge_label_false
+00A15:      	set		Z
+00A16:      	rets
+            @sfx_cmpfp16_jge_label_false:
+00A17:      	clr		Z
+00A18:      	rets
+            
+            
+            sfx_CMPFP16_CX_AX_JGE:
+            sfx_CMPFP16_CX_AX_JAE:
+00A19:      	call		sfx_CMPFP16_CX_AX_JL
+00A1A:      	if ZR jmp	@sfx_cmpfp16_ca_jge_label_false
+00A1B:      	set		Z
+00A1C:      	rets
+            @sfx_cmpfp16_ca_jge_label_false:
+00A1D:      	clr		Z
+00A1E:      	rets
+            
+            ; --------------------------
+            ; DX:AX		- in (fp32)
+            ; --------------------------
+            sfx_FP16NEG:
+00A1F:      	not		AX.b15
+00A20:      	rets
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ;=========================Include <C:\TRITAN\FDSP-IDE\TOOLS\CC\CRT0\FP16RT.ASM> End=========================
+            
+            
+            
+            // .code segment
+            
+            WAKEUP_PROC:
+00A21:      	PCH=	_WakeupProc94A410F9
+00A22:      	ljmp	_WakeupProc94A410F9
+            
+            IntVectTable:
+00A23:      	DW #EMPTY_INTENTRY
+00A24:      	DW #EMPTY_INTENTRY
+00A25:      	DW #EMPTY_INTENTRY
+00A26:      	DW #EMPTY_INTENTRY
+00A27:      	DW #EMPTY_INTENTRY
+00A28:      	DW #_PWM99B23D7D
+            
+            // .code ends
+            ;;FDSP-IDE V2.53
+            _SYSTEM_MAIN_PROGRAM_END_ADDRESS: 

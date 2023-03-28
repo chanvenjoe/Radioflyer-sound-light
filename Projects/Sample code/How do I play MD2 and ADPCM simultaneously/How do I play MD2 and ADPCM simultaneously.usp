@@ -1,0 +1,18 @@
+[_FDSP-IDE]
+FDSP-IDE C PROJECT DEFINE:
+IM=HOW DO I PLAY MD2 AND ADPCM SIMULTANEOUSLY.C
+SOURCES=
+HOW DO I PLAY MD2 AND ADPCM SIMULTANEOUSLY.C
+keypad.c
+global.c
+support.c
+asmfunc\interrupt.asm
+asmfunc\support.asm
+data.c
+HEADERS=
+global.h
+support.h
+keypad.h
+data.h
+config.h
+

@@ -1,0 +1,3 @@
+could not open source file (null)
+error: sub3play.c Line (7): cannot open include file: as.h
+error: C:\Users\kzhou\Desktop\RF projects\Git\RFPD\Radioflyer-sound-light\Projects\Sample code untouched\Sub3\sub3play.h Line (6): type specifier expected at: bts_ch0_get_ix

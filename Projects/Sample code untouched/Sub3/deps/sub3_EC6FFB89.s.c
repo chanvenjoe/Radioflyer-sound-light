@@ -1,4 +1,4 @@
-// SUBC 0.8.12 (build Apr 11 2022 16:13:40)
+// SUBC 0.8.9 (build Jun 29 2020 12:00:34)
 #include "crt0.h"
 
 // .fast segment _fast
@@ -32,23 +32,23 @@ rjmp void _INITIAL0C18377D();
 .code
 rjmp void _main()
 {
-_A7F5C94F4_0:;
+_AEBFA047E_0:;
 	////////////////////////////
-_A7F5C94F4_1:;
-_A7F5C94F4_2:;
+_AEBFA047E_1:;
+_AEBFA047E_2:;
 	F_ChangePWMVectTabletobank2();
-_A7F5C94F4_3:;
+_AEBFA047E_3:;
 	sAX	= 0x0000;
 	asm I1 = _sub_vol980B1B83+0;
 	*(__int16*)sSI	= sAX
-_A7F5C94F4_4:;
-_A7F5C94F4_5:;
+_AEBFA047E_4:;
+_AEBFA047E_5:;
 	_INITIAL0C18377D();
-_A7F5C94F4_6:;
-_A7F5C94F4_7:;
+_AEBFA047E_6:;
+_AEBFA047E_7:;
 	_ClearTickCount5DDE4003();
-_A7F5C94F4_8:;
-_A7F5C94F4_9:;
+_AEBFA047E_8:;
+_AEBFA047E_9:;
 	asm AX = #MyData+0;
 	asm DX = #MyData.n2
 	asm set DX.b11
@@ -57,22 +57,22 @@ _A7F5C94F4_9:;
 	_Sub3Play422CAD6D(STACK[sSP + 0], STACK[sSP + 1]);
 	RESTORESP(2);
 LB6D5333B_4:;
-_A7F5C94F4_10:;
-_A7F5C94F4_11:;
+_AEBFA047E_10:;
+_AEBFA047E_11:;
 	asm	io[ClrWDT] = AR
 	////////////////////////////
-_A7F5C94F4_12:;
-_A7F5C94F4_13:;
+_AEBFA047E_12:;
+_AEBFA047E_13:;
 	_RampUpFF7996DA();
-_A7F5C94F4_14:;
-_A7F5C94F4_15:;
+_AEBFA047E_14:;
+_AEBFA047E_15:;
 	Subb3_Dec();
 	sfx_CHECKZERO();
 	if(__jnz__)	goto LB6D5333B_6;
 	goto	LB6D5333B_5;
 LB6D5333B_6:;
-_A7F5C94F4_16:;
-_A7F5C94F4_17:;
+_AEBFA047E_16:;
+_AEBFA047E_17:;
 	asm AX = #MyData+0;
 	asm DX = #MyData.n2
 	asm set DX.b11
@@ -81,85 +81,82 @@ _A7F5C94F4_17:;
 	_Sub3Play422CAD6D(STACK[sSP + 0], STACK[sSP + 1]);
 	RESTORESP(2);
 LB6D5333B_5:;
-_A7F5C94F4_18:;
-_A7F5C94F4_19:;
+_AEBFA047E_18:;
 	goto LB6D5333B_4;
 LB6D5333B_3:;
 LB6D5333B_2:;
-_A7F5C94F4_20:;
+_AEBFA047E_19:;
 	return;
 _main_end:;
-_A7F5C94F4_21:;
+_AEBFA047E_20:;
 }
 
 rjmp void _InitSound5CCD501D()
 {
-_A7F5C94F4_22:;
+_AEBFA047E_21:;
 	////////////////////////////
-_A7F5C94F4_23:;
+_AEBFA047E_22:;
 	io[0x3E]	= 0x3FFF;
-_A7F5C94F4_24:;
+_AEBFA047E_23:;
 	io[0x16]	= 0x0000;
-_A7F5C94F4_25:;
+_AEBFA047E_24:;
 	io[0x16]	= 0x0000;
-_A7F5C94F4_26:;
+_AEBFA047E_25:;
 	io[0x16]	= 0x0000;
-_A7F5C94F4_27:;
+_AEBFA047E_26:;
 	io[0x16]	= 0x0000;
-_A7F5C94F4_28:;
+_AEBFA047E_27:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_29:;
+_AEBFA047E_28:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_30:;
+_AEBFA047E_29:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_31:;
+_AEBFA047E_30:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_32:;
+_AEBFA047E_31:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_33:;
+_AEBFA047E_32:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_34:;
+_AEBFA047E_33:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_35:;
+_AEBFA047E_34:;
 	io[0x36]	= 0x0000;
-_A7F5C94F4_36:;
+_AEBFA047E_35:;
 	io[0x3C]	= 0x0000;
-_A7F5C94F4_37:;
+_AEBFA047E_36:;
 	sAX	= io[0x3C];
-_A7F5C94F4_38:;
+_AEBFA047E_37:;
 	asm	set io[MISC].b9
-_A7F5C94F4_39:;
+_AEBFA047E_38:;
 	asm	set io[MISC].b8
-_A7F5C94F4_40:;
+_AEBFA047E_39:;
 	asm	set io[MISC].b4
 LB6D5333B_7:;
-_A7F5C94F4_41:;
+_AEBFA047E_40:;
 	return;
 _InitSound5CCD501D_end:;
-_A7F5C94F4_42:;
+_AEBFA047E_41:;
 }
 
 rjmp void _INITIAL0C18377D()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_A7F5C94F4_43:;
-	////////////////////////////
-_A7F5C94F4_44:;
-_A7F5C94F4_45:;
+_AEBFA047E_42:;
+_AEBFA047E_43:;
+_AEBFA047E_44:;
 	NEARCALL(_InitSound5CCD501D);
 	////////////////////////////
-_A7F5C94F4_46:;
+_AEBFA047E_45:;
 	asm AX = PCMY+0;
-_A7F5C94F4_47:;
+_AEBFA047E_46:;
 	asm	AR = AX
-_A7F5C94F4_48:;
+_AEBFA047E_47:;
 	asm	I0 = AR
-	////////////////////////////
-_A7F5C94F4_49:;
+_AEBFA047E_48:;
 	_i_1_2+0	= 0x0200;
 LB6D5333B_10:;
-_A7F5C94F4_50:;
+_AEBFA047E_49:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -171,37 +168,47 @@ _A7F5C94F4_50:;
 	goto	LB6D5333B_9;
 LB6D5333B_11:;
 	////////////////////////////
-_A7F5C94F4_51:;
+_AEBFA047E_50:;
 	sAX	= 0x0000;
-_A7F5C94F4_52:;
+_AEBFA047E_51:;
 	asm	rm[I0++] = AX
-_A7F5C94F4_53:;
 	goto LB6D5333B_10;
 LB6D5333B_9:;
-_A7F5C94F4_54:;
+_AEBFA047E_52:;
 	asm AX = PCMY+0;
 	asm I1 = PCMYIN_PTR+0;
 	*(__int16*)sSI	= sAX
-_A7F5C94F4_55:;
+_AEBFA047E_53:;
 	asm AX = PCMY+0;
 	asm I1 = PCMYOU_PTR+0;
 	*(__int16*)sSI	= sAX
-_A7F5C94F4_56:;
+_AEBFA047E_54:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	io[0x3C]	= sAX;
-_A7F5C94F4_57:;
+_AEBFA047E_55:;
 	io[0x3E]	= 0x1FFF;
-_A7F5C94F4_58:;
+_AEBFA047E_56:;
 	io[0x3B]	= 0x0000;
 LB6D5333B_8:;
-_A7F5C94F4_59:;
+_AEBFA047E_57:;
 	return;
 _INITIAL0C18377D_end:;
-_A7F5C94F4_60:;
+_AEBFA047E_58:;
 }
 
 // .code ends _text
+
+// .code segment _ginit
+.code
+
+// -=-=-=-=-=-=-=-=-=-=-
+naked void ginit_code_sub3_EC6FFB89_s(void)
+{
+	return;
+}
+
+// .code ends _ginit
 
 
 // -=-=-=-=-=-=-=-=-=-=-
@@ -234,13 +241,66 @@ naked void MyData()
 .code
 // .code ends _text
 
+// extern inp:proc
+// extern outp:proc
+// extern get_SATV:proc
+// extern get_CBL:proc
+// extern get_FLTO:proc
+// extern get_FLTA:proc
+// extern get_FLTP:proc
+// extern get_FLTI:proc
+// extern read_I0:proc
+// extern read_I0P:proc
+// extern read_I0P2:proc
+// extern read_I0M:proc
+// extern get_I0:proc
+// extern read_P0:proc
+// extern read_P0P:proc
+// extern read_P0M:proc
+// extern get_P0:proc
+// extern set_IntVWR:proc
+// extern clr_IntVWR:proc
+// extern set_IntPrWR:proc
+// extern clr_IntPrWR:proc
+// extern set_INTENA:proc
+// extern get_INTENA:proc
+// extern set_INTREQ:proc
+// extern get_INTREQ:proc
+// extern set_IntVect:proc
+// extern get_IntVect:proc
+// extern get_IOC_PA:proc
+// extern get_IOC_PB:proc
+// extern get_IOC_PC:proc
+// extern get_PortA:proc
+// extern get_PortB:proc
+// extern get_PortC:proc
+// extern set_MISC:proc
+// extern get_MISC:proc
+// extern get_MACOP:proc
+// extern vXCHG:proc
+// extern cpuHalt:proc
+// extern FA:proc
 // extern _ClearTickCount5DDE4003:proc
+// extern _GetTickCount18DC070C:proc
+// extern _delay6F9F34ED:proc
+// extern _lptr_read:proc
+// extern _lptr_read32:proc
+// extern _lptr_write:proc
+// extern _lptr_write32:proc
+// extern _ticksA7263C09:long
 // extern _sub_vol980B1B83:word
 // extern _RampUpFF7996DA:proc
+// extern _RampDown1D382EDA:proc
+// extern bts_ch0_get_ix:long
 // extern PCMYIN_PTR:word
 // extern PCMYOU_PTR:word
+// extern PCMIN:word
+// extern SampleCh0Rate:word
 // extern PCMY:word
+// extern Subb3_Init:proc
 // extern Subb3_Dec:proc
+// extern _WaitPCM_Empty_size53398B9D:proc
+// extern _Sub3ZeroFillABFF23AA:proc
 // extern _Sub3Play422CAD6D:proc
 // public _INITIAL0C18377D
 // public MyData
@@ -248,3 +308,4 @@ naked void MyData()
 // extern F_ChangePWMVectTabletobank2:proc
 // public _main
 // public _InitSound5CCD501D
+// public ginit_code_sub3_EC6FFB89_s
