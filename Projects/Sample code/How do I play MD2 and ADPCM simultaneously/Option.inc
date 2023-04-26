@@ -4,6 +4,10 @@
 //--------------------------------------------------------------------------------------------------
 // Part number    : TRSF16127A
 // Option version : 2.2
+// Base Information--------------------------------------------------------------------------------
+#define       _OPT_TRSF16127A_                
+#define       _OPT_PROMSize_                0x20000   //PROM Size
+#define       _OPT_SRAMSize_                3072      //SRAM Size
 // I/O Configuration--------------------------------------------------------------------------------
 #define       _OPT_EXTReset_EN_             0         //EXT Reset Enable,0:Disable,1:Enable
 #define       _OPT_EXTINT1_EN_              0         //EXTINT1_EN,0:Disable,1:Enable

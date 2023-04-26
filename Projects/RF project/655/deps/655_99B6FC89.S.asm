@@ -8,171 +8,202 @@
 
 
 
+__int16 LD1B663E8_2;
+__int16 _flagD698DD9D;
 
 
 
 
 
+__int16 _TFSF_Color_BufA76B681D[5];
 
 
 
 // CODE segment					=>>VarRM[0:4095]={
-  
+ LD1B663E8_2,_flagD698DD9D,_TFSF_Color_BufA76B681D[5] 
 };
 
 .code
 
 
-interrupt naked void _PWM99B23D7D();
-void _WakeupProc94A410F9();
 void _main();
-void _InitialDA4A7CC4();
 
 
 
 
 .code
-interrupt naked void _PWM99B23D7D()		=>>_PWM99B23D7D:
-{
-_ADDF15A34_0:;					=>>_ADDF15A34_0:;
-_ADDF15A34_1:;					=>>_ADDF15A34_1:;
-	asm	clr io[INTREQ].b0		=>>clr io[INTREQ].b0
-_ADDF15A34_2:;					=>>_ADDF15A34_2:;
-	asm	push AX				=>>push AX
-_ADDF15A34_3:;					=>>_ADDF15A34_3:;
-	asm	push I0				=>>push I0
-_ADDF15A34_4:;					=>>_ADDF15A34_4:;
-	asm	push I1				=>>push I1
-_ADDF15A34_5:;					=>>_ADDF15A34_5:;
-	asm	pop I1				=>>pop I1
-_ADDF15A34_6:;					=>>_ADDF15A34_6:;
-	asm	pop I0				=>>pop I0
-_ADDF15A34_7:;					=>>_ADDF15A34_7:;
-	asm	pop AX				=>>pop AX
-	
-LD1B663E8_2:;					=>>LD1B663E8_2:;
-_ADDF15A34_8:;					=>>_ADDF15A34_8:;
-	return;					=>>reti
-_PWM99B23D7D_end:;				=>>_PWM99B23D7D_end:;
-_ADDF15A34_9:;					=>>_ADDF15A34_9:;
-}
 
-void _WakeupProc94A410F9()			=>>_WakeupProc94A410F9:
-{
-_ADDF15A34_10:;					=>>_ADDF15A34_10:;
-_ADDF15A34_11:;					=>>_ADDF15A34_11:;
-	asm	io[ClrWDT] = AR			=>>io[ClrWDT] = AR
-	
-LD1B663E8_3:;					=>>LD1B663E8_3:;
-_ADDF15A34_12:;					=>>_ADDF15A34_12:;
-	return;					=>>rets
-_WakeupProc94A410F9_end:;			=>>_WakeupProc94A410F9_end:;
-_ADDF15A34_13:;					=>>_ADDF15A34_13:;
-}
 
+
+.data
+
+
+
+.code
 void _main()					=>>_main:
 {
-	__int16 _i_1_2;
-						=>>AR	= rm[BP_SAVE];push	AR;AR	= BP;rm[BP_SAVE]	= AR;AR	 = -1;BP	+= AR
-_ADDF15A34_14:;					=>>_ADDF15A34_14:;
-_ADDF15A34_15:;					=>>_ADDF15A34_15:;
-	_i_1_2+0	= 0x00;			=>>I1	= rm[BP_SAVE];AR	= 0x00;rm[I1]	= AR
-_ADDF15A34_16:;					=>>_ADDF15A34_16:;
-_ADDF15A34_17:;					=>>_ADDF15A34_17:;
+_A30BB6F62_0:;					=>>_A30BB6F62_0:;
+	
+_A30BB6F62_1:;					=>>_A30BB6F62_1:;
+_A30BB6F62_2:;					=>>_A30BB6F62_2:;
 	_InitialDA4A7CC4();			=>>pch	= _InitialDA4A7CC4;lcall	_InitialDA4A7CC4
-LD1B663E8_6:;					=>>LD1B663E8_6:;
-_ADDF15A34_18:;					=>>_ADDF15A34_18:;
-_ADDF15A34_19:;					=>>_ADDF15A34_19:;
+LD1B663E8_5:;					=>>LD1B663E8_5:;
+_A30BB6F62_3:;					=>>_A30BB6F62_3:;
+_A30BB6F62_4:;					=>>_A30BB6F62_4:;
 	asm	io[ClrWDT] = AR			=>>io[ClrWDT] = AR
 	
-_ADDF15A34_20:;					=>>_ADDF15A34_20:;
-_ADDF15A34_21:;					=>>_ADDF15A34_21:;
-	sAX	= 0x0064;			=>>AX	= 0x64
-	PUSH(sAX);				=>>push	AX
-	_delay6F9F34ED(STACK[sSP + 0]);		=>>pch	= _delay6F9F34ED;lcall	_delay6F9F34ED
-	RESTORESP(1);				=>>pop	AR;
-_ADDF15A34_22:;					=>>_ADDF15A34_22:;
-_ADDF15A34_23:;					=>>_ADDF15A34_23:;
-	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
-	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-	PUSH(sAX);				=>>push	AX
-	sAX	= 0x0007;			=>>AX	= 0x07
-	PUSH(sAX);				=>>push	AX
-	outp(STACK[sSP + 0], STACK[sSP + 1]);	=>>pch	= outp;lcall	outp
-	RESTORESP(2);				=>>pop	AR;pop	AR;
-_ADDF15A34_24:;					=>>_ADDF15A34_24:;
-	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
-	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-	sCX	= 0x000F;			=>>CX	= 0x0F
-	sfx_CMP_AX_CX_JL();			=>>pch	= sfx_CMP_AX_CX_JL;lcall	sfx_CMP_AX_CX_JL
+_A30BB6F62_5:;					=>>_A30BB6F62_5:;
+	sAX	= 0;				=>>AX	= 0x00
+	asm test io[0x08].b2;			=>>test io[0x08].b2//
+	if(__jz__) goto LD1B663E8_6;		=>>if ZR	jmp LD1B663E8_6
+	sAX	= 1;				=>>AX	= 0x01
+LD1B663E8_6:;					=>>LD1B663E8_6:;
+	sCX	= 0x0001;			=>>CX	= 0x01
+	sfx_CMP_AX_CX_JE();			=>>pch	= sfx_CMP_AX_CX_JE;lcall	sfx_CMP_AX_CX_JE
 	if(__je__)	goto LD1B663E8_8;	=>>if ZR	jmp LD1B663E8_8
 	goto	LD1B663E8_7;			=>>pch =	LD1B663E8_7;ljmp	LD1B663E8_7
 LD1B663E8_8:;					=>>LD1B663E8_8:;
-_ADDF15A34_25:;					=>>_ADDF15A34_25:;
-	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
-	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
-	sSI	= (int)&_i_1_2;			=>>I1	= rm[BP_SAVE]
-	asm AR = 0x0001;			=>>AR = 0x0001//
-	sCX	= *(__int16*)sSI;		=>>CX	= rm[I1]
-	asm rm[I1] = CX + AR;			=>>rm[I1] = CX + AR//
-	goto LD1B663E8_9;			=>>pch =	LD1B663E8_9;ljmp	LD1B663E8_9
-LD1B663E8_7:;					=>>LD1B663E8_7:;
-_ADDF15A34_26:;					=>>_ADDF15A34_26:;
-	_i_1_2+0	= 0x00;			=>>I1	= rm[BP_SAVE];AR	= 0x00;rm[I1]	= AR
+_A30BB6F62_6:;					=>>_A30BB6F62_6:;
+	asm	nop				=>>nop
+_A30BB6F62_7:;					=>>_A30BB6F62_7:;
+	asm	nop				=>>nop
+_A30BB6F62_8:;					=>>_A30BB6F62_8:;
+	asm	nop				=>>nop
+_A30BB6F62_9:;					=>>_A30BB6F62_9:;
+	asm	nop				=>>nop
+_A30BB6F62_10:;					=>>_A30BB6F62_10:;
+	asm	nop				=>>nop
+_A30BB6F62_11:;					=>>_A30BB6F62_11:;
+	asm	nop				=>>nop
+_A30BB6F62_12:;					=>>_A30BB6F62_12:;
+	asm	nop				=>>nop
+_A30BB6F62_13:;					=>>_A30BB6F62_13:;
+	asm	nop				=>>nop
+_A30BB6F62_14:;					=>>_A30BB6F62_14:;
+	asm	nop				=>>nop
+_A30BB6F62_15:;					=>>_A30BB6F62_15:;
+	asm	nop				=>>nop
+_A30BB6F62_16:;					=>>_A30BB6F62_16:;
+	asm	nop				=>>nop
+_A30BB6F62_17:;					=>>_A30BB6F62_17:;
+	asm	nop				=>>nop
+_A30BB6F62_18:;					=>>_A30BB6F62_18:;
+	asm	nop				=>>nop
+_A30BB6F62_19:;					=>>_A30BB6F62_19:;
+	asm	nop				=>>nop
+_A30BB6F62_20:;					=>>_A30BB6F62_20:;
+	asm	nop				=>>nop
+_A30BB6F62_21:;					=>>_A30BB6F62_21:;
+	asm	nop				=>>nop
+_A30BB6F62_22:;					=>>_A30BB6F62_22:;
+	asm	nop				=>>nop
+_A30BB6F62_23:;					=>>_A30BB6F62_23:;
+	asm	nop				=>>nop
+_A30BB6F62_24:;					=>>_A30BB6F62_24:;
+	asm	nop				=>>nop
+_A30BB6F62_25:;					=>>_A30BB6F62_25:;
+	asm	nop				=>>nop
+_A30BB6F62_26:;					=>>_A30BB6F62_26:;
+	asm	nop				=>>nop
+_A30BB6F62_27:;					=>>_A30BB6F62_27:;
+	asm	nop				=>>nop
+_A30BB6F62_28:;					=>>_A30BB6F62_28:;
+	asm	nop				=>>nop
+_A30BB6F62_29:;					=>>_A30BB6F62_29:;
+	asm	nop				=>>nop
+_A30BB6F62_30:;					=>>_A30BB6F62_30:;
+	asm	nop				=>>nop
+_A30BB6F62_31:;					=>>_A30BB6F62_31:;
+	asm	nop				=>>nop
+_A30BB6F62_32:;					=>>_A30BB6F62_32:;
+	asm	nop				=>>nop
+_A30BB6F62_33:;					=>>_A30BB6F62_33:;
+	asm	nop				=>>nop
+_A30BB6F62_34:;					=>>_A30BB6F62_34:;
+	asm	nop				=>>nop
+_A30BB6F62_35:;					=>>_A30BB6F62_35:;
+	asm	nop				=>>nop
+_A30BB6F62_36:;					=>>_A30BB6F62_36:;
+	asm	nop				=>>nop
+_A30BB6F62_37:;					=>>_A30BB6F62_37:;
+	asm	nop				=>>nop
+_A30BB6F62_38:;					=>>_A30BB6F62_38:;
+	asm	nop				=>>nop
+_A30BB6F62_39:;					=>>_A30BB6F62_39:;
+	asm	nop				=>>nop
+_A30BB6F62_40:;					=>>_A30BB6F62_40:;
+	asm	nop				=>>nop
+_A30BB6F62_41:;					=>>_A30BB6F62_41:;
+	asm	nop				=>>nop
+	
+_A30BB6F62_42:;					=>>_A30BB6F62_42:;
+	sAX	= 0;				=>>AX	= 0x00
+	asm test io[0x08].b2;			=>>test io[0x08].b2//
+	if(__jz__) goto LD1B663E8_9;		=>>if ZR	jmp LD1B663E8_9
+	sAX	= 1;				=>>AX	= 0x01
 LD1B663E8_9:;					=>>LD1B663E8_9:;
-_ADDF15A34_27:;					=>>_ADDF15A34_27:;
-	goto LD1B663E8_6;			=>>pch =	LD1B663E8_6;ljmp	LD1B663E8_6
-LD1B663E8_5:;					=>>LD1B663E8_5:;
-LD1B663E8_4:;					=>>LD1B663E8_4:;
-_ADDF15A34_28:;					=>>_ADDF15A34_28:;
-	return;					=>>AR	= 1;BP	+= AR;pop	AR;rm[BP_SAVE]	= AR;rets
-_main_end:;					=>>_main_end:;
-_ADDF15A34_29:;					=>>_ADDF15A34_29:;
-}
-
-void _InitialDA4A7CC4()				=>>_InitialDA4A7CC4:
-{
-_ADDF15A34_30:;					=>>_ADDF15A34_30:;
+	sCX	= 0x0001;			=>>CX	= 0x01
+	sfx_CMP_AX_CX_JE();			=>>pch	= sfx_CMP_AX_CX_JE;lcall	sfx_CMP_AX_CX_JE
+	if(__je__)	goto LD1B663E8_11;	=>>if ZR	jmp LD1B663E8_11
+	goto	LD1B663E8_10;			=>>pch =	LD1B663E8_10;ljmp	LD1B663E8_10
+LD1B663E8_11:;					=>>LD1B663E8_11:;
 	
-_ADDF15A34_31:;					=>>_ADDF15A34_31:;
-	sAX	= 0x003F;			=>>AX	= 0x3F
-_ADDF15A34_32:;					=>>_ADDF15A34_32:;
-	asm	AR = AX				=>>AR = AX
-_ADDF15A34_33:;					=>>_ADDF15A34_33:;
-	asm	FLTG = AR			=>>FLTG = AR
+_A30BB6F62_43:;					=>>_A30BB6F62_43:;
+	asm I1 = _flagD698DD9D+0;		=>>I1 = _flagD698DD9D+0//
+	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
+	sfx_CHECKZERO();			=>>AR	= AX;
+	if(__jnz__)	goto LD1B663E8_13;	=>>if NZ	jmp LD1B663E8_13
+	goto	LD1B663E8_12;			=>>pch =	LD1B663E8_12;ljmp	LD1B663E8_12
+LD1B663E8_13:;					=>>LD1B663E8_13:;
 	
-_ADDF15A34_34:;					=>>_ADDF15A34_34:;
-	sAX	= 0x1FFF;			=>>AX	= 0x1FFF
-_ADDF15A34_35:;					=>>_ADDF15A34_35:;
-	asm	AR = AX				=>>AR = AX
-_ADDF15A34_36:;					=>>_ADDF15A34_36:;
-	asm	FLTP = AR			=>>FLTP = AR
+_A30BB6F62_44:;					=>>_A30BB6F62_44:;
+_A30BB6F62_45:;					=>>_A30BB6F62_45:;
+	sAX	= 0x0003;			=>>AX	= 0x03
+	PUSH(sAX);				=>>push	AX
+	sAX	= 0x0005;			=>>AX	= 0x05
+	PUSH(sAX);				=>>push	AX
+	_WS_TRSF_color_setE1CC300C(STACK[sSP + 0], STACK[sSP + 1]);=>>pch	= _WS_TRSF_color_setE1CC300C;lcall	_WS_TRSF_color_setE1CC300C
+	RESTORESP(2);				=>>pop	AR;pop	AR;
+_A30BB6F62_46:;					=>>_A30BB6F62_46:;
+	asm clr io[0x09].b14;			=>>clr io[0x09].b14//
+_A30BB6F62_47:;					=>>_A30BB6F62_47:;
+	asm I1 = _flagD698DD9D+0;		=>>I1 = _flagD698DD9D+0//
+	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
+	sfx_NOT_AX();				=>>AR	= -1;AX	= AX ^ AR;
+	asm I1 = _flagD698DD9D+0;		=>>I1 = _flagD698DD9D+0//
+	*(__int16*)sSI	= sAX			=>>rm[I1]	= AX
+	goto LD1B663E8_14;			=>>pch =	LD1B663E8_14;ljmp	LD1B663E8_14
+LD1B663E8_12:;					=>>LD1B663E8_12:;
 	
-_ADDF15A34_37:;					=>>_ADDF15A34_37:;
-	sAX	= 0x0008;			=>>AX	= 0x08
-_ADDF15A34_38:;					=>>_ADDF15A34_38:;
-	asm	AR = AX				=>>AR = AX
-_ADDF15A34_39:;					=>>_ADDF15A34_39:;
-	asm	CBL = AR			=>>CBL = AR
-_ADDF15A34_40:;					=>>_ADDF15A34_40:;
-	asm	set io[INTENA].b0		=>>set io[INTENA].b0
-_ADDF15A34_41:;					=>>_ADDF15A34_41:;
-	asm	eni				=>>eni
-	
-_ADDF15A34_42:;					=>>_ADDF15A34_42:;
-	sAX	= 0x000F;			=>>AX	= 0x0F
-_ADDF15A34_43:;					=>>_ADDF15A34_43:;
-	asm	AR = AX				=>>AR = AX
-_ADDF15A34_44:;					=>>_ADDF15A34_44:;
-	asm	io[IOC_PA] = AR			=>>io[IOC_PA] = AR
-_ADDF15A34_45:;					=>>_ADDF15A34_45:;
-_ADDF15A34_46:;					=>>_ADDF15A34_46:;
-	_ClearTickCount5DDE4003();		=>>pch	= _ClearTickCount5DDE4003;lcall	_ClearTickCount5DDE4003
+_A30BB6F62_48:;					=>>_A30BB6F62_48:;
+_A30BB6F62_49:;					=>>_A30BB6F62_49:;
+	sAX	= 0x0003;			=>>AX	= 0x03
+	PUSH(sAX);				=>>push	AX
+	sAX	= 0x0003;			=>>AX	= 0x03
+	PUSH(sAX);				=>>push	AX
+	_WS_TRSF_color_setE1CC300C(STACK[sSP + 0], STACK[sSP + 1]);=>>pch	= _WS_TRSF_color_setE1CC300C;lcall	_WS_TRSF_color_setE1CC300C
+	RESTORESP(2);				=>>pop	AR;pop	AR;
+_A30BB6F62_50:;					=>>_A30BB6F62_50:;
+	asm clr io[0x09].b14;			=>>clr io[0x09].b14//
+_A30BB6F62_51:;					=>>_A30BB6F62_51:;
+	asm I1 = _flagD698DD9D+0;		=>>I1 = _flagD698DD9D+0//
+	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
+	sfx_NOT_AX();				=>>AR	= -1;AX	= AX ^ AR;
+	asm I1 = _flagD698DD9D+0;		=>>I1 = _flagD698DD9D+0//
+	*(__int16*)sSI	= sAX			=>>rm[I1]	= AX
+LD1B663E8_14:;					=>>LD1B663E8_14:;
+_A30BB6F62_52:;					=>>_A30BB6F62_52:;
 LD1B663E8_10:;					=>>LD1B663E8_10:;
-_ADDF15A34_47:;					=>>_ADDF15A34_47:;
+_A30BB6F62_53:;					=>>_A30BB6F62_53:;
+LD1B663E8_7:;					=>>LD1B663E8_7:;
+_A30BB6F62_54:;					=>>_A30BB6F62_54:;
+	goto LD1B663E8_5;			=>>pch =	LD1B663E8_5;ljmp	LD1B663E8_5
+LD1B663E8_4:;					=>>LD1B663E8_4:;
+LD1B663E8_3:;					=>>LD1B663E8_3:;
+_A30BB6F62_55:;					=>>_A30BB6F62_55:;
 	return;					=>>rets
-_InitialDA4A7CC4_end:;				=>>_InitialDA4A7CC4_end:;
-_ADDF15A34_48:;					=>>_ADDF15A34_48:;
+_main_end:;					=>>_main_end:;
+_A30BB6F62_56:;					=>>_A30BB6F62_56:;
 }
 
 
@@ -183,6 +214,16 @@ _ADDF15A34_48:;					=>>_ADDF15A34_48:;
 
 naked void ginit_code_655_99B6FC89_s(void)	=>>ginit_code_655_99B6FC89_s:
 {
+	asm P1 = #ginit_seg_655_99B6FC89_s+0;	=>>P1 = #ginit_seg_655_99B6FC89_s+0//
+	asm I1 = LD1B663E8_2;			=>>I1 = LD1B663E8_2//
+	sCX = 1;				=>>CX	= 0x01
+	sfx_GLOBALINIT();			=>>pch	= sfx_GLOBALINIT;lcall	sfx_GLOBALINIT
+
+	asm P1 = #ginit_seg_655_99B6FC89_s+1;	=>>P1 = #ginit_seg_655_99B6FC89_s+1//
+	asm I1 = _flagD698DD9D;			=>>I1 = _flagD698DD9D//
+	sCX = 1;				=>>CX	= 0x01
+	sfx_GLOBALINIT();			=>>pch	= sfx_GLOBALINIT;lcall	sfx_GLOBALINIT
+
 	return;					=>>rets
 }
 
@@ -201,6 +242,21 @@ naked void ginit_code_655_99B6FC89_s(void)	=>>ginit_code_655_99B6FC89_s:
 
 
 
+
+
+
+
+.code
+
+
+
+
+__int16 ginit_seg_655_99B6FC89_s[2] = {		=>>ginit_seg_655_99B6FC89_s:
+						=>>DW 
+	0x0000,					=>>DW 0x0000,
+						=>>DW 
+	0x0000					=>>DW 0x0000,
+};
 
 
 
@@ -212,6 +268,22 @@ naked void ginit_code_655_99B6FC89_s(void)	=>>ginit_code_655_99B6FC89_s:
 
 
 .code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -84,7 +84,7 @@ void main(void)
 		
 		delay(1);// 100 5 1 500
 		
-		outp(PortA, i);
+		outp(PortC, i);
 		if(i<15) i++;  else  i=0;
 	}
 }
@@ -105,7 +105,7 @@ void Initial(void)
 	EnableInt0();			// enable PWM interrupt
 	eni();
 	
-	set_IOC_PA(0x0F);
+	set_IOC_PC(0x0F);
 	
 	ClearTickCount();
 }

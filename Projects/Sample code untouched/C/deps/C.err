@@ -1,6 +1,0 @@
-could not open source file (null)
-error: playadp.c Line (10): cannot open include file: as.h
-error: C:\Users\kzhou\Desktop\RF projects\Git\RFPD\Radioflyer-sound-light\Projects\Sample code untouched\C\playadp.h Line (47): unknown type 'adr'
-error: C:\Users\kzhou\Desktop\RF projects\Git\RFPD\Radioflyer-sound-light\Projects\Sample code untouched\C\playadp.h Line (47): missing identifier at: ;
-error: C:\Users\kzhou\Desktop\RF projects\Git\RFPD\Radioflyer-sound-light\Projects\Sample code untouched\C\playadp.h Line (47): 'void' is not a valid type: 
-compilation stopped

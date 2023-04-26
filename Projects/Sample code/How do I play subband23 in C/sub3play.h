@@ -3,6 +3,11 @@
 #ifndef _SUB3PLAY_SYS_
 #define _SUB3PLAY_SYS_
 
+/*#include <io.h>
+#include <lptr.h>
+#include <as.h>
+
+#include "global.h"*/
 
 import lptr_t bts_ch0_get_ix;
 import int *PCMYIN_PTR, *PCMYOU_PTR, *PCMIN, SampleCh0Rate;

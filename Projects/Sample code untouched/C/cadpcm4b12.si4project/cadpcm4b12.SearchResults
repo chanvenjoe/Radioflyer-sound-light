@@ -1,5 +1,0 @@
----- fast Matches (4 in 2 files) ----
-global.c line 12 : export fast int inbuf, outbuf;
-playadp.c line 81 : static void ClearAudioBuffer(void)	fast
-playadp.c line 96 : static void DecodeChannel(int vol)	fast
-playadp.c line 149 : static void Satv(void)	fast

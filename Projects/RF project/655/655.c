@@ -4,9 +4,15 @@
 //****************************************************************************
 
 #include <io.h>
+#include "WS2811.h"
+#include "global.h"
+
 
 
 // C variables
+unsigned char flag=0;
+
+Color_Typedef TFSF_Color_Buf;
 
 //align(256) int PCMBuf[256];			// align(x)   = baseonx#
 //int FrameSample, ZeroFrame_s;
@@ -19,7 +25,6 @@
 
 
 // functions
-void Initial(void);
 
 
 
@@ -30,7 +35,7 @@ void Initial(void);
 
 ////interrupt / naked / align(n)
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-void PWM(void)	naked interrupt(0) 			//interrupt(x)     set interrupt x
+/*void PWM(void)	naked interrupt(0) 			//interrupt(x)     set interrupt x
 {
 	// clear interrupt 0 flag
 
@@ -55,11 +60,11 @@ void PWM(void)	naked interrupt(0) 			//interrupt(x)     set interrupt x
 	POP_I1();
 	POP_I0();
 	POP_AX();
-}
+}*/
 
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-void WakeupProc(void) wakeup
+/*void WakeupProc(void) wakeup
 {
 
         ClrWatchDog();
@@ -67,48 +72,42 @@ void WakeupProc(void) wakeup
         // wakeup process...
         //...
         //..
-}
-
+}*/
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 void main(void)
 {
-        int i;
-        i = 0;
-        
 
 	Initial();
 
 	while(1)
 	{
 		ClrWatchDog();
-		
-		delay(100);
-		
-		outp(PortA, i);
-		if(i<15) i++;  else  i=0;
-	}
+		if(B_PORTB2==1)
+		{
+			NOP_9 NOP_9 NOP_9
+			if(B_PORTB2==1)
+			{
+				if(flag)
+				{
+	
+					WS_TRSF_color_set(Enum_Purp, LEDNUM);		
+					RES
+					flag = ~flag;
+				}					
+				else
+				{
+					WS_TRSF_color_set(Enum_Red, LEDNUM);	
+					RES
+					flag = ~flag;
+				}
+			}
+		}
+	}		
+
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-void Initial(void)
-{
 
-	// initial filter
-
-	set_FLTG(0x03F);
-	set_FLTP(0x1FFF);
-
-	//pData = DecodeTab;
-
-	set_CBL(0x08);			// cir buffer (I0)
-
-	EnableInt0();			// enable PWM interrupt
-	eni();
-	
-	set_IOC_PA(0x0F);
-	
-	ClearTickCount();
-}
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 

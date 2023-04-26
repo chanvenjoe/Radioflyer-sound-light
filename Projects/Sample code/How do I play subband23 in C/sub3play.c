@@ -1,11 +1,11 @@
-
-
-
 #include <io.h>
 #include <lptr.h>
-#include <as.h>
+#include <dtx.h>
 
 #include "global.h"
+
+
+
 #include "sub3play.h"
 
 #pragma __attribute__("rjmp")
@@ -114,7 +114,7 @@ void Sub3Play(lptr_t sdata)
 
 
 
-export __CALLBACK void Sbb_Ch0GetBts(void) naked
+export /*__CALLBACK*/ void Sbb_Ch0GetBts(void) naked
 {
 	// Sbb_Ch0GetBts require to preserve all used registers
 	// the following C code may use I1/P1/AX/BX/CX/DX/P1.hh
