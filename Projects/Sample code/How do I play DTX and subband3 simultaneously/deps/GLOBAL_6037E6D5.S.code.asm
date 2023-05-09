@@ -28,185 +28,185 @@ VarRM[0:4095]={
 ; //rjmp void L0E8FA404_29()			
 L0E8FA404_29:
 ; //{
-; //_AFFC519C6_103:;				
-_AFFC519C6_103:
+; //_A5A7AA303_103:;				
+_A5A7AA303_103:
 ; //	
-; //_AFFC519C6_104:;				
-_AFFC519C6_104:
+; //_A5A7AA303_104:;				
+_A5A7AA303_104:
 ; //	io[0x16]	= 0x0000;		
 	AR	= 0x00
 	io[0x16]	= AR
-; //_AFFC519C6_105:;				
-_AFFC519C6_105:
+; //_A5A7AA303_105:;				
+_A5A7AA303_105:
 ; //	io[0x16]	= 0x0000;		
 	AR	= 0x00
 	io[0x16]	= AR
-; //_AFFC519C6_106:;				
-_AFFC519C6_106:
+; //_A5A7AA303_106:;				
+_A5A7AA303_106:
 ; //	io[0x16]	= 0x0000;		
 	AR	= 0x00
 	io[0x16]	= AR
-; //_AFFC519C6_107:;				
-_AFFC519C6_107:
+; //_A5A7AA303_107:;				
+_A5A7AA303_107:
 ; //	io[0x16]	= 0x0000;		
 	AR	= 0x00
 	io[0x16]	= AR
-; //_AFFC519C6_108:;				
-_AFFC519C6_108:
+; //_A5A7AA303_108:;				
+_A5A7AA303_108:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_109:;				
-_AFFC519C6_109:
+; //_A5A7AA303_109:;				
+_A5A7AA303_109:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_110:;				
-_AFFC519C6_110:
+; //_A5A7AA303_110:;				
+_A5A7AA303_110:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_111:;				
-_AFFC519C6_111:
+; //_A5A7AA303_111:;				
+_A5A7AA303_111:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_112:;				
-_AFFC519C6_112:
+; //_A5A7AA303_112:;				
+_A5A7AA303_112:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_113:;				
-_AFFC519C6_113:
+; //_A5A7AA303_113:;				
+_A5A7AA303_113:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_114:;				
-_AFFC519C6_114:
+; //_A5A7AA303_114:;				
+_A5A7AA303_114:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_115:;				
-_AFFC519C6_115:
+; //_A5A7AA303_115:;				
+_A5A7AA303_115:
 ; //	io[0x36]	= 0x0000;		
 	AR	= 0x00
 	io[0x36]	= AR
-; //_AFFC519C6_116:;				
-_AFFC519C6_116:
+; //_A5A7AA303_116:;				
+_A5A7AA303_116:
 ; //	io[0x3C]	= 0x003F;		
 	AR	= 0x3F
 	io[0x3C]	= AR
-; //_AFFC519C6_117:;				
-_AFFC519C6_117:
+; //_A5A7AA303_117:;				
+_A5A7AA303_117:
 ; //	sAX	= io[0x3C];			
 	AR	= io[0x3C]
 	AX	= AR
-; //_AFFC519C6_118:;				
-_AFFC519C6_118:
+; //_A5A7AA303_118:;				
+_A5A7AA303_118:
 ; //	asm	set io[MISC].b9			
 	set io[MISC].b9
-; //_AFFC519C6_119:;				
-_AFFC519C6_119:
+; //_A5A7AA303_119:;				
+_A5A7AA303_119:
 ; //	asm	set io[MISC].b8			
 	set io[MISC].b8
-; //_AFFC519C6_120:;				
-_AFFC519C6_120:
+; //_A5A7AA303_120:;				
+_A5A7AA303_120:
 ; //	asm	set io[MISC].b4			
 	set io[MISC].b4
 ; //L0E8FA404_31:;					
 L0E8FA404_31:
-; //_AFFC519C6_121:;				
-_AFFC519C6_121:
+; //_A5A7AA303_121:;				
+_A5A7AA303_121:
 ; //	return;					
 	rets
 ; //L0E8FA404_29_end:;				
 L0E8FA404_29_end:
-; //_AFFC519C6_122:;				
-_AFFC519C6_122:
+; //_A5A7AA303_122:;				
+_A5A7AA303_122:
 ; //}
 ; //
 ; //rjmp void L0E8FA404_32()			
 L0E8FA404_32:
 ; //{
-; //_AFFC519C6_123:;				
-_AFFC519C6_123:
+; //_A5A7AA303_123:;				
+_A5A7AA303_123:
 ; //	
-; //_AFFC519C6_124:;				
-_AFFC519C6_124:
+; //_A5A7AA303_124:;				
+_A5A7AA303_124:
 ; //	io[0x04]	= 0x000F;		
 	AR	= 0x0F
 	io[0x04]	= AR
-; //_AFFC519C6_125:;				
-_AFFC519C6_125:
+; //_A5A7AA303_125:;				
+_A5A7AA303_125:
 ; //	io[0x05]	= 0xFFFF;		
 	AR	= 0xFFFF
 	io[0x05]	= AR
-; //_AFFC519C6_126:;				
-_AFFC519C6_126:
+; //_A5A7AA303_126:;				
+_A5A7AA303_126:
 ; //	io[0x07]	= 0x0000;		
 	AR	= 0x00
 	io[0x07]	= AR
-; //_AFFC519C6_127:;				
-_AFFC519C6_127:
+; //_A5A7AA303_127:;				
+_A5A7AA303_127:
 ; //	io[0x08]	= 0xFFFF;		
 	AR	= 0xFFFF
 	io[0x08]	= AR
 ; //L0E8FA404_34:;					
 L0E8FA404_34:
-; //_AFFC519C6_128:;				
-_AFFC519C6_128:
+; //_A5A7AA303_128:;				
+_A5A7AA303_128:
 ; //	return;					
 	rets
 ; //L0E8FA404_32_end:;				
 L0E8FA404_32_end:
-; //_AFFC519C6_129:;				
-_AFFC519C6_129:
+; //_A5A7AA303_129:;				
+_A5A7AA303_129:
 ; //}
 ; //
 ; //rjmp void _InitialDA4A7CC4()			
 _InitialDA4A7CC4:
 ; //{
-; //_AFFC519C6_130:;				
-_AFFC519C6_130:
+; //_A5A7AA303_130:;				
+_A5A7AA303_130:
 ; //	
-; //_AFFC519C6_131:;				
-_AFFC519C6_131:
+; //_A5A7AA303_131:;				
+_A5A7AA303_131:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	asm I1 = _songidx8C42F7DA+0;		
 	I1 = _songidx8C42F7DA+0//
 ; //	*(__int16*)sSI	= sAX			
 	rm[I1]	= AX
-; //_AFFC519C6_132:;				
-_AFFC519C6_132:
-; //_AFFC519C6_133:;				
-_AFFC519C6_133:
+; //_A5A7AA303_132:;				
+_A5A7AA303_132:
+; //_A5A7AA303_133:;				
+_A5A7AA303_133:
 ; //	NEARCALL(L0E8FA404_29);			
 	call	L0E8FA404_29
-; //_AFFC519C6_134:;				
-_AFFC519C6_134:
-; //_AFFC519C6_135:;				
-_AFFC519C6_135:
+; //_A5A7AA303_134:;				
+_A5A7AA303_134:
+; //_A5A7AA303_135:;				
+_A5A7AA303_135:
 ; //	NEARCALL(L0E8FA404_32);			
 	call	L0E8FA404_32
-; //_AFFC519C6_136:;				
-_AFFC519C6_136:
+; //_A5A7AA303_136:;				
+_A5A7AA303_136:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	asm I1 = _flags026116D5+0;		
 	I1 = _flags026116D5+0//
 ; //	*(__int16*)sSI	= sAX			
 	rm[I1]	= AX
-; //_AFFC519C6_137:;				
-_AFFC519C6_137:
+; //_A5A7AA303_137:;				
+_A5A7AA303_137:
 ; //	asm AX = PCMY+0;			
 	AX = PCMY+0//
 ; //	asm I1 = PCMYIN_PTR+0;			
 	I1 = PCMYIN_PTR+0//
 ; //	*(__int16*)sSI	= sAX			
 	rm[I1]	= AX
-; //_AFFC519C6_138:;				
-_AFFC519C6_138:
+; //_A5A7AA303_138:;				
+_A5A7AA303_138:
 ; //	asm AX = PCMY+0;			
 	AX = PCMY+0//
 ; //	asm I1 = PCMYOU_PTR+0;			
@@ -215,24 +215,24 @@ _AFFC519C6_138:
 	rm[I1]	= AX
 ; //L0E8FA404_35:;					
 L0E8FA404_35:
-; //_AFFC519C6_139:;				
-_AFFC519C6_139:
+; //_A5A7AA303_139:;				
+_A5A7AA303_139:
 ; //	return;					
 	rets
 ; //_InitialDA4A7CC4_end:;				
 _InitialDA4A7CC4_end:
-; //_AFFC519C6_140:;				
-_AFFC519C6_140:
+; //_A5A7AA303_140:;				
+_A5A7AA303_140:
 ; //}
 ; //
 ; //rjmp void _CheckSongLimit402181B4()		
 _CheckSongLimit402181B4:
 ; //{
-; //_AFFC519C6_141:;				
-_AFFC519C6_141:
+; //_A5A7AA303_141:;				
+_A5A7AA303_141:
 ; //	
-; //_AFFC519C6_142:;				
-_AFFC519C6_142:
+; //_A5A7AA303_142:;				
+_A5A7AA303_142:
 ; //	asm I1 = _songidx8C42F7DA+0;		
 	I1 = _songidx8C42F7DA+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -249,8 +249,8 @@ _AFFC519C6_142:
 ; //L0E8FA404_38:;					
 L0E8FA404_38:
 ; //	
-; //_AFFC519C6_143:;				
-_AFFC519C6_143:
+; //_A5A7AA303_143:;				
+_A5A7AA303_143:
 ; //	asm I1 = dtxsongcnt+0;			
 	I1 = dtxsongcnt+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -269,8 +269,8 @@ _AFFC519C6_143:
 ; //L0E8FA404_37:;					
 L0E8FA404_37:
 ; //	
-; //_AFFC519C6_144:;				
-_AFFC519C6_144:
+; //_A5A7AA303_144:;				
+_A5A7AA303_144:
 ; //	asm I1 = _songidx8C42F7DA+0;		
 	I1 = _songidx8C42F7DA+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -289,8 +289,8 @@ _AFFC519C6_144:
 ; //L0E8FA404_41:;					
 L0E8FA404_41:
 ; //	
-; //_AFFC519C6_145:;				
-_AFFC519C6_145:
+; //_A5A7AA303_145:;				
+_A5A7AA303_145:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	asm I1 = _songidx8C42F7DA+0;		
@@ -299,32 +299,32 @@ _AFFC519C6_145:
 	rm[I1]	= AX
 ; //L0E8FA404_40:;					
 L0E8FA404_40:
-; //_AFFC519C6_146:;				
-_AFFC519C6_146:
+; //_A5A7AA303_146:;				
+_A5A7AA303_146:
 ; //L0E8FA404_39:;					
 L0E8FA404_39:
-; //_AFFC519C6_147:;				
-_AFFC519C6_147:
+; //_A5A7AA303_147:;				
+_A5A7AA303_147:
 ; //L0E8FA404_36:;					
 L0E8FA404_36:
-; //_AFFC519C6_148:;				
-_AFFC519C6_148:
+; //_A5A7AA303_148:;				
+_A5A7AA303_148:
 ; //	return;					
 	rets
 ; //_CheckSongLimit402181B4_end:;			
 _CheckSongLimit402181B4_end:
-; //_AFFC519C6_149:;				
-_AFFC519C6_149:
+; //_A5A7AA303_149:;				
+_A5A7AA303_149:
 ; //}
 ; //
 ; //rjmp void _RampUpFF7996DA()			
 _RampUpFF7996DA:
 ; //{
-; //_AFFC519C6_150:;				
-_AFFC519C6_150:
+; //_A5A7AA303_150:;				
+_A5A7AA303_150:
 ; //	
-; //_AFFC519C6_151:;				
-_AFFC519C6_151:
+; //_A5A7AA303_151:;				
+_A5A7AA303_151:
 ; //	asm I1 = _sub_vol980B1B83+0;		
 	I1 = _sub_vol980B1B83+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -344,20 +344,20 @@ _AFFC519C6_151:
 	jmp	L0E8FA404_43
 ; //L0E8FA404_44:;					
 L0E8FA404_44:
-; //_AFFC519C6_152:;				
-_AFFC519C6_152:
+; //_A5A7AA303_152:;				
+_A5A7AA303_152:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	goto L0E8FA404_42;			
 	jmp	L0E8FA404_42
 ; //L0E8FA404_43:;					
 L0E8FA404_43:
-; //_AFFC519C6_153:;				
-_AFFC519C6_153:
-; //_AFFC519C6_154:;				
-_AFFC519C6_154:
-; //_AFFC519C6_155:;				
-_AFFC519C6_155:
+; //_A5A7AA303_153:;				
+_A5A7AA303_153:
+; //_A5A7AA303_154:;				
+_A5A7AA303_154:
+; //_A5A7AA303_155:;				
+_A5A7AA303_155:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -386,10 +386,10 @@ _AFFC519C6_155:
 ; //L0E8FA404_46:;					
 L0E8FA404_46:
 ; //	
-; //_AFFC519C6_156:;				
-_AFFC519C6_156:
-; //_AFFC519C6_157:;				
-_AFFC519C6_157:
+; //_A5A7AA303_156:;				
+_A5A7AA303_156:
+; //_A5A7AA303_157:;				
+_A5A7AA303_157:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -398,8 +398,8 @@ _AFFC519C6_157:
 ; //	sfx_STORSILONG();			
 	rm[I1++]	= AX
 	rm[I1--]	= DX
-; //_AFFC519C6_158:;				
-_AFFC519C6_158:
+; //_A5A7AA303_158:;				
+_A5A7AA303_158:
 ; //	sSI	= (int)&_sub_vol980B1B83;	
 	I1	= _sub_vol980B1B83
 ; //	sAX	= *(__int16*)sSI;		
@@ -413,34 +413,34 @@ _AFFC519C6_158:
 	io[0x3C]	= AR
 ; //L0E8FA404_45:;					
 L0E8FA404_45:
-; //_AFFC519C6_159:;				
-_AFFC519C6_159:
-; //_AFFC519C6_160:;				
-_AFFC519C6_160:
+; //_A5A7AA303_159:;				
+_A5A7AA303_159:
+; //_A5A7AA303_160:;				
+_A5A7AA303_160:
 ; //	sAX	= 0x0001;			
 	AX	= 0x01
 ; //	goto L0E8FA404_42;			
 	jmp	L0E8FA404_42
 ; //L0E8FA404_42:;					
 L0E8FA404_42:
-; //_AFFC519C6_161:;				
-_AFFC519C6_161:
+; //_A5A7AA303_161:;				
+_A5A7AA303_161:
 ; //	return;					
 	rets
 ; //_RampUpFF7996DA_end:;				
 _RampUpFF7996DA_end:
-; //_AFFC519C6_162:;				
-_AFFC519C6_162:
+; //_A5A7AA303_162:;				
+_A5A7AA303_162:
 ; //}
 ; //
 ; //rjmp void _RampDown1D382EDA()			
 _RampDown1D382EDA:
 ; //{
-; //_AFFC519C6_163:;				
-_AFFC519C6_163:
+; //_A5A7AA303_163:;				
+_A5A7AA303_163:
 ; //	
-; //_AFFC519C6_164:;				
-_AFFC519C6_164:
+; //_A5A7AA303_164:;				
+_A5A7AA303_164:
 ; //	asm I1 = _sub_vol980B1B83+0;		
 	I1 = _sub_vol980B1B83+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -460,20 +460,20 @@ _AFFC519C6_164:
 	jmp	L0E8FA404_48
 ; //L0E8FA404_49:;					
 L0E8FA404_49:
-; //_AFFC519C6_165:;				
-_AFFC519C6_165:
+; //_A5A7AA303_165:;				
+_A5A7AA303_165:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
 ; //	goto L0E8FA404_47;			
 	jmp	L0E8FA404_47
 ; //L0E8FA404_48:;					
 L0E8FA404_48:
-; //_AFFC519C6_166:;				
-_AFFC519C6_166:
-; //_AFFC519C6_167:;				
-_AFFC519C6_167:
-; //_AFFC519C6_168:;				
-_AFFC519C6_168:
+; //_A5A7AA303_166:;				
+_A5A7AA303_166:
+; //_A5A7AA303_167:;				
+_A5A7AA303_167:
+; //_A5A7AA303_168:;				
+_A5A7AA303_168:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -502,10 +502,10 @@ _AFFC519C6_168:
 ; //L0E8FA404_51:;					
 L0E8FA404_51:
 ; //	
-; //_AFFC519C6_169:;				
-_AFFC519C6_169:
-; //_AFFC519C6_170:;				
-_AFFC519C6_170:
+; //_A5A7AA303_169:;				
+_A5A7AA303_169:
+; //_A5A7AA303_170:;				
+_A5A7AA303_170:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -514,8 +514,8 @@ _AFFC519C6_170:
 ; //	sfx_STORSILONG();			
 	rm[I1++]	= AX
 	rm[I1--]	= DX
-; //_AFFC519C6_171:;				
-_AFFC519C6_171:
+; //_A5A7AA303_171:;				
+_A5A7AA303_171:
 ; //	sSI	= (int)&_sub_vol980B1B83;	
 	I1	= _sub_vol980B1B83
 ; //	sAX	= *(__int16*)sSI;		
@@ -529,34 +529,34 @@ _AFFC519C6_171:
 	io[0x3C]	= AR
 ; //L0E8FA404_50:;					
 L0E8FA404_50:
-; //_AFFC519C6_172:;				
-_AFFC519C6_172:
-; //_AFFC519C6_173:;				
-_AFFC519C6_173:
+; //_A5A7AA303_172:;				
+_A5A7AA303_172:
+; //_A5A7AA303_173:;				
+_A5A7AA303_173:
 ; //	sAX	= 0x0001;			
 	AX	= 0x01
 ; //	goto L0E8FA404_47;			
 	jmp	L0E8FA404_47
 ; //L0E8FA404_47:;					
 L0E8FA404_47:
-; //_AFFC519C6_174:;				
-_AFFC519C6_174:
+; //_A5A7AA303_174:;				
+_A5A7AA303_174:
 ; //	return;					
 	rets
 ; //_RampDown1D382EDA_end:;				
 _RampDown1D382EDA_end:
-; //_AFFC519C6_175:;				
-_AFFC519C6_175:
+; //_A5A7AA303_175:;				
+_A5A7AA303_175:
 ; //}
 ; //
 ; //rjmp void _ToneVolCtrl03CF265A()		
 _ToneVolCtrl03CF265A:
 ; //{
-; //_AFFC519C6_176:;				
-_AFFC519C6_176:
+; //_A5A7AA303_176:;				
+_A5A7AA303_176:
 ; //	
-; //_AFFC519C6_177:;				
-_AFFC519C6_177:
+; //_A5A7AA303_177:;				
+_A5A7AA303_177:
 ; //	sAX	= 0;				
 	AX	= 0x00
 ; //	asm I1 = _flags026116D5+0;		
@@ -580,8 +580,8 @@ L0E8FA404_54:
 ; //L0E8FA404_55:;					
 L0E8FA404_55:
 ; //	
-; //_AFFC519C6_178:;				
-_AFFC519C6_178:
+; //_A5A7AA303_178:;				
+_A5A7AA303_178:
 ; //	asm I1 = dtxfltg+0;			
 	I1 = dtxfltg+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -597,8 +597,8 @@ _AFFC519C6_178:
 	jmp	L0E8FA404_56
 ; //L0E8FA404_57:;					
 L0E8FA404_57:
-; //_AFFC519C6_179:;				
-_AFFC519C6_179:
+; //_A5A7AA303_179:;				
+_A5A7AA303_179:
 ; //	asm I1 = dtxfltg+0;			
 	I1 = dtxfltg+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -614,15 +614,15 @@ _AFFC519C6_179:
 	rm[I1]	= AX
 ; //L0E8FA404_56:;					
 L0E8FA404_56:
-; //_AFFC519C6_180:;				
-_AFFC519C6_180:
+; //_A5A7AA303_180:;				
+_A5A7AA303_180:
 ; //	goto L0E8FA404_58;			
 	jmp	L0E8FA404_58
 ; //L0E8FA404_53:;					
 L0E8FA404_53:
 ; //	
-; //_AFFC519C6_181:;				
-_AFFC519C6_181:
+; //_A5A7AA303_181:;				
+_A5A7AA303_181:
 ; //	asm I1 = dtxfltg+0;			
 	I1 = dtxfltg+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -638,8 +638,8 @@ _AFFC519C6_181:
 	jmp	L0E8FA404_59
 ; //L0E8FA404_60:;					
 L0E8FA404_60:
-; //_AFFC519C6_182:;				
-_AFFC519C6_182:
+; //_A5A7AA303_182:;				
+_A5A7AA303_182:
 ; //	sSI	= (int)&dtxfltg;		
 	I1	= dtxfltg
 ; //	sAX	= *(__int16*)sSI;		
@@ -650,22 +650,22 @@ _AFFC519C6_182:
 	rm[I1]	= AX
 ; //L0E8FA404_59:;					
 L0E8FA404_59:
-; //_AFFC519C6_183:;				
-_AFFC519C6_183:
+; //_A5A7AA303_183:;				
+_A5A7AA303_183:
 ; //L0E8FA404_58:;					
 L0E8FA404_58:
-; //_AFFC519C6_184:;				
-_AFFC519C6_184:
+; //_A5A7AA303_184:;				
+_A5A7AA303_184:
 ; //L0E8FA404_52:;					
 L0E8FA404_52:
-; //_AFFC519C6_185:;				
-_AFFC519C6_185:
+; //_A5A7AA303_185:;				
+_A5A7AA303_185:
 ; //	return;					
 	rets
 ; //_ToneVolCtrl03CF265A_end:;			
 _ToneVolCtrl03CF265A_end:
-; //_AFFC519C6_186:;				
-_AFFC519C6_186:
+; //_A5A7AA303_186:;				
+_A5A7AA303_186:
 ; //}
 ; //
 ; //

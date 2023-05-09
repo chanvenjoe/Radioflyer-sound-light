@@ -13,6 +13,8 @@
 
 // .bss segment _bss
 // BSS segment (data without initial value)
+__int16 _sub_vol980B1B83;
+__int16 _ticksA7263C09[2];
 
 // .bss ends _bss
 
@@ -21,68 +23,175 @@
 .code
 
 
+rjmp void _RampUpFF7996DA();
+rjmp void _RampDown1D382EDA();
 rjmp void _InitialDA4A7CC4();
 // RCODE segment
 
 // .model speechdsp
 // .code segment _text
 .code
-rjmp void L0E8FA404_84()
+// .code ends _text
+
+// .data segment _rdata
+.data
+// .data ends _rdata
+
+// .code segment _text
+.code
+rjmp void _RampUpFF7996DA()
 {
-_A30BB6F62_2626:;
+_AE0CFD6DA_2639:;
 	////////////////////////////
-_A30BB6F62_2627:;
-	io[0x04]	= 0x000F;
-_A30BB6F62_2628:;
-	io[0x05]	= 0xFFFF;
-_A30BB6F62_2629:;
-	io[0x07]	= 0x0000;
-_A30BB6F62_2630:;
-	io[0x08]	= 0x0000;
-L0E8FA404_86:;
-_A30BB6F62_2631:;
+_AE0CFD6DA_2640:;
+	asm I1 = _sub_vol980B1B83+0;
+	sAX	= *(__int16*)sSI;
+	asm AR = 0x003F;
+	asm AX = AX & AR;
+	sCX	= 0x003F;
+	sfx_CMP_AX_CX_JE();
+	if(__je__)	goto L0E8FA404_110;
+	goto	L0E8FA404_109;
+L0E8FA404_110:;
+_AE0CFD6DA_2641:;
+	sAX	= 0x0000;
+	goto L0E8FA404_108;
+L0E8FA404_109:;
+_AE0CFD6DA_2642:;
+_AE0CFD6DA_2643:;
+_AE0CFD6DA_2644:;
+	_GetTickCount18DC070C();
+	asm I1 = _ticksA7263C09+0;
+	sCX	= *(__int16*)sSI++;
+	sBX	= *(__int16*)sSI--;
+	sfx_SUBLONG();
+	sCX	= 0x0000;
+	sBX	= 0x0005;
+	sfx_CMPLONG_JA();
+	if(__je__)	goto L0E8FA404_112;
+	goto	L0E8FA404_111;
+L0E8FA404_112:;
+	////////////////////////////
+_AE0CFD6DA_2645:;
+_AE0CFD6DA_2646:;
+	_GetTickCount18DC070C();
+	asm I1 = _ticksA7263C09+0;
+	sfx_STORSILONG();
+_AE0CFD6DA_2647:;
+	sSI	= (int)&_sub_vol980B1B83;
+	sAX	= *(__int16*)sSI;
+	sAX++;
+	*(__int16*)sSI	= sAX;
+	io[0x3C]	= sAX;
+L0E8FA404_111:;
+_AE0CFD6DA_2648:;
+_AE0CFD6DA_2649:;
+	sAX	= 0x0001;
+	goto L0E8FA404_108;
+L0E8FA404_108:;
+_AE0CFD6DA_2650:;
 	return;
-L0E8FA404_84_end:;
-_A30BB6F62_2632:;
+_RampUpFF7996DA_end:;
+_AE0CFD6DA_2651:;
+}
+
+rjmp void _RampDown1D382EDA()
+{
+_AE0CFD6DA_2652:;
+	////////////////////////////
+_AE0CFD6DA_2653:;
+	asm I1 = _sub_vol980B1B83+0;
+	sAX	= *(__int16*)sSI;
+	asm AR = 0x003F;
+	asm AX = AX & AR;
+	sCX	= 0x0000;
+	sfx_CMP_AX_CX_JE();
+	if(__je__)	goto L0E8FA404_115;
+	goto	L0E8FA404_114;
+L0E8FA404_115:;
+_AE0CFD6DA_2654:;
+	sAX	= 0x0000;
+	goto L0E8FA404_113;
+L0E8FA404_114:;
+_AE0CFD6DA_2655:;
+_AE0CFD6DA_2656:;
+_AE0CFD6DA_2657:;
+	_GetTickCount18DC070C();
+	asm I1 = _ticksA7263C09+0;
+	sCX	= *(__int16*)sSI++;
+	sBX	= *(__int16*)sSI--;
+	sfx_SUBLONG();
+	sCX	= 0x0000;
+	sBX	= 0x0005;
+	sfx_CMPLONG_JA();
+	if(__je__)	goto L0E8FA404_117;
+	goto	L0E8FA404_116;
+L0E8FA404_117:;
+	////////////////////////////
+_AE0CFD6DA_2658:;
+_AE0CFD6DA_2659:;
+	_GetTickCount18DC070C();
+	asm I1 = _ticksA7263C09+0;
+	sfx_STORSILONG();
+_AE0CFD6DA_2660:;
+	sSI	= (int)&_sub_vol980B1B83;
+	sAX	= *(__int16*)sSI;
+	sAX--;
+	*(__int16*)sSI	= sAX;
+	io[0x3C]	= sAX;
+L0E8FA404_116:;
+_AE0CFD6DA_2661:;
+_AE0CFD6DA_2662:;
+	sAX	= 0x0001;
+	goto L0E8FA404_113;
+L0E8FA404_113:;
+_AE0CFD6DA_2663:;
+	return;
+_RampDown1D382EDA_end:;
+_AE0CFD6DA_2664:;
 }
 
 rjmp void _InitialDA4A7CC4()
 {
-_A30BB6F62_2633:;
+_AE0CFD6DA_2665:;
 	////////////////////////////
-_A30BB6F62_2634:;
+_AE0CFD6DA_2666:;
 	sAX	= 0x003F;
-_A30BB6F62_2635:;
+_AE0CFD6DA_2667:;
 	asm	AR = AX
-_A30BB6F62_2636:;
+_AE0CFD6DA_2668:;
 	asm	FLTG = AR
 	////////////////////////////
-_A30BB6F62_2637:;
+_AE0CFD6DA_2669:;
 	sAX	= 0x1FFF;
-_A30BB6F62_2638:;
+_AE0CFD6DA_2670:;
 	asm	AR = AX
-_A30BB6F62_2639:;
+_AE0CFD6DA_2671:;
 	asm	FLTP = AR
 	////////////////////////////
-_A30BB6F62_2640:;
+_AE0CFD6DA_2672:;
 	sAX	= 0x0008;
-_A30BB6F62_2641:;
+_AE0CFD6DA_2673:;
 	asm	AR = AX
-_A30BB6F62_2642:;
+_AE0CFD6DA_2674:;
 	asm	CBL = AR
-_A30BB6F62_2643:;
+_AE0CFD6DA_2675:;
 	io[0x67]	= 0x0007;
-_A30BB6F62_2644:;
+_AE0CFD6DA_2676:;
 	io[0x06]	= 0xC004;
-_A30BB6F62_2645:;
+_AE0CFD6DA_2677:;
 	io[0x05]	= 0x0000;
-_A30BB6F62_2646:;
+_AE0CFD6DA_2678:;
 	io[0x09]	= 0x0000;
-L0E8FA404_87:;
-_A30BB6F62_2647:;
+_AE0CFD6DA_2679:;
+	asm set io[0x00].b7;
+_AE0CFD6DA_2680:;
+	asm set io[0x01].b1;
+L0E8FA404_118:;
+_AE0CFD6DA_2681:;
 	return;
 _InitialDA4A7CC4_end:;
-_A30BB6F62_2648:;
+_AE0CFD6DA_2682:;
 }
 
 // .code ends _text
@@ -166,6 +275,57 @@ naked void ginit_code_global_6037E6D5_s(void)
 // extern _ClearTickCount5DDE4003:proc
 // extern _GetTickCount18DC070C:proc
 // extern _delay6F9F34ED:proc
+// extern mp:word
+// extern mp_baseadr_l:word
+// extern mp_baseadr_h:word
+// extern mp_songcnt:word
+// extern mp_tinsbank:word
+// extern mp_occupyopr:word
+// extern mp_inbuf:word
+// extern mp_outbuf:word
+// extern mp_vol:word
+// extern mp_tempo:word
+// extern mp_kmapbase:long
+// extern mp_flags:word
+// extern mp_note:long
+// extern mp_PlayChannel:long
+// extern mp_ReleaseCh:long
+// extern mp_mchmask:long
+// extern mp_okmask:word
+// extern mp_lop:word
+// extern mp_ctlev:word
+// extern mp_pitch:word
+// extern md2Initialize:proc
+// extern md2Initilize:proc
+// extern _md2ChkSongEnd0B00CDA5:proc
+// extern _md2DoRoutine82B98B9D:proc
+// extern _md2PlaySongF1CD4C9D:proc
+// extern _md2PlayRhythmLoop446C96D5:proc
+// extern md2StopSong:proc
+// extern md2InitParameters:proc
+// extern md2StartBGServe:proc
+// extern md2StopBGServe:proc
+// extern _md2FindMidiEntry757C576D:proc
+// extern _md2PlayNoteC61ED125:proc
+// extern _md2PlayPercNote818E3F25:proc
+// extern _md2ReleaseNote7FE95EF3:proc
+// extern _md2ReleasePercNote8CD707D5:proc
+// extern _md2FindNextOkonD3FEE6DA:proc
+// extern md2StartOkon:proc
+// extern md2LeaveOkon:proc
+// extern _md2PlayOkon3411E62A:proc
+// extern _md2PlayOkonAccomp18254831:proc
+// extern _md2ReleaseOkonF4500B9D:proc
+// extern _md2LoopToSong6DEA50ED:proc
+// extern inbuf:word
+// extern outbuf:word
+// extern PCMY:word
+// public _ticksA7263C09
+// public _sub_vol980B1B83
+// public _RampUpFF7996DA
+// public _RampDown1D382EDA
+// public _InitialDA4A7CC4
+// extern _DoADPCM9CD0E20D:proc
 // extern _lptr_read:proc
 // extern _lptr_read32:proc
 // extern _lptr_write:proc
@@ -255,5 +415,4 @@ naked void ginit_code_global_6037E6D5_s(void)
 // extern _strtok_rsDC49D76D:proc
 // extern _strtok_srDC49D76D:proc
 // extern _strtok_rrDC49D76D:proc
-// public _InitialDA4A7CC4
 // public ginit_code_global_6037E6D5_s

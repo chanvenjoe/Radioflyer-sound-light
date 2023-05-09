@@ -32,23 +32,23 @@ rjmp void _INITIAL0C18377D();
 .code
 rjmp void _main()
 {
-_AC98791D5_0:;
+_A0FC2C77B_0:;
 	////////////////////////////
-_AC98791D5_1:;
-_AC98791D5_2:;
+_A0FC2C77B_1:;
+_A0FC2C77B_2:;
 	F_ChangePWMVectTabletobank2();
-_AC98791D5_3:;
+_A0FC2C77B_3:;
 	sAX	= 0x0000;
 	asm I1 = _sub_vol980B1B83+0;
 	*(__int16*)sSI	= sAX
-_AC98791D5_4:;
-_AC98791D5_5:;
+_A0FC2C77B_4:;
+_A0FC2C77B_5:;
 	_INITIAL0C18377D();
-_AC98791D5_6:;
-_AC98791D5_7:;
+_A0FC2C77B_6:;
+_A0FC2C77B_7:;
 	_ClearTickCount5DDE4003();
-_AC98791D5_8:;
-_AC98791D5_9:;
+_A0FC2C77B_8:;
+_A0FC2C77B_9:;
 	asm AX = #MyData+0;
 	asm DX = #MyData.n2
 	asm set DX.b11
@@ -57,22 +57,22 @@ _AC98791D5_9:;
 	_Sub3Play422CAD6D(STACK[sSP + 0], STACK[sSP + 1]);
 	RESTORESP(2);
 LB6D5333B_4:;
-_AC98791D5_10:;
-_AC98791D5_11:;
+_A0FC2C77B_10:;
+_A0FC2C77B_11:;
 	asm	io[ClrWDT] = AR
 	////////////////////////////
-_AC98791D5_12:;
-_AC98791D5_13:;
+_A0FC2C77B_12:;
+_A0FC2C77B_13:;
 	_RampUpFF7996DA();
-_AC98791D5_14:;
-_AC98791D5_15:;
+_A0FC2C77B_14:;
+_A0FC2C77B_15:;
 	Subb3_Dec();
 	sfx_CHECKZERO();
 	if(__jnz__)	goto LB6D5333B_6;
 	goto	LB6D5333B_5;
 LB6D5333B_6:;
-_AC98791D5_16:;
-_AC98791D5_17:;
+_A0FC2C77B_16:;
+_A0FC2C77B_17:;
 	asm AX = #MyData+0;
 	asm DX = #MyData.n2
 	asm set DX.b11
@@ -81,82 +81,82 @@ _AC98791D5_17:;
 	_Sub3Play422CAD6D(STACK[sSP + 0], STACK[sSP + 1]);
 	RESTORESP(2);
 LB6D5333B_5:;
-_AC98791D5_18:;
+_A0FC2C77B_18:;
 	goto LB6D5333B_4;
 LB6D5333B_3:;
 LB6D5333B_2:;
-_AC98791D5_19:;
+_A0FC2C77B_19:;
 	return;
 _main_end:;
-_AC98791D5_20:;
+_A0FC2C77B_20:;
 }
 
 rjmp void _InitSound5CCD501D()
 {
-_AC98791D5_21:;
+_A0FC2C77B_21:;
 	////////////////////////////
-_AC98791D5_22:;
+_A0FC2C77B_22:;
 	io[0x3E]	= 0x3FFF;
-_AC98791D5_23:;
+_A0FC2C77B_23:;
 	io[0x16]	= 0x0000;
-_AC98791D5_24:;
+_A0FC2C77B_24:;
 	io[0x16]	= 0x0000;
-_AC98791D5_25:;
+_A0FC2C77B_25:;
 	io[0x16]	= 0x0000;
-_AC98791D5_26:;
+_A0FC2C77B_26:;
 	io[0x16]	= 0x0000;
-_AC98791D5_27:;
+_A0FC2C77B_27:;
 	io[0x36]	= 0x0000;
-_AC98791D5_28:;
+_A0FC2C77B_28:;
 	io[0x36]	= 0x0000;
-_AC98791D5_29:;
+_A0FC2C77B_29:;
 	io[0x36]	= 0x0000;
-_AC98791D5_30:;
+_A0FC2C77B_30:;
 	io[0x36]	= 0x0000;
-_AC98791D5_31:;
+_A0FC2C77B_31:;
 	io[0x36]	= 0x0000;
-_AC98791D5_32:;
+_A0FC2C77B_32:;
 	io[0x36]	= 0x0000;
-_AC98791D5_33:;
+_A0FC2C77B_33:;
 	io[0x36]	= 0x0000;
-_AC98791D5_34:;
+_A0FC2C77B_34:;
 	io[0x36]	= 0x0000;
-_AC98791D5_35:;
+_A0FC2C77B_35:;
 	io[0x3C]	= 0x0000;
-_AC98791D5_36:;
+_A0FC2C77B_36:;
 	sAX	= io[0x3C];
-_AC98791D5_37:;
+_A0FC2C77B_37:;
 	asm	set io[MISC].b9
-_AC98791D5_38:;
+_A0FC2C77B_38:;
 	asm	set io[MISC].b8
-_AC98791D5_39:;
+_A0FC2C77B_39:;
 	asm	set io[MISC].b4
 LB6D5333B_7:;
-_AC98791D5_40:;
+_A0FC2C77B_40:;
 	return;
 _InitSound5CCD501D_end:;
-_AC98791D5_41:;
+_A0FC2C77B_41:;
 }
 
 rjmp void _INITIAL0C18377D()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_AC98791D5_42:;
-_AC98791D5_43:;
-_AC98791D5_44:;
+_A0FC2C77B_42:;
+_A0FC2C77B_43:;
+_A0FC2C77B_44:;
 	NEARCALL(_InitSound5CCD501D);
 	////////////////////////////
-_AC98791D5_45:;
+_A0FC2C77B_45:;
 	asm AX = PCMY+0;
-_AC98791D5_46:;
+_A0FC2C77B_46:;
 	asm	AR = AX
-_AC98791D5_47:;
+_A0FC2C77B_47:;
 	asm	I0 = AR
-_AC98791D5_48:;
+_A0FC2C77B_48:;
 	_i_1_2+0	= 0x0200;
 LB6D5333B_10:;
-_AC98791D5_49:;
+_A0FC2C77B_49:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -168,33 +168,33 @@ _AC98791D5_49:;
 	goto	LB6D5333B_9;
 LB6D5333B_11:;
 	////////////////////////////
-_AC98791D5_50:;
+_A0FC2C77B_50:;
 	sAX	= 0x0000;
-_AC98791D5_51:;
+_A0FC2C77B_51:;
 	asm	rm[I0++] = AX
 	goto LB6D5333B_10;
 LB6D5333B_9:;
-_AC98791D5_52:;
+_A0FC2C77B_52:;
 	asm AX = PCMY+0;
 	asm I1 = PCMYIN_PTR+0;
 	*(__int16*)sSI	= sAX
-_AC98791D5_53:;
+_A0FC2C77B_53:;
 	asm AX = PCMY+0;
 	asm I1 = PCMYOU_PTR+0;
 	*(__int16*)sSI	= sAX
-_AC98791D5_54:;
+_A0FC2C77B_54:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	io[0x3C]	= sAX;
-_AC98791D5_55:;
+_A0FC2C77B_55:;
 	io[0x3E]	= 0x1FFF;
-_AC98791D5_56:;
+_A0FC2C77B_56:;
 	io[0x3B]	= 0x0000;
 LB6D5333B_8:;
-_AC98791D5_57:;
+_A0FC2C77B_57:;
 	return;
 _INITIAL0C18377D_end:;
-_AC98791D5_58:;
+_A0FC2C77B_58:;
 }
 
 // .code ends _text

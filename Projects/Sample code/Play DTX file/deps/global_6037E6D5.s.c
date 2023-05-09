@@ -40,98 +40,98 @@ rjmp void _CheckSongLimit402181B4();
 .code
 rjmp void L0E8FA404_19()
 {
-_AB97CD6AD_68:;
+_A0EDC73FE_68:;
 	////////////////////////////
-_AB97CD6AD_69:;
+_A0EDC73FE_69:;
 	io[0x16]	= 0x0000;
-_AB97CD6AD_70:;
+_A0EDC73FE_70:;
 	io[0x16]	= 0x0000;
-_AB97CD6AD_71:;
+_A0EDC73FE_71:;
 	io[0x16]	= 0x0000;
-_AB97CD6AD_72:;
+_A0EDC73FE_72:;
 	io[0x16]	= 0x0000;
-_AB97CD6AD_73:;
+_A0EDC73FE_73:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_74:;
+_A0EDC73FE_74:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_75:;
+_A0EDC73FE_75:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_76:;
+_A0EDC73FE_76:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_77:;
+_A0EDC73FE_77:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_78:;
+_A0EDC73FE_78:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_79:;
+_A0EDC73FE_79:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_80:;
+_A0EDC73FE_80:;
 	io[0x36]	= 0x0000;
-_AB97CD6AD_81:;
+_A0EDC73FE_81:;
 	io[0x3C]	= 0x003F;
-_AB97CD6AD_82:;
+_A0EDC73FE_82:;
 	sAX	= io[0x3C];
-_AB97CD6AD_83:;
+_A0EDC73FE_83:;
 	asm	set io[MISC].b9
-_AB97CD6AD_84:;
+_A0EDC73FE_84:;
 	asm	set io[MISC].b8
-_AB97CD6AD_85:;
+_A0EDC73FE_85:;
 	asm	set io[MISC].b4
 L0E8FA404_21:;
-_AB97CD6AD_86:;
+_A0EDC73FE_86:;
 	return;
 L0E8FA404_19_end:;
-_AB97CD6AD_87:;
+_A0EDC73FE_87:;
 }
 
 rjmp void L0E8FA404_22()
 {
-_AB97CD6AD_88:;
+_A0EDC73FE_88:;
 	////////////////////////////
-_AB97CD6AD_89:;
+_A0EDC73FE_89:;
 	io[0x04]	= 0x000F;
-_AB97CD6AD_90:;
+_A0EDC73FE_90:;
 	io[0x05]	= 0xFFFF;
-_AB97CD6AD_91:;
+_A0EDC73FE_91:;
 	io[0x07]	= 0x0000;
-_AB97CD6AD_92:;
+_A0EDC73FE_92:;
 	io[0x08]	= 0xFFFF;
 L0E8FA404_24:;
-_AB97CD6AD_93:;
+_A0EDC73FE_93:;
 	return;
 L0E8FA404_22_end:;
-_AB97CD6AD_94:;
+_A0EDC73FE_94:;
 }
 
 rjmp void _InitialDA4A7CC4()
 {
-_AB97CD6AD_95:;
+_A0EDC73FE_95:;
 	////////////////////////////
-_AB97CD6AD_96:;
+_A0EDC73FE_96:;
 	sAX	= 0x0000;
 	asm I1 = _songidx8C42F7DA+0;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_97:;
-_AB97CD6AD_98:;
+_A0EDC73FE_97:;
+_A0EDC73FE_98:;
 	NEARCALL(L0E8FA404_19);
-_AB97CD6AD_99:;
-_AB97CD6AD_100:;
+_A0EDC73FE_99:;
+_A0EDC73FE_100:;
 	NEARCALL(L0E8FA404_22);
-_AB97CD6AD_101:;
+_A0EDC73FE_101:;
 	sAX	= 0x0000;
 	asm I1 = _flags026116D5+0;
 	*(__int16*)sSI	= sAX
 L0E8FA404_25:;
-_AB97CD6AD_102:;
+_A0EDC73FE_102:;
 	return;
 _InitialDA4A7CC4_end:;
-_AB97CD6AD_103:;
+_A0EDC73FE_103:;
 }
 
 rjmp void _CheckSongLimit402181B4()
 {
-_AB97CD6AD_104:;
+_A0EDC73FE_104:;
 	////////////////////////////
-_AB97CD6AD_105:;
+_A0EDC73FE_105:;
 	asm I1 = _songidx8C42F7DA+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0000;
@@ -140,7 +140,7 @@ _AB97CD6AD_105:;
 	goto	L0E8FA404_27;
 L0E8FA404_28:;
 	////////////////////////////
-_AB97CD6AD_106:;
+_A0EDC73FE_106:;
 	asm I1 = dtxsongcnt+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0001;
@@ -150,7 +150,7 @@ _AB97CD6AD_106:;
 	goto L0E8FA404_29;
 L0E8FA404_27:;
 	////////////////////////////
-_AB97CD6AD_107:;
+_A0EDC73FE_107:;
 	asm I1 = _songidx8C42F7DA+0;
 	sAX	= *(__int16*)sSI;
 	asm I1 = dtxsongcnt+0;
@@ -160,19 +160,19 @@ _AB97CD6AD_107:;
 	goto	L0E8FA404_30;
 L0E8FA404_31:;
 	////////////////////////////
-_AB97CD6AD_108:;
+_A0EDC73FE_108:;
 	sAX	= 0x0000;
 	asm I1 = _songidx8C42F7DA+0;
 	*(__int16*)sSI	= sAX
 L0E8FA404_30:;
-_AB97CD6AD_109:;
+_A0EDC73FE_109:;
 L0E8FA404_29:;
-_AB97CD6AD_110:;
+_A0EDC73FE_110:;
 L0E8FA404_26:;
-_AB97CD6AD_111:;
+_A0EDC73FE_111:;
 	return;
 _CheckSongLimit402181B4_end:;
-_AB97CD6AD_112:;
+_A0EDC73FE_112:;
 }
 
 // .code ends _text

@@ -10,6 +10,7 @@
 ; //
 ; //__int16 LD1B663E8_2;
 ; //__int16 _flagD698DD9D;
+; //__int16 _Key_press_flag14FFF825;
 ; //
 ; //
 ; //

@@ -5,7 +5,10 @@ SOURCES=
 655.C
 WS2811.c
 global.c
+sub3play.c
 HEADERS=
 WS2811.h
 global.h
+sub3play.h
+config.h
 

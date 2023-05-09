@@ -1,105 +1,77 @@
-//****************************************************************************
-//          FDSP Demo Code , TRITAN Technology Inc.
-//                     First C code.
-//****************************************************************************
 
 #include <io.h>
-#include "WS2811.h"
+#include <lptr.h>
+#include <pwm.h>
+
 #include "global.h"
+#include "sub3play.h"
+#include "WS2811.h"
+#include "config.h"
+
+#pragma	__attribute__("rjmp")
 
 
+
+#define TRUE  1
+#define FALSE 0
 
 // C variables
 unsigned char flag=0;
+unsigned char Key_press_flag = 1;
+
+// C function
+
+int WaitPCM_Empty_size(void);
+void INITIAL(void);
 
 Color_Typedef TFSF_Color_Buf;
 
-//align(256) int PCMBuf[256];			// align(x)   = baseonx#
-//int FrameSample, ZeroFrame_s;
-//int readFlag, wADPCM;
-//code int *pData;
-
-// C variables that assembly can use it.
-
-//export int *PCMIN_PTR, *PCMOU_PTR;	//export ==> assembly can get the variable or Function
+//LinkFile(MyData, "subband3\\baby_Silen@7K8bps.TZB");
 
 
-// functions
+//import void Pwm_process(void) interrupt(0);
+//import void F_ChangePWMVectTabletobank2(void);
 
 
 
-// data
-// const int DecodeTab[];
-//LinkFile(DecodeTab, "OrchestraHit_8K_8000_4-16.PAM");
-
-
-////interrupt / naked / align(n)
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-/*void PWM(void)	naked interrupt(0) 			//interrupt(x)     set interrupt x
-{
-	// clear interrupt 0 flag
-
-	ClrIntFlag0();
-
-	// because 'naked' remove the function frame,
-	// we need manual save used registers.
-
-	// for the reason it may reduce some cpu cycles without
-	// the function frame.
-
-	PUSH_AX();
-	PUSH_I0();
-	PUSH_I1();
-
-	// wakeup process...
-	//...
-	//..
-
-	// restore registers
-
-	POP_I1();
-	POP_I0();
-	POP_AX();
-}*/
-
-
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-/*void WakeupProc(void) wakeup
-{
-
-        ClrWatchDog();
-
-        // wakeup process...
-        //...
-        //..
-}*/
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 void main(void)
 {
-
+//	F_ChangePWMVectTabletobank2();
+	
+	sub_vol = 0;
+	
+	INITIAL();
+//	ClearTickCount();
+	
 	Initial();
-
+	
+//	Sub3Play((lptr_t)MyData);
+	
 	while(1)
 	{
 		ClrWatchDog();
-		if(B_PORTB2==1)
+		Key_press_flag = B_PORTB2 == 1? TRUE:FALSE;
+		if(B_PORTB2==1&&Key_press_flag==TRUE)
 		{
-			NOP_9 NOP_9 NOP_9
+			Key_press_flag = FALSE;
 			if(B_PORTB2==1)
 			{
-				if(flag)
+				if(flag==0)
 				{
-	
 					WS_TRSF_color_set(Enum_Purp, LEDNUM);		
 					RES
-					flag = ~flag;
 				}					
-				else
+				else if(flag==1)
 				{
 					WS_TRSF_color_set(Enum_Red, LEDNUM);	
 					RES
-					flag = ~flag;
 				}
+				if(flag==2)
+				{
+					WS_TRSF_color_set(Enum_Blue, LEDNUM);	
+					RES
+				}
+				flag = flag == 2? 0: flag+1;
 			}
 		}
 	}		
@@ -107,7 +79,58 @@ void main(void)
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+void InitSound(void)	near
+{
+	R_FLTP = 0x3FFF;
 
+	R_DACL = 0;
+	R_DACL = 0;
+	R_DACL = 0;
+	R_DACL = 0;
+
+	// clear filter buffer
+
+	R_FLTI = 0;
+	R_FLTI = 0;
+	R_FLTI = 0;
+	R_FLTI = 0;
+	R_FLTI = 0;
+	R_FLTI = 0;
+	R_FLTI = 0;
+	R_FLTI = 0;
+
+	R_FLTG = 0x00;
+
+	// reset FIFO state machine
+
+	R_FLTO;
+
+	EnableAudioPWM();
+	EnableWideBandFilter();
+	DACMuteOff();
+}
+
+
+void INITIAL(void)
+{
+	int i;
+
+	InitSound();
+
+	set_I0(PCMY);
+
+	i = 512;
+
+	while(i--)
+		store_I0P(0);
+
+	PCMYIN_PTR = PCMY;
+	PCMYOU_PTR = PCMY;
+
+	R_FLTG = sub_vol;
+	R_FLTP = 0x1FFF;
+	R_CBL = 0;
+}
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 

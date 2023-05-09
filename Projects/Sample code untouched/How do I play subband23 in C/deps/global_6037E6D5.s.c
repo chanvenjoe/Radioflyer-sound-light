@@ -40,9 +40,9 @@ rjmp void _RampDown1D382EDA();
 .code
 rjmp void _RampUpFF7996DA()
 {
-_AC98791D5_59:;
+_A0FC2C77B_59:;
 	////////////////////////////
-_AC98791D5_60:;
+_A0FC2C77B_60:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	asm AR = 0x003F;
@@ -52,13 +52,13 @@ _AC98791D5_60:;
 	if(__je__)	goto L0E8FA404_17;
 	goto	L0E8FA404_16;
 L0E8FA404_17:;
-_AC98791D5_61:;
+_A0FC2C77B_61:;
 	sAX	= 0x0000;
 	goto L0E8FA404_15;
 L0E8FA404_16:;
-_AC98791D5_62:;
-_AC98791D5_63:;
-_AC98791D5_64:;
+_A0FC2C77B_62:;
+_A0FC2C77B_63:;
+_A0FC2C77B_64:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sCX	= *(__int16*)sSI++;
@@ -71,34 +71,34 @@ _AC98791D5_64:;
 	goto	L0E8FA404_18;
 L0E8FA404_19:;
 	////////////////////////////
-_AC98791D5_65:;
-_AC98791D5_66:;
+_A0FC2C77B_65:;
+_A0FC2C77B_66:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sfx_STORSILONG();
-_AC98791D5_67:;
+_A0FC2C77B_67:;
 	sSI	= (int)&_sub_vol980B1B83;
 	sAX	= *(__int16*)sSI;
 	sAX++;
 	*(__int16*)sSI	= sAX;
 	io[0x3C]	= sAX;
 L0E8FA404_18:;
-_AC98791D5_68:;
-_AC98791D5_69:;
+_A0FC2C77B_68:;
+_A0FC2C77B_69:;
 	sAX	= 0x0001;
 	goto L0E8FA404_15;
 L0E8FA404_15:;
-_AC98791D5_70:;
+_A0FC2C77B_70:;
 	return;
 _RampUpFF7996DA_end:;
-_AC98791D5_71:;
+_A0FC2C77B_71:;
 }
 
 rjmp void _RampDown1D382EDA()
 {
-_AC98791D5_72:;
+_A0FC2C77B_72:;
 	////////////////////////////
-_AC98791D5_73:;
+_A0FC2C77B_73:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	asm AR = 0x003F;
@@ -108,13 +108,13 @@ _AC98791D5_73:;
 	if(__je__)	goto L0E8FA404_22;
 	goto	L0E8FA404_21;
 L0E8FA404_22:;
-_AC98791D5_74:;
+_A0FC2C77B_74:;
 	sAX	= 0x0000;
 	goto L0E8FA404_20;
 L0E8FA404_21:;
-_AC98791D5_75:;
-_AC98791D5_76:;
-_AC98791D5_77:;
+_A0FC2C77B_75:;
+_A0FC2C77B_76:;
+_A0FC2C77B_77:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sCX	= *(__int16*)sSI++;
@@ -127,27 +127,27 @@ _AC98791D5_77:;
 	goto	L0E8FA404_23;
 L0E8FA404_24:;
 	////////////////////////////
-_AC98791D5_78:;
-_AC98791D5_79:;
+_A0FC2C77B_78:;
+_A0FC2C77B_79:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sfx_STORSILONG();
-_AC98791D5_80:;
+_A0FC2C77B_80:;
 	sSI	= (int)&_sub_vol980B1B83;
 	sAX	= *(__int16*)sSI;
 	sAX--;
 	*(__int16*)sSI	= sAX;
 	io[0x3C]	= sAX;
 L0E8FA404_23:;
-_AC98791D5_81:;
-_AC98791D5_82:;
+_A0FC2C77B_81:;
+_A0FC2C77B_82:;
 	sAX	= 0x0001;
 	goto L0E8FA404_20;
 L0E8FA404_20:;
-_AC98791D5_83:;
+_A0FC2C77B_83:;
 	return;
 _RampDown1D382EDA_end:;
-_AC98791D5_84:;
+_A0FC2C77B_84:;
 }
 
 // .code ends _text

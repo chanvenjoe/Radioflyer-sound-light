@@ -41,60 +41,60 @@ rjmp void _PollingKey3B90E3B1();
 .code
 rjmp void _InitKey3C587B6D()
 {
-_AB97CD6AD_113:;
+_A0EDC73FE_113:;
 	////////////////////////////
-_AB97CD6AD_114:;
+_A0EDC73FE_114:;
 	asm clr io[0x04].b0;
-_AB97CD6AD_115:;
+_A0EDC73FE_115:;
 	asm clr io[0x04].b1;
-_AB97CD6AD_116:;
+_A0EDC73FE_116:;
 	asm clr io[0x04].b2;
-_AB97CD6AD_117:;
+_A0EDC73FE_117:;
 	asm clr io[0x04].b3;
-_AB97CD6AD_118:;
+_A0EDC73FE_118:;
 	io[0x1E]	= 0x0005;
-_AB97CD6AD_119:;
+_A0EDC73FE_119:;
 	sAX	= 0x000F;
 	sAX	= sAX | io[0x1F];
 	io[0x1F]	= sAX;
-_AB97CD6AD_120:;
+_A0EDC73FE_120:;
 	sAX	= 0x0000;
 	sSI	= (int)&L5589D4CE_33;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_121:;
+_A0EDC73FE_121:;
 	sAX	= 0x0000;
 	sSI	= (int)&L5589D4CE_34;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_122:;
+_A0EDC73FE_122:;
 	sAX	= 0x0200;
 	sSI	= (int)&L5589D4CE_35;
 	*(__int16*)sSI	= sAX
 L5589D4CE_36:;
-_AB97CD6AD_123:;
+_A0EDC73FE_123:;
 	return;
 _InitKey3C587B6D_end:;
-_AB97CD6AD_124:;
+_A0EDC73FE_124:;
 }
 
 rjmp void L5589D4CE_37()
 {
 	__int16 _btn_1_2;
 	////////////////////////////
-_AB97CD6AD_125:;
-_AB97CD6AD_126:;
+_A0EDC73FE_125:;
+_A0EDC73FE_126:;
 	sAX	= 0x000F;
 	sAX	= sAX & io[0x07];
 	sSI	= (int)&_btn_1_2;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_127:;
+_A0EDC73FE_127:;
 	sSI	= (int)&_btn_1_2;
 	sAX	= *(__int16*)sSI;
 	goto L5589D4CE_39;
 L5589D4CE_39:;
-_AB97CD6AD_128:;
+_A0EDC73FE_128:;
 	return;
 L5589D4CE_37_end:;
-_AB97CD6AD_129:;
+_A0EDC73FE_129:;
 }
 
 rjmp void _PollingKey3B90E3B1()
@@ -105,13 +105,13 @@ rjmp void _PollingKey3B90E3B1()
 	__int16 _bitp_1_8;
 	__int16 _pkey_1_10;
 	////////////////////////////
-_AB97CD6AD_130:;
-_AB97CD6AD_131:;
-_AB97CD6AD_132:;
+_A0EDC73FE_130:;
+_A0EDC73FE_131:;
+_A0EDC73FE_132:;
 	NEARCALL(L5589D4CE_37);
 	sSI	= (int)&_keynow_1_2;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_133:;
+_A0EDC73FE_133:;
 	asm I1 = L5589D4CE_33+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_keynow_1_2;
@@ -121,20 +121,20 @@ _AB97CD6AD_133:;
 	goto	L5589D4CE_41;
 L5589D4CE_42:;
 	////////////////////////////
-_AB97CD6AD_134:;
+_A0EDC73FE_134:;
 	sSI	= (int)&_keynow_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&L5589D4CE_33;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_135:;
+_A0EDC73FE_135:;
 	sAX	= 0x0200;
 	sSI	= (int)&L5589D4CE_35;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_136:;
+_A0EDC73FE_136:;
 	goto L5589D4CE_40;
 L5589D4CE_41:;
-_AB97CD6AD_137:;
-_AB97CD6AD_138:;
+_A0EDC73FE_137:;
+_A0EDC73FE_138:;
 	asm I1 = L5589D4CE_35+0;
 	sAX	= *(__int16*)sSI;
 	sfx_CHECKZERO();
@@ -142,26 +142,26 @@ _AB97CD6AD_138:;
 	goto	L5589D4CE_43;
 L5589D4CE_44:;
 	////////////////////////////
-_AB97CD6AD_139:;
+_A0EDC73FE_139:;
 	asm I1 = L5589D4CE_35+0;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0001;
 	sAX	= sAX - sCX;
 	sSI	= (int)&L5589D4CE_35;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_140:;
+_A0EDC73FE_140:;
 	goto L5589D4CE_40;
 L5589D4CE_43:;
-_AB97CD6AD_141:;
-_AB97CD6AD_142:;
+_A0EDC73FE_141:;
+_A0EDC73FE_142:;
 	asm AX = #_keyfuncF06F3D55+0;
 	sSI	= (int)&_pkey_1_10;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_143:;
+_A0EDC73FE_143:;
 	sAX	= 0x0200;
 	sSI	= (int)&L5589D4CE_35;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_144:;
+_A0EDC73FE_144:;
 	asm I1 = L5589D4CE_34+0;
 	sAX	= *(__int16*)sSI;
 	asm I1 = L5589D4CE_33+0;
@@ -169,20 +169,20 @@ _AB97CD6AD_144:;
 	asm AX = AX ^ AR;
 	sSI	= (int)&_bits_1_6;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_145:;
+_A0EDC73FE_145:;
 	asm I1 = L5589D4CE_34+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_bitp_1_8;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_146:;
+_A0EDC73FE_146:;
 	asm I1 = L5589D4CE_33+0;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&L5589D4CE_34;
 	*(__int16*)sSI	= sAX
-_AB97CD6AD_147:;
+_A0EDC73FE_147:;
 	_i_1_4+0	= 0x05;
 L5589D4CE_46:;
-_AB97CD6AD_148:;
+_A0EDC73FE_148:;
 	sSI	= (int)&_i_1_4;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_4;
@@ -194,7 +194,7 @@ _AB97CD6AD_148:;
 	goto	L5589D4CE_45;
 L5589D4CE_47:;
 	////////////////////////////
-_AB97CD6AD_149:;
+_A0EDC73FE_149:;
 	sAX	= 0;
 	sSI	= (int)&_bits_1_6+0;
 	asm AR = rm[I1];
@@ -207,7 +207,7 @@ L5589D4CE_49:;
 	goto	L5589D4CE_48;
 L5589D4CE_50:;
 	////////////////////////////
-_AB97CD6AD_150:;
+_A0EDC73FE_150:;
 	sAX	= 0;
 	sSI	= (int)&_bitp_1_8+0;
 	asm AR = rm[I1];
@@ -220,7 +220,7 @@ L5589D4CE_52:;
 	goto	L5589D4CE_51;
 L5589D4CE_53:;
 	////////////////////////////
-_AB97CD6AD_151:;
+_A0EDC73FE_151:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0002;
@@ -231,7 +231,7 @@ _AB97CD6AD_151:;
 	if(__jnz__)	goto L5589D4CE_55;
 	goto	L5589D4CE_54;
 L5589D4CE_55:;
-_AB97CD6AD_152:;
+_A0EDC73FE_152:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0002;
@@ -240,11 +240,11 @@ _AB97CD6AD_152:;
 	sAX	= *(__int16*)sDI;
 	sfx_CALL_BY_AX();
 L5589D4CE_54:;
-_AB97CD6AD_153:;
+_A0EDC73FE_153:;
 	goto L5589D4CE_56;
 L5589D4CE_51:;
 	////////////////////////////
-_AB97CD6AD_154:;
+_A0EDC73FE_154:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sDI	= sAX;
@@ -253,20 +253,20 @@ _AB97CD6AD_154:;
 	if(__jnz__)	goto L5589D4CE_58;
 	goto	L5589D4CE_57;
 L5589D4CE_58:;
-_AB97CD6AD_155:;
+_A0EDC73FE_155:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sDI	= sAX;
 	sAX	= *(__int16*)sDI;
 	sfx_CALL_BY_AX();
 L5589D4CE_57:;
-_AB97CD6AD_156:;
+_A0EDC73FE_156:;
 L5589D4CE_56:;
-_AB97CD6AD_157:;
+_A0EDC73FE_157:;
 	goto L5589D4CE_59;
 L5589D4CE_48:;
 	////////////////////////////
-_AB97CD6AD_158:;
+_A0EDC73FE_158:;
 	sAX	= 0;
 	sSI	= (int)&_bitp_1_8+0;
 	asm AR = rm[I1];
@@ -279,7 +279,7 @@ L5589D4CE_61:;
 	goto	L5589D4CE_60;
 L5589D4CE_62:;
 	////////////////////////////
-_AB97CD6AD_159:;
+_A0EDC73FE_159:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0001;
@@ -290,7 +290,7 @@ _AB97CD6AD_159:;
 	if(__jnz__)	goto L5589D4CE_64;
 	goto	L5589D4CE_63;
 L5589D4CE_64:;
-_AB97CD6AD_160:;
+_A0EDC73FE_160:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0001;
@@ -299,24 +299,24 @@ _AB97CD6AD_160:;
 	sAX	= *(__int16*)sDI;
 	sfx_CALL_BY_AX();
 L5589D4CE_63:;
-_AB97CD6AD_161:;
+_A0EDC73FE_161:;
 L5589D4CE_60:;
-_AB97CD6AD_162:;
+_A0EDC73FE_162:;
 L5589D4CE_59:;
-_AB97CD6AD_163:;
-_AB97CD6AD_164:;
+_A0EDC73FE_163:;
+_A0EDC73FE_164:;
 	sSI	= (int)&_bits_1_6;
 	sAX	= *(__int16*)sSI;
 	asm sra AX, 1;
 	sSI	= (int)&_bits_1_6;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_165:;
+_A0EDC73FE_165:;
 	sSI	= (int)&_bitp_1_8;
 	sAX	= *(__int16*)sSI;
 	asm sra AX, 1;
 	sSI	= (int)&_bitp_1_8;
 	*(__int16*)sSI	= sAX;
-_AB97CD6AD_166:;
+_A0EDC73FE_166:;
 	sSI	= (int)&_pkey_1_10;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_pkey_1_10;
@@ -326,10 +326,10 @@ _AB97CD6AD_166:;
 	goto L5589D4CE_46;
 L5589D4CE_45:;
 L5589D4CE_40:;
-_AB97CD6AD_167:;
+_A0EDC73FE_167:;
 	return;
 _PollingKey3B90E3B1_end:;
-_AB97CD6AD_168:;
+_A0EDC73FE_168:;
 }
 
 // .code ends _text

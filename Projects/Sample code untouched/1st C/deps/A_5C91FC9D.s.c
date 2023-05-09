@@ -32,65 +32,65 @@ void _InitialDA4A7CC4();
 .code
 interrupt naked void _PWM99B23D7D()
 {
-_A3D9E037E_0:;
-_A3D9E037E_1:;
+_A8048BFEF_0:;
+_A8048BFEF_1:;
 	asm	clr io[INTREQ].b0
-_A3D9E037E_2:;
+_A8048BFEF_2:;
 	asm	push AX
-_A3D9E037E_3:;
+_A8048BFEF_3:;
 	asm	push I0
-_A3D9E037E_4:;
+_A8048BFEF_4:;
 	asm	push I1
-_A3D9E037E_5:;
+_A8048BFEF_5:;
 	asm	pop I1
-_A3D9E037E_6:;
+_A8048BFEF_6:;
 	asm	pop I0
-_A3D9E037E_7:;
+_A8048BFEF_7:;
 	asm	pop AX
 	////////////////////////////
 LC114AE18_2:;
-_A3D9E037E_8:;
+_A8048BFEF_8:;
 	return;
 _PWM99B23D7D_end:;
-_A3D9E037E_9:;
+_A8048BFEF_9:;
 }
 
 void _WakeupProc94A410F9()
 {
-_A3D9E037E_10:;
-_A3D9E037E_11:;
+_A8048BFEF_10:;
+_A8048BFEF_11:;
 	asm	io[ClrWDT] = AR
 	////////////////////////////
 LC114AE18_3:;
-_A3D9E037E_12:;
+_A8048BFEF_12:;
 	return;
 _WakeupProc94A410F9_end:;
-_A3D9E037E_13:;
+_A8048BFEF_13:;
 }
 
 void _main()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_A3D9E037E_14:;
-_A3D9E037E_15:;
+_A8048BFEF_14:;
+_A8048BFEF_15:;
 	_i_1_2+0	= 0x00;
-_A3D9E037E_16:;
-_A3D9E037E_17:;
+_A8048BFEF_16:;
+_A8048BFEF_17:;
 	_InitialDA4A7CC4();
 LC114AE18_6:;
-_A3D9E037E_18:;
-_A3D9E037E_19:;
+_A8048BFEF_18:;
+_A8048BFEF_19:;
 	asm	io[ClrWDT] = AR
 	////////////////////////////
-_A3D9E037E_20:;
-_A3D9E037E_21:;
+_A8048BFEF_20:;
+_A8048BFEF_21:;
 	sAX	= 0x0001;
 	PUSH(sAX);
 	_delay6F9F34ED(STACK[sSP + 0]);
 	RESTORESP(1);
-_A3D9E037E_22:;
-_A3D9E037E_23:;
+_A8048BFEF_22:;
+_A8048BFEF_23:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	PUSH(sAX);
@@ -98,7 +98,7 @@ _A3D9E037E_23:;
 	PUSH(sAX);
 	outp(STACK[sSP + 0], STACK[sSP + 1]);
 	RESTORESP(2);
-_A3D9E037E_24:;
+_A8048BFEF_24:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x000F;
@@ -106,7 +106,7 @@ _A3D9E037E_24:;
 	if(__je__)	goto LC114AE18_8;
 	goto	LC114AE18_7;
 LC114AE18_8:;
-_A3D9E037E_25:;
+_A8048BFEF_25:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -115,62 +115,62 @@ _A3D9E037E_25:;
 	asm rm[I1] = CX + AR;
 	goto LC114AE18_9;
 LC114AE18_7:;
-_A3D9E037E_26:;
+_A8048BFEF_26:;
 	_i_1_2+0	= 0x00;
 LC114AE18_9:;
-_A3D9E037E_27:;
+_A8048BFEF_27:;
 	goto LC114AE18_6;
 LC114AE18_5:;
 LC114AE18_4:;
-_A3D9E037E_28:;
+_A8048BFEF_28:;
 	return;
 _main_end:;
-_A3D9E037E_29:;
+_A8048BFEF_29:;
 }
 
 void _InitialDA4A7CC4()
 {
-_A3D9E037E_30:;
+_A8048BFEF_30:;
 	////////////////////////////
-_A3D9E037E_31:;
+_A8048BFEF_31:;
 	sAX	= 0x003F;
-_A3D9E037E_32:;
+_A8048BFEF_32:;
 	asm	AR = AX
-_A3D9E037E_33:;
+_A8048BFEF_33:;
 	asm	FLTG = AR
 	////////////////////////////
-_A3D9E037E_34:;
+_A8048BFEF_34:;
 	sAX	= 0x1FFF;
-_A3D9E037E_35:;
+_A8048BFEF_35:;
 	asm	AR = AX
-_A3D9E037E_36:;
+_A8048BFEF_36:;
 	asm	FLTP = AR
 	////////////////////////////
-_A3D9E037E_37:;
+_A8048BFEF_37:;
 	sAX	= 0x0008;
-_A3D9E037E_38:;
+_A8048BFEF_38:;
 	asm	AR = AX
-_A3D9E037E_39:;
+_A8048BFEF_39:;
 	asm	CBL = AR
-_A3D9E037E_40:;
+_A8048BFEF_40:;
 	asm	set io[INTENA].b0
-_A3D9E037E_41:;
+_A8048BFEF_41:;
 	asm	eni
 	////////////////////////////
-_A3D9E037E_42:;
+_A8048BFEF_42:;
 	sAX	= 0x000F;
-_A3D9E037E_43:;
+_A8048BFEF_43:;
 	asm	AR = AX
-_A3D9E037E_44:;
+_A8048BFEF_44:;
 	asm	io[IOC_PA] = AR
-_A3D9E037E_45:;
-_A3D9E037E_46:;
+_A8048BFEF_45:;
+_A8048BFEF_46:;
 	_ClearTickCount5DDE4003();
 LC114AE18_10:;
-_A3D9E037E_47:;
+_A8048BFEF_47:;
 	return;
 _InitialDA4A7CC4_end:;
-_A3D9E037E_48:;
+_A8048BFEF_48:;
 }
 
 // .code ends _text
