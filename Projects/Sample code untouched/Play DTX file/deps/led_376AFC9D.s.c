@@ -29,9 +29,9 @@ rjmp void _KeyShowLEDA84888EC();
 .code
 rjmp void _KeyShowLEDA84888EC()
 {
-_AB97CD6AD_169:;
+_A01B23225_169:;
 	////////////////////////////
-_AB97CD6AD_170:;
+_A01B23225_170:;
 	sAX	= 0x0001;
 	asm I1 = dtxtonech+7;
 	asm AR = rm[I1];
@@ -43,7 +43,7 @@ _AB97CD6AD_170:;
 L7573600E_67:;
 	asm clr io[0x09].b0;
 L7573600E_68:;
-_AB97CD6AD_171:;
+_A01B23225_171:;
 	sAX	= 0x0002;
 	asm I1 = dtxtonech+7;
 	asm AR = rm[I1];
@@ -56,10 +56,10 @@ L7573600E_69:;
 	asm clr io[0x09].b1;
 L7573600E_70:;
 L7573600E_66:;
-_AB97CD6AD_172:;
+_A01B23225_172:;
 	return;
 _KeyShowLEDA84888EC_end:;
-_AB97CD6AD_173:;
+_A01B23225_173:;
 }
 
 // .code ends _text

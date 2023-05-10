@@ -1,18 +1,19 @@
 
+
 #include <io.h>
+
 #include <pwm.h>
 #include <md2.h>
 
 #include "global.h"
 
-#include <string.h>
-#include <lptr.h>
-
-
 #pragma __attribute__("rjmp")
+
 
 int sub_vol;
 unsigned long ticks;
+
+
 
 int RampUp(void)
 {
@@ -26,7 +27,6 @@ int RampUp(void)
 		SET_TICK();
 		R_FLTG = ++sub_vol;
 	}
-
 	return 1;
 }
 
@@ -49,21 +49,12 @@ int RampDown(void)
 	return 1;
 }
 
-/*static void SetupIO(void) near
-{
-	// PortA 0, 1, 2, 3 as output
-
-	R_IOC_PA = BIT(3) | BIT(2) | BIT(1) | BIT(0);
-	R_IOC_PB = (int)0xFFFF;
-	R_PORTA = 0;
-	R_PORTB = 0;
-}*/
 
 
 void Initial(void)
 {
 	
-	// initial filter
+/*	// initial filter
 
 	set_FLTG(0x03F);
 	set_FLTP(0x1FFF);
@@ -86,18 +77,23 @@ void Initial(void)
 	R_PORTC  = (int)0x0000;		//Port B C set low
 	
 	//Interrupt init 1/2 for ExtInt
-	B_INTEN = 1; //globa int enable
-	B_INTENA1 = 1; //Extint0 enable
+
+//	B_INTENA1 = 1; //Extint0/ Timer1 interrupt enable
+//	EnableInt1();
+	
+	//RTC
+	R_IOP_IX = IOP_PB_PD1M;
+	R_IOP_DAT = 0XFF;
+
+	set_IOP_IX(0x02);					// IOP_RTC32K
+	set_IOP_DAT(0x7fff);				// freq=32768Hz/(RTC Timer TnC+1),t=1s(7fff)  2AAA=1.4/3S
+	eni();
+	EnableInt3();						// enable RTC interrupt
 	
 
 }
 
-/*void Extint0_servfunc(void) interrupt (1)
-{
-	ClrIntFlag1;
 
-
-}*/
 
 
 

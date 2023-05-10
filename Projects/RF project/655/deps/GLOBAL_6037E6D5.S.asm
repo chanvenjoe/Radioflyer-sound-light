@@ -43,25 +43,25 @@ rjmp void _InitialDA4A7CC4();
 .code
 rjmp void _RampUpFF7996DA()			=>>_RampUpFF7996DA:
 {
-_AE0CFD6DA_2639:;				=>>_AE0CFD6DA_2639:;
+_A523506CC_97:;					=>>_A523506CC_97:;
 	
-_AE0CFD6DA_2640:;				=>>_AE0CFD6DA_2640:;
+_A523506CC_98:;					=>>_A523506CC_98:;
 	asm I1 = _sub_vol980B1B83+0;		=>>I1 = _sub_vol980B1B83+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	asm AR = 0x003F;			=>>AR = 0x003F//
 	asm AX = AX & AR;			=>>AX = AX & AR//
 	sCX	= 0x003F;			=>>CX	= 0x3F
 	sfx_CMP_AX_CX_JE();			=>>pch	= sfx_CMP_AX_CX_JE;lcall	sfx_CMP_AX_CX_JE
-	if(__je__)	goto L0E8FA404_110;	=>>if ZR	jmp L0E8FA404_110
-	goto	L0E8FA404_109;			=>>jmp	L0E8FA404_109
-L0E8FA404_110:;					=>>L0E8FA404_110:;
-_AE0CFD6DA_2641:;				=>>_AE0CFD6DA_2641:;
+	if(__je__)	goto L0E8FA404_44;	=>>if ZR	jmp L0E8FA404_44
+	goto	L0E8FA404_43;			=>>jmp	L0E8FA404_43
+L0E8FA404_44:;					=>>L0E8FA404_44:;
+_A523506CC_99:;					=>>_A523506CC_99:;
 	sAX	= 0x0000;			=>>AX	= 0x00
-	goto L0E8FA404_108;			=>>jmp	L0E8FA404_108
-L0E8FA404_109:;					=>>L0E8FA404_109:;
-_AE0CFD6DA_2642:;				=>>_AE0CFD6DA_2642:;
-_AE0CFD6DA_2643:;				=>>_AE0CFD6DA_2643:;
-_AE0CFD6DA_2644:;				=>>_AE0CFD6DA_2644:;
+	goto L0E8FA404_42;			=>>jmp	L0E8FA404_42
+L0E8FA404_43:;					=>>L0E8FA404_43:;
+_A523506CC_100:;				=>>_A523506CC_100:;
+_A523506CC_101:;				=>>_A523506CC_101:;
+_A523506CC_102:;				=>>_A523506CC_102:;
 	_GetTickCount18DC070C();		=>>pch	= _GetTickCount18DC070C;lcall	_GetTickCount18DC070C
 	asm I1 = _ticksA7263C09+0;		=>>I1 = _ticksA7263C09+0//
 	sCX	= *(__int16*)sSI++;		=>>CX	= rm[I1++]
@@ -70,54 +70,54 @@ _AE0CFD6DA_2644:;				=>>_AE0CFD6DA_2644:;
 	sCX	= 0x0000;			=>>CX	= 0x00
 	sBX	= 0x0005;			=>>BX	= 0x05
 	sfx_CMPLONG_JA();			=>>pch	= sfx_CMPLONG_JA;lcall	sfx_CMPLONG_JA
-	if(__je__)	goto L0E8FA404_112;	=>>if ZR	jmp L0E8FA404_112
-	goto	L0E8FA404_111;			=>>jmp	L0E8FA404_111
-L0E8FA404_112:;					=>>L0E8FA404_112:;
+	if(__je__)	goto L0E8FA404_46;	=>>if ZR	jmp L0E8FA404_46
+	goto	L0E8FA404_45;			=>>jmp	L0E8FA404_45
+L0E8FA404_46:;					=>>L0E8FA404_46:;
 	
-_AE0CFD6DA_2645:;				=>>_AE0CFD6DA_2645:;
-_AE0CFD6DA_2646:;				=>>_AE0CFD6DA_2646:;
+_A523506CC_103:;				=>>_A523506CC_103:;
+_A523506CC_104:;				=>>_A523506CC_104:;
 	_GetTickCount18DC070C();		=>>pch	= _GetTickCount18DC070C;lcall	_GetTickCount18DC070C
 	asm I1 = _ticksA7263C09+0;		=>>I1 = _ticksA7263C09+0//
 	sfx_STORSILONG();			=>>rm[I1++]	= AX;rm[I1--]	= DX;
-_AE0CFD6DA_2647:;				=>>_AE0CFD6DA_2647:;
+_A523506CC_105:;				=>>_A523506CC_105:;
 	sSI	= (int)&_sub_vol980B1B83;	=>>I1	= _sub_vol980B1B83
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sAX++;					=>>AX++
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
 	io[0x3C]	= sAX;			=>>AR	= AX;io[0x3C]	= AR
-L0E8FA404_111:;					=>>L0E8FA404_111:;
-_AE0CFD6DA_2648:;				=>>_AE0CFD6DA_2648:;
-_AE0CFD6DA_2649:;				=>>_AE0CFD6DA_2649:;
+L0E8FA404_45:;					=>>L0E8FA404_45:;
+_A523506CC_106:;				=>>_A523506CC_106:;
+_A523506CC_107:;				=>>_A523506CC_107:;
 	sAX	= 0x0001;			=>>AX	= 0x01
-	goto L0E8FA404_108;			=>>jmp	L0E8FA404_108
-L0E8FA404_108:;					=>>L0E8FA404_108:;
-_AE0CFD6DA_2650:;				=>>_AE0CFD6DA_2650:;
+	goto L0E8FA404_42;			=>>jmp	L0E8FA404_42
+L0E8FA404_42:;					=>>L0E8FA404_42:;
+_A523506CC_108:;				=>>_A523506CC_108:;
 	return;					=>>rets
 _RampUpFF7996DA_end:;				=>>_RampUpFF7996DA_end:;
-_AE0CFD6DA_2651:;				=>>_AE0CFD6DA_2651:;
+_A523506CC_109:;				=>>_A523506CC_109:;
 }
 
 rjmp void _RampDown1D382EDA()			=>>_RampDown1D382EDA:
 {
-_AE0CFD6DA_2652:;				=>>_AE0CFD6DA_2652:;
+_A523506CC_110:;				=>>_A523506CC_110:;
 	
-_AE0CFD6DA_2653:;				=>>_AE0CFD6DA_2653:;
+_A523506CC_111:;				=>>_A523506CC_111:;
 	asm I1 = _sub_vol980B1B83+0;		=>>I1 = _sub_vol980B1B83+0//
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	asm AR = 0x003F;			=>>AR = 0x003F//
 	asm AX = AX & AR;			=>>AX = AX & AR//
 	sCX	= 0x0000;			=>>CX	= 0x00
 	sfx_CMP_AX_CX_JE();			=>>pch	= sfx_CMP_AX_CX_JE;lcall	sfx_CMP_AX_CX_JE
-	if(__je__)	goto L0E8FA404_115;	=>>if ZR	jmp L0E8FA404_115
-	goto	L0E8FA404_114;			=>>jmp	L0E8FA404_114
-L0E8FA404_115:;					=>>L0E8FA404_115:;
-_AE0CFD6DA_2654:;				=>>_AE0CFD6DA_2654:;
+	if(__je__)	goto L0E8FA404_49;	=>>if ZR	jmp L0E8FA404_49
+	goto	L0E8FA404_48;			=>>jmp	L0E8FA404_48
+L0E8FA404_49:;					=>>L0E8FA404_49:;
+_A523506CC_112:;				=>>_A523506CC_112:;
 	sAX	= 0x0000;			=>>AX	= 0x00
-	goto L0E8FA404_113;			=>>jmp	L0E8FA404_113
-L0E8FA404_114:;					=>>L0E8FA404_114:;
-_AE0CFD6DA_2655:;				=>>_AE0CFD6DA_2655:;
-_AE0CFD6DA_2656:;				=>>_AE0CFD6DA_2656:;
-_AE0CFD6DA_2657:;				=>>_AE0CFD6DA_2657:;
+	goto L0E8FA404_47;			=>>jmp	L0E8FA404_47
+L0E8FA404_48:;					=>>L0E8FA404_48:;
+_A523506CC_113:;				=>>_A523506CC_113:;
+_A523506CC_114:;				=>>_A523506CC_114:;
+_A523506CC_115:;				=>>_A523506CC_115:;
 	_GetTickCount18DC070C();		=>>pch	= _GetTickCount18DC070C;lcall	_GetTickCount18DC070C
 	asm I1 = _ticksA7263C09+0;		=>>I1 = _ticksA7263C09+0//
 	sCX	= *(__int16*)sSI++;		=>>CX	= rm[I1++]
@@ -126,74 +126,72 @@ _AE0CFD6DA_2657:;				=>>_AE0CFD6DA_2657:;
 	sCX	= 0x0000;			=>>CX	= 0x00
 	sBX	= 0x0005;			=>>BX	= 0x05
 	sfx_CMPLONG_JA();			=>>pch	= sfx_CMPLONG_JA;lcall	sfx_CMPLONG_JA
-	if(__je__)	goto L0E8FA404_117;	=>>if ZR	jmp L0E8FA404_117
-	goto	L0E8FA404_116;			=>>jmp	L0E8FA404_116
-L0E8FA404_117:;					=>>L0E8FA404_117:;
+	if(__je__)	goto L0E8FA404_51;	=>>if ZR	jmp L0E8FA404_51
+	goto	L0E8FA404_50;			=>>jmp	L0E8FA404_50
+L0E8FA404_51:;					=>>L0E8FA404_51:;
 	
-_AE0CFD6DA_2658:;				=>>_AE0CFD6DA_2658:;
-_AE0CFD6DA_2659:;				=>>_AE0CFD6DA_2659:;
+_A523506CC_116:;				=>>_A523506CC_116:;
+_A523506CC_117:;				=>>_A523506CC_117:;
 	_GetTickCount18DC070C();		=>>pch	= _GetTickCount18DC070C;lcall	_GetTickCount18DC070C
 	asm I1 = _ticksA7263C09+0;		=>>I1 = _ticksA7263C09+0//
 	sfx_STORSILONG();			=>>rm[I1++]	= AX;rm[I1--]	= DX;
-_AE0CFD6DA_2660:;				=>>_AE0CFD6DA_2660:;
+_A523506CC_118:;				=>>_A523506CC_118:;
 	sSI	= (int)&_sub_vol980B1B83;	=>>I1	= _sub_vol980B1B83
 	sAX	= *(__int16*)sSI;		=>>AX	= rm[I1]
 	sAX--;					=>>AX--
 	*(__int16*)sSI	= sAX;			=>>rm[I1]	= AX
 	io[0x3C]	= sAX;			=>>AR	= AX;io[0x3C]	= AR
-L0E8FA404_116:;					=>>L0E8FA404_116:;
-_AE0CFD6DA_2661:;				=>>_AE0CFD6DA_2661:;
-_AE0CFD6DA_2662:;				=>>_AE0CFD6DA_2662:;
+L0E8FA404_50:;					=>>L0E8FA404_50:;
+_A523506CC_119:;				=>>_A523506CC_119:;
+_A523506CC_120:;				=>>_A523506CC_120:;
 	sAX	= 0x0001;			=>>AX	= 0x01
-	goto L0E8FA404_113;			=>>jmp	L0E8FA404_113
-L0E8FA404_113:;					=>>L0E8FA404_113:;
-_AE0CFD6DA_2663:;				=>>_AE0CFD6DA_2663:;
+	goto L0E8FA404_47;			=>>jmp	L0E8FA404_47
+L0E8FA404_47:;					=>>L0E8FA404_47:;
+_A523506CC_121:;				=>>_A523506CC_121:;
 	return;					=>>rets
 _RampDown1D382EDA_end:;				=>>_RampDown1D382EDA_end:;
-_AE0CFD6DA_2664:;				=>>_AE0CFD6DA_2664:;
+_A523506CC_122:;				=>>_A523506CC_122:;
 }
 
 rjmp void _InitialDA4A7CC4()			=>>_InitialDA4A7CC4:
 {
-_AE0CFD6DA_2665:;				=>>_AE0CFD6DA_2665:;
+_A523506CC_123:;				=>>_A523506CC_123:;
 	
-_AE0CFD6DA_2666:;				=>>_AE0CFD6DA_2666:;
-	sAX	= 0x003F;			=>>AX	= 0x3F
-_AE0CFD6DA_2667:;				=>>_AE0CFD6DA_2667:;
-	asm	AR = AX				=>>AR = AX
-_AE0CFD6DA_2668:;				=>>_AE0CFD6DA_2668:;
-	asm	FLTG = AR			=>>FLTG = AR
-	
-_AE0CFD6DA_2669:;				=>>_AE0CFD6DA_2669:;
-	sAX	= 0x1FFF;			=>>AX	= 0x1FFF
-_AE0CFD6DA_2670:;				=>>_AE0CFD6DA_2670:;
-	asm	AR = AX				=>>AR = AX
-_AE0CFD6DA_2671:;				=>>_AE0CFD6DA_2671:;
-	asm	FLTP = AR			=>>FLTP = AR
-	
-_AE0CFD6DA_2672:;				=>>_AE0CFD6DA_2672:;
-	sAX	= 0x0008;			=>>AX	= 0x08
-_AE0CFD6DA_2673:;				=>>_AE0CFD6DA_2673:;
-	asm	AR = AX				=>>AR = AX
-_AE0CFD6DA_2674:;				=>>_AE0CFD6DA_2674:;
-	asm	CBL = AR			=>>CBL = AR
-_AE0CFD6DA_2675:;				=>>_AE0CFD6DA_2675:;
+_A523506CC_124:;				=>>_A523506CC_124:;
 	io[0x67]	= 0x0007;		=>>AR	= 0x07;io[0x67]	= AR
-_AE0CFD6DA_2676:;				=>>_AE0CFD6DA_2676:;
+_A523506CC_125:;				=>>_A523506CC_125:;
 	io[0x06]	= 0xC004;		=>>AR	= 0xC004;io[0x06]	= AR
-_AE0CFD6DA_2677:;				=>>_AE0CFD6DA_2677:;
+_A523506CC_126:;				=>>_A523506CC_126:;
 	io[0x05]	= 0x0000;		=>>AR	= 0x00;io[0x05]	= AR
-_AE0CFD6DA_2678:;				=>>_AE0CFD6DA_2678:;
+_A523506CC_127:;				=>>_A523506CC_127:;
 	io[0x09]	= 0x0000;		=>>AR	= 0x00;io[0x09]	= AR
-_AE0CFD6DA_2679:;				=>>_AE0CFD6DA_2679:;
-	asm set io[0x00].b7;			=>>set io[0x00].b7//
-_AE0CFD6DA_2680:;				=>>_AE0CFD6DA_2680:;
-	asm set io[0x01].b1;			=>>set io[0x01].b1//
-L0E8FA404_118:;					=>>L0E8FA404_118:;
-_AE0CFD6DA_2681:;				=>>_AE0CFD6DA_2681:;
+_A523506CC_128:;				=>>_A523506CC_128:;
+	io[0x1E]	= 0x000C;		=>>AR	= 0x0C;io[0x1E]	= AR
+_A523506CC_129:;				=>>_A523506CC_129:;
+	io[0x1F]	= 0x00FF;		=>>AR	= 0x00FF;io[0x1F]	= AR
+	
+_A523506CC_130:;				=>>_A523506CC_130:;
+	sAX	= 0x0002;			=>>AX	= 0x02
+_A523506CC_131:;				=>>_A523506CC_131:;
+	asm	AR = AX				=>>AR = AX
+_A523506CC_132:;				=>>_A523506CC_132:;
+	asm	io[IOP_IX] = AR			=>>io[IOP_IX] = AR
+	
+_A523506CC_133:;				=>>_A523506CC_133:;
+	sAX	= 0x7FFF;			=>>AX	= 0x7FFF
+_A523506CC_134:;				=>>_A523506CC_134:;
+	asm	AR = AX				=>>AR = AX
+_A523506CC_135:;				=>>_A523506CC_135:;
+	asm	io[IOP_DAT] = AR		=>>io[IOP_DAT] = AR
+_A523506CC_136:;				=>>_A523506CC_136:;
+	asm	eni				=>>eni
+_A523506CC_137:;				=>>_A523506CC_137:;
+	asm	set io[INTENA].b3		=>>set io[INTENA].b3
+L0E8FA404_52:;					=>>L0E8FA404_52:;
+_A523506CC_138:;				=>>_A523506CC_138:;
 	return;					=>>rets
 _InitialDA4A7CC4_end:;				=>>_InitialDA4A7CC4_end:;
-_AE0CFD6DA_2682:;				=>>_AE0CFD6DA_2682:;
+_A523506CC_139:;				=>>_A523506CC_139:;
 }
 
 
@@ -233,99 +231,6 @@ naked void ginit_code_global_6037E6D5_s(void)	=>>ginit_code_global_6037E6D5_s:
 
 
 .code
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

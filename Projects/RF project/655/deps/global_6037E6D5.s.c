@@ -41,25 +41,25 @@ rjmp void _InitialDA4A7CC4();
 .code
 rjmp void _RampUpFF7996DA()
 {
-_AE0CFD6DA_2639:;
+_A523506CC_97:;
 	////////////////////////////
-_AE0CFD6DA_2640:;
+_A523506CC_98:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	asm AR = 0x003F;
 	asm AX = AX & AR;
 	sCX	= 0x003F;
 	sfx_CMP_AX_CX_JE();
-	if(__je__)	goto L0E8FA404_110;
-	goto	L0E8FA404_109;
-L0E8FA404_110:;
-_AE0CFD6DA_2641:;
+	if(__je__)	goto L0E8FA404_44;
+	goto	L0E8FA404_43;
+L0E8FA404_44:;
+_A523506CC_99:;
 	sAX	= 0x0000;
-	goto L0E8FA404_108;
-L0E8FA404_109:;
-_AE0CFD6DA_2642:;
-_AE0CFD6DA_2643:;
-_AE0CFD6DA_2644:;
+	goto L0E8FA404_42;
+L0E8FA404_43:;
+_A523506CC_100:;
+_A523506CC_101:;
+_A523506CC_102:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sCX	= *(__int16*)sSI++;
@@ -68,54 +68,54 @@ _AE0CFD6DA_2644:;
 	sCX	= 0x0000;
 	sBX	= 0x0005;
 	sfx_CMPLONG_JA();
-	if(__je__)	goto L0E8FA404_112;
-	goto	L0E8FA404_111;
-L0E8FA404_112:;
+	if(__je__)	goto L0E8FA404_46;
+	goto	L0E8FA404_45;
+L0E8FA404_46:;
 	////////////////////////////
-_AE0CFD6DA_2645:;
-_AE0CFD6DA_2646:;
+_A523506CC_103:;
+_A523506CC_104:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sfx_STORSILONG();
-_AE0CFD6DA_2647:;
+_A523506CC_105:;
 	sSI	= (int)&_sub_vol980B1B83;
 	sAX	= *(__int16*)sSI;
 	sAX++;
 	*(__int16*)sSI	= sAX;
 	io[0x3C]	= sAX;
-L0E8FA404_111:;
-_AE0CFD6DA_2648:;
-_AE0CFD6DA_2649:;
+L0E8FA404_45:;
+_A523506CC_106:;
+_A523506CC_107:;
 	sAX	= 0x0001;
-	goto L0E8FA404_108;
-L0E8FA404_108:;
-_AE0CFD6DA_2650:;
+	goto L0E8FA404_42;
+L0E8FA404_42:;
+_A523506CC_108:;
 	return;
 _RampUpFF7996DA_end:;
-_AE0CFD6DA_2651:;
+_A523506CC_109:;
 }
 
 rjmp void _RampDown1D382EDA()
 {
-_AE0CFD6DA_2652:;
+_A523506CC_110:;
 	////////////////////////////
-_AE0CFD6DA_2653:;
+_A523506CC_111:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	asm AR = 0x003F;
 	asm AX = AX & AR;
 	sCX	= 0x0000;
 	sfx_CMP_AX_CX_JE();
-	if(__je__)	goto L0E8FA404_115;
-	goto	L0E8FA404_114;
-L0E8FA404_115:;
-_AE0CFD6DA_2654:;
+	if(__je__)	goto L0E8FA404_49;
+	goto	L0E8FA404_48;
+L0E8FA404_49:;
+_A523506CC_112:;
 	sAX	= 0x0000;
-	goto L0E8FA404_113;
-L0E8FA404_114:;
-_AE0CFD6DA_2655:;
-_AE0CFD6DA_2656:;
-_AE0CFD6DA_2657:;
+	goto L0E8FA404_47;
+L0E8FA404_48:;
+_A523506CC_113:;
+_A523506CC_114:;
+_A523506CC_115:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sCX	= *(__int16*)sSI++;
@@ -124,74 +124,72 @@ _AE0CFD6DA_2657:;
 	sCX	= 0x0000;
 	sBX	= 0x0005;
 	sfx_CMPLONG_JA();
-	if(__je__)	goto L0E8FA404_117;
-	goto	L0E8FA404_116;
-L0E8FA404_117:;
+	if(__je__)	goto L0E8FA404_51;
+	goto	L0E8FA404_50;
+L0E8FA404_51:;
 	////////////////////////////
-_AE0CFD6DA_2658:;
-_AE0CFD6DA_2659:;
+_A523506CC_116:;
+_A523506CC_117:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sfx_STORSILONG();
-_AE0CFD6DA_2660:;
+_A523506CC_118:;
 	sSI	= (int)&_sub_vol980B1B83;
 	sAX	= *(__int16*)sSI;
 	sAX--;
 	*(__int16*)sSI	= sAX;
 	io[0x3C]	= sAX;
-L0E8FA404_116:;
-_AE0CFD6DA_2661:;
-_AE0CFD6DA_2662:;
+L0E8FA404_50:;
+_A523506CC_119:;
+_A523506CC_120:;
 	sAX	= 0x0001;
-	goto L0E8FA404_113;
-L0E8FA404_113:;
-_AE0CFD6DA_2663:;
+	goto L0E8FA404_47;
+L0E8FA404_47:;
+_A523506CC_121:;
 	return;
 _RampDown1D382EDA_end:;
-_AE0CFD6DA_2664:;
+_A523506CC_122:;
 }
 
 rjmp void _InitialDA4A7CC4()
 {
-_AE0CFD6DA_2665:;
+_A523506CC_123:;
 	////////////////////////////
-_AE0CFD6DA_2666:;
-	sAX	= 0x003F;
-_AE0CFD6DA_2667:;
-	asm	AR = AX
-_AE0CFD6DA_2668:;
-	asm	FLTG = AR
-	////////////////////////////
-_AE0CFD6DA_2669:;
-	sAX	= 0x1FFF;
-_AE0CFD6DA_2670:;
-	asm	AR = AX
-_AE0CFD6DA_2671:;
-	asm	FLTP = AR
-	////////////////////////////
-_AE0CFD6DA_2672:;
-	sAX	= 0x0008;
-_AE0CFD6DA_2673:;
-	asm	AR = AX
-_AE0CFD6DA_2674:;
-	asm	CBL = AR
-_AE0CFD6DA_2675:;
+_A523506CC_124:;
 	io[0x67]	= 0x0007;
-_AE0CFD6DA_2676:;
+_A523506CC_125:;
 	io[0x06]	= 0xC004;
-_AE0CFD6DA_2677:;
+_A523506CC_126:;
 	io[0x05]	= 0x0000;
-_AE0CFD6DA_2678:;
+_A523506CC_127:;
 	io[0x09]	= 0x0000;
-_AE0CFD6DA_2679:;
-	asm set io[0x00].b7;
-_AE0CFD6DA_2680:;
-	asm set io[0x01].b1;
-L0E8FA404_118:;
-_AE0CFD6DA_2681:;
+_A523506CC_128:;
+	io[0x1E]	= 0x000C;
+_A523506CC_129:;
+	io[0x1F]	= 0x00FF;
+	////////////////////////////
+_A523506CC_130:;
+	sAX	= 0x0002;
+_A523506CC_131:;
+	asm	AR = AX
+_A523506CC_132:;
+	asm	io[IOP_IX] = AR
+	////////////////////////////
+_A523506CC_133:;
+	sAX	= 0x7FFF;
+_A523506CC_134:;
+	asm	AR = AX
+_A523506CC_135:;
+	asm	io[IOP_DAT] = AR
+_A523506CC_136:;
+	asm	eni
+_A523506CC_137:;
+	asm	set io[INTENA].b3
+L0E8FA404_52:;
+_A523506CC_138:;
 	return;
 _InitialDA4A7CC4_end:;
-_AE0CFD6DA_2682:;
+_A523506CC_139:;
 }
 
 // .code ends _text
@@ -317,102 +315,9 @@ naked void ginit_code_global_6037E6D5_s(void)
 // extern _md2PlayOkonAccomp18254831:proc
 // extern _md2ReleaseOkonF4500B9D:proc
 // extern _md2LoopToSong6DEA50ED:proc
-// extern inbuf:word
-// extern outbuf:word
-// extern PCMY:word
 // public _ticksA7263C09
 // public _sub_vol980B1B83
 // public _RampUpFF7996DA
 // public _RampDown1D382EDA
 // public _InitialDA4A7CC4
-// extern _DoADPCM9CD0E20D:proc
-// extern _lptr_read:proc
-// extern _lptr_read32:proc
-// extern _lptr_write:proc
-// extern _lptr_write32:proc
-// extern _memchr80DECD31:proc
-// extern _memchr_sF5519DB1:proc
-// extern _memchr_rF5519DB1:proc
-// extern _memcmp5BF2F634:proc
-// extern _memcmp_ss79B48555:proc
-// extern _memcmp_rs79B48555:proc
-// extern _memcmp_sr7D7598E2:proc
-// extern _memcmp_rr7D7598E2:proc
-// extern _memcpy92B53883:proc
-// extern _memcpy_ss11425955:proc
-// extern _memcpy_rsC35B9889:proc
-// extern _memcpy_sr11425955:proc
-// extern _memcpy_rrC35B9889:proc
-// extern _memmove09BF87F3:proc
-// extern _memmove_ssA12B9789:proc
-// extern _memmove_rs73325655:proc
-// extern _memmove_srA5EA8A3E:proc
-// extern _memmove_rr77F34BE2:proc
-// extern _memset5A9D755A:proc
-// extern _memset_sC3E11DB1:proc
-// extern _memset_rC7200006:proc
-// extern _strcat5B9BE603:proc
-// extern _strcat_ss555D4B89:proc
-// extern _strcat_rs87448A55:proc
-// extern _strcat_sr519C563E:proc
-// extern _strcat_rr838597E2:proc
-// extern _strcmp5AF4656D:proc
-// extern _strcmp_ss444C82D5:proc
-// extern _strcmp_rs444C82D5:proc
-// extern _strcmp_sr408D9F62:proc
-// extern _strcmp_rr408D9F62:proc
-// extern _strcpy489F90DF:proc
-// extern _strcpy_ss9E2FE155:proc
-// extern _strcpy_rs4C362089:proc
-// extern _strcpy_sr9E2FE155:proc
-// extern _strcpy_rr4C362089:proc
-// extern _strchr5AF4656D:proc
-// extern _strchr_sF5DEF009:proc
-// extern _strchr_rF5DEF009:proc
-// extern _strcspn9DAB6D1D:proc
-// extern _strcspn_ss83D93D55:proc
-// extern _strcspn_rs51C0FC89:proc
-// extern _strcspn_sr83D93D55:proc
-// extern _strcspn_rr51C0FC89:proc
-// extern _strlen34FDA3AA:proc
-// extern _strlen_s7021CB89:proc
-// extern _strlen_r74E0D63E:proc
-// extern _strncat7D697162:proc
-// extern _strncat_ssEADE2809:proc
-// extern _strncat_rs38C7E9D5:proc
-// extern _strncat_srEE1F35BE:proc
-// extern _strncat_rr3C06F462:proc
-// extern _strncmp66377E09:proc
-// extern _strncmp_ssAB4DA1B1:proc
-// extern _strncmp_rs7954606D:proc
-// extern _strncmp_srAF8CBC06:proc
-// extern _strncmp_rr7D957DDA:proc
-// extern _strncpy8DB940B1:proc
-// extern _strncpy_ss1AD5A631:proc
-// extern _strncpy_rsC8CC67ED:proc
-// extern _strncpy_sr1E14BB86:proc
-// extern _strncpy_rrCC0D7A5A:proc
-// extern _strpbrkAF51DF1D:proc
-// extern _strpbrk_ss55B7E6D5:proc
-// extern _strpbrk_rs87AE2709:proc
-// extern _strpbrk_sr5176FB62:proc
-// extern _strpbrk_rr836F3ABE:proc
-// extern _strrchr28010F3E:proc
-// extern _strrchr_s89378B6D:proc
-// extern _strrchr_r8DF696DA:proc
-// extern _strspnC9E3621D:proc
-// extern _strspn_ssAD3C68ED:proc
-// extern _strspn_rs7F25A931:proc
-// extern _strspn_srA9FD755A:proc
-// extern _strspn_rr7BE4B486:proc
-// extern _strstr854578DA:proc
-// extern _strstr_ssC699D955:proc
-// extern _strstr_rs14801889:proc
-// extern _strstr_srC699D955:proc
-// extern _strstr_rr14801889:proc
-// extern _strtok25660B6D:proc
-// extern _strtok_ssDC49D76D:proc
-// extern _strtok_rsDC49D76D:proc
-// extern _strtok_srDC49D76D:proc
-// extern _strtok_rrDC49D76D:proc
 // public ginit_code_global_6037E6D5_s
