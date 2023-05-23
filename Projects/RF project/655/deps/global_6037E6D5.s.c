@@ -41,25 +41,25 @@ rjmp void _InitialDA4A7CC4();
 .code
 rjmp void _RampUpFF7996DA()
 {
-_A523506CC_97:;
+_A8ADEC9C4_78:;
 	////////////////////////////
-_A523506CC_98:;
+_A8ADEC9C4_79:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	asm AR = 0x003F;
 	asm AX = AX & AR;
 	sCX	= 0x003F;
 	sfx_CMP_AX_CX_JE();
-	if(__je__)	goto L0E8FA404_44;
-	goto	L0E8FA404_43;
-L0E8FA404_44:;
-_A523506CC_99:;
+	if(__je__)	goto L0E8FA404_33;
+	goto	L0E8FA404_32;
+L0E8FA404_33:;
+_A8ADEC9C4_80:;
 	sAX	= 0x0000;
-	goto L0E8FA404_42;
-L0E8FA404_43:;
-_A523506CC_100:;
-_A523506CC_101:;
-_A523506CC_102:;
+	goto L0E8FA404_31;
+L0E8FA404_32:;
+_A8ADEC9C4_81:;
+_A8ADEC9C4_82:;
+_A8ADEC9C4_83:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sCX	= *(__int16*)sSI++;
@@ -68,54 +68,54 @@ _A523506CC_102:;
 	sCX	= 0x0000;
 	sBX	= 0x0005;
 	sfx_CMPLONG_JA();
-	if(__je__)	goto L0E8FA404_46;
-	goto	L0E8FA404_45;
-L0E8FA404_46:;
+	if(__je__)	goto L0E8FA404_35;
+	goto	L0E8FA404_34;
+L0E8FA404_35:;
 	////////////////////////////
-_A523506CC_103:;
-_A523506CC_104:;
+_A8ADEC9C4_84:;
+_A8ADEC9C4_85:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sfx_STORSILONG();
-_A523506CC_105:;
+_A8ADEC9C4_86:;
 	sSI	= (int)&_sub_vol980B1B83;
 	sAX	= *(__int16*)sSI;
 	sAX++;
 	*(__int16*)sSI	= sAX;
 	io[0x3C]	= sAX;
-L0E8FA404_45:;
-_A523506CC_106:;
-_A523506CC_107:;
+L0E8FA404_34:;
+_A8ADEC9C4_87:;
+_A8ADEC9C4_88:;
 	sAX	= 0x0001;
-	goto L0E8FA404_42;
-L0E8FA404_42:;
-_A523506CC_108:;
+	goto L0E8FA404_31;
+L0E8FA404_31:;
+_A8ADEC9C4_89:;
 	return;
 _RampUpFF7996DA_end:;
-_A523506CC_109:;
+_A8ADEC9C4_90:;
 }
 
 rjmp void _RampDown1D382EDA()
 {
-_A523506CC_110:;
+_A8ADEC9C4_91:;
 	////////////////////////////
-_A523506CC_111:;
+_A8ADEC9C4_92:;
 	asm I1 = _sub_vol980B1B83+0;
 	sAX	= *(__int16*)sSI;
 	asm AR = 0x003F;
 	asm AX = AX & AR;
 	sCX	= 0x0000;
 	sfx_CMP_AX_CX_JE();
-	if(__je__)	goto L0E8FA404_49;
-	goto	L0E8FA404_48;
-L0E8FA404_49:;
-_A523506CC_112:;
+	if(__je__)	goto L0E8FA404_38;
+	goto	L0E8FA404_37;
+L0E8FA404_38:;
+_A8ADEC9C4_93:;
 	sAX	= 0x0000;
-	goto L0E8FA404_47;
-L0E8FA404_48:;
-_A523506CC_113:;
-_A523506CC_114:;
-_A523506CC_115:;
+	goto L0E8FA404_36;
+L0E8FA404_37:;
+_A8ADEC9C4_94:;
+_A8ADEC9C4_95:;
+_A8ADEC9C4_96:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sCX	= *(__int16*)sSI++;
@@ -124,72 +124,70 @@ _A523506CC_115:;
 	sCX	= 0x0000;
 	sBX	= 0x0005;
 	sfx_CMPLONG_JA();
-	if(__je__)	goto L0E8FA404_51;
-	goto	L0E8FA404_50;
-L0E8FA404_51:;
+	if(__je__)	goto L0E8FA404_40;
+	goto	L0E8FA404_39;
+L0E8FA404_40:;
 	////////////////////////////
-_A523506CC_116:;
-_A523506CC_117:;
+_A8ADEC9C4_97:;
+_A8ADEC9C4_98:;
 	_GetTickCount18DC070C();
 	asm I1 = _ticksA7263C09+0;
 	sfx_STORSILONG();
-_A523506CC_118:;
+_A8ADEC9C4_99:;
 	sSI	= (int)&_sub_vol980B1B83;
 	sAX	= *(__int16*)sSI;
 	sAX--;
 	*(__int16*)sSI	= sAX;
 	io[0x3C]	= sAX;
-L0E8FA404_50:;
-_A523506CC_119:;
-_A523506CC_120:;
+L0E8FA404_39:;
+_A8ADEC9C4_100:;
+_A8ADEC9C4_101:;
 	sAX	= 0x0001;
-	goto L0E8FA404_47;
-L0E8FA404_47:;
-_A523506CC_121:;
+	goto L0E8FA404_36;
+L0E8FA404_36:;
+_A8ADEC9C4_102:;
 	return;
 _RampDown1D382EDA_end:;
-_A523506CC_122:;
+_A8ADEC9C4_103:;
 }
 
 rjmp void _InitialDA4A7CC4()
 {
-_A523506CC_123:;
+_A8ADEC9C4_104:;
 	////////////////////////////
-_A523506CC_124:;
+_A8ADEC9C4_105:;
 	io[0x67]	= 0x0007;
-_A523506CC_125:;
+_A8ADEC9C4_106:;
 	io[0x06]	= 0xC004;
-_A523506CC_126:;
+_A8ADEC9C4_107:;
 	io[0x05]	= 0x0000;
-_A523506CC_127:;
+_A8ADEC9C4_108:;
 	io[0x09]	= 0x0000;
-_A523506CC_128:;
-	io[0x1E]	= 0x000C;
-_A523506CC_129:;
-	io[0x1F]	= 0x00FF;
+_A8ADEC9C4_109:;
+	io[0x08]	= 0xFFFF;
 	////////////////////////////
-_A523506CC_130:;
+_A8ADEC9C4_110:;
 	sAX	= 0x0002;
-_A523506CC_131:;
+_A8ADEC9C4_111:;
 	asm	AR = AX
-_A523506CC_132:;
+_A8ADEC9C4_112:;
 	asm	io[IOP_IX] = AR
 	////////////////////////////
-_A523506CC_133:;
-	sAX	= 0x7FFF;
-_A523506CC_134:;
+_A8ADEC9C4_113:;
+	sAX	= 0x2AAA;
+_A8ADEC9C4_114:;
 	asm	AR = AX
-_A523506CC_135:;
+_A8ADEC9C4_115:;
 	asm	io[IOP_DAT] = AR
-_A523506CC_136:;
+_A8ADEC9C4_116:;
 	asm	eni
-_A523506CC_137:;
+_A8ADEC9C4_117:;
 	asm	set io[INTENA].b3
-L0E8FA404_52:;
-_A523506CC_138:;
+L0E8FA404_41:;
+_A8ADEC9C4_118:;
 	return;
 _InitialDA4A7CC4_end:;
-_A523506CC_139:;
+_A8ADEC9C4_119:;
 }
 
 // .code ends _text

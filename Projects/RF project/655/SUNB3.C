@@ -19,7 +19,7 @@
 #define TRUE  1
 #define FALSE 0
 // -----------------
-unsigned char flag;
+static unsigned char flag;
 unsigned char Key_press_flag;
 unsigned char Play_flag;
 static char	ris_edge_rdy = FALSE;
@@ -43,6 +43,26 @@ void RTC(void) interrupt(3) 			//interrupt(x)     set interrupt x
 {
 	ClrIntFlag3();						// clear interrupt 3 flag
 	ris_edge_rdy = B_PORTB2 == 0? TRUE:FALSE;
+	
+	if(flag==0)
+	{
+		WS_TRSF_color_set(Enum_Purp, LEDNUM);		
+		RES
+	}					
+	else if(flag==1)
+	{
+		WS_TRSF_color_set(Enum_Red, LEDNUM);	
+		RES
+	}
+	else if(flag==2)
+	{
+		WS_TRSF_color_set(Enum_Blue, LEDNUM);	
+		RES
+	}
+	flag++;
+	if(flag==2)
+		flag=0;
+	
 /*	while(B_PORTB2 == TRUE && ris_edge_rdy==TRUE)
 	{
 
@@ -69,7 +89,7 @@ void main(void)
 	{
 		ClrWatchDog();
 			
-		if(ris_edge_rdy == TRUE)
+		/*if(ris_edge_rdy == TRUE)
 		{
 			
 			//if(Key_press_flag==TRUE)
@@ -81,22 +101,19 @@ void main(void)
 				if(flag==0)
 				{
 					WS_TRSF_color_set(Enum_Purp, LEDNUM);		
-					RES
 				}					
 				else if(flag==1)
 				{
 					WS_TRSF_color_set(Enum_Red, LEDNUM);	
-					RES
 				}
-				if(flag==2)
+				else if(flag==2)
 				{
 					WS_TRSF_color_set(Enum_Blue, LEDNUM);	
-					RES
 				}
 				flag = flag == 2? 0: flag+1;
 			}	
 		}
-		if(flag ==0)//This function should be entried every cycles
+		if(flag ==1)//This function should be entried every cycles
 		{
 			RampUp();
 			if(WaitPCM_Empty_size() < 0)
@@ -107,7 +124,7 @@ void main(void)
 				Sub3Play((lptr_t)MyData);
 		}
 		else
-			Sub3ZeroFill();// this function will stop the sound 
+			Sub3ZeroFill();// this function will stop the sound */
 			
 			
 	}

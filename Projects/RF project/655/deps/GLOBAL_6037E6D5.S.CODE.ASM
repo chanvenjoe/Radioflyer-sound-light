@@ -26,11 +26,11 @@ VarRM[0:4095]={
 ; //rjmp void _RampUpFF7996DA()			
 _RampUpFF7996DA:
 ; //{
-; //_A523506CC_97:;					
-_A523506CC_97:
+; //_A8ADEC9C4_78:;					
+_A8ADEC9C4_78:
 ; //	
-; //_A523506CC_98:;					
-_A523506CC_98:
+; //_A8ADEC9C4_79:;					
+_A8ADEC9C4_79:
 ; //	asm I1 = _sub_vol980B1B83+0;		
 	I1 = _sub_vol980B1B83+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -44,26 +44,26 @@ _A523506CC_98:
 ; //	sfx_CMP_AX_CX_JE();			
 	pch	= sfx_CMP_AX_CX_JE
 	lcall	sfx_CMP_AX_CX_JE
-; //	if(__je__)	goto L0E8FA404_44;	
-	if ZR	jmp L0E8FA404_44
-; //	goto	L0E8FA404_43;			
-	jmp	L0E8FA404_43
-; //L0E8FA404_44:;					
-L0E8FA404_44:
-; //_A523506CC_99:;					
-_A523506CC_99:
+; //	if(__je__)	goto L0E8FA404_33;	
+	if ZR	jmp L0E8FA404_33
+; //	goto	L0E8FA404_32;			
+	jmp	L0E8FA404_32
+; //L0E8FA404_33:;					
+L0E8FA404_33:
+; //_A8ADEC9C4_80:;					
+_A8ADEC9C4_80:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
-; //	goto L0E8FA404_42;			
-	jmp	L0E8FA404_42
-; //L0E8FA404_43:;					
-L0E8FA404_43:
-; //_A523506CC_100:;				
-_A523506CC_100:
-; //_A523506CC_101:;				
-_A523506CC_101:
-; //_A523506CC_102:;				
-_A523506CC_102:
+; //	goto L0E8FA404_31;			
+	jmp	L0E8FA404_31
+; //L0E8FA404_32:;					
+L0E8FA404_32:
+; //_A8ADEC9C4_81:;					
+_A8ADEC9C4_81:
+; //_A8ADEC9C4_82:;					
+_A8ADEC9C4_82:
+; //_A8ADEC9C4_83:;					
+_A8ADEC9C4_83:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -85,17 +85,17 @@ _A523506CC_102:
 ; //	sfx_CMPLONG_JA();			
 	pch	= sfx_CMPLONG_JA
 	lcall	sfx_CMPLONG_JA
-; //	if(__je__)	goto L0E8FA404_46;	
-	if ZR	jmp L0E8FA404_46
-; //	goto	L0E8FA404_45;			
-	jmp	L0E8FA404_45
-; //L0E8FA404_46:;					
-L0E8FA404_46:
+; //	if(__je__)	goto L0E8FA404_35;	
+	if ZR	jmp L0E8FA404_35
+; //	goto	L0E8FA404_34;			
+	jmp	L0E8FA404_34
+; //L0E8FA404_35:;					
+L0E8FA404_35:
 ; //	
-; //_A523506CC_103:;				
-_A523506CC_103:
-; //_A523506CC_104:;				
-_A523506CC_104:
+; //_A8ADEC9C4_84:;					
+_A8ADEC9C4_84:
+; //_A8ADEC9C4_85:;					
+_A8ADEC9C4_85:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -104,8 +104,8 @@ _A523506CC_104:
 ; //	sfx_STORSILONG();			
 	rm[I1++]	= AX
 	rm[I1--]	= DX
-; //_A523506CC_105:;				
-_A523506CC_105:
+; //_A8ADEC9C4_86:;					
+_A8ADEC9C4_86:
 ; //	sSI	= (int)&_sub_vol980B1B83;	
 	I1	= _sub_vol980B1B83
 ; //	sAX	= *(__int16*)sSI;		
@@ -117,36 +117,36 @@ _A523506CC_105:
 ; //	io[0x3C]	= sAX;			
 	AR	= AX
 	io[0x3C]	= AR
-; //L0E8FA404_45:;					
-L0E8FA404_45:
-; //_A523506CC_106:;				
-_A523506CC_106:
-; //_A523506CC_107:;				
-_A523506CC_107:
+; //L0E8FA404_34:;					
+L0E8FA404_34:
+; //_A8ADEC9C4_87:;					
+_A8ADEC9C4_87:
+; //_A8ADEC9C4_88:;					
+_A8ADEC9C4_88:
 ; //	sAX	= 0x0001;			
 	AX	= 0x01
-; //	goto L0E8FA404_42;			
-	jmp	L0E8FA404_42
-; //L0E8FA404_42:;					
-L0E8FA404_42:
-; //_A523506CC_108:;				
-_A523506CC_108:
+; //	goto L0E8FA404_31;			
+	jmp	L0E8FA404_31
+; //L0E8FA404_31:;					
+L0E8FA404_31:
+; //_A8ADEC9C4_89:;					
+_A8ADEC9C4_89:
 ; //	return;					
 	rets
 ; //_RampUpFF7996DA_end:;				
 _RampUpFF7996DA_end:
-; //_A523506CC_109:;				
-_A523506CC_109:
+; //_A8ADEC9C4_90:;					
+_A8ADEC9C4_90:
 ; //}
 ; //
 ; //rjmp void _RampDown1D382EDA()			
 _RampDown1D382EDA:
 ; //{
-; //_A523506CC_110:;				
-_A523506CC_110:
+; //_A8ADEC9C4_91:;					
+_A8ADEC9C4_91:
 ; //	
-; //_A523506CC_111:;				
-_A523506CC_111:
+; //_A8ADEC9C4_92:;					
+_A8ADEC9C4_92:
 ; //	asm I1 = _sub_vol980B1B83+0;		
 	I1 = _sub_vol980B1B83+0//
 ; //	sAX	= *(__int16*)sSI;		
@@ -160,26 +160,26 @@ _A523506CC_111:
 ; //	sfx_CMP_AX_CX_JE();			
 	pch	= sfx_CMP_AX_CX_JE
 	lcall	sfx_CMP_AX_CX_JE
-; //	if(__je__)	goto L0E8FA404_49;	
-	if ZR	jmp L0E8FA404_49
-; //	goto	L0E8FA404_48;			
-	jmp	L0E8FA404_48
-; //L0E8FA404_49:;					
-L0E8FA404_49:
-; //_A523506CC_112:;				
-_A523506CC_112:
+; //	if(__je__)	goto L0E8FA404_38;	
+	if ZR	jmp L0E8FA404_38
+; //	goto	L0E8FA404_37;			
+	jmp	L0E8FA404_37
+; //L0E8FA404_38:;					
+L0E8FA404_38:
+; //_A8ADEC9C4_93:;					
+_A8ADEC9C4_93:
 ; //	sAX	= 0x0000;			
 	AX	= 0x00
-; //	goto L0E8FA404_47;			
-	jmp	L0E8FA404_47
-; //L0E8FA404_48:;					
-L0E8FA404_48:
-; //_A523506CC_113:;				
-_A523506CC_113:
-; //_A523506CC_114:;				
-_A523506CC_114:
-; //_A523506CC_115:;				
-_A523506CC_115:
+; //	goto L0E8FA404_36;			
+	jmp	L0E8FA404_36
+; //L0E8FA404_37:;					
+L0E8FA404_37:
+; //_A8ADEC9C4_94:;					
+_A8ADEC9C4_94:
+; //_A8ADEC9C4_95:;					
+_A8ADEC9C4_95:
+; //_A8ADEC9C4_96:;					
+_A8ADEC9C4_96:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -201,17 +201,17 @@ _A523506CC_115:
 ; //	sfx_CMPLONG_JA();			
 	pch	= sfx_CMPLONG_JA
 	lcall	sfx_CMPLONG_JA
-; //	if(__je__)	goto L0E8FA404_51;	
-	if ZR	jmp L0E8FA404_51
-; //	goto	L0E8FA404_50;			
-	jmp	L0E8FA404_50
-; //L0E8FA404_51:;					
-L0E8FA404_51:
+; //	if(__je__)	goto L0E8FA404_40;	
+	if ZR	jmp L0E8FA404_40
+; //	goto	L0E8FA404_39;			
+	jmp	L0E8FA404_39
+; //L0E8FA404_40:;					
+L0E8FA404_40:
 ; //	
-; //_A523506CC_116:;				
-_A523506CC_116:
-; //_A523506CC_117:;				
-_A523506CC_117:
+; //_A8ADEC9C4_97:;					
+_A8ADEC9C4_97:
+; //_A8ADEC9C4_98:;					
+_A8ADEC9C4_98:
 ; //	_GetTickCount18DC070C();		
 	pch	= _GetTickCount18DC070C
 	lcall	_GetTickCount18DC070C
@@ -220,8 +220,8 @@ _A523506CC_117:
 ; //	sfx_STORSILONG();			
 	rm[I1++]	= AX
 	rm[I1--]	= DX
-; //_A523506CC_118:;				
-_A523506CC_118:
+; //_A8ADEC9C4_99:;					
+_A8ADEC9C4_99:
 ; //	sSI	= (int)&_sub_vol980B1B83;	
 	I1	= _sub_vol980B1B83
 ; //	sAX	= *(__int16*)sSI;		
@@ -233,108 +233,103 @@ _A523506CC_118:
 ; //	io[0x3C]	= sAX;			
 	AR	= AX
 	io[0x3C]	= AR
-; //L0E8FA404_50:;					
-L0E8FA404_50:
-; //_A523506CC_119:;				
-_A523506CC_119:
-; //_A523506CC_120:;				
-_A523506CC_120:
+; //L0E8FA404_39:;					
+L0E8FA404_39:
+; //_A8ADEC9C4_100:;				
+_A8ADEC9C4_100:
+; //_A8ADEC9C4_101:;				
+_A8ADEC9C4_101:
 ; //	sAX	= 0x0001;			
 	AX	= 0x01
-; //	goto L0E8FA404_47;			
-	jmp	L0E8FA404_47
-; //L0E8FA404_47:;					
-L0E8FA404_47:
-; //_A523506CC_121:;				
-_A523506CC_121:
+; //	goto L0E8FA404_36;			
+	jmp	L0E8FA404_36
+; //L0E8FA404_36:;					
+L0E8FA404_36:
+; //_A8ADEC9C4_102:;				
+_A8ADEC9C4_102:
 ; //	return;					
 	rets
 ; //_RampDown1D382EDA_end:;				
 _RampDown1D382EDA_end:
-; //_A523506CC_122:;				
-_A523506CC_122:
+; //_A8ADEC9C4_103:;				
+_A8ADEC9C4_103:
 ; //}
 ; //
 ; //rjmp void _InitialDA4A7CC4()			
 _InitialDA4A7CC4:
 ; //{
-; //_A523506CC_123:;				
-_A523506CC_123:
+; //_A8ADEC9C4_104:;				
+_A8ADEC9C4_104:
 ; //	
-; //_A523506CC_124:;				
-_A523506CC_124:
+; //_A8ADEC9C4_105:;				
+_A8ADEC9C4_105:
 ; //	io[0x67]	= 0x0007;		
 	AR	= 0x07
 	io[0x67]	= AR
-; //_A523506CC_125:;				
-_A523506CC_125:
+; //_A8ADEC9C4_106:;				
+_A8ADEC9C4_106:
 ; //	io[0x06]	= 0xC004;		
 	AR	= 0xC004
 	io[0x06]	= AR
-; //_A523506CC_126:;				
-_A523506CC_126:
+; //_A8ADEC9C4_107:;				
+_A8ADEC9C4_107:
 ; //	io[0x05]	= 0x0000;		
 	AR	= 0x00
 	io[0x05]	= AR
-; //_A523506CC_127:;				
-_A523506CC_127:
+; //_A8ADEC9C4_108:;				
+_A8ADEC9C4_108:
 ; //	io[0x09]	= 0x0000;		
 	AR	= 0x00
 	io[0x09]	= AR
-; //_A523506CC_128:;				
-_A523506CC_128:
-; //	io[0x1E]	= 0x000C;		
-	AR	= 0x0C
-	io[0x1E]	= AR
-; //_A523506CC_129:;				
-_A523506CC_129:
-; //	io[0x1F]	= 0x00FF;		
-	AR	= 0x00FF
-	io[0x1F]	= AR
+; //_A8ADEC9C4_109:;				
+_A8ADEC9C4_109:
+; //	io[0x08]	= 0xFFFF;		
+	AR	= 0xFFFF
+	io[0x08]	= AR
 ; //	
-; //_A523506CC_130:;				
-_A523506CC_130:
+; //_A8ADEC9C4_110:;				
+_A8ADEC9C4_110:
 ; //	sAX	= 0x0002;			
 	AX	= 0x02
-; //_A523506CC_131:;				
-_A523506CC_131:
+; //_A8ADEC9C4_111:;				
+_A8ADEC9C4_111:
 ; //	asm	AR = AX				
 	AR = AX
-; //_A523506CC_132:;				
-_A523506CC_132:
+; //_A8ADEC9C4_112:;				
+_A8ADEC9C4_112:
 ; //	asm	io[IOP_IX] = AR			
 	io[IOP_IX] = AR
 ; //	
-; //_A523506CC_133:;				
-_A523506CC_133:
-; //	sAX	= 0x7FFF;			
-	AX	= 0x7FFF
-; //_A523506CC_134:;				
-_A523506CC_134:
+; //_A8ADEC9C4_113:;				
+_A8ADEC9C4_113:
+; //	sAX	= 0x2AAA;			
+	AX	= 0x2AAA
+; //_A8ADEC9C4_114:;				
+_A8ADEC9C4_114:
 ; //	asm	AR = AX				
 	AR = AX
-; //_A523506CC_135:;				
-_A523506CC_135:
+; //_A8ADEC9C4_115:;				
+_A8ADEC9C4_115:
 ; //	asm	io[IOP_DAT] = AR		
 	io[IOP_DAT] = AR
-; //_A523506CC_136:;				
-_A523506CC_136:
+; //_A8ADEC9C4_116:;				
+_A8ADEC9C4_116:
 ; //	asm	eni				
 	eni
-; //_A523506CC_137:;				
-_A523506CC_137:
+; //_A8ADEC9C4_117:;				
+_A8ADEC9C4_117:
 ; //	asm	set io[INTENA].b3		
 	set io[INTENA].b3
-; //L0E8FA404_52:;					
-L0E8FA404_52:
-; //_A523506CC_138:;				
-_A523506CC_138:
+; //L0E8FA404_41:;					
+L0E8FA404_41:
+; //_A8ADEC9C4_118:;				
+_A8ADEC9C4_118:
 ; //	return;					
 	rets
 ; //_InitialDA4A7CC4_end:;				
 _InitialDA4A7CC4_end:
-; //_A523506CC_139:;				
-_A523506CC_139:
+; //_A8ADEC9C4_119:;				
+_A8ADEC9C4_119:
 ; //}
 ; //
 ; //

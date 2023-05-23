@@ -86,6 +86,7 @@ void WS_TRSF_color_set(enum color_seq color, u8 Led_num)
 				break;
 		}
 	}
+	RES
 }
 			
 				

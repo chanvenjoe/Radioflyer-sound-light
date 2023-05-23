@@ -74,19 +74,21 @@ void Initial(void)
 	//PB2 as input pin, low trigger, high default// PI0/1 as output default 0
 	R_IOC_PC = BIT(15) | BIT(14) | BIT(2);
 	R_IOC_PB = 0;
+	
 	R_PORTC  = (int)0x0000;		//Port B C set low
+	R_PORTB  = (int)0xffff;
 	
 	//Interrupt init 1/2 for ExtInt
 
 //	B_INTENA1 = 1; //Extint0/ Timer1 interrupt enable
 //	EnableInt1();
 	
-	//RTC
-	R_IOP_IX = IOP_PB_PD1M;
-	R_IOP_DAT = 0XFF;
 
+//	R_IOP_IX = IOP_PB_PD50K;
+//	R_IOP_DAT = 0XFF;
+	//RTC
 	set_IOP_IX(0x02);					// IOP_RTC32K
-	set_IOP_DAT(0x7fff);				// freq=32768Hz/(RTC Timer TnC+1),t=1s(7fff)  2AAA=1.4/3S
+	set_IOP_DAT(0x2aaa);				// freq=32768Hz/(RTC Timer TnC+1),t=1s(7fff)  2AAA=1.4/3S 444=30ms
 	eni();
 	EnableInt3();						// enable RTC interrupt
 	

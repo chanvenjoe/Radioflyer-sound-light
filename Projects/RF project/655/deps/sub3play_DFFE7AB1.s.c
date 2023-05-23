@@ -54,18 +54,18 @@ rjmp void _ClearRenderBufB079D01D()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_A8ADEC9C4_120:;
+_A56E00E50_2659:;
 	////////////////////////////
-_A8ADEC9C4_121:;
+_A56E00E50_2660:;
 	asm AX = PCMY+0;
-_A8ADEC9C4_122:;
+_A56E00E50_2661:;
 	asm	AR = AX
-_A8ADEC9C4_123:;
+_A56E00E50_2662:;
 	asm	I0 = AR
-_A8ADEC9C4_124:;
+_A56E00E50_2663:;
 	_i_1_2+0	= 0x0200;
-LFB78B58C_45:;
-_A8ADEC9C4_125:;
+LBF17F8C6_108:;
+_A56E00E50_2664:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -73,62 +73,66 @@ _A8ADEC9C4_125:;
 	sCX	= *(__int16*)sSI;
 	asm rm[I1] = CX - AR;
 	sfx_CHECKZERO();
-	if(__jnz__)	goto LFB78B58C_46;
-	goto	LFB78B58C_44;
-LFB78B58C_46:;
+	if(__jnz__)	goto LBF17F8C6_109;
+	goto	LBF17F8C6_107;
+LBF17F8C6_109:;
 	////////////////////////////
-_A8ADEC9C4_126:;
+_A56E00E50_2665:;
 	sAX	= 0x0000;
-_A8ADEC9C4_127:;
+_A56E00E50_2666:;
 	asm	rm[I0++] = AX
-	goto LFB78B58C_45;
-LFB78B58C_44:;
-LFB78B58C_43:;
-_A8ADEC9C4_128:;
+	goto LBF17F8C6_108;
+LBF17F8C6_107:;
+LBF17F8C6_106:;
+_A56E00E50_2667:;
 	return;
 _ClearRenderBufB079D01D_end:;
-_A8ADEC9C4_129:;
+_A56E00E50_2668:;
 }
 
 rjmp void _Sub3Initial96BE24F3()
 {
-_A8ADEC9C4_130:;
-_A8ADEC9C4_131:;
+_A56E00E50_2669:;
+_A56E00E50_2670:;
 	asm	dsi
-_A8ADEC9C4_132:;
+_A56E00E50_2671:;
 	asm	nop
 	////////////////////////////
-_A8ADEC9C4_133:;
-_A8ADEC9C4_134:;
+_A56E00E50_2672:;
+_A56E00E50_2673:;
 	_ClearRenderBufB079D01D();
-_A8ADEC9C4_135:;
+_A56E00E50_2674:;
 	asm	AR = PASR,0
-_A8ADEC9C4_136:;
+_A56E00E50_2675:;
 	asm AX = PCMY+0;
 	asm I1 = PCMYIN_PTR+0;
 	*(__int16*)sSI	= sAX
-_A8ADEC9C4_137:;
+_A56E00E50_2676:;
 	asm AX = PCMY+0;
 	asm I1 = PCMYOU_PTR+0;
 	*(__int16*)sSI	= sAX
-_A8ADEC9C4_138:;
+_A56E00E50_2677:;
+	io[0x3C]	= 0x0000;
+_A56E00E50_2678:;
+	io[0x3E]	= 0x1FFF;
+_A56E00E50_2679:;
 	io[0x3B]	= 0x0000;
-_A8ADEC9C4_139:;
-_A8ADEC9C4_140:;
+_A56E00E50_2680:;
+_A56E00E50_2681:;
 	Subb3_Init();
-LFB78B58C_47:;
-_A8ADEC9C4_141:;
+LBF17F8C6_110:;
+_A56E00E50_2682:;
 	return;
 _Sub3Initial96BE24F3_end:;
-_A8ADEC9C4_142:;
+_A56E00E50_2683:;
 }
 
 rjmp void _WaitPCM_Empty_size53398B9D()
 {
 	__int16 _x_1_2;
 	////////////////////////////
-_A8ADEC9C4_143:;
-_A8ADEC9C4_144:;
+_A56E00E50_2684:;
+_A56E00E50_2685:;
 	asm I1 = PCMYOU_PTR+0;
 	sAX	= *(__int16*)sSI;
 	asm I1 = PCMYIN_PTR+0;
@@ -137,63 +141,63 @@ _A8ADEC9C4_144:;
 	// mark sfx_SHR_AX();
 	sSI	= (int)&_x_1_2;
 	*(__int16*)sSI	= sAX;
-_A8ADEC9C4_145:;
+_A56E00E50_2686:;
 	sSI	= (int)&_x_1_2;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0000;
 	sfx_CMP_AX_CX_JL();
-	if(__je__)	goto LFB78B58C_50;
-	goto	LFB78B58C_49;
-LFB78B58C_50:;
+	if(__je__)	goto LBF17F8C6_113;
+	goto	LBF17F8C6_112;
+LBF17F8C6_113:;
 	////////////////////////////
-_A8ADEC9C4_146:;
+_A56E00E50_2687:;
 	sAX	= 0x01FF;
 	sSI	= (int)&_x_1_2;
 	sCX	= *(__int16*)sSI;
 	sAX	= sAX & sCX;
 	sSI	= (int)&_x_1_2;
 	*(__int16*)sSI	= sAX;
-LFB78B58C_49:;
-_A8ADEC9C4_147:;
-_A8ADEC9C4_148:;
+LBF17F8C6_112:;
+_A56E00E50_2688:;
+_A56E00E50_2689:;
 	sSI	= (int)&_x_1_2;
 	sAX	= *(__int16*)sSI;
 	sCX	= 0x0121;
 	sAX	= sAX - sCX;
 	sSI	= (int)&_x_1_2;
 	*(__int16*)sSI	= sAX;
-_A8ADEC9C4_149:;
+_A56E00E50_2690:;
 	sSI	= (int)&_x_1_2;
 	sAX	= *(__int16*)sSI;
-	goto LFB78B58C_48;
-LFB78B58C_48:;
-_A8ADEC9C4_150:;
+	goto LBF17F8C6_111;
+LBF17F8C6_111:;
+_A56E00E50_2691:;
 	return;
 _WaitPCM_Empty_size53398B9D_end:;
-_A8ADEC9C4_151:;
+_A56E00E50_2692:;
 }
 
 rjmp void _Sub3ZeroFillABFF23AA()
 {
 	__int16 _i_1_2;
 	////////////////////////////
-_A8ADEC9C4_152:;
-_A8ADEC9C4_153:;
+_A56E00E50_2693:;
+_A56E00E50_2694:;
 	asm	push CBL
-_A8ADEC9C4_154:;
+_A56E00E50_2695:;
 	io[0x3B]	= 0x0009;
 	////////////////////////////
-_A8ADEC9C4_155:;
+_A56E00E50_2696:;
 	asm I1 = PCMYIN_PTR+0;
 	sAX	= *(__int16*)sSI;
-_A8ADEC9C4_156:;
+_A56E00E50_2697:;
 	asm	AR = AX
-_A8ADEC9C4_157:;
+_A56E00E50_2698:;
 	asm	I0 = AR
-_A8ADEC9C4_158:;
+_A56E00E50_2699:;
 	_i_1_2+0	= 0x0120;
-LFB78B58C_53:;
-_A8ADEC9C4_159:;
+LBF17F8C6_116:;
+_A56E00E50_2700:;
 	sSI	= (int)&_i_1_2;
 	sAX	= *(__int16*)sSI;
 	sSI	= (int)&_i_1_2;
@@ -201,114 +205,114 @@ _A8ADEC9C4_159:;
 	sCX	= *(__int16*)sSI;
 	asm rm[I1] = CX - AR;
 	sfx_CHECKZERO();
-	if(__jnz__)	goto LFB78B58C_54;
-	goto	LFB78B58C_52;
-LFB78B58C_54:;
+	if(__jnz__)	goto LBF17F8C6_117;
+	goto	LBF17F8C6_115;
+LBF17F8C6_117:;
 	////////////////////////////
-_A8ADEC9C4_160:;
+_A56E00E50_2701:;
 	sAX	= 0x0000;
-_A8ADEC9C4_161:;
+_A56E00E50_2702:;
 	asm	rm[I0++] = AX
-	goto LFB78B58C_53;
-LFB78B58C_52:;
-_A8ADEC9C4_162:;
-_A8ADEC9C4_163:;
+	goto LBF17F8C6_116;
+LBF17F8C6_115:;
+_A56E00E50_2703:;
+_A56E00E50_2704:;
 	get_I0();
 	asm I1 = PCMYIN_PTR+0;
 	*(__int16*)sSI	= sAX
-_A8ADEC9C4_164:;
+_A56E00E50_2705:;
 	asm	pop CBL
-LFB78B58C_51:;
-_A8ADEC9C4_165:;
+LBF17F8C6_114:;
+_A56E00E50_2706:;
 	return;
 _Sub3ZeroFillABFF23AA_end:;
-_A8ADEC9C4_166:;
+_A56E00E50_2707:;
 }
 
 rjmp void _Sub3Play422CAD6D(__int16 _sdata_0_4_0, __int16 _sdata_0_4_1)
 {
-_A8ADEC9C4_167:;
+_A56E00E50_2708:;
 	////////////////////////////
-_A8ADEC9C4_168:;
+_A56E00E50_2709:;
 	sSI	= (int)&_sdata_0_4_0;
 	sAX	= *(__int16*)sSI++;
 	sDX	= *(__int16*)sSI--;
 	asm I1 = bts_ch0_get_ix+0;
 	sfx_STORSILONG();
-_A8ADEC9C4_169:;
-_A8ADEC9C4_170:;
+_A56E00E50_2710:;
+_A56E00E50_2711:;
 	_Sub3Initial96BE24F3();
-_A8ADEC9C4_171:;
+_A56E00E50_2712:;
 	asm AX = SUBFLTI+0;
 	PUSH(sAX);
 	sAX	= 0x0000;
 	sSI	= POP();
 	*(__int16*)sSI	= sAX;
-_A8ADEC9C4_172:;
+_A56E00E50_2713:;
 	asm AX = SUBFLTI+1;
 	PUSH(sAX);
 	sAX	= 0x0000;
 	sSI	= POP();
 	*(__int16*)sSI	= sAX;
-_A8ADEC9C4_173:;
+_A56E00E50_2714:;
 	asm AX = SUBFLTI+2;
 	PUSH(sAX);
 	sAX	= 0x0000;
 	sSI	= POP();
 	*(__int16*)sSI	= sAX;
-_A8ADEC9C4_174:;
+_A56E00E50_2715:;
 	asm AX = SUBFLTI+3;
 	PUSH(sAX);
 	sAX	= 0x0000;
 	sSI	= POP();
 	*(__int16*)sSI	= sAX;
-_A8ADEC9C4_175:;
+_A56E00E50_2716:;
 	sAX	= 0x0000;
 	asm I1 = SUBFLTA+0;
 	*(__int16*)sSI	= sAX
-_A8ADEC9C4_176:;
+_A56E00E50_2717:;
 	asm I1 = SampleCh0Rate+0;
 	sAX	= *(__int16*)sSI;
 	asm I1 = SUBFLTP+0;
 	*(__int16*)sSI	= sAX
-_A8ADEC9C4_177:;
+_A56E00E50_2718:;
 	sAX	= 0x003F;
 	asm I1 = SUBFLTG+0;
 	*(__int16*)sSI	= sAX
-_A8ADEC9C4_178:;
+_A56E00E50_2719:;
 	asm	set io[INTENA].b0
-_A8ADEC9C4_179:;
+_A56E00E50_2720:;
 	asm	eni
-LFB78B58C_55:;
-_A8ADEC9C4_180:;
+LBF17F8C6_118:;
+_A56E00E50_2721:;
 	return;
 _Sub3Play422CAD6D_end:;
-_A8ADEC9C4_181:;
+_A56E00E50_2722:;
 }
 
 naked rjmp void Sbb_Ch0GetBts()
 {
-_A8ADEC9C4_182:;
-_A8ADEC9C4_183:;
+_A56E00E50_2723:;
+_A56E00E50_2724:;
 	asm	push I1
-_A8ADEC9C4_184:;
+_A56E00E50_2725:;
 	asm	push P1
-_A8ADEC9C4_185:;
+_A56E00E50_2726:;
 	asm	push AX
-_A8ADEC9C4_186:;
+_A56E00E50_2727:;
 	asm	push BX
-_A8ADEC9C4_187:;
+_A56E00E50_2728:;
 	asm	push CX
-_A8ADEC9C4_188:;
+_A56E00E50_2729:;
 	asm	push DX
-_A8ADEC9C4_189:;
+_A56E00E50_2730:;
 	asm	AR = P1.hh
-_A8ADEC9C4_190:;
+_A56E00E50_2731:;
 	asm	push AR
 	////////////////////////////
-_A8ADEC9C4_191:;
-_A8ADEC9C4_192:;
-_A8ADEC9C4_193:;
+_A56E00E50_2732:;
+_A56E00E50_2733:;
+_A56E00E50_2734:;
 	asm I1 = bts_ch0_get_ix+0;
 	sAX	= *(__int16*)sSI++;
 	sDX	= *(__int16*)sSI--;
@@ -324,30 +328,30 @@ _A8ADEC9C4_193:;
 	sAX	= POP();
 	_lptr_read(STACK[sSP + 0], STACK[sSP + 1]);
 	vXCHG(STACK[sSP + 0]);
-_A8ADEC9C4_194:;
+_A56E00E50_2735:;
 	asm	pop AR
-_A8ADEC9C4_195:;
+_A56E00E50_2736:;
 	asm	P1.hh = AR
-_A8ADEC9C4_196:;
+_A56E00E50_2737:;
 	asm	AR = AX
 	////////////////////////////
-_A8ADEC9C4_197:;
+_A56E00E50_2738:;
 	asm	pop DX
-_A8ADEC9C4_198:;
+_A56E00E50_2739:;
 	asm	pop CX
-_A8ADEC9C4_199:;
+_A56E00E50_2740:;
 	asm	pop BX
-_A8ADEC9C4_200:;
+_A56E00E50_2741:;
 	asm	pop AX
-_A8ADEC9C4_201:;
+_A56E00E50_2742:;
 	asm	pop P1
-_A8ADEC9C4_202:;
+_A56E00E50_2743:;
 	asm	pop I1
-LFB78B58C_56:;
-_A8ADEC9C4_203:;
+LBF17F8C6_119:;
+_A56E00E50_2744:;
 	return;
 Sbb_Ch0GetBts_end:;
-_A8ADEC9C4_204:;
+_A56E00E50_2745:;
 }
 
 // .code ends _text
@@ -356,7 +360,7 @@ _A8ADEC9C4_204:;
 .code
 
 // -=-=-=-=-=-=-=-=-=-=-
-naked void ginit_code_sub3play_8ED4FA41_s(void)
+naked void ginit_code_sub3play_DFFE7AB1_s(void)
 {
 	return;
 }
@@ -435,17 +439,30 @@ naked void ginit_code_sub3play_8ED4FA41_s(void)
 // extern _lptr_read32:proc
 // extern _lptr_write:proc
 // extern _lptr_write32:proc
-// extern _ticksA7263C09:long
-// extern _sub_vol980B1B83:word
-// extern _RampUpFF7996DA:proc
-// extern _RampDown1D382EDA:proc
+// extern dtxfltg:word
+// extern dtxsongcnt:word
+// extern dtxtonech:word
+// extern dtxRender:long
+// extern dtxInitialize:proc
+// extern dtxInitParameters:proc
+// extern dtxReadTune:proc
+// extern dtxStopSong:proc
+// extern dtxStartBGServe:proc
+// extern dtxStopBGServe:proc
+// extern _dtxDoEvent05EA2C8C:proc
+// extern _dtxFindToneEntry12F3B4ED:proc
+// extern _dtxPlaySong5B7DBDA5:proc
+// extern _dtxCheckSongEnd870A9712:proc
+// extern inbuf:word
+// extern outbuf:word
+// public PCMY
 // extern _InitialDA4A7CC4:proc
+// extern _DoADPCM9CD0E20D:proc
 // public bts_ch0_get_ix
 // public PCMYIN_PTR
 // public PCMYOU_PTR
 // public PCMIN
 // public SampleCh0Rate
-// public PCMY
 // extern Subb3_Init:proc
 // extern Subb3_Dec:proc
 // public _WaitPCM_Empty_size53398B9D
@@ -458,4 +475,4 @@ naked void ginit_code_sub3play_8ED4FA41_s(void)
 // public _ClearRenderBufB079D01D
 // public _Sub3Initial96BE24F3
 // public Sbb_Ch0GetBts
-// public ginit_code_sub3play_8ED4FA41_s
+// public ginit_code_sub3play_DFFE7AB1_s
